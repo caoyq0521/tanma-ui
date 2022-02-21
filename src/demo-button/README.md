@@ -21,6 +21,8 @@ Vue.use(DemoButton);
 <demo-button type="primary" />
 ```
 
+<!-- <demo-code compact>./demo/index.vue</demo-code> -->
+
 ## API
 
 ### Props

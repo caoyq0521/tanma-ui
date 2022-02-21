@@ -1,9 +1,13 @@
 {
   "name": "tanma-ui",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Web UI Components build on Vue",
   "main": "lib/tanma-ui.js",
   "style": "lib/index.css",
+  "repository": "https://github.com/caoyq0521/tanma-ui.git",
+  "bugs": {
+    "url": "https://github.com/caoyq0521/tanma-ui/issues"
+  },
   "files": [
     "lib",
     "es"
@@ -17,14 +21,16 @@
     "test:coverage": "open test/coverage/index.html",
     "build-site": "vant-cli build-site && gh-pages -d site-dist"
   },
-  "author": "",
+  "author": "tanma fe",
   "license": "MIT",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "vant-cli commit-lint"
-    }
-  },
+  "keywords": [
+    "ui",
+    "vue",
+    "frontend",
+    "web ui",
+    "component",
+    "components"
+  ],
   "lint-staged": {
     "*.{ts,tsx,js,jsx,vue}": "eslint --fix",
     "*.{vue,css,less,scss}": "stylelint --fix"

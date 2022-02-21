@@ -7,10 +7,12 @@ module.exports = {
     site: {
       publicPath: '/tanma-ui/',
     },
+    namedExport: true,
   },
   site: {
     title: 'tanma-ui',
-    logo: 'https://img.yzcdn.cn/vant/logo.png',
+    logo: './logo.png',
+    hideSimulator: true,
     nav: [
       {
         title: '开发指南',
