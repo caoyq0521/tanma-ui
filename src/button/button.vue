@@ -1,12 +1,12 @@
 <template>
-  <button class="demo-button">
+  <button class="tm-button">
     <slot />
   </button>
 </template>
 
 <script>
 export default {
-  name: 'demo-button',
+  name: 'TmButton',
 
   props: {
     color: String,

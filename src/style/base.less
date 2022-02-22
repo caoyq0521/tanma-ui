@@ -2,7 +2,20 @@
  * Entry of basic styles
  */
  
-@import './var';
-@import './reset';
-@import './ellipsis';
-@import './clearfix';;
+@import './var.less';
+@import './css-variables.less';
+@import './reset.less';
+@import './clearfix.less';
+@import './mixins/ellipsis.less';
+
+.tm-ellipsis {
+  .ellipsis();
+}
+
+.tm-multi-ellipsis--l2 {
+  .multi-ellipsis(2);
+}
+
+.tm-multi-ellipsis--l3 {
+  .multi-ellipsis(3);
+}

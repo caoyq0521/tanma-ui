@@ -18,10 +18,10 @@ Vue.use(DemoButton);
 ### 基础用法
 
 ```html
-<demo-button type="primary" />
+<tm-button type="primary" />
 ```
 
-<!-- <demo-code compact>./demo/index.vue</demo-code> -->
+<demo-code compact>./demo/index.vue</demo-code>
 
 ## API
 
