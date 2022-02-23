@@ -1,4 +1,4 @@
-# Title 按钮
+# Title 标题
 
 ### 介绍
 
@@ -17,7 +17,35 @@ Vue.use(Title);
 
 ### 基础用法
 
-<demo-code compact>./demo/index.vue</demo-code>
+可以设置 `titleSize` 属性，用于控制标题字体大小。
+
+<demo-code>./demo/index.vue</demo-code>
+
+### 必填提示
+
+默认情况下 `*` 不显示，如果需要，可以使用 `required`属性。它接受一个Boolean，默认为false，设置为true即为启用。
+
+<demo-code>./demo/required.vue</demo-code>
+
+### 带提示信息的标题
+
+tipsInBrackets属性可以将提示信息放在 `()` 中。它接受一个Boolean，默认为false，设置为true即为启用；同时可以设置 `titleSize` 属性，用于控制提示信息字体大小。
+
+<demo-code>./demo/tips.vue</demo-code>
+
+### 提示信息主题
+
+Title组件为提示信息提供了两个不同的主题：`normal`和`danger`。
+
+通过设置tipsTheme属性来改变主题，默认为normal。
+
+<demo-code>./demo/tipsTheme.vue</demo-code>
+
+### 带有背景色的标题
+
+通过配置 `withBackgroundColor` 来决定是否带有背景色。背景色默认为 `#F4F4F6`，可以通过 `backgroundColor`来设置，还可通过设置 `radius` 属性来决定背景的圆角大小。
+
+<demo-code>./demo/backgroundColor.vue</demo-code>
 
 ## API
 

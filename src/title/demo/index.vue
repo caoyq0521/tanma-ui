@@ -1,3 +1,3 @@
 <template>
-  <tm-title></tm-title>
+  <tm-title />
 </template>
