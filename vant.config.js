@@ -25,6 +25,10 @@ module.exports = {
             path: 'quickstart',
             title: '快速上手',
           },
+          {
+            path: 'theme',
+            title: '定制主题',
+          },
         ],
       },
       {
@@ -33,6 +37,10 @@ module.exports = {
           {
             path: 'button',
             title: 'Button 按钮',
+          },
+          {
+            path: 'title',
+            title: 'Title 标题',
           },
         ],
       },

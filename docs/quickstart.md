@@ -1,14 +1,15 @@
 # 快速上手
 
-### 安装
+### 介绍
+
+通过本章节你可以了解到 tanma-ui 的安装方法和基本使用姿势。
+
+## 安装
+
+### 通过 npm 安装
+
+在现有项目中使用 tanma-ui 时，可以通过 `npm` 或 `yarn` 进行安装：
 
 ```bash
-# 通过 npm
-npm i tanma-ui
-
-# 通过 yarn
-yarn add tanma-ui
-
-# 通过 pnpm
-pnpm add tanma-ui
+npm i tanm-ui -S
 ```

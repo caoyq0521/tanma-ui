@@ -1,0 +1,57 @@
+@import '../style/var';
+@import './var';
+
+:root {
+ --tm-font-weight: @title-font-weight;
+ --tm-title-optional-color: @title-optional-color;
+ --tm-title-required-color: @title-optional-color;
+ --tm-title-optional-margin-left: @title-optional-margin-left;
+ --tm-title-tips-color: @title-tips-color;
+ --tm-title-tips-danger-color: @title-tips-danger-color;
+ --tm-title-tips-margin-left: @title-tips-margin-left;
+ --tm-title-has-bgc-padding-top: @title-has-bgc-padding-top;
+ --tm-title-has-bgc-padding-bottom: @title-has-bgc-padding-bottom;
+ --tm-title-has-bgc-padding-left: @title-has-bgc-padding-left;
+ --tm-title-has-bgc-padding-right: @title-has-bgc-padding-right;
+}
+
+.tm-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &--bgc {
+    padding-top: var(--tm-title-has-bgc-padding-top);
+    padding-bottom: var(--tm-title-has-bgc-padding-bottom);
+    padding-left: var(--tm-title-has-bgc-padding-left);
+    padding-right: var(--tm-title-has-bgc-padding-right);
+  }
+
+  &__basic {
+    display: flex;
+    align-items: center;
+  }
+
+  &__content {
+    font-weight: var(--tm-font-weight);
+  }
+
+  .is-required::after {
+    content: '*';
+    color: var(--tm-title-required-color);
+  }
+
+  &__optional {
+    margin-left: var(--tm-title-optional-margin-left);
+    color: var(--tooltip-font-color);
+  }
+
+  &__tips {
+    margin-left: var(--tm-title-tips-margin-left);
+    color: var(--tooltip-font-color);
+  }
+
+  &__tips--danger {
+    color: var(--tm-title-tips-danger-color);
+  }
+}
