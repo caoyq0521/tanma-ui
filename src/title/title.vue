@@ -82,6 +82,14 @@ export default {
       type: String,
       default: ''
     },
+    tipsSize: {
+      type: [Number, String],
+      default: 14,
+      validator (value) {
+        Validator.tipsSize = parseInt(value);
+        return Validator.checkTipsSize();
+      }
+    },
     tipsInBrackets: {
       type: Boolean,
       default: false
@@ -111,10 +119,10 @@ export default {
   },
   computed: {
     titleStyle () {
-      const raidusSize = parseInt(this.radius);
+      const radiusSize = parseInt(this.radius);
       if (this.withBackgroundColor) {
         return {
-          'border-radius': `${raidusSize}px`,
+          'border-radius': `${radiusSize}px`,
           'background-color': this.backgroundColor
         }
       }
