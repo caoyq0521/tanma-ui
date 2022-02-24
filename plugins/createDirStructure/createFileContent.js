@@ -48,7 +48,7 @@ ${comptTemplate}
 
 ### 基础用法
 
-<demo-code compact>./demo/index.vue</demo-code>
+<demo-code>./demo/index.vue</demo-code>
 
 
 ## API

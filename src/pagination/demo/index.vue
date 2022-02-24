@@ -1,0 +1,3 @@
+<template>
+  <tm-pagination />
+</template>

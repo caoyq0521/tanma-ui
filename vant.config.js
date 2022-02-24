@@ -7,7 +7,7 @@ module.exports = {
     site: {
       publicPath: '/tanma-ui/',
     },
-    namedExport: true,
+    namedExport: true
   },
   site: {
     title: 'tanma-ui',
@@ -35,9 +35,13 @@ module.exports = {
         title: '基础组件',
         items: [
           {
+            path: 'pagination',
+            title: 'Pagination 分页'
+          },
+          {
             path: 'title',
             title: 'Title 标题',
-          },
+          }
         ],
       },
     ],

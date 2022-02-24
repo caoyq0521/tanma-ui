@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   plugins:[
     new CreateDirStructure({
-      name: 'button',
+      name: 'pagination',
       path: resolve(__dirname, 'src')
     })
   ]
