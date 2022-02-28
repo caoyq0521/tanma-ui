@@ -83,7 +83,11 @@
 </template>
 
 <script>
+  import Vue from 'vue';
   import { Select, Option } from 'element-ui';
+
+  Vue.use(Select);
+  Vue.use(Option);
 
   class BaseValidator {
     constructor() {
@@ -99,10 +103,6 @@
 
   export default {
     name: "tmPagination",
-    components: {
-      [Select.name]: Select,
-      [Option.name]: Option
-    },
     props: {
       // 简单模式
       easy: {

@@ -36,8 +36,10 @@
     "*.{ts,tsx,js,jsx,vue}": "eslint --fix",
     "*.{vue,css,less,scss}": "stylelint --fix"
   },
+  "dependencies": {
+    "element-ui": "2.13.0"
+  },
   "peerDependencies": {
-    "element-ui": "2.13.0",
     "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11"
   },
