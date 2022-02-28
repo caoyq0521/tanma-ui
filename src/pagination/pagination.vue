@@ -3,50 +3,70 @@
     <span class="tm-pagination__total">共{{ total }}条</span>
     <span
       class="button-prev"
-      :disabled="currentPage <= 1"
+      :disabled="currentPageValue <= 1"
+      @click="handlePrev"
     >
       <i class="iconfont icon-zuojiantou"></i>
     </span>
-    <div class="tm-pagination__pager">
+    <div
+      class="tm-pagination__pager"
+      @click="handlePagerChange"
+    >
       <span
         v-if="pageCount > 0"
         class="number" 
-        :class="{'active': currentPage === 1}"
+        :class="{'active': currentPageValue === 1}"
       >
         1
       </span>
       <span
-        v-if="showPreMore"
-        class="iconfont icon-gengduo2 more"
-      ></span>
-      <span 
-        class="number" 
-        v-for="item in pagers" 
-        :class="{'active': currentPage === item}" 
-        :key="item"
+        v-if="easy"
+        class="interval"
       >
-        {{ item }}
+        /
       </span>
-      <span
-        v-if="showNextMore"
-        class="iconfont icon-gengduo2 more"
-      ></span>
+      <template v-else>
+        <span
+          v-if="showPreMore"
+          class="iconfont icon-gengduo2 more"
+        ></span>
+        <span 
+          class="number" 
+          v-for="item in pagers" 
+          :class="{'active': currentPageValue === item}"
+          :key="item"
+        >
+          {{ item }}
+        </span>
+        <span
+          v-if="showNextMore"
+          class="iconfont icon-gengduo2 more"
+        ></span>
+      </template>
       <span
         v-if="pageCount > 1"
         class="number" 
-        :class="{'active': currentPage === pageCount}"
+        :class="{'active': currentPageValue === pageCount}"
       >
         {{ pageCount }}
       </span>
     </div>
     <span
       class="button-next"
-      :disabled="currentPage === pageCount"
+      :disabled="currentPageValue === pageCount"
+      @click="handleNext"
     >
       <i class="iconfont icon-youjiantou"></i>
     </span>
-    <span class="tm-pagination__sizes">
-      <el-select v-model="value" placeholder="请选择">
+    <span
+      v-if="pager"
+      class="tm-pagination__sizes"
+    >
+      <el-select
+        v-model="pageSizeValue"
+        placeholder="请选择"
+        @change="handlePageSizeChange"
+      >
         <el-option
           v-for="item in pageSizes"
           :key="item"
@@ -62,6 +82,18 @@
 <script>
   import { Select, Option } from 'element-ui';
 
+  class BaseValidator {
+    constructor() {
+      this.pageSizes = [];
+      this.pageSize = 0;
+    }
+
+    checkPageSizeInPageSizes() {
+      return this.pageSizes.includes(this.pageSize);
+    }
+  }
+  const Validator = new BaseValidator();
+
   export default {
     name: "tmPagination",
     components: {
@@ -69,34 +101,63 @@
       [Option.name]: Option
     },
     props: {
+      // 简单模式
+      easy: {
+        type: Boolean,
+        default: false
+      },
+      // 页码按钮的数量，当总页数超过该值时会折叠
       pagerCount: {
         type: Number,
-        default: 7
+        default: 7,
+        validator(value) {
+          return (value | 0) === value && value > 4 && value < 22 && (value % 2) === 1;
+        },
       },
+      // 当前页数，支持 .sync 修饰符
       currentPage: {
         type: Number,
         default: 1
       },
-      pageSize: {
-        type: Number,
-        default: 20
-      },
+      // 每页显示个数选择器的选项设置
       pageSizes: {
         type: Array,
-        default() {
-          return [20, 30, 40, 50, 10000];
+        default: () => [20, 30, 40, 50, 100],
+        validator(value) {
+          Validator.pageSizes = value;
+          return true;
         }
       },
+      // 每页显示条目个数，支持 .sync 修饰符
+      pageSize: {
+        type: Number,
+        default: 20,
+        validator(value) {
+          Validator.pageSize = value;
+          const flag =  Validator.checkPageSizeInPageSizes();
+          if(!flag) {
+            throw Error(`pageSize：${Validator.pageSize}不在pageSizes：【${Validator.pageSizes}】中`);
+          }
+          return flag;
+        }
+      },
+      // 总条目数
       total: {
         type: Number,
-        default: 510
+        default: 500
+      },
+      // 是否可调整每页显示条数
+      pager: {
+        type: Boolean,
+        default: true
       }
     },
     data() {
       return {
         showPreMore: false,
         showNextMore: false,
-        value: 20
+        pageSizeValue: this.pageSize,
+        currentPageValue: this.currentPage
       }
     },
     computed: {
@@ -106,38 +167,53 @@
         }
       },
       pageCount() {
-        const { total, pageSize } = this;
-        return Math.ceil(total / pageSize);
+        const { total, pageSizeValue } = this;
+        return Math.ceil(total / pageSizeValue);
       },
       pagers() {
-        const { pagerCount, currentPage, pageCount } = this;
+        const { pagerCount, currentPageValue, pageCount } = this;
+        // 用于判断当前页所在的区间范围
         const halfPagerCount = (pagerCount - 1) / 2;
         this.showPreMore = false;
         this.showNextMore = false;
         if(pageCount > pagerCount) {
-          if(currentPage > (pagerCount - halfPagerCount)) {
+          // 当前页和前区间比较
+          if(currentPageValue > (pagerCount - halfPagerCount)) {
             this.showPreMore = true;
           }
-
-          if(currentPage < (pageCount - halfPagerCount)) {
+          // 当前页和后区间比较
+          if(currentPageValue < (pageCount - halfPagerCount)) {
             this.showNextMore = true;
           }
         }
 
         const arr = [];
         const { showPreMore, showNextMore } = this;
+        // 四种情况
+        // ✅pre ❌next
+        // ❌pre ✅next
+        // ✅pre next
+        // ❌pre ❌next
         if(showPreMore && !showNextMore) {
+          // 1 ... 5 6 7 8 9 10
+          // array 5 6 7 8 9
+          // 2: 首页+尾页
           const startPage = pageCount - (pagerCount - 2);
           for(let i = startPage; i < pageCount; i++) {
             arr.push(i);
           }
         }else if(!showPreMore && showNextMore) {
+          // 1 2 3 4 5 6 ... 10
+          // array 2 3 4 5 6
           for(let i = 2; i < pagerCount; i++) {
             arr.push(i);
           }
         }else if(showPreMore && showNextMore) {
+          // 1 ... 3 4 5 6 7 ... 10
+          // array 3 4 5 6 7
+          // [-offset, offset]
           const offset = Math.floor(pagerCount/ 2) - 1;
-          for(let i = currentPage - offset; i <= currentPage + offset; i++) {
+          for(let i = currentPageValue - offset; i <= currentPageValue + offset; i++) {
             arr.push(i);
           };
         }else {
@@ -147,6 +223,35 @@
         }
         return arr;
       }
-    }
+    },
+    methods: {
+      handlePagerChange(e) {
+        const currentPage = +e.target.innerText;
+        if(currentPage === this.currentPageValue) return;
+        this.currentPageValue = currentPage;
+        this.emitCurrentChange();
+      },
+      handlePageSizeChange(pageSize) {
+        this.pageSizeValue = pageSize;
+        this.$emit('update:size-change', pageSize);
+        this.$nextTick(() => {
+          if(this.pageCount > this.currentPageValue) {
+            this.currentPageValue = this.pagerCount;
+            this.emitCurrentChange();
+          }
+        });
+      },
+      handlePrev() {
+        this.currentPageValue--;
+        this.$emit('prev-click', this.currentPageValue);
+      },
+      handleNext() {
+        this.currentPageValue++;
+        this.$emit('next-click', this.currentPageValue);
+      },
+      emitCurrentChange() {
+        this.$emit('update:current-change', this.currentPageValue);
+      }
+    },
   }
 </script>
