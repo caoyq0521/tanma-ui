@@ -235,8 +235,9 @@
         this.pageSizeValue = pageSize;
         this.$emit('update:size-change', pageSize);
         this.$nextTick(() => {
-          if(this.pageCount > this.currentPageValue) {
-            this.currentPageValue = this.pagerCount;
+          console.log(this.pageCount);
+          if(this.pageCount < this.currentPageValue) {
+            this.currentPageValue = this.pageCount;
             this.emitCurrentChange();
           }
         });
