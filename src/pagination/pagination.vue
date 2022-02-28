@@ -12,20 +12,22 @@
       class="tm-pagination__pager"
       @click="handlePagerChange"
     >
-      <span
-        v-if="pageCount > 0"
-        class="number" 
-        :class="{'active': currentPageValue === 1}"
-      >
-        1
-      </span>
-      <span
-        v-if="easy"
-        class="interval"
-      >
-        /
-      </span>
+      <!-- 简单模式 -->
+      <template v-if="easy">
+        <span class="number">{{ currentPageValue }}</span>
+        <span class="interval">
+          /
+        </span>
+      </template>
+      <!-- 正常模式 -->
       <template v-else>
+        <span
+          v-if="pageCount >= 0"
+          class="number" 
+          :class="{'active': currentPageValue === 1}"
+        >
+          1
+        </span>
         <span
           v-if="showPreMore"
           class="iconfont icon-gengduo2 more"
@@ -53,7 +55,7 @@
     </div>
     <span
       class="button-next"
-      :disabled="currentPageValue === pageCount"
+      :disabled="currentPageValue >= pageCount"
       @click="handleNext"
     >
       <i class="iconfont icon-youjiantou"></i>
@@ -65,6 +67,7 @@
       <el-select
         v-model="pageSizeValue"
         placeholder="请选择"
+        :disabled="!total"
         @change="handlePageSizeChange"
       >
         <el-option
@@ -144,7 +147,7 @@
       // 总条目数
       total: {
         type: Number,
-        default: 500
+        default: 0
       },
       // 是否可调整每页显示条数
       pager: {
