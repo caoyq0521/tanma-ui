@@ -6,19 +6,76 @@
 }
 
 .tm-pagination {
-  &__total, .button-prev, .button-next {
+  font-size: 14px;
+
+  &__total, .button-prev, .button-next, .number {
     display: inline-block;
     padding: 0 10px;
-    height: 24px;
-    line-height: 23px;
+    height: 26px;
+    line-height: 24px;
     border: 1px solid #d7d7d7;
     border-radius: 3px;
   }
 
   .button-prev, .button-next {
+    cursor: pointer;
+
+    &[disabled] {
+      cursor: not-allowed;
+      border-color: #e3e3e3;
+
+      .iconfont {
+        color: #d7d7d7;
+      }
+    }
+
     .iconfont {
       font-size: 12px;
-      color: #d7d7d7;
+      color: #d3d3d3;
+    }
+  }
+
+  .button-prev {
+    margin: 0 2px 0 4px;
+  }
+
+  .button-next {
+    margin: 0 4px 0 2px;
+  }
+
+  &__pager {
+    user-select: none;
+    display: inline-block;
+
+    .number {
+      display: inline-block;
+      margin: 0 2px;
+      min-width: 30px;
+      cursor: pointer;
+    }
+
+    .more {
+      margin: 0 2px;
+    }
+
+    .active {
+      color: #fff;
+      border-color: transparent;
+      background-color: #3470FF;
+    }
+  }
+
+  &__sizes {
+    display: inline-block;
+    width: 100px;
+
+    .el-select .el-input__inner {
+      height: 26px;
+      line-height: 26px;
+    }
+
+    .el-input__icon {
+      line-height: 26px;
     }
   }
 }

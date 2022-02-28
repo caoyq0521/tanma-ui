@@ -62,6 +62,13 @@
       "unicode_decimal": 59078
     },
     {
+      "icon_id": "84022019",
+      "name": "更多",
+      "font_class": "gengduo2",
+      "unicode": "e764",
+      "unicode_decimal": 59236
+    },
+    {
       "icon_id": "56896822",
       "name": "预览",
       "font_class": "yulan",
