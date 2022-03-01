@@ -50,3 +50,33 @@ page-sizes | 每页显示个数选择器的选项设置 | _number[]_ | - | [20, 
 page-size | 每页显示条目个数，支持 .sync 修饰符 | _number_ | 必须是`page-sizes`中的值 | 20
 total | 总条目数 | _number_ | - | -
 pager | 是否可调整每页显示条数 | _boolean_ | - | true
+
+### 样式变量
+
+#### Less 变量
+
+组件提供了下列 Less 变量，可用于自定义样式，使用方法请参考[定制主题](#/theme)。
+
+名称 | 默认值 | 描述
+-- | -- | --
+@pagination-font-size | @font-size-sm `14px` | 分页字体大小
+@pagination-active-color | var(--main-color) `#3470ff` | 当前页码选中态
+@pagination-disable-color | var(--tm-gray-8) `#E3E3E3` | 页码禁用颜色
+@pagination-arrow-font-size | @font-size-xs `12px` | 左右箭头字体大小
+@pagination-arrow-normal-color | var(--tm-gray-1) `#D3D3D3` | 左右箭头正常态颜色
+@pagination-arrow-disable-color | var(--tm-gray-3) `#D7D7D7` | 左右箭头禁用颜色
+@pagination-border-color | var(--tm-gray-3) `#D7D7D7`| border颜色
+
+#### CSS 变量
+
+组件提供了下列 CSS 变量，可用于自定义样式
+
+名称 | 默认值 | 描述
+-- | -- | --
+--tm-pagination-font-size | @font-size-sm `14px` | 分页字体大小
+--tm-pagination-active-color | var(--main-color) `#3470ff` | 当前页码选中态
+--tm-pagination-disable-color | var(--tm-gray-8) `#E3E3E3` | 页码禁用颜色
+--tm-pagination-arrow-font-size | @font-size-xs `12px` | 左右箭头字体大小
+--tm-pagination-arrow-normal-color | var(--tm-gray-1) `#D3D3D3` | 左右箭头正常态颜色
+--tm-pagination-arrow-disable-color | var(--tm-gray-3) `#D7D7D7` | 左右箭头禁用颜色
+--tm-pagination-border-color | var(--tm-gray-3) `#D7D7D7`| border颜色
