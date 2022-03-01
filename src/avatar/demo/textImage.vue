@@ -1,13 +1,13 @@
 <template>
   <tm-avatar
-    :image-source="imageSource"
+    :text-image="textImage"
   />
 </template>
 <script>
 export default {
   data () {
     return {
-      imageSource: 'https://caoyq0521.github.io/documentation/logo.png'
+      textImage: '我是文本图片'
     }
   }
 }

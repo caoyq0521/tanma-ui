@@ -2,11 +2,36 @@
 @import './var';
   
 :root {
-
+  --tm-avatar-background-color-dark: @avatar-background-color-dark;
+  --tm-avatar-background-color-light: @avatar-background-color-light;
+  --tm-avatar-iconfont-color: @avatar-iconfont-color;
+  --tm-avatar-text-image-color: @avatar-text-image-color;
 }
 
 .tm-avatar {
   flex-shrink: 0;
+  
+  &__image {
+    flex-direction: column;
+    background-color: var(--tm-avatar-background-color-dark);
+    color: var(--tm-avatar-background-color-dark);
+
+    .iconfont{
+      color: var(--tm-avatar-iconfont-color);
+    }
+
+    span {
+      margin-top: 5px;
+    }
+  }
+
+  &__text-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--tm-avatar-background-color-dark);
+    color: var(--tm-avatar-text-image-color);
+  }
   
   .el-image {
     display: flex;
@@ -19,48 +44,26 @@
     width: 100%;
     height: 100%;
   }
+}
 
-  &__image {
-    flex-direction: column;
-    background-color: #D7D7D7;
-    color: #D7D7D7;
-
-    .iconfont{
-      color: #ffffff;
-    }
-
-    span {
-      margin-top: 5px;
-    }
+.tm-avatar__circle {
+  >div, img {
+    border-radius: 50%;
   }
+}
 
-  &__circle {
-    >div, img {
-      border-radius: 50%;
-    }
+.tm-avatar__square {
+  > div, img {
+    border-radius: 5px;
   }
-  
-  &__square {
-    >div, img {
-      border-radius: 5px;
-    }
-  }
-  
-  &__light {
-    .default-image {
-      background:rgba(246,246,246,0.5);
-  
-      .iconfont {
-        color: #D7D7D7;
-      }
-    }
-  }
+}
 
-  &__text-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #D7D7D7;
-    color: #ffffff;
+.tm-avatar__light {
+  .tm-avatar__image {
+    background: var(--tm-avatar-background-color-light);
+
+    .iconfont {
+      color: var(--tm-avatar-background-color);
+    }
   }
 }
