@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tmPagination renders correctly 1`] = `
+<div class="tm-pagination"><span class="tm-pagination__total">共0条</span> <span disabled="disabled" class="button-prev"><i class="iconfont icon-zuojiantou"></i></span>
+  <div class="tm-pagination__pager"><span class="number active">
+        1
+      </span>
+    <!---->
+    <!---->
+    <!---->
+  </div> <span disabled="disabled" class="button-next"><i class="iconfont icon-youjiantou"></i></span> <span class="tm-pagination__sizes"><el-select-stub value="20" autocomplete="off" disabled="true" multiplelimit="0" placeholder="请选择" valuekey="value" popperappendtobody="true"><el-option-stub value="20" label="20条/页"></el-option-stub><el-option-stub value="30" label="30条/页"></el-option-stub><el-option-stub value="40" label="40条/页"></el-option-stub><el-option-stub value="50" label="50条/页"></el-option-stub><el-option-stub value="100" label="100条/页"></el-option-stub></el-select-stub></span>
+</div>
+`;

@@ -6,8 +6,9 @@
   --tm-pagination-arrow-font-size: @pagination-arrow-font-size;
   --tm-pagination-active-color: @pagination-active-color;
   --tm-pagination-disable-color: @pagination-disable-color;
-  --tm-pagination-normal-color: @pagination-normal-color;
+  --tm-pagination-border-color: @pagination-border-color;
   --tm-pagination-arrow-disable-color: @pagination-arrow-disable-color;
+  --tm-pagination-arrow-normal-color: @pagination-arrow-normal-color;
 }
 
 .tm-pagination {
@@ -18,7 +19,7 @@
     padding: 0 10px;
     height: 26px;
     line-height: 22px;
-    border: 1px solid var(--tm-pagination-normal-color);
+    border: 1px solid var(--tm-pagination-border-color);
     border-radius: 3px;
   }
 
@@ -88,7 +89,7 @@
       .el-input__inner {
         height: 26px;
         line-height: 26px;
-        border-color: var(--tm-pagination-normal-color);
+        border-color: var(--tm-pagination-border-color);
       }
       .el-input__icon {
         line-height: 26px;
