@@ -2,18 +2,23 @@
 @import './var';
   
 :root {
-
+  --tm-pagination-font-size: @pagination-font-size;
+  --tm-pagination-arrow-font-size: @pagination-arrow-font-size;
+  --tm-pagination-active-color: @pagination-active-color;
+  --tm-pagination-disable-color: @pagination-disable-color;
+  --tm-pagination-normal-color: @pagination-normal-color;
+  --tm-pagination-arrow-disable-color: @pagination-arrow-disable-color;
 }
 
 .tm-pagination {
-  font-size: 14px;
+  display: flex;
+  font-size: var(--tm-pagination-font-size);
 
   &__total, .button-prev, .button-next, .number {
-    display: inline-block;
     padding: 0 10px;
     height: 26px;
-    line-height: 24px;
-    border: 1px solid #d7d7d7;
+    line-height: 22px;
+    border: 1px solid var(--tm-pagination-normal-color);
     border-radius: 3px;
   }
 
@@ -22,16 +27,17 @@
 
     &[disabled] {
       cursor: not-allowed;
-      border-color: #e3e3e3;
+      pointer-events: none;
+      border-color: var(--tm-pagination-disable-color);
 
       .iconfont {
-        color: #d7d7d7;
+        color: var(--tm-pagination-arrow-disable-color);
       }
     }
 
     .iconfont {
-      font-size: 12px;
-      color: #d3d3d3;
+      font-size: var(--tm-pagination-arrow-font-size);
+      color: var(--tm-pagination-arrow-normal-color);
     }
   }
 
@@ -44,11 +50,11 @@
   }
 
   &__pager {
+    display: flex;
+    align-items: center;
     user-select: none;
-    display: inline-block;
 
     .number {
-      display: inline-block;
       margin: 0 2px;
       min-width: 30px;
       cursor: pointer;
@@ -61,21 +67,32 @@
     .active {
       color: #fff;
       border-color: transparent;
-      background-color: #3470FF;
+      background-color: var(--tm-pagination-active-color);
+    }
+
+    .interval {
+      margin: 0 5px;
+      font-size: 18px;
+      line-height: 26px;
     }
   }
 
   &__sizes {
     display: inline-block;
-    width: 100px;
+    min-width: 30px;
 
-    .el-select .el-input__inner {
-      height: 26px;
-      line-height: 26px;
-    }
-
-    .el-input__icon {
-      line-height: 26px;
+    .el-select {
+      .el-input {
+        width: 110px;
+      }
+      .el-input__inner {
+        height: 26px;
+        line-height: 26px;
+        border-color: var(--tm-pagination-normal-color);
+      }
+      .el-input__icon {
+        line-height: 26px;
+      }
     }
   }
 }

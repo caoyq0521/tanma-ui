@@ -89,7 +89,7 @@ function createTestSpecJsContent(name, upperName) {
   return `import { mount } from '@vue/test-utils';
 import ${upperPrefix}${upperName} from '../${name}.vue';
 
-describe('${name}${upperName}', () => {
+describe('tm${upperName}', () => {
   
 })
   `
