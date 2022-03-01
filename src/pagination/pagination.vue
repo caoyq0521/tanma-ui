@@ -65,8 +65,8 @@
   export default {
     name: "tmPagination",
     components: {
-      [Select.name]: Select,
-      [Option.name]: Option
+      // [Select.name]: Select,
+      // [Option.name]: Option
     },
     props: {
       pagerCount: {

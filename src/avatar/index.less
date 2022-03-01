@@ -1,0 +1,66 @@
+@import '../style/var';
+@import './var';
+  
+:root {
+
+}
+
+.tm-avatar {
+  flex-shrink: 0;
+  
+  .el-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+  }
+
+  >div, img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__image {
+    flex-direction: column;
+    background-color: #D7D7D7;
+    color: #D7D7D7;
+
+    .iconfont{
+      color: #ffffff;
+    }
+
+    span {
+      margin-top: 5px;
+    }
+  }
+
+  &__circle {
+    >div, img {
+      border-radius: 50%;
+    }
+  }
+  
+  &__square {
+    >div, img {
+      border-radius: 5px;
+    }
+  }
+  
+  &__light {
+    .default-image {
+      background:rgba(246,246,246,0.5);
+  
+      .iconfont {
+        color: #D7D7D7;
+      }
+    }
+  }
+
+  &__text-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D7D7D7;
+    color: #ffffff;
+  }
+}

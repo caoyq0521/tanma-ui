@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "iconfont"; /* Project id  */
-  src: url('iconfont.ttf?t=1645943441632') format('truetype');
+  font-family: "iconfont"; /* Project id 3208910 */
+  src: url('iconfont.ttf?t=1646049304746') format('truetype');
 }
 
 .iconfont {
@@ -9,6 +9,14 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-qiye:before {
+  content: "\e6d5";
+}
+
+.icon-qunyunying1:before {
+  content: "\e6b2";
 }
 
 .icon-wenjianjia:before {
