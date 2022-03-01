@@ -37,8 +37,6 @@
 
 <demo-code>./demo/pager.vue</demo-code>
 
-## API
-
 ### Props
 
 参数 | 说明 | 类型 | 可选值 | 默认值

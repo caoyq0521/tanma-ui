@@ -47,8 +47,6 @@ Title组件为提示信息提供了两个不同的主题：`normal`和`danger`�
 
 <demo-code>./demo/backgroundColor.vue</demo-code>
 
-## API
-
 ### Props
 
 参数 | 说明 | 类型 | 可选值 | 默认值

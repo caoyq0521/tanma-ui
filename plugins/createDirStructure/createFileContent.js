@@ -50,9 +50,6 @@ ${comptTemplate}
 
 <demo-code>./demo/index.vue</demo-code>
 
-
-## API
-
 ### Props`
 }
 
