@@ -47,8 +47,6 @@ Title组件为提示信息提供了两个不同的主题：`normal`和`danger`�
 
 <demo-code>./demo/backgroundColor.vue</demo-code>
 
-## API
-
 ### Props
 
 参数 | 说明 | 类型 | 可选值 | 默认值
@@ -75,20 +73,33 @@ right | 右侧内容
 
 ### 样式变量
 
+#### Less 变量
+
 组件提供了下列 Less 变量，可用于自定义样式，使用方法请参考[定制主题](#/theme)。
 
 名称 | 默认值 | 描述
 -- | -- | --
-@title-font-weight | @font-weight-bold | -
-@title-required-color | @red | -
-@title-optional-color | @color-text-secondary | -
-@title-tips-color | @color-text-secondary | -
-@title-tips-danger-color | @red | -
-@title-optional-margin-left | 10px | -
-@title-tips-margin-left | 10px | -
-@title-has-bgc-padding-top | 12px | -
-@title-has-bgc-padding-bottom | 12px | -
-@title-has-bgc-padding-left | 16px | -
-@title-has-bgc-padding-right | 16px | -
+@title-font-weight | var(--font-bold) `550` | 标题加粗
+@title-required-color | var(--tm-red) `#FC5A5A` | *字体颜色
+@title-optional-color | var(--tooltip-font-color) `#858598` | (选填)字体颜色 
+@title-tips-color | var(--tooltip-font-color) `#858598` | - 提示字体颜色
+@title-tips-danger-color | var(--tm-red) `#FC5A5A` | - | `danger`模式下标题颜色
+@title-optional-margin-left | 10px | (选填)离左边的内容距离
+@title-tips-margin-left | 10px | 提示信息离左边的内容距离
+@title-has-bgc-padding | 12px 16px | `withBackgroundColor`为true时，box的padding
 
+#### Css 变量
+
+组件提供了下列 Css 变量，可用于自定义样式。
+
+名称 | 默认值 | 描述
+-- | -- | --
+--tm-title-font-weight | var(--font-bold) `550` | 标题加粗
+--tm-title-required-color | var(--tm-red) `#FC5A5A` | *字体颜色
+--tm-title-optional-color | var(--tooltip-font-color) `#858598` | (选填)字体颜色 
+--tm-title-tips-color | var(--tooltip-font-color) `#858598` | - 提示字体颜色
+--tm-title-tips-danger-color | var(--tm-red) `#FC5A5A` | - | `danger`模式下标题颜色
+--tm-title-optional-margin-left | 10px | (选填)离左边的内容距离
+--tm-title-tips-margin-left | 10px | 提示信息离左边的内容距离
+--tm-title-has-bgc-padding | 12px 16px | `withBackgroundColor`为true时，box的padding
 
