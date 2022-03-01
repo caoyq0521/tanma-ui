@@ -1,6 +1,6 @@
 import { createLocalVue, shallowMount, mount } from '@vue/test-utils';
 import TmPagination from '../pagination.vue';
-import ElementUI, { Select } from 'element-ui';
+import ElementUI from 'element-ui';
 
 const localVue = createLocalVue();
 localVue.use(ElementUI);
@@ -82,7 +82,6 @@ describe('tmPagination', () => {
   });
 
   it('buttonPrev and buttonNext: click', async () => {
-    const spy = jest.spyOn(TmPagination.methods, "handlePrev");
     const wrapper = shallowMount(TmPagination, {
       propsData: {
         total: 200
@@ -97,30 +96,6 @@ describe('tmPagination', () => {
 
     await wrapper.find('.button-prev').trigger('click');
     expect(wrapper.vm.internalCurrentPage).toBe(1);
-    // console.log(spy);
-    // expect(spy).toHaveBeenCalledWith(1);
-
-  });
-
-  it('pageSizes', async () => {
-    const wrapper = mount(TmPagination, {
-      propsData: {
-        pageSizes: [10, 30, 35, 40],
-        pageSize: 10
-      }
-    });
-
-    // console.log(wrapper.vm.$el.querySelector('.tm-pagination__sizes'));
-
-    // const bar = wrapper.findComponent(Select);
-    // console.log("caoyq0521 ~ file: index.spec.js ~ line 113 ~ it ~ bar", bar)
-
-    console.log(wrapper.find('.el-select'));
-
-    await wrapper.find('.el-select').trigger('click');
-
-    // console.log(wrapper.find('.tm-pagination__sizes-select-option'));
-    // expect(wrapper.find('el-select-dropdown__item.selected>span').text()).toMatch('10');
   });
 })
   
