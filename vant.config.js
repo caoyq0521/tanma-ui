@@ -41,6 +41,10 @@ module.exports = {
           {
             path: 'title',
             title: 'Title 标题',
+          },
+          {
+            path: 'collapse-text',
+            title: 'collapseText 折叠文本'
           }
         ],
       },

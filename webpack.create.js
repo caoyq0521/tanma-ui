@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   plugins:[
     new CreateDirStructure({
-      name: 'pagination',
+      name: 'collapse-texts',
       path: resolve(__dirname, 'src')
     })
   ]
