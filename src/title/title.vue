@@ -55,7 +55,7 @@ class BaseValidator {
 const Validator = new BaseValidator();
 
 export default {
-  name: 'tmTitle',
+  name: 'tm-title',
   props: {
     title: {
       type: String,

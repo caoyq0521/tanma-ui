@@ -1,20 +1,20 @@
 <template>
   <div class="tm-pagination">
-    <span class="tm-pagination__total">共{{ total }}条</span>
-    <span
+    <div class="tm-pagination__total">共{{ total }}条</div>
+    <div
       class="button-prev"
-      :disabled="currentPageValue <= 1"
+      :disabled="internalCurrentPage <= 1"
       @click="handlePrev"
     >
       <i class="iconfont icon-zuojiantou"></i>
-    </span>
+    </div>
     <div
       class="tm-pagination__pager"
       @click="handlePagerChange"
     >
       <!-- 简单模式 -->
       <template v-if="easy">
-        <span class="number">{{ currentPageValue }}</span>
+        <span class="number">{{ internalCurrentPage }}</span>
         <span class="interval">
           /
         </span>
@@ -24,7 +24,7 @@
         <span
           v-if="pageCount >= 0"
           class="number" 
-          :class="{'active': currentPageValue === 1}"
+          :class="{'active': internalCurrentPage === 1}"
         >
           1
         </span>
@@ -35,7 +35,7 @@
         <span 
           class="number" 
           v-for="item in pagers" 
-          :class="{'active': currentPageValue === item}"
+          :class="{'active': internalCurrentPage === item}"
           :key="item"
         >
           {{ item }}
@@ -48,24 +48,24 @@
       <span
         v-if="pageCount > 1"
         class="number" 
-        :class="{'active': currentPageValue === pageCount}"
+        :class="{'active': internalCurrentPage === pageCount}"
       >
         {{ pageCount }}
       </span>
     </div>
-    <span
+    <div
       class="button-next"
-      :disabled="currentPageValue >= pageCount"
+      :disabled="internalCurrentPage >= pageCount"
       @click="handleNext"
     >
       <i class="iconfont icon-youjiantou"></i>
-    </span>
-    <span
+    </div>
+    <div
       v-if="pager"
       class="tm-pagination__sizes"
     >
       <el-select
-        v-model="pageSizeValue"
+        v-model="internallPageSize"
         placeholder="请选择"
         :disabled="!total"
         @change="handlePageSizeChange"
@@ -78,7 +78,7 @@
         >
         </el-option>
       </el-select>
-    </span>
+    </div>
   </div>
 </template>
 
@@ -95,6 +95,10 @@
       this.pageSize = 0;
     }
 
+    checkPageSizes() {
+      return this.pageSizes.every(item => item && typeof item === 'number');
+    }
+
     checkPageSizeInPageSizes() {
       return this.pageSizes.includes(this.pageSize);
     }
@@ -102,7 +106,7 @@
   const Validator = new BaseValidator();
 
   export default {
-    name: "tmPagination",
+    name: "tm-pagination",
     props: {
       // 简单模式
       easy: {
@@ -120,7 +124,7 @@
       // 当前页数，支持 .sync 修饰符
       currentPage: {
         type: Number,
-        default: 1
+        default: 1,
       },
       // 每页显示个数选择器的选项设置
       pageSizes: {
@@ -128,7 +132,7 @@
         default: () => [20, 30, 40, 50, 100],
         validator(value) {
           Validator.pageSizes = value;
-          return true;
+          return Validator.checkPageSizes();
         }
       },
       // 每页显示条目个数，支持 .sync 修饰符
@@ -159,8 +163,8 @@
       return {
         showPreMore: false,
         showNextMore: false,
-        pageSizeValue: this.pageSize,
-        currentPageValue: this.currentPage
+        internallPageSize: 0,
+        internalCurrentPage: 1
       }
     },
     computed: {
@@ -170,22 +174,22 @@
         }
       },
       pageCount() {
-        const { total, pageSizeValue } = this;
-        return Math.ceil(total / pageSizeValue);
+        const { total, internallPageSize } = this;
+        return Math.ceil(total / internallPageSize);
       },
       pagers() {
-        const { pagerCount, currentPageValue, pageCount } = this;
+        const { pagerCount, internalCurrentPage, pageCount } = this;
         // 用于判断当前页所在的区间范围
         const halfPagerCount = (pagerCount - 1) / 2;
         this.showPreMore = false;
         this.showNextMore = false;
         if(pageCount > pagerCount) {
           // 当前页和前区间比较
-          if(currentPageValue > (pagerCount - halfPagerCount)) {
+          if(internalCurrentPage > (pagerCount - halfPagerCount)) {
             this.showPreMore = true;
           }
           // 当前页和后区间比较
-          if(currentPageValue < (pageCount - halfPagerCount)) {
+          if(internalCurrentPage < (pageCount - halfPagerCount)) {
             this.showNextMore = true;
           }
         }
@@ -216,7 +220,7 @@
           // array 3 4 5 6 7
           // [-offset, offset]
           const offset = Math.floor(pagerCount/ 2) - 1;
-          for(let i = currentPageValue - offset; i <= currentPageValue + offset; i++) {
+          for(let i = internalCurrentPage - offset; i <= internalCurrentPage + offset; i++) {
             arr.push(i);
           };
         }else {
@@ -227,33 +231,47 @@
         return arr;
       }
     },
+    watch: {
+      currentPage: {
+        immediate: true,
+        handler(newValue) {
+          this.internalCurrentPage = (newValue && newValue >= 1) ? newValue : 1;
+        }
+      },
+      pageSize: {
+        immediate: true,
+        handler(newValue) {
+          this.internallPageSize = newValue || 20;
+        }
+      }
+    },
     methods: {
       handlePagerChange(e) {
         const currentPage = +e.target.innerText;
-        if(currentPage === this.currentPageValue) return;
-        this.currentPageValue = currentPage;
+        if(currentPage === this.internalCurrentPage) return;
+        this.internalCurrentPage = currentPage;
         this.emitCurrentChange();
       },
       handlePageSizeChange(pageSize) {
-        this.pageSizeValue = pageSize;
+        this.internallPageSize = pageSize;
         this.$emit('update:size-change', pageSize);
         this.$nextTick(() => {
-          if(this.pageCount < this.currentPageValue) {
-            this.currentPageValue = this.pageCount;
+          if(this.pageCount < this.internalCurrentPage) {
+            this.internalCurrentPage = this.pageCount;
             this.emitCurrentChange();
           }
         });
       },
       handlePrev() {
-        this.currentPageValue--;
-        this.$emit('prev-click', this.currentPageValue);
+        this.internalCurrentPage--;
+        this.$emit('prev-click', this.internalCurrentPage);
       },
       handleNext() {
-        this.currentPageValue++;
-        this.$emit('next-click', this.currentPageValue);
+        this.internalCurrentPage++;
+        this.$emit('next-click', this.internalCurrentPage);
       },
       emitCurrentChange() {
-        this.$emit('update:current-change', this.currentPageValue);
+        this.$emit('update:current-change', this.internalCurrentPage);
       }
     },
   }
