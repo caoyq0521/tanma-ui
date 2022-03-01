@@ -1,5 +1,5 @@
 module.exports = {
-  presets: ['@vant/cli/preset'],
+  presets: ["@babel/preset-env"],
   plugins: [
     [
       'component',
