@@ -1,0 +1,3 @@
+<template>
+  <tm-tip />
+</template>

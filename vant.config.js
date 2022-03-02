@@ -41,6 +41,10 @@ module.exports = {
           {
             path: 'title',
             title: 'Title 标题',
+          },
+          {
+            path: 'tip',
+            title: 'tip 文字提示',
           }
         ],
       },
