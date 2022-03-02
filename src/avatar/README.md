@@ -57,11 +57,24 @@ error | `imageSource`图片加载失败时展示的内容
 
 ### 样式变量
 
+#### Less 变量
+
 组件提供了下列 Less 变量，可用于自定义样式，使用方法请参考[定制主题](#/theme)。
 
 名称 | 默认值 | 描述
 -- | -- | --
-@avatar-background-color-dark | @gray-3 | `theme`为`drak`时头像组件背景色
+@avatar-background-color-dark | var(--tm-gray-3) `#D7D7D7` | `theme`为`drak`时头像组件背景色
 @avatar-background-color-light | rgba(246,246,246,0.5) | `theme`为`light`时头像组件背景色
-@avatar-iconfont-color | @white | 字体图标颜色
-@avatar-text-image-color | @white | 文本颜色
+@avatar-iconfont-color | var(--tm-white) `#FFFFFF` | 字体图标颜色
+@avatar-text-image-color | var(--tm-white) `#FFFFFF` | 文本颜色
+
+#### Css 变量
+
+组件提供了下列 Css 变量，可用于自定义样式。
+
+名称 | 默认值 | 描述
+-- | -- | --
+--tm-avatar-background-color-dark | var(--tm-gray-3) `#D7D7D7` | `theme`为`drak`时头像组件背景色
+--tm-avatar-background-color-light |  rgba(246,246,246,0.5) | `theme`为`light`时头像组件背景色
+--tm-avatar-iconfont-color | var(--tm-white) `#FFFFFF` | 字体图标颜色 
+--avatar-text-image-color | var(--tm-white) `#FFFFFF` | 文本颜色

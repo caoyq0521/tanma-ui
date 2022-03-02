@@ -44,7 +44,7 @@ module.exports = {
           },
           {
             path: 'avatar',
-            title: 'Avatar 标题',
+            title: 'Avatar 头像',
           },
           {
             path: 'progress',
