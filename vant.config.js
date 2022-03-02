@@ -41,6 +41,10 @@ module.exports = {
           {
             path: 'title',
             title: 'Title 标题',
+          },
+          {
+            path: "search",
+            title: "Search 搜索框"
           }
         ],
       },

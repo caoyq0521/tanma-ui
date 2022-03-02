@@ -1,5 +1,5 @@
 <template>
-  <tm-search v-model="value" placeholder="请输入搜索内容" ref="search" />
+  <tm-search v-model="value" clearable />
 </template>
 
 <script>
