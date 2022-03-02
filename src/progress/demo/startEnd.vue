@@ -13,7 +13,7 @@ export default {
     this.start = true
     setTimeout(() => {
       this.end = true
-    }, 10*1000)
+    }, 10*5)
   }
 }
 </script>

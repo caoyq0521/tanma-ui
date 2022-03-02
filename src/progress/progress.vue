@@ -12,24 +12,20 @@ import { Progress } from 'element-ui';
 import { getRootCss } from "../util/getRootCss"
 Vue.use(Progress);
 
- const mainColor = getRootCss('--main-color')
-    const sucColor = getRootCss('--tm-progress-success-color')
-    const errorColor = getRootCss('--tm-progress-error-color')
-
 export default {
   name: 'tmProgress',
   props: {
     start: {
       type: Boolean,
-      default: () => false
+      default: false
     },
     end: {
       type: Boolean,
-      default: () => false
+      default: false
     },
     error: {
       type: Boolean,
-      default: () => false
+      default: false
     }
   },
   data () {
@@ -38,7 +34,7 @@ export default {
       step: 2,
       interval: 100,
       timer: null,
-      progressColor: mainColor,
+      progressColor: this.mainColor,
       status: null
     }
   },
@@ -57,7 +53,7 @@ export default {
       handler (val) {
         if (val) {
           this.percentage = 100
-          this.progressColor = sucColor
+          this.progressColor = this.sucColor
           this.status = 'success'
           this.clearInterval()
         }
@@ -68,12 +64,17 @@ export default {
       handler (val) {
         if (val) {
           this.percentage = 100
-          this.progressColor = errorColor
+          this.progressColor = this.errorColor
           this.status = 'exception'
           this.clearInterval()
         }
       }
     }
+  },
+  mounted() {
+    this.mainColor = getRootCss('--main-color')
+    this.sucColor = getRootCss('--tm-progress-success-color')
+    this.errorColor = getRootCss('--tm-progress-error-color')
   },
   beforeDestroy () {
     if (this.timer) {
