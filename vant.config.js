@@ -45,6 +45,10 @@ module.exports = {
           {
             path: "search",
             title: "Search 搜索框"
+          },
+          {
+            path: "file-icon",
+            title: "FileIcon 文件Icon"
           }
         ],
       },
