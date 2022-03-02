@@ -1,5 +1,5 @@
 module.exports = {
-  presets: ['@vant/cli/preset'],
+  presets: ["@babel/preset-env"],
   plugins: [
     [
       'component',
@@ -8,5 +8,11 @@ module.exports = {
         styleLibraryName: 'theme-chalk',
       },
     ],
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "regenerator": true
+      }
+    ]
   ],
 };

@@ -44,6 +44,7 @@
     "vue-template-compiler": "^2.6.11"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.17.0",
     "@vant/cli": "^2.0.0",
     "babel-plugin-component": "^1.1.1",
     "babel-plugin-import": "^1.13.0",
