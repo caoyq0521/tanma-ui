@@ -41,7 +41,11 @@ module.exports = {
           {
             path: 'title',
             title: 'Title 标题',
-          }
+          },
+          {
+            path: 'progress',
+            title: 'Progress 进度条',
+          },
         ],
       },
     ],
