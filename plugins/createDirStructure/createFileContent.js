@@ -87,7 +87,10 @@ function createTestSpecJsContent(name, upperName) {
 import ${upperPrefix}${upperName} from '../${name}.vue';
 
 describe('tm${upperName}', () => {
-  
+  it('render ${name}', () => {
+    const wrapper = mount('Tm${upperName}');
+    expect(wrapper).toMatchSnapshot();
+  });
 })
   `
 }

@@ -45,7 +45,15 @@ module.exports = {
           {
             path: 'tip',
             title: 'tip 文字提示',
-          }
+          },
+          {
+            path: 'avatar',
+            title: 'Avatar 头像',
+          },
+          {
+            path: 'progress',
+            title: 'Progress 进度条',
+          },
         ],
       },
     ],
