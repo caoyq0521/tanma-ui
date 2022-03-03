@@ -1,6 +1,6 @@
 const { resolve } = require('path');
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   module: {
     rules: [
       {        
@@ -12,5 +12,9 @@ module.exports = {
         }
       }
     ]
+  },
+  externals: {
+    'Vue': 'Vue',
+    'element-ui': 'ElementUI'
   }
 }

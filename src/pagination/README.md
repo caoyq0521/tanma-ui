@@ -49,6 +49,15 @@ page-size | 每页显示条目个数，支持 .sync 修饰符 | _number_ | 必�
 total | 总条目数 | _number_ | - | -
 pager | 是否可调整每页显示条数 | _boolean_ | - | true
 
+### Events
+
+事件名称 | 说明 | 回调参数
+-- | -- | --
+size-change | pageSize | 改变时会触发 | 每页条数
+current-change | currentPage 改变时会触发 | 当前页
+prev-click | 用户点击上一页按钮改变当前页后触发 | 当前页
+next-click | 用户点击下一页按钮改变当前页后触发 | 当前页
+
 ### 样式变量
 
 #### Less 变量

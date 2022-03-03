@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` 1`] = `
+exports[`tmTitle render demo button 1`] = `
 <div class="tm-title">
   <div class="tm-title__basic"><span class="tm-title__content" style="font-size: 16px;">
       标题
@@ -10,5 +10,3 @@ exports[` 1`] = `
   </div>
 </div>
 `;
-
-exports[`render demo button 1`] = `<button class="demo-button"></button>`;
