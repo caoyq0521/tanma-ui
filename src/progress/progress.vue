@@ -1,5 +1,5 @@
 <template>
-  <div class="progress-component">
+  <div class="tm-progress">
     <el-progress
       :percentage="percentage"
       :color="progressColor"
@@ -118,8 +118,3 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-.progress-component {
-  width: 100%;
-}
-</style>
