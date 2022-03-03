@@ -56,13 +56,13 @@ const baseMode = ['circle', 'square', 'rectangle'];
 const baseIconType = ['image', 'person', 'company', 'group'];
 const baseTheme = ['dark', 'light'];
 
+import Vue from 'vue'
 import { Image } from 'element-ui';
+
+Vue.use(Image)
 
 export default {
   name: "tmAvatar",
-  components: {
-    [Image.name]: Image
-  },
   props: {
     // 图片地址
     imageSource: {
