@@ -6,6 +6,34 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "17467669",
+      "name": "问号 (1)",
+      "font_class": "wenhao11",
+      "unicode": "e691",
+      "unicode_decimal": 59025
+    },
+    {
+      "icon_id": "20912600",
+      "name": "上箭头",
+      "font_class": "shangjiantou",
+      "unicode": "e6e9",
+      "unicode_decimal": 59113
+    },
+    {
+      "icon_id": "20912601",
+      "name": "下箭头",
+      "font_class": "xiajiantou",
+      "unicode": "e6ea",
+      "unicode_decimal": 59114
+    },
+    {
+      "icon_id": "5743186",
+      "name": "加载失败",
+      "font_class": "jiazaishibai",
+      "unicode": "e794",
+      "unicode_decimal": 59284
+    },
+    {
       "icon_id": "19303178",
       "name": "企业",
       "font_class": "qiye",
