@@ -1,19 +1,24 @@
 <template>
-  <div class="tm-tip">
-    <el-tooltip
-      effect="dark"
+  <el-tooltip
+    v-if="content"
+    effect="dark"
+    :style="styleCls"
+    :placement="placement"
+  >
+    <div slot="content">
+      <slot>
+        <div
+          :style="{ width: width }"
+          v-html="content"
+        ></div>
+      </slot>
+    </div>
+    <i
+      :class="['icon-tips iconfont', iconName]"
+      :style="{ color:iconColor, fontSize:iconSize }"
     >
-      <div slot="content">
-        <slot>
-          <div
-            class="global-tips"
-            v-html="121"
-          ></div>
-        </slot>
-      </div>
-      <i :class="['icon-tips iconfont', iconName, isWhite?'icon-tips-white':'']" :style="{color:iconColor,fontSize:iconSize}"></i>
-    </el-tooltip>
-  </div>
+    </i>
+  </el-tooltip>
 </template>
 
 <script>
@@ -33,25 +38,30 @@
         type: String,
         default: ""
       },
+      // 提示框宽度
       width: {
         type: String,
-        default: "500px"
+        default: "auto"
       },
-      isWhite: {
-        type: Boolean,
-        default: false
-      },
+      // icon颜色
       iconColor: {
         type: String,
         default: 'rgba(193, 193, 202, .5)'
       },
+      // icon名字
       iconName: {
         type: String,
-        default: 'iconwenhao11'
+        default: 'icon-wenhao11'
       },
+      // size大小
       iconSize: {
         type: String,
         default: '16px'
+      },
+      // 定制样式：如margin
+      styleCls: {
+        type: String,
+        default: ''
       }
     }
   }
