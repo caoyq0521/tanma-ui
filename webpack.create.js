@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   plugins:[
     new CreateDirStructure({
-      name: 'collapse-texts',
+      name: 'avatar',
       path: resolve(__dirname, 'src')
     })
   ]
