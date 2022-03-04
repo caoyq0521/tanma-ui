@@ -41,7 +41,7 @@
 
 参数 | 说明 | 类型 | 可选值 | 默认值
 -- | -- | -- | -- | --
-easy | 简单模式 | _boolean_ | - | false
+mode | 简单模式 | _string_ | `normal` `easy` | normal
 pager-count | 页码按钮的数量，当总页数超过该值时会折叠 | _number_ | 大于等于 5 且小于等于 21 的奇数 | 7
 current-page | 当前页数，支持 .sync 修饰符 | _number_ | - | 1
 page-sizes | 每页显示个数选择器的选项设置 | _number[]_ | - | [20, 30, 40, 50, 100]

@@ -28,7 +28,6 @@
 
     &[disabled] {
       cursor: not-allowed;
-      pointer-events: none;
       border-color: var(--tm-pagination-disable-color);
 
       .iconfont {
@@ -95,6 +94,10 @@
         line-height: 26px;
       }
     }
+  }
+
+  &--easy .number {
+    cursor: auto;
   }
 }
   
