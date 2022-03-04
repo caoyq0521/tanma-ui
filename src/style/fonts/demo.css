@@ -131,13 +131,10 @@
 .icon_lists .svg-icon {
   /* 通过设置 font-size 来改变图标大小 */
   width: 1em;
-
   /* 图标和文字相邻时，垂直对齐 */
   vertical-align: -0.15em;
-
   /* 通过设置 color 来改变 SVG 的颜色/fill */
   fill: currentColor;
-
   /* path 和 stroke 溢出 viewBox 部分在 IE 下会显示
       normalize.css 中也包含这行 */
   overflow: hidden;
@@ -265,7 +262,7 @@
 
 .markdown>table {
   border-collapse: collapse;
-  border-spacing: 0;
+  border-spacing: 0px;
   empty-cells: show;
   border: 1px solid #e9e9e9;
   width: 95%;
@@ -331,7 +328,7 @@
   display: block;
   background: white;
   padding: 0.5em;
-  color: #333;
+  color: #333333;
   overflow-x: auto;
 }
 
@@ -368,7 +365,7 @@
 }
 
 .hljs-tag {
-  color: #333;
+  color: #333333;
 }
 
 .hljs-title,
@@ -395,10 +392,8 @@
 }
 
 /* 代码高亮 */
-
 /* PrismJS 1.15.0
 https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
-
 /**
  * prism.js default theme for JavaScript, CSS and HTML
  * Based on dabblet (http://dabblet.com)
@@ -416,9 +411,11 @@ pre[class*="language-"] {
   word-break: normal;
   word-wrap: normal;
   line-height: 1.5;
+
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
+
   -webkit-hyphens: none;
   -moz-hyphens: none;
   -ms-hyphens: none;
