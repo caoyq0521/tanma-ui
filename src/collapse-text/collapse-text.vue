@@ -2,26 +2,22 @@
   <div class="tm-collapse-text" ref="collapseText">
     <div v-if="!(showPopover && showPopoverJudge)">
       <span class="tm-collapse-text__content" :style="expandStyle">{{ (text === null || text === undefined || text === '') ? '--' : text }}</span>
-      <div class="tm-collapse-text__action">
+      <div class="tm-collapse-text__action" v-if="showBtn && showBtnJudge">
         <span
-          v-if="showBtn && showBtnJudge"
+          v-if="!showFull"
+          class="action action__open"
+          @click.stop="showFullFn(true)"
         >
-          <span
-            v-if="!showFull"
-            class="action action__open"
-            @click.stop="showFullFn(true)"
-          >
-            {{ openBtnText }}
-            <i v-if="showIcon" class="iconfont icon-xiajiantou" />
-          </span>
-          <span
-            v-else
-            class="action action__close"
-            @click.stop="showFullFn(false)"
-          >
-            {{ closeBtnText }}
-            <i v-if="showIcon" class="iconfont icon-shangjiantou" />
-          </span>
+          {{ openBtnText }}
+          <i v-if="showIcon" class="iconfont icon-xiajiantou" />
+        </span>
+        <span
+          v-else
+          class="action action__close"
+          @click.stop="showFullFn(false)"
+        >
+          {{ closeBtnText }}
+          <i v-if="showIcon" class="iconfont icon-shangjiantou" />
         </span>
       </div>
     </div>
@@ -45,38 +41,46 @@
   export default {
     name: "tm-collapse-text",
     props: {
-    text: { // 文本内容
-      type: String,
-      default: () => ''
-    },
-    lines: { // 折叠显示行数
-      type: Number,
-      default: () => 3
-    },
-    showBtn: { // 展开、收起按钮
-      type: Boolean,
-      default: true
-    },
-    showIcon: { // 展开、收起icon
-      type: Boolean,
-      default: true
-    },
-    openBtnText: { // 展开按钮文本
-      type: String,
-      default: '展开'
-    },
-    closeBtnText: { // 收起按钮文本
-      type: String,
-      default: '收起'
-    },
-    showPopover: { // popover显示全文本
-      type: Boolean,
-      default: false
-    },
-    popoverPlace: { // popover位置
-      type: String,
-      default: 'bottom'
-    }
+      // 文本内容
+      text: {
+        type: String,
+        default: ''
+      },
+      // 折叠显示行数
+      lines: {
+        type: Number,
+        default: 3
+      },
+      // 是否显示'展开'/'收起'按钮
+      showButton: {
+        type: Boolean,
+        default: true
+      },
+      // 是否显示'展开'/'收起'按钮图标
+      showIcon: {
+        type: Boolean,
+        default: true
+      },
+      // '展开'按钮文本
+      openButtonText: {
+        type: String,
+        default: '展开'
+      },
+      // '收起'按钮文本
+      closeButtonText: {
+        type: String,
+        default: '收起'
+      },
+      // 是否采用popover显示全文本模式
+      showPopover: {
+        type: Boolean,
+        default: false
+      },
+      // popover展示位置
+      popoverPlace: {
+        type: String,
+        default: 'bottom'
+      }
   },
   data () {
     return {

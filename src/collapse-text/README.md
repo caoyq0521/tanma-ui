@@ -28,13 +28,13 @@
 ## API
 
 ### Props
-参数 | 说明 | 类型 | 可选值 | 默认值
+参数 | 说明 | 类型 | 可选值 | 默认值 
 -- | -- | -- | -- | --
-text | 文本内容 | _string_ | - | " "
-lines | 展示的行数 | _number_ | 大于0 | 3
-show-btn | 是否显示'展开'/'收起'按钮 | _boolean_ | - | true
+close-button-text | '收起'按钮文本 | _string_ | - | 收起
+lines | 折叠显示行数 | _number_ | - | 3
+open-button-text | '展开'按钮文本 | _string_ | - | 展开
+popover-place | popover展示位置 | _string_ | - | bottom
+show-button | 是否显示'展开'/'收起'按钮 | _boolean_ | - | true
 show-icon | 是否显示'展开'/'收起'按钮图标 | _boolean_ | - | true
-open-btn-text | '展开'按钮文本 | _string_ | - | 展开
-close-btn-text | '收起'按钮文本 | _string_ | - | 收起
 show-popover | 是否采用popover显示全文本模式 | _boolean_ | - | false
-popover-place  | popover展示位置 | _string_ | top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end | bottom
+text | 文本内容 | _string_ | - | -
