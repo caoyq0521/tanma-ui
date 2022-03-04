@@ -76,6 +76,8 @@
 </template>
 
 <script>
+import SvgIcon from "../svg-icon/svg-icon.vue"
+
 const FileTypeEnum = {
   png: 'png',
   jpg: 'jpgjpeg',
@@ -94,6 +96,7 @@ const FileTypeEnum = {
 
 export default {
   name: "tmFileIcon",
+  components: { [SvgIcon.name]: SvgIcon },
   props: {
     // 传入确定的type
     type: {

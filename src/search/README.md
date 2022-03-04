@@ -37,6 +37,7 @@
 
 参数 | 说明 | 类型 | 可选值 | 默认值
 -- | -- | -- | -- | --
+value / v-model | 绑定值 | _string \/ number_ | - | -
 placeholder | 输入框占位文本 | _string_ | - | 请输入内容
 maxlength | 原生属性，最大输入长度 | _string \/ number_ | - | -
 show-word-limit | 是否显示输入字数统计 | _boolean_ | - | false
