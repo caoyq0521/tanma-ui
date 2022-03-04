@@ -50,6 +50,10 @@ module.exports = {
             path: 'progress',
             title: 'Progress 进度条',
           },
+          {
+            path: 'tabs',
+            title: 'tabs 标签页',
+          },
         ],
       },
     ],
