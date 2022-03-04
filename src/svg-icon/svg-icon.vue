@@ -1,5 +1,5 @@
 <template>
-  <div
+  <!-- <div
     v-if="isExternal"
     :style="styleExternalIcon"
     class="tm-svg-icon tm-svg-icon__external"
@@ -12,10 +12,16 @@
     v-on="$listeners"
   >
     <use :xlink:href="iconName" />
+  </svg> -->
+
+  <svg class="tm-svg-icon" aria-hidden="true">
+    <use :xlink:href="iconName"></use>
   </svg>
 </template>
 
 <script>
+import { IconFont } from '../style/fonts/iconfont';
+IconFont(window);
 // doc: https://panjiachen.github.io/vue-element-admin-site/feature/component/svg-icon.html#usage
 import { isExternal } from '../utils/tools';
 

@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3208910 */
-  src: url('iconfont.woff2?t=1646360781126') format('woff2'),
-       url('iconfont.woff?t=1646360781126') format('woff'),
-       url('iconfont.ttf?t=1646360781126') format('truetype');
+  src: url('iconfont.woff2?t=1646376631231') format('woff2'),
+       url('iconfont.woff?t=1646376631231') format('woff'),
+       url('iconfont.ttf?t=1646376631231') format('truetype');
 }
 
 .iconfont {
@@ -17,11 +17,11 @@
   content: "\e609";
 }
 
-.icon-mp:before {
+.icon-mp4:before {
   content: "\e60a";
 }
 
-.icon-mp1:before {
+.icon-mp3:before {
   content: "\e60b";
 }
 
@@ -63,10 +63,6 @@
 
 .icon-doc:before {
   content: "\e603";
-}
-
-.icon-xslx:before {
-  content: "\e604";
 }
 
 .icon-doctype1:before {
