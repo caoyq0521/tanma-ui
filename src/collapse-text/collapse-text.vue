@@ -2,13 +2,13 @@
   <div class="tm-collapse-text" ref="collapseText">
     <div v-if="!(showPopover && showPopoverJudge)">
       <span class="tm-collapse-text__content" :style="expandStyle">{{ (text === null || text === undefined || text === '') ? '--' : text }}</span>
-      <div class="tm-collapse-text__action" v-if="showBtn && showBtnJudge">
+      <div class="tm-collapse-text__action" v-if="showButton && showButtonJudge">
         <span
           v-if="!showFull"
           class="action action__open"
           @click.stop="showFullFn(true)"
         >
-          {{ openBtnText }}
+          {{ openButtonText }}
           <i v-if="showIcon" class="iconfont icon-xiajiantou" />
         </span>
         <span
@@ -16,7 +16,7 @@
           class="action action__close"
           @click.stop="showFullFn(false)"
         >
-          {{ closeBtnText }}
+          {{ closeButtonText }}
           <i v-if="showIcon" class="iconfont icon-shangjiantou" />
         </span>
       </div>
@@ -86,7 +86,7 @@
     return {
       showFull: false, // 是否展示全文本
       expandStyle: '',
-      showBtnJudge: false, // 判断是否需要折叠展示按钮
+      showButtonJudge: false, // 判断是否需要折叠展示按钮
       showPopoverJudge: false // 判断是否需要折叠展示popover
     }
   },
@@ -104,7 +104,7 @@
       this.showFull = value
     },
     judgeExpand () {
-      this.showBtnJudge = false
+      this.showButtonJudge = false
       this.showPopoverJudge = false
       this.$nextTick(() => {
         const { lines } = this;
@@ -114,10 +114,10 @@
         // 计算行高
         const rects = Math.ceil(collapseTextHeight / collapseTextLineHeight)
         if (rects <= lines) { // 不需要折叠展示
-          this.showBtnJudge = false
+          this.showButtonJudge = false
           this.showPopoverJudge = false
         } else {
-          this.showBtnJudge = true
+          this.showButtonJudge = true
           this.showPopoverJudge = true
           this.expandStyle = `display: -webkit-box;word-break: break-all;-webkit-line-clamp: ${this.lines};-webkit-box-orient: vertical;text-overflow: ellipsis;overflow: hidden;`
         }
