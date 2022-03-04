@@ -46,13 +46,17 @@ module.exports = {
             path: "search",
             title: "Search 搜索框"
           },
+          // {
+          //   path: "svg-icon",
+          //   title: "SvgIcon "
+          // },
+          // {
+          //   path: "file-icon",
+          //   title: "FileIcon 文件Icon"
+          // },
           {
-            path: "svg-icon",
-            title: "SvgIcon "
-          },
-          {
-            path: "file-icon",
-            title: "FileIcon 文件Icon"
+            path: "date-range",
+            title: "DateRange 日期范围"
           }
         ],
       },
