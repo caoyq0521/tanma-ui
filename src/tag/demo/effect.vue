@@ -43,7 +43,7 @@
 
 <style lang="scss" scoped>
 .tag-group {
-  margin-bottom: 6px;
+  margin-bottom: 10px;
 
   &__title {
     display: inline-block;

@@ -17,13 +17,13 @@
 
 ### 基础用法
 
-由type属性来选择tag的类型，也可以通过color属性来自定义背景色。
+由`type`属性来选择`tag`的类型，也可以通过`color`属性来自定义背景色。
 
 <demo-code>./demo/index.vue</demo-code>
 
 ### 可移除标签
 
-设置closable属性可以定义一个标签是否可移除。默认的标签移除时会附带渐变动画，如果不想使用，可以设置disable-transitions属性，它接受一个Boolean，true 为关闭。
+设置`closable`属性可以定义一个标签是否可移除。
 
 <demo-code>./demo/closable.vue</demo-code>
 

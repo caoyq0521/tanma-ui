@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tmTag render tag 1`] = `
+<span data-color="" class="tm-tag"><span class="dot"></span> 提示
+<!----></span>
+`;
