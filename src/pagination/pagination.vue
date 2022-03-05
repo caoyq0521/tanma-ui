@@ -3,21 +3,21 @@
     <div class="tm-pagination__total">共{{ total }}条</div>
     <div
       class="button-prev"
-      :disabled="internalCurrentPage <= 1"
+      :disabled="prevButtonDisabled"
       @click="handlePrev"
     >
       <i class="iconfont icon-zuojiantou"></i>
     </div>
     <div
       class="tm-pagination__pager"
+      :class="{'tm-pagination--easy': isEasyMode}"
       @click="handlePagerChange"
     >
       <!-- 简单模式 -->
-      <template v-if="easy">
+      <template v-if="isEasyMode">
         <span class="number">{{ internalCurrentPage }}</span>
-        <span class="interval">
-          /
-        </span>
+        <span class="interval">/</span>
+        <span class="number">{{ pageCount }}</span>
       </template>
       <!-- 正常模式 -->
       <template v-else>
@@ -44,18 +44,18 @@
           v-if="showNextMore"
           class="iconfont icon-gengduo2 more"
         ></span>
+        <span
+          v-if="pageCount > 1"
+          class="number" 
+          :class="{'active': internalCurrentPage === pageCount}"
+        >
+          {{ pageCount }}
+        </span>
       </template>
-      <span
-        v-if="pageCount > 1"
-        class="number" 
-        :class="{'active': internalCurrentPage === pageCount}"
-      >
-        {{ pageCount }}
-      </span>
     </div>
     <div
       class="button-next"
-      :disabled="internalCurrentPage >= pageCount"
+      :disabled="nextButtonDisabled"
       @click="handleNext"
     >
       <i class="iconfont icon-youjiantou"></i>
@@ -104,14 +104,22 @@
     }
   }
   const Validator = new BaseValidator();
+  // 正常模式
+  const MODE_NORMAL = 'normal';
+  // 简单模式
+  const MODE_EASY = 'easy';
+  const TYPE_MODE = [MODE_NORMAL, MODE_EASY];
 
   export default {
     name: "tm-pagination",
     props: {
-      // 简单模式
-      easy: {
-        type: Boolean,
-        default: false
+      // 模式
+      mode: {
+        type: String,
+        default: MODE_NORMAL,
+        validator(value) {
+          return TYPE_MODE.includes(value);
+        }
       },
       // 页码按钮的数量，当总页数超过该值时会折叠
       pagerCount: {
@@ -168,6 +176,9 @@
       }
     },
     computed: {
+      isEasyMode() {
+        return this.mode === MODE_EASY;
+      },
       paginationOption() {
         return (num) => {
           return `${num}条/页`;
@@ -229,6 +240,12 @@
           }
         }
         return arr;
+      },
+      prevButtonDisabled() {
+        return this.internalCurrentPage <= 1;
+      },
+      nextButtonDisabled() {
+        return this.internalCurrentPage >= this.pageCount;
       }
     },
     watch: {
@@ -247,6 +264,8 @@
     },
     methods: {
       handlePagerChange(e) {
+        if(this.isEasyMode) return;
+
         const currentPage = +e.target.innerText;
         if(currentPage === this.internalCurrentPage) return;
         this.internalCurrentPage = currentPage;
@@ -263,10 +282,14 @@
         });
       },
       handlePrev() {
+        if(this.prevButtonDisabled) return;
+
         this.internalCurrentPage--;
         this.$emit('prev-click', this.internalCurrentPage);
       },
       handleNext() {
+        if(this.nextButtonDisabled) return;
+        
         this.internalCurrentPage++;
         this.$emit('next-click', this.internalCurrentPage);
       },
