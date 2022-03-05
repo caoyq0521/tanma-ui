@@ -7,19 +7,81 @@
       popper-class="v-popper"
       :clearable="clearable"
       :size="size"
-      @focus="$emit('focus')"
-      @change="change()"
+      @focus="handleFocus"
+      @change="handleChange"
       :value-format="valueFormat || defaultValFormat"
       :default-time="defaultTime"
       range-separator="~"
-      :start-placeholder="placeholder ? placeholder : '开始日期'"
-      :end-placeholder="placeholder ? placeholder : '结束日期'"
-      :picker-options="pickerOptions">
+      :start-placeholder="startPlaceholder"
+      :end-placeholder="endPlaceholder"
+      :picker-options="pickerOptions"
+      >
     </el-date-picker>
   </div>
 </template>
 
 <script>
+import Vue from "vue";
+import {DatePicker} from "element-ui"
+Vue.use(DatePicker);
+
+import dayjs from 'dayjs';
+
+// 快捷选项函数配置
+function ShortcutOptions () {
+  const today = dayjs();
+  return [
+    {
+      text: '今天',
+      onClick (picker) {
+        const end = today.endOf('date').toDate();
+        const start = today.startOf('date').toDate();
+        picker.$emit('pick', [start, end]);
+      }
+    },
+    {
+      text: '昨天',
+      onClick (picker) {
+        const start = today.startOf('date').subtract(1, 'day').toDate();
+        const end = today.endOf('date').subtract(1, 'day').toDate();
+        picker.$emit('pick', [start, end]);
+      }
+    },
+    {
+      text: '最近7天',
+      onClick (picker) {
+        const end = today.endOf('date').toDate();
+        const start = today.startOf('date').subtract(6, 'day').toDate();
+        picker.$emit('pick', [start, end]);
+      }
+    },
+    {
+      text: '最近一个月',
+      onClick (picker) {
+        const end = today.endOf('date').toDate();
+        const start = today.startOf('date').subtract(30, 'day').toDate();
+        picker.$emit('pick', [start, end]);
+      }
+    },
+    {
+      text: '最近三个月',
+      onClick (picker) {
+        const end = today.endOf('date').toDate();
+        const start = today.startOf('date').subtract(90, 'day').toDate();
+        picker.$emit('pick', [start, end]);
+      }
+    },
+    {
+      text: '最近一年',
+      onClick (picker) {
+        const end = today.endOf('date').toDate();
+        const start = today.startOf('date').subtract(365, 'day').toDate();
+        picker.$emit('pick', [start, end]);
+      }
+    }
+  ]
+}
+
 export default {
   name: 'tmDateRange',
   model: {
@@ -27,106 +89,66 @@ export default {
     event: 'change'
   },
   props: {
+    // 绑定值
     value: {
-      type: Array || String,
-      default: function (a) {
-        return []
-      }
+      type: [Array, String],
+      default: () => []
     },
+    // 显示类型
     type: {
       type: String,
       default: 'daterange'
     },
-    placeholder: {
-      type: String,
-      default: ""
-    },
+    // 是否显示清除按钮
     clearable: {
       type: Boolean,
       default: false
     },
+    // 自定义样式
     styleClass: {
       type: String,
       default: 'width: 215px'
     },
-    // 可传入快捷方式数组
+    // 快捷方式数组
     shortcuts: {
       type: Array,
-      default: () => {
-        return [
-          {
-            text: '今天',
-            onClick (picker) {
-              const end = dayjs().endOf('date').toDate();
-              const start = dayjs().startOf('date').toDate();
-              picker.$emit('pick', [start, end]);
-            }
-          },
-          {
-            text: '昨天',
-            onClick (picker) {
-              const start = dayjs().startOf('date').subtract(1, 'day').toDate();
-              const end = dayjs().endOf('date').subtract(1, 'day').toDate();
-              picker.$emit('pick', [start, end]);
-            }
-          },
-          {
-            text: '最近7天',
-            onClick (picker) {
-              const end = dayjs().endOf('date').toDate();
-              const start = dayjs().startOf('date').subtract(6, 'day').toDate();
-              picker.$emit('pick', [start, end]);
-            }
-          },
-          {
-            text: '最近一个月',
-            onClick (picker) {
-              const end = dayjs().endOf('date').toDate();
-              const start = dayjs().startOf('date').subtract(30, 'day').toDate();
-              picker.$emit('pick', [start, end]);
-            }
-          },
-          {
-            text: '最近三个月',
-            onClick (picker) {
-              const end = dayjs().endOf('date').toDate();
-              const start = dayjs().startOf('date').subtract(90, 'day').toDate();
-              picker.$emit('pick', [start, end]);
-            }
-          },
-          {
-            text: '最近一年',
-            onClick (picker) {
-              const end = dayjs().endOf('date').toDate();
-              const start = dayjs().startOf('date').subtract(365, 'day').toDate();
-              picker.$emit('pick', [start, end]);
-            }
-          }
-        ]
-      }
+      default: ShortcutOptions
     },
-    // 可查询***天内
-    dayNum: {
+    // 选择日期范围
+    dateRange: {
       type: Number,
       default: 0
     },
+    // 绑定值的格式
     valueFormat: {
       type: String,
       default: ''
     },
+    // 范围选择时选中日期所使用的当日内具体时刻
     defaultTime: {
       type: Array,
       default: () => ['00:00:00', '23:59:59']
+    },
+    // 范围选择时开始日期的占位内容
+    startPlaceholder:{
+      type: String,
+      default: "开始日期"
+    },
+    // 范围选择时结束日期的占位内容
+    endPlaceholder: {
+      type: String,
+      default: "结束日期"
+    },
+    // 输入框尺寸
+    size: {
+      type: String,
+      default: "small" // `large` `small` `mini`
     }
   },
-  data: function () {
+  data() {
     return {
-      vDom: {},
       pickerOptions: {},
-      // clearable: false,
-      size: "small",
-      currentValue: [],
-      time: new Date()
+      currentValue: []
     }
   },
   computed: {
@@ -137,16 +159,13 @@ export default {
   watch: {
     value (newValue) {
       this.currentValue = newValue
-    },
-    currentValue (newValue, oldValue) {
-      //console.log(this.currentValue);
     }
   },
   created () {
     this.pickerOptions.shortcuts = this.shortcuts;
     this.pickerOptions.disabledDate = (time) => {
-      if (this.dayNum) {
-        return time.getTime() > Date.now() || time.getTime() < Date.now() - this.dayNum * 24 * 60 * 60 * 1000;
+      if (this.dateRange) {
+        return time.getTime() > Date.now() || time.getTime() < Date.now() - this.dateRange * 24 * 60 * 60 * 1000;
       } else {
         return false;
       }
@@ -154,7 +173,10 @@ export default {
     this.currentValue = this.value
   },
   methods: {
-    change () {
+    handleFocus() {
+      this.$emit('focus')
+    },
+    handleChange () {
       this.$emit('change', this.currentValue)
     }
   }
