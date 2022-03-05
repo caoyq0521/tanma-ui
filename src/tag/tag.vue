@@ -2,7 +2,6 @@
   <span
     class="tm-tag"
     :class="setClass"
-    :data-color="color"
     :style="{'background-color': color}"
     @click="handleTagClick"
   >

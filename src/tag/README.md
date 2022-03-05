@@ -53,6 +53,12 @@ effect | 主题 | _string_ | `dot` `light` | light
 click | 点击 Tag 时触发的事件 | -
 close | 关闭 Tag 时触发的事件 | -
 
+### Slots
+
+名称 | 说明
+-- | --
+default | 内容
+
 ### 样式变量
 
 #### Less 变量

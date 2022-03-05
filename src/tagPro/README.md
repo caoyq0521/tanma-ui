@@ -43,6 +43,19 @@ icon-color | icon颜色 | _string_ | - | -
 name | 标签内容 | _string_ | - | -
 type | 类型 | _string_ | `content` `individual` `company` `department` `employee` `group` | employee
 
+### Events
+
+事件名称 | 说明 | 回调参数
+-- | -- | --
+click | 点击 Tag 时触发的事件 | -
+close | 关闭 Tag 时触发的事件 | -
+
+### Slots
+
+名称 | 说明
+-- | --
+default | 内容
+
 ### 样式变量
 
 #### Less 变量

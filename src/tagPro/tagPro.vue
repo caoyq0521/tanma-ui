@@ -4,6 +4,8 @@
     :class="setClass"
     :closable="closable"
     :style="setStyle"
+    @click="handleClick"
+    @close="handleClose"
   >
     <slot>
       <i 
@@ -122,6 +124,14 @@
         const { type = '', name: customName } = this;
         const { name: internalName } = TYPEINFO[type];
         return customName || internalName;
+      }
+    },
+    methods: {
+      handleClick() {
+        this.$emit('click');
+      },
+      handleClose() {
+        this.$emit('close');
       }
     },
   }
