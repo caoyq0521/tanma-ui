@@ -61,6 +61,10 @@ module.exports = {
           {
             path: 'collapse-text',
             title: 'collapseText 折叠文本'
+          },
+          {
+            path: 'tag',
+            title: 'Tag 标签'
           }
         ],
       },
