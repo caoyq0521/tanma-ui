@@ -43,6 +43,10 @@ module.exports = {
             title: 'Title 标题',
           },
           {
+            path: 'tip',
+            title: 'tip 文字提示',
+          },
+          {
             path: 'avatar',
             title: 'Avatar 头像',
           },
@@ -54,6 +58,14 @@ module.exports = {
             path: 'tabs',
             title: 'tabs 标签页',
           },
+          {
+            path: 'tree-select',
+            title: 'TreeSelect 选择树',
+          },
+          {
+            path: 'collapse-text',
+            title: 'collapseText 折叠文本'
+          }
         ],
       },
     ],
