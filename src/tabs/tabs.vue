@@ -48,6 +48,10 @@ export default {
         return ['underline', 'button'].includes(value);
       }
     },
+    options: {
+      type: Array,
+      default: () => ([])
+    },
     size: {
       type: String,
       default: 'medium',
@@ -58,10 +62,6 @@ export default {
     round: {
       type: Boolean,
       default: false
-    },
-    options: {
-      type: Array,
-      default: () => ([])
     },
     placement: {
       type: String,

@@ -17,21 +17,21 @@
 
 ### 基础用法
 
-Tabs 组件提供了选项卡功能，默认选中第一个标签页，你也可以通过 value 属性来指定当前选中的标签页。
+默认选中第一个标签页，你也可以通过 value 属性来指定当前选中的标签页。
 <demo-code>./demo/index.vue</demo-code>
 
-### 选项卡样式
+### 标签样式
 
-只需要设置 ``type`` 属性为 ``button`` 就可以使选项卡改变为按钮风格。
+只需要设置 ``type`` 属性为 ``button`` 就可以使选中标签改变为按钮风格。
 <demo-code>./demo/button.vue</demo-code>
 
-添加 ``round`` 属性可使选项卡改变为圆角。
+添加 ``round`` 属性可使选中标签改变为圆角。
 <demo-code>./demo/round.vue</demo-code>
 
-设置 ``size`` 属性为 ``small`` 可改变为小按钮。
+设置 ``size`` 属性为 ``small`` 可使选中标签改变为小按钮。
 <demo-code>./demo/size.vue</demo-code>
 
-### 选项卡位置
+### 标签位置
 
 可以通过 ``placement`` 设置标签在整行中的位置。
 <demo-code>./demo/placement.vue</demo-code>
@@ -46,7 +46,7 @@ Tabs 组件提供了选项卡功能，默认选中第一个标签页，你也可
 
 参数 | 说明 | 类型 | 可选值 | 默认值
 -- | -- | -- | -- | --
-value/v-model | 绑定值，选中选项卡的 key | _string_ | - | 第一个选项卡的 key
+value/v-model | 绑定值，选中标签的 key | _string_ | - | 第一个标签的 key
 type | 样式类型 | _string_ | underline / button | underline
 options | 标签选项列表，每项必须包含 key 和 title | _array_ | - | []
 size | 控制标签高度 | _string_ | medium / small | medium
@@ -65,3 +65,33 @@ right | 最右侧
 name | 说明 | 回调参数
 -- | -- | --
 tab-click | tab 被选中时触发 | 被选中的标签 tab 实例
+
+### 样式变量
+#### Less 变量
+
+组件提供了下列 Less 变量，可用于自定义样式，使用方法请参考[定制主题](#/theme)。
+
+名称 | 默认值 | 描述
+-- | -- | --
+@tabs-font-size | @font-size-sm `14px` | 标签字体大小
+@tabs-active-font-size | @font-size-md `16px` | 选中标签的字体大小
+@tabs-color | var(--tm-black) `#000000` | 未选中标签的字体颜色
+@tabs-active-color | var(--main-color) `#3470ff` | 选中标签的字体颜色，按钮类型选中标签的背景色
+@tabs-button-active-color | var(--tm-white) `#ffffff` | 标签类型为按钮时选中标签的字体颜色
+@tabs-button-border-radius | @border-radius-md `4px` | 标签类型为按钮时选中标签的圆角大小
+@tabs-shadow-color | @shadow-color-primary `rgb(52, 112, 255, 0.5)` | 标签类型为按钮时选中标签的阴影颜色
+
+
+#### CSS 变量
+
+组件提供了下列 CSS 变量，可用于自定义样式
+
+名称 | 默认值 | 描述
+-- | -- | --
+--tm-tabs-font-size | @font-size-sm `14px` | 标签字体大小
+--tm-tabs-active-font-size | @font-size-md `16px` | 选中标签的字体大小
+--tm-tabs-color | var(--tm-black) `#000000` | 未选中标签的字体颜色
+--tm-tabs-active-color | var(--main-color) `#3470ff` | 选中标签的字体颜色，按钮类型选中标签的背景色
+--tm-tabs-button-active-color | var(--tm-white) `#ffffff` | 标签类型为按钮时选中标签的字体颜色
+--tm-tabs-button-border-radius | @border-radius-md `4px` | 标签类型为按钮时选中标签的圆角大小
+--tm-tabs-shadow-color | @shadow-color-primary `rgb(52, 112, 255, 0.5)` | 标签类型为按钮时选中标签的阴影颜色
