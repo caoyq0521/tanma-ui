@@ -2,7 +2,7 @@
 
 ### 介绍
 
-组件介绍
+用于标记和选择。
 
 ### 引入
 
@@ -61,7 +61,7 @@ close | 关闭 Tag 时触发的事件 | -
 
 名称 | 默认值 | 描述
 -- | -- | --
-@tag-font-size | @font-size-sm `14px` | tag字体大小
+@tag-font-size | var(--font-size-content) `14px` | tag字体大小
 @tag-primary-color | var(--main-color) `#3470ff` | tag默认背景色
 @tag-success-color | var(--color-success) `#3daf30` | success tag背景色
 @tag-info-color | var(--tm-gray-9) `#CCCCCC` | info tag背景色

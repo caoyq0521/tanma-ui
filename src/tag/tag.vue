@@ -7,6 +7,7 @@
     @click="handleTagClick"
   >
     <span
+      v-if="isDotEffect"
       class="dot" 
       :style="{'background-color': color}"
     ></span>
@@ -78,7 +79,6 @@
     },
     methods: {
       handleTagClick() {
-        console.log(123456);
         this.$emit('click');
       },
       handleClose() {

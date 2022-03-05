@@ -65,6 +65,10 @@ module.exports = {
           {
             path: 'tag',
             title: 'Tag 标签'
+          },
+          {
+            path: 'tag-pro',
+            title: 'Tag pro 标签'
           }
         ],
       },

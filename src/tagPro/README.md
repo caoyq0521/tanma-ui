@@ -1,0 +1,96 @@
+# tagPro
+
+### 介绍
+
+提供了一些项目中常用的标签。
+
+### 引入
+
+```js
+  import Vue from 'vue';
+  import { TagPro } from 'tanma-ui';
+  
+  Vue.use(TagPro);
+```
+
+## 代码演示
+
+### 基础用法
+
+<demo-code>./demo/index.vue</demo-code>
+
+### 可移除标签
+
+设置`closable`属性可以定义一个标签是否可移除。
+
+<demo-code>./demo/closable.vue</demo-code>
+
+### 自定义标签
+
+通过设置 `icon`、`name`、`color`、`iconColor`、`fontColor`去自定义任意样式的标签。
+
+<demo-code>./demo/custom.vue</demo-code>
+
+### Props
+
+参数 | 说明 | 类型 | 可选值 | 默认值 
+-- | -- | -- | -- | --
+closable | 是否可关闭 | _boolean_ | - | false
+color | 背景色 | _string_ | - | -
+font-color | 字体颜色 | _string_ | - | -
+icon | 自定义icon | _string_ | - | -
+icon-color | icon颜色 | _string_ | - | -
+name | 标签内容 | _string_ | - | -
+type | 类型 | _string_ | `content` `individual` `company` `department` `employee` `group` | employee
+
+### 样式变量
+
+#### Less 变量
+
+组件提供了下列 Less 变量，可用于自定义样式，使用方法请参考[定制主题](#/theme)。
+
+名称 | 默认值 | 描述
+-- | -- | --
+@tag-pro-content-color | var(--tm-gray-6) `#F6F6F6` | 内容标签背景色
+@tag-pro-content-font-color | var(--title-font-color) `#333333` | 内容标签内容颜色
+@tag-pro-content-icon-color | var(--tm-gray-9) `#CCCCCC` | 内容标签icon颜色
+@tag-pro-individual-color | #F0F9EB | 个人标签背景色
+@tag-pro-individual-font-color | #4AB43D | 个人标签内容颜色
+@tag-pro-individual-icon-color | #C2E8B0 | 个人标签icon颜色
+@tag-pro-company-color | `#EDF2FD | 公司标签背景色
+@tag-pro-company-font-color | var(--main-color) `#3470ff` | 公司标签内容颜色
+@tag-pro-company-icon-color | #A4bFFF | 公司标签icon颜色
+@tag-pro-department-color | #F0F9EB | 部门标签背景色
+@tag-pro-department-font-color | #4AB43D | 部门标签内容颜色
+@tag-pro-department-icon-color | #C2E8B0 | 部门标签icon颜色
+@tag-pro-employee-color | `#EDF2FD | 员工标签背景色
+@tag-pro-employee-font-color | var(--main-color) `#3470ff` | 员工标签内容颜色
+@tag-pro-employee-icon-color | #A4bFFF | 员工标签icon颜色
+@tag-pro-group-color | #F5B350 | 运营群背景色
+@tag-pro-group-font-colo | #FEF7EE | 运营群内容颜色
+@tag-pro-group-icon-color | #FFD67E | 运营群icon颜色
+
+#### Css 变量
+
+组件提供了下列 Css 变量，可用于自定义样式。
+
+名称 | 默认值 | 描述
+-- | -- | --
+--tm-tag-pro-content-color | var(--tm-gray-6) `#F6F6F6` | 内容标签背景色
+--tm-tag-pro-content-font-color | var(--title-font-color) `#333333` | 内容标签内容颜色
+--tm-tag-pro-content-icon-color | var(--tm-gray-9) `#CCCCCC` | 内容标签icon颜色
+--tm-tag-pro-individual-color | #F0F9EB | 个人标签背景色
+--tm-tag-pro-individual-font-color | #4AB43D | 个人标签内容颜色
+--tm-tag-pro-individual-icon-color | #C2E8B0 | 个人标签icon颜色
+--tm-tag-pro-company-color | #EDF2FD `#3470ff` | 公司标签背景色
+--tm-tag-pro-company-font-color | var(--main-color) | 公司标签内容颜色
+--tm-tag-pro-company-icon-color | #A4bFFF | 公司标签icon颜色
+--tm-tag-pro-department-color | #F0F9EB | 部门标签背景色
+--tm-tag-pro-department-font-color | #4AB43D | 部门标签内容颜色
+--tm-tag-pro-department-icon-color | #C2E8B0 | 部门标签icon颜色
+--tm-tag-pro-employee-color | #EDF2FD | 员工标签背景色
+--tm-tag-pro-employee-font-color | var(--main-color) `#3470ff` | 员工标签内容颜色
+--tm-tag-pro-employee-icon-color | #A4bFFF | 员工标签icon颜色
+--tm-tag-pro-group-color | #FEF7EE | 运营群背景色
+--tm-tag-pro-group-font-colo | #F5B350 | 运营群内容颜色
+--tm-tag-pro-group-icon-color | #FFD67E | 运营群icon颜色
