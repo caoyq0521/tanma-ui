@@ -61,6 +61,10 @@ module.exports = {
           {
             path: 'collapse-text',
             title: 'collapseText 折叠文本'
+          },
+          {
+            path: 'optional-picker',
+            title: 'OptionalPicker 日周月选择器'
           }
         ],
       },

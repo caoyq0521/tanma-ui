@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   plugins:[
     new CreateDirStructure({
-      name: 'avatar',
+      name: 'optional-picker',
       path: resolve(__dirname, 'src')
     })
   ]

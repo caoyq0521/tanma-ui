@@ -1,0 +1,96 @@
+@import '../style/var';
+@import './var';
+  
+:root {
+
+}
+
+.tm-optional-picker {
+  .query-date-item {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    margin-right: 10px;
+    border: 1px solid #dcdfe6;
+    border-radius: 4px;
+    cursor: pointer;
+    .date-item{
+      width: 45px;
+    }
+    > div {
+      position: relative;
+      flex-grow: 1;
+      text-align: center;
+      &:not(:last-child) {
+        border-right: 1px solid #dcdfe6;
+      }
+    }
+    .active-date-item {
+      color: #ffffff;
+      .active {
+        position: absolute;
+        top: -10px;
+        left: 0;
+        width: 46px;
+        line-height: 44px;
+        background: rgba(52, 112, 255, 1);
+        box-shadow: 0px 4px 10px 0px rgba(52, 112, 255, 0.5);
+        border-radius: 5px;
+      }
+    }
+  }
+  
+  .query-date-range-item {
+    z-index: 1;
+    .week-range {
+      display: flex;
+      align-items: center;
+  
+      /deep/.el-date-editor {
+        width: 170px;
+        margin: 0 5px;
+      }
+    }
+  }
+  
+  .tag {
+    width: 100%;
+    margin-top: 20px;
+  
+    .tag-item {
+      display: flex;
+      align-items: center;
+      &:not(:last-child) {
+        margin-right: 18px;
+      }
+      span:first-child {
+        width: 15px;
+        height: 11px;
+        margin-right: 6px;
+      }
+    }
+    .cancel {
+      color: #b2b4c7;
+    }
+  }
+   .department-select {
+          /deep/.el-select-dropdown{
+            min-height: 270px;
+            .el-select-dropdown__item{
+              height: 100%;
+              padding: 0;
+            }
+          }
+        }
+}
+
+.query-block {
+  display: flex;
+  flex-wrap: nowrap;
+  > div {
+    display: flex;
+  }
+  .search > div:not(:last-child) {
+    margin-right: 10px;
+  }
+}
