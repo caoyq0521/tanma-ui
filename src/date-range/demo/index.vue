@@ -1,27 +1,36 @@
 <template>
-  <div>
-    <tm-date-range v-model="rangeDate1" type="year" />
-    <tm-date-range v-model="rangeDate2" type="month" />
-    <tm-date-range v-model="rangeDate3" type="date" />
-    <tm-date-range v-model="rangeDate4" type="week" />
-    <tm-date-range v-model="rangeDate5" type="datetime" />
-    <tm-date-range v-model="rangeDate6" type="datetimerange" />
-    <tm-date-range v-model="rangeDate7" type="daterange" day-num="20" />
-  </div>
+  <ul>
+    <li>
+      <h4>默认</h4>
+      <tm-date-range v-model="rangeDate1"/>
+    </li>
+    <li>
+      <h4>可清空</h4>
+      <tm-date-range v-model="rangeDate2" clearable/>
+    </li>
+    <li>
+      <h4>配置占位符内容</h4>
+      <tm-date-range v-model="rangeDate3" start-placeholder="开始时间" end-placeholder="结束时间" />
+    </li>
+    <li>
+      <h4>设置分割符</h4>
+      <tm-date-range v-model="rangeDate3" range-separator="-" />
+    </li>
+  </ul>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      rangeDate1: "",
-      rangeDate2: "",
-      rangeDate3: "",
-      rangeDate4: "",
-      rangeDate5: "",
-      rangeDate6: [],
-      rangeDate7: [],
+      rangeDate1: [],
+      rangeDate2: [],
+      rangeDate3: []
     }
   }
 }
 </script>
+
+<style lang="less" scoped>
+@import "./demo.less";
+</style>

@@ -1,20 +1,18 @@
 <template>
   <div class="tm-date-range">
     <el-date-picker
-      :style="styleClass"
       v-model="currentValue"
       :type="type"
-      popper-class="v-popper"
       :clearable="clearable"
       :size="size"
       @focus="handleFocus"
       @change="handleChange"
       :value-format="valueFormat || defaultValFormat"
       :default-time="defaultTime"
-      range-separator="~"
-      :start-placeholder="startPlaceholder"
-      :end-placeholder="endPlaceholder"
       :picker-options="pickerOptions"
+      :range-separator="rangeSeparator"
+      :end-placeholder="endPlaceholder"
+      :start-placeholder="startPlaceholder"
       >
     </el-date-picker>
   </div>
@@ -104,11 +102,6 @@ export default {
       type: Boolean,
       default: false
     },
-    // 自定义样式
-    styleClass: {
-      type: String,
-      default: 'width: 215px'
-    },
     // 快捷方式数组
     shortcuts: {
       type: Array,
@@ -116,7 +109,7 @@ export default {
     },
     // 选择日期范围
     dateRange: {
-      type: Number,
+      type: [Number, String],
       default: 0
     },
     // 绑定值的格式
@@ -126,7 +119,7 @@ export default {
     },
     // 范围选择时选中日期所使用的当日内具体时刻
     defaultTime: {
-      type: Array,
+      type: [String, Array],
       default: () => ['00:00:00', '23:59:59']
     },
     // 范围选择时开始日期的占位内容
@@ -142,7 +135,17 @@ export default {
     // 输入框尺寸
     size: {
       type: String,
-      default: "small" // `large` `small` `mini`
+      default: "small"
+    },
+    // 选择范围时的分隔符
+    rangeSeparator: {
+      type: String,
+      default: "~"
+    },
+    // 隐藏快捷方式
+    hideShortcuts: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -157,20 +160,23 @@ export default {
     }
   },
   watch: {
-    value (newValue) {
-      this.currentValue = newValue
-    }
+    value: {
+      handler(newValue) {
+        this.currentValue = newValue
+      },
+      immediate: true
+    } 
   },
   created () {
-    this.pickerOptions.shortcuts = this.shortcuts;
+    if(!this.hideShortcuts) this.pickerOptions.shortcuts = this.shortcuts;
     this.pickerOptions.disabledDate = (time) => {
       if (this.dateRange) {
-        return time.getTime() > Date.now() || time.getTime() < Date.now() - this.dateRange * 24 * 60 * 60 * 1000;
+        const flag = time.getTime() > Date.now() || time.getTime() < Date.now() - this.dateRange * 24 * 60 * 60 * 1000;
+        return flag
       } else {
         return false;
       }
     }
-    this.currentValue = this.value
   },
   methods: {
     handleFocus() {
