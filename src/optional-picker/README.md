@@ -35,4 +35,4 @@ mode | 可选择模式 | _string \|  array_ | `day` `week` `month` `['day','week
 ### Events
 事件名称 | 说明 | 回调参数
 -- | -- | -- |
-change | 时间值改变时触发 | {_type: '', startDate: '', endDate: ''} |
+change | 时间值改变时触发 | _{ \_type: string, startDate: string, endDate: string }_ |
