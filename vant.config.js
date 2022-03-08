@@ -7,7 +7,7 @@ module.exports = {
     site: {
       publicPath: '/tanma-ui/',
     },
-    namedExport: true
+    namedExport: true,
   },
   site: {
     title: 'tanma-ui',
@@ -36,7 +36,7 @@ module.exports = {
         items: [
           {
             path: 'pagination',
-            title: 'Pagination 分页'
+            title: 'Pagination 分页',
           },
           {
             path: 'title',
@@ -59,8 +59,8 @@ module.exports = {
             title: 'TreeSelect 选择树',
           },
           {
-            path: "search",
-            title: "Search 搜索框"
+            path: 'search',
+            title: 'Search 搜索框',
           },
           // {
           //   path: "svg-icon",
@@ -71,10 +71,19 @@ module.exports = {
           //   title: "FileIcon 文件Icon"
           // },
           {
-            path: "date-range",
-            title: "DateRange 日期范围"
-          }
+            path: 'date-range',
+            title: 'DateRange 日期范围',
+          },
         ],
+      },
+      {
+        title: '业务组件',
+        items: [
+          {
+            path: 'avatar-card',
+            title: 'AvatarCard 头像卡片',
+          },
+        ]
       },
     ],
   },
