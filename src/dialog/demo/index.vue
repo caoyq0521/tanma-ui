@@ -1,0 +1,3 @@
+<template>
+  <tm-dialog />
+</template>

@@ -73,6 +73,10 @@ module.exports = {
           {
             path: 'tag-pro',
             title: 'Tag pro 标签'
+          },
+          {
+            path: 'dialog',
+            title: 'Dialog 对话框'
           }
         ],
       },
