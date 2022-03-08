@@ -55,8 +55,24 @@ module.exports = {
             title: 'Progress 进度条',
           },
           {
+            path: 'tabs',
+            title: 'tabs 标签页',
+          },
+          {
             path: 'tree-select',
             title: 'TreeSelect 选择树',
+          },
+          {
+            path: 'collapse-text',
+            title: 'collapseText 折叠文本'
+          },
+          {
+            path: 'tag',
+            title: 'Tag 标签'
+          },
+          {
+            path: 'tag-pro',
+            title: 'Tag pro 标签'
           },
           {
             path: 'search',

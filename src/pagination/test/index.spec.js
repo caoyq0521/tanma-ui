@@ -18,10 +18,10 @@ describe('tmPagination', () => {
     expect(wrapper.find('.tm-pagination__sizes').exists()).toBe(true);
   });
 
-  it('easy', () => {
+  it('mode easy', () => {
     const wrapper = shallowMount(TmPagination, {
       propsData: {
-        easy: true
+        mode: 'easy' 
       },
       localVue
     });

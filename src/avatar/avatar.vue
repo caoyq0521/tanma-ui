@@ -56,6 +56,8 @@ const baseMode = ['circle', 'square', 'rectangle'];
 const baseIconType = ['image', 'person', 'company', 'group'];
 const baseTheme = ['dark', 'light'];
 
+const whiteList = ['.png', '.jpg', '.jpeg'];
+
 import Vue from 'vue'
 import { Image } from 'element-ui';
 
@@ -116,6 +118,7 @@ export default {
         return val >= 12 && val <= 30;
       }
     },
+    // 
     tipTitle: {
       type: String,
       default: ''
@@ -147,7 +150,6 @@ export default {
       let url = curImageSource
 
       if (isCrop && curImageSource) {
-        const whiteList = ['.png', '.jpg', '.jpeg'];
         const imageType = curImageSource.match(/.[a-zA-Z_]+$/)?.[0]
         if (!whiteList.includes(imageType)) return url
         url = `${url}!${crop}${imageType}`
