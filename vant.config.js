@@ -13,6 +13,9 @@ module.exports = {
     title: 'tanma-ui',
     logo: './logo.png',
     hideSimulator: true,
+    baiduAnalytics: {
+      seed: '619bce33d3d0afd261bb503674730cc7'
+    },
     nav: [
       {
         title: '开发指南',

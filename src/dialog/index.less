@@ -2,10 +2,53 @@
 @import './var';
   
 :root {
-
+  --tm-dialog-title-font-size: @dialog-title-font-size;
+  --tm-dialog-title-font-weight: @dialog-title-font-weight;
 }
 
 .tm-dialog {
+  box-shadow: 0px 19px 53px 0px rgba(0, 0, 0, 0.09);
+  border-radius: 8px;
 
+  // 调整 el-dialog部分样式
+  .el-dialog {
+    &__header {
+      padding: 26px 20px 10px 26px;
+      height: 72px;
+      box-sizing: border-box;
+    }
+
+    &__headerbtn {
+      top: 26px;
+      right: 24px;
+    }
+
+    &__close {
+      color: #000;
+    }
+
+    &__title {
+      font-size: var(--tm-dialog-title-font-size);
+      font-weight: var(--tm-dialog-title-font-weight);
+    }
+
+    &__body {
+      padding: 0;
+    }
+  }
+
+  &__footer {
+    padding: 28px; 
+    text-align: right;
+    .el-button {
+      width: 115px;
+      height: 35px;
+      padding: 0;
+      font-weight: bold;
+    }
+    .cancel-button{
+      border: none!important;
+    }
+  }
 }
   
