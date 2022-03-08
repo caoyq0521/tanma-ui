@@ -12,5 +12,9 @@ module.exports = {
         }
       }
     ]
+  },
+  externals: {
+    'Vue': 'Vue',
+    'element-ui': 'ElementUI'
   }
 }

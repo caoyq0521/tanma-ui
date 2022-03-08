@@ -18,7 +18,7 @@
   &__total, .button-prev, .button-next, .number {
     padding: 0 10px;
     height: 26px;
-    line-height: 22px;
+    line-height: 26px;
     border: 1px solid var(--tm-pagination-border-color);
     border-radius: 3px;
   }
@@ -28,7 +28,6 @@
 
     &[disabled] {
       cursor: not-allowed;
-      pointer-events: none;
       border-color: var(--tm-pagination-disable-color);
 
       .iconfont {
@@ -95,6 +94,10 @@
         line-height: 26px;
       }
     }
+  }
+
+  &--easy .number {
+    cursor: auto;
   }
 }
   

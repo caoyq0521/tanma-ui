@@ -7,7 +7,7 @@
 export default {
   data () {
     return {
-      imageSource: 'https://caoyq0521.github.io/documentation/logo.png'
+      imageSource: window.location.origin + '/logo.png'
     }
   }
 }

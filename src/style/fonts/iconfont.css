@@ -1,6 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3208910 */
-  src: url('iconfont.ttf?t=1646279818322') format('truetype');
+  src: url('iconfont.woff2?t=1646446696033') format('woff2'),
+       url('iconfont.woff?t=1646446696033') format('woff'),
+       url('iconfont.ttf?t=1646446696033') format('truetype');
 }
 
 .iconfont {
@@ -9,6 +11,66 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-guanbi:before {
+  content: "\e6a2";
+}
+
+.icon-txt:before {
+  content: "\e609";
+}
+
+.icon-mp4:before {
+  content: "\e60a";
+}
+
+.icon-mp3:before {
+  content: "\e60b";
+}
+
+.icon-xsl:before {
+  content: "\e60c";
+}
+
+.icon-pdf:before {
+  content: "\e60d";
+}
+
+.icon-zip:before {
+  content: "\e60e";
+}
+
+.icon-png:before {
+  content: "\e60f";
+}
+
+.icon-rar:before {
+  content: "\e612";
+}
+
+.icon-ppt:before {
+  content: "\e617";
+}
+
+.icon-jpg:before {
+  content: "\e618";
+}
+
+.icon-html:before {
+  content: "\e619";
+}
+
+.icon-gif:before {
+  content: "\e61a";
+}
+
+.icon-doc:before {
+  content: "\e603";
+}
+
+.icon-doctype1:before {
+  content: "\e623";
 }
 
 .icon-wenhao11:before {

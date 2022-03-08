@@ -6,6 +6,111 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "18865740",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "e6a2",
+      "unicode_decimal": 59042
+    },
+    {
+      "icon_id": "2538094",
+      "name": " 文件类型",
+      "font_class": "txt",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "2538096",
+      "name": " 文件类型",
+      "font_class": "mp4",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "2538097",
+      "name": " 文件类型",
+      "font_class": "mp3",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "2538098",
+      "name": " 文件类型",
+      "font_class": "xsl",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "2538100",
+      "name": " 文件类型",
+      "font_class": "pdf",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "2538101",
+      "name": " 文件类型",
+      "font_class": "zip",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "2538102",
+      "name": " 文件类型",
+      "font_class": "png",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "2538103",
+      "name": " 文件类型",
+      "font_class": "rar",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "2538104",
+      "name": " 文件类型",
+      "font_class": "ppt",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "2538105",
+      "name": " 文件类型",
+      "font_class": "jpg",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "2538106",
+      "name": " 文件类型",
+      "font_class": "html",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "2538107",
+      "name": " 文件类型",
+      "font_class": "gif",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "3103749",
+      "name": " 文件类型",
+      "font_class": "doc",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "5759042",
+      "name": " 文件类型",
+      "font_class": "doctype1",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
       "icon_id": "17467669",
       "name": "问号 (1)",
       "font_class": "wenhao11",
