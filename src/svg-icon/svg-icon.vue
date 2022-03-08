@@ -20,8 +20,6 @@
 </template>
 
 <script>
-import { IconFont } from '../style/fonts/iconfont';
-IconFont(window);
 // doc: https://panjiachen.github.io/vue-element-admin-site/feature/component/svg-icon.html#usage
 import { isExternal } from '../utils/tools';
 

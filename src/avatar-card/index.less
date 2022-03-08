@@ -6,6 +6,59 @@
 }
 
 .tm-avatar-card {
+  display: flex;
+  // flex-direction: column;
+  justify-content: center;
+  width: 200px;
 
+  .pointer{
+    cursor: pointer;
+  }
+
+  .tm-avatar {
+    margin-right: 14px;
+  }
+
+  &__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .info{
+    &-nickname {
+      color: #000;
+      font-size: 14px;
+      font-weight: 400;
+      padding-left: 1px;
+      display: flex;
+      p {
+        line-height: 20px;
+      }
+      
+      > p {
+        flex: 1;
+      }
+    }
+
+    &-description {
+      font-size: 14px;
+      font-weight: 400;
+      color: #858598;
+      line-height: 20px;
+      padding-top: 2px;
+
+      .wechat-icon {
+        color: #09c060;
+        margin-right: 6px;
+      }
+    }
+  }
+  
+  .c-gray {
+    color: #858598 !important;
+  }
 }
   
