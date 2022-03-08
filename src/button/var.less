@@ -1,0 +1,51 @@
+@import '../style/var';
+
+@btn-font-size-sm: @font-size-sm;
+@btn-padding: 8px 20px;
+@btn-font-weight: 400;
+@btn-line-height: 18px;
+@btn-primary: @color-primary;
+@btn-danger: @color-danger;
+@btn-gray-1: @gray-1;
+@btn-gray-3: @gray-3;
+@btn-gray-8: @gray-8;
+@btn-gray: @color-text-secondary;
+@btn-white: @white;
+@btn-black: @black;
+@btn-disabled-primary: #A3BEFF;
+@btn-disabled-danger: #FBB6B5;
+@btn-solid: solid;
+@btn-dashed: dashed;
+@btn-border-radius: 5px;
+@btn-disabled-opacity: .5;
+
+.button-size(@padding, @font-size, @border-radius, @line-height) {
+  padding: @padding;
+  text-align: center;
+  font-size: @font-size;
+  border-radius: @border-radius;
+  line-height: @line-height;
+}
+
+.button-style(
+@background,
+@border-style,
+@border-color,
+@dis-background,
+@dis-border-color,
+@color:@white,
+@dis-color:@white,
+) {
+  // width: 100%;
+  color: @color;
+  background: @background;
+  border-color: @border-color;
+  border-style:@border-style;
+  border-width: 1px;
+  &:disabled,
+  &.disabled {
+    color: @color;
+    background: @background;
+    border-color: @dis-border-color;
+  }
+}

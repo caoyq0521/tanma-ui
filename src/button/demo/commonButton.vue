@@ -1,0 +1,3 @@
+<template>
+  <tm-button />
+</template>

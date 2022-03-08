@@ -54,6 +54,10 @@ module.exports = {
             path: 'progress',
             title: 'Progress 进度条',
           },
+          {
+            path: 'button',
+            title: 'Button 按钮',
+          },
         ],
       },
     ],

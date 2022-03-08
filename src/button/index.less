@@ -1,0 +1,47 @@
+@import '../style/var';
+@import './var';
+
+:root {
+
+}
+
+.tm-button {
+  .button-size(@btn-padding, @btn-font-size-sm, @btn-border-radius, @btn-line-height);
+  display: inline-block;
+  position: relative;
+  font-weight: @btn-font-weight;
+  color: @btn-white;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  background-image: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  &--disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: @btn-disabled-opacity;
+    box-shadow: none;
+    > * {
+      pointer-events: none;
+    }
+  }
+  &--primary {
+    .button-style(@btn-primary, @btn-solid, @btn-primary, @btn-disabled-primary,@btn-disabled-primary);
+  }
+  &--danger {
+    .button-style(@btn-danger, @btn-solid, @btn-danger, @btn-disabled-danger,@btn-disabled-danger);
+  }
+  &--default {
+    .button-style(@btn-white, @btn-solid, @btn-gray-3, @btn-white, @btn-gray-8, @btn-black, @btn-gray-1);
+  }
+  &--addition {
+    .button-style(@btn-white, @btn-dashed, @btn-gray,@btn-white, @btn-gray-3, @btn-black, @btn-gray-1);
+  }
+  &--text {
+    color: @btn-primary;
+    padding: 8px 0;
+  }
+}
+
+  
