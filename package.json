@@ -50,6 +50,7 @@
     "babel-plugin-import": "^1.13.0",
     "file-loader": "^6.2.0",
     "vue": "^2.6.11",
+    "vue-img-cutter": "^2.2.5",
     "vue-template-compiler": "^2.6.11",
     "webpack-cli": "3.3.0"
   },

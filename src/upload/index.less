@@ -2,10 +2,89 @@
 @import './var';
   
 :root {
-
+  --tm-upload-width: @width-size-img;
+  --tm-upload-border-dashed: @image-upload-border-dashed;
+  --tm-upload-border: @image-upload-border;
+  --tm-border-radius: @image-boder-radius;
+  --tm-upload-p: @upload-box-p;
+  --tm-uplaod-font: @font-size-sm;
 }
 
 .tm-upload {
+  display: flex;
+  align-items: center;
+  .image-single {
+    display: flex;
+    align-items: center;
+    &-uplaod {
+      width: var(--tm-upload-width);
+      height: var(--tm-upload-width);
+      background: #FCFCFC;
+      border-radius: var(--tm-border-radius);
+      color: var(--tm-upload-p);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    p {
+      color: var(--tm-upload-p);
+      font-size: var(--tm-uplaod-font);
+    }
+  }
 
+  // 临时写的按钮样式
+  .preview-button {
+    width: 119px;
+    height: 36px;
+    line-height: 36px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    border: 1px solid #D7D7D7;
+    margin-left: 15px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .image-single-empty {
+    border: var(--tm-upload-border-dashed);
+  }
+
+  .image-single-solid {
+    border: var(--tm-upload-border);
+  }
+
+  .drag-upload {
+    .el-upload {
+      width: 100%;
+    }
+    .el-upload-dragger {
+      width: 100%;
+      min-height: 140px;
+      height: 100%;
+      padding: 20px 1em;
+    }
+    .el-progress{
+      display: none;
+    }
+    .progress.el-progress{
+      display: inline-block;
+    }
+  }
+}
+
+.upload-preview-dialog {
+  width: 550px !important;
+ .img-container {
+    width: 500px;
+    max-height: 500px;
+    padding: 16px;
+    overflow: auto;
+    img{
+      width:100%;
+    }
+  }
+  ::-webkit-scrollbar{
+    width: 0;
+  }
 }
   

@@ -19,4 +19,8 @@
 
 <demo-code>./demo/index.vue</demo-code>
 
+### 剪切用法
+
+<demo-code>./demo/cutterSingle.vue</demo-code>
+
 ### Props

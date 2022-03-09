@@ -11,7 +11,21 @@ module.exports = {
           limit: 10000
         }
       }
-    ]
+    ],
+  },
+  devServer: {
+    open: true, // 设置是否自动打开浏览器
+    hot: true,
+    proxy: {
+      '/': {
+        target: 'https://dev.tanmarket.cn/',
+        changeOrigin: true,
+        secure: false,
+        pathRewrite: {
+          '^': ''
+        }
+      }
+    }
   },
   externals: {
     'Vue': 'Vue',
