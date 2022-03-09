@@ -12,22 +12,22 @@
     />
     <!-- 介绍 -->
     <div class="tm-avatar-card__info">
-      <!-- 昵称 -->
-      <div class="info-nickname" :class="{'pointer':canClick}" :title="titleInfo">
-        <p class="tm-ellipsis"><slot name="nickname">{{ nickname }}</slot></p>
-        <p v-if="tipInfo"><tm-tip :content="tipInfo" placement="right"></tm-tip></p>
+      <!-- 标题 -->
+      <div class="info-title" :class="{'clickable':canClick}" :title="titleInfo">
+        <p class="tm-ellipsis info-title__name"><slot name="title">{{ title }}</slot></p>
+        <p class="info-title__tip" v-if="tip"><tm-tip :content="tip" placement="right"></tm-tip></p>
       </div>
       <!-- 描述 -->
-      <template v-if="showDescription">
-        <div class="tm-ellipsis info-description" :title="titleInfo" v-if="description || $slots.info">
+      <template v-if="!hideDescription">
+        <div class="info-description" :title="titleInfo" v-if="description || $slots.description">
           <slot name="description">
-            <i class="iconfont iconweixin2 wechat-icon" v-if="hasWechatIcon"></i>{{ description }}
+            <i class="iconfont wechat-icon icon-wechat" v-if="!hideWechatIcon"></i>
+            <span class="tm-ellipsis">{{ description }}</span>
           </slot>
         </div>
         <div class="tm-ellipsis info-description" v-else>
-          <template v-if="hasWechatIcon">
-            <i class="iconfont icondaitianjia wechat-icon c-gray"></i>
-            待添加
+          <template v-if="!hideWechatIcon">
+            <i class="iconfont wechat-icon icon-wechat-unadded color-gray"></i>待添加
           </template>
         </div>
       </template>
@@ -62,19 +62,19 @@ export default {
       default: ""
     },
     // 用户昵称
-    nickname: {
+    title: {
       type: String,
-      default: "我是标题我是标题我是标题我是标题"
+      default: "我是标题"
     },
     // 提示信息
-    tipInfo: {
+    tip: {
       type: String,
-      default: "提示信息"
+      default: ""
     },
     // 是否有描述信息
-    showDescription: {
+    hideDescription: {
       type: Boolean,
-      default: true
+      default: false
     },
     // 昵称可否点击
     canClick: {
@@ -87,9 +87,9 @@ export default {
       default: ""
     },
     // 是否有微信图标
-    hasWechatIcon: {
+    hideWechatIcon: {
       type: Boolean,
-      default: true
+      default: false
     },
     // 头像类型
     // `image` `person` `company` `group`

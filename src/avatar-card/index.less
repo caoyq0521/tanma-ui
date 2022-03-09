@@ -2,18 +2,13 @@
 @import './var';
   
 :root {
-
+  --tm-avatar-card-title-color: @avatar-card-title-color;
+  --tm-avatar-card-description-color: @avatar-card-description-color;
 }
 
 .tm-avatar-card {
   display: flex;
-  // flex-direction: column;
   justify-content: center;
-  width: 200px;
-
-  .pointer{
-    cursor: pointer;
-  }
 
   .tm-avatar {
     margin-right: 14px;
@@ -28,37 +23,44 @@
   }
 
   .info{
-    &-nickname {
-      color: #000;
-      font-size: 14px;
-      font-weight: 400;
-      padding-left: 1px;
+    &-title {
+      color: var(--tm-avatar-card-title-color);
       display: flex;
-      p {
+
+      &__name, &__tip {
+        font-size: 14px;
+        font-weight: 400;
         line-height: 20px;
       }
-      
-      > p {
-        flex: 1;
+
+      &__name {
+        padding-right: 4px;
+      }
+
+      &.clickable{
+        color: var(--main-color);
+        cursor: pointer;
       }
     }
 
     &-description {
+      display: flex;
       font-size: 14px;
       font-weight: 400;
-      color: #858598;
+      color: var(--tm-avatar-card-description-color);
       line-height: 20px;
       padding-top: 2px;
-
+      
       .wechat-icon {
         color: #09c060;
+        padding-left: 2px;
         margin-right: 6px;
       }
     }
   }
   
-  .c-gray {
-    color: #858598 !important;
+  .color-gray {
+    color: var(--tm-avatar-card-description-color) !important;
   }
 }
   

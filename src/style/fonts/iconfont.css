@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3208910 */
-  src: url('iconfont.woff2?t=1646446696033') format('woff2'),
-       url('iconfont.woff?t=1646446696033') format('woff'),
-       url('iconfont.ttf?t=1646446696033') format('truetype');
+  src: url('iconfont.woff2?t=1646797232063') format('woff2'),
+       url('iconfont.woff?t=1646797232063') format('woff'),
+       url('iconfont.ttf?t=1646797232063') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,18 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-load:before {
+  content: "\e6cc";
+}
+
+.icon-wechat:before {
+  content: "\e6c3";
+}
+
+.icon-wechat-unadded:before {
+  content: "\e6c5";
 }
 
 .icon-guanbi:before {
