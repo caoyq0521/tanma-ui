@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-button @click="handleCustom">自定义内容</el-button>
+    <tm-button @click="handleCustom">自定义内容</tm-button>
   </div>
 </template>
 

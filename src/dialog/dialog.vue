@@ -26,20 +26,20 @@
       class="tm-dialog__footer"
     >
       <slot name="footer">
-        <el-button
+        <tm-button
           class="cancel-button"
           @click="handleDialogCancel"
         >
           {{ cancelText }}
-        </el-button>
-        <el-button
+        </tm-button>
+        <tm-button
           :type="okType"
           class="ok-button"
           :loading="buttonLoading"
           @click="handleDialogOk"
         >
           {{ okText }}
-        </el-button>
+        </tm-button>
       </slot>
     </div>
   </el-dialog>

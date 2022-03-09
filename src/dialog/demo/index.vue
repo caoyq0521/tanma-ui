@@ -1,8 +1,8 @@
 <template>
   <div>
-    <el-button @click="handleNormal">标准</el-button>
-    <el-button @click="handleCustom">自定义按钮内容</el-button>
-    <el-button @click="handleAsync">异步关闭</el-button>
+    <tm-button @click="handleNormal">标准</tm-button>
+    <tm-button @click="handleCustom">自定义按钮内容</tm-button>
+    <tm-button @click="handleAsync">异步关闭</tm-button>
   </div>
 </template>
 <script>
@@ -14,10 +14,10 @@ export default {
         content: '确定要删除该内容？',
         okType: 'danger',
         onOk: () => {
-          // this.$message('删除成功');
+          console.log('ok');
         },
         onCancel: () => {
-          // this.$message('取消删除');
+          console.log('cancel');
         }
       });
     },
@@ -29,10 +29,10 @@ export default {
         okText: '删除',
         cancelText: '不删',
         onOk: () => {
-          // this.$message('删除成功');
+          console.log('ok');
         },
         onCancel: () => {
-          // this.$message('取消删除');
+          console.log('cancel');
         }
       });
     },
@@ -45,11 +45,11 @@ export default {
         onOk: () => {
           setTimeout(() => {
             this.$tmDialog.remove();
-            // this.$message('删除成功');
+            console.log('ok');
           }, 2000);
         },
         onCancel: () => {
-          // this.$message('取消删除');
+          console.log('cancel');
         }
       });
     }

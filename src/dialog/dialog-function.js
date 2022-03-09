@@ -73,17 +73,17 @@ tmDialogComponents.newInstance = (properties = {}) => {
           return (
             <div>
               {!this.cancelHide
-                ? (<el-button
+                ? (<tm-button
                   onClick={() => this.cancelDialog()}
                   class='cancel-button'
                 >
                   { this.cancelText }
-                </el-button>)
+                </tm-button>)
                 : ''
               }
-              <el-button type={this.okType} loading={this.buttonLoading} onClick={() => this.okDialog()}>
+              <tm-button type={this.okType} loading={this.buttonLoading} onClick={() => this.okDialog()}>
                 { this.okText }
-              </el-button>
+              </tm-button>
             </div>
           );
         }
