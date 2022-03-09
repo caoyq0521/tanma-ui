@@ -7,12 +7,15 @@ module.exports = {
     site: {
       publicPath: '/tanma-ui/',
     },
-    namedExport: true
+    namedExport: true,
   },
   site: {
     title: 'tanma-ui',
     logo: './logo.png',
     hideSimulator: true,
+    baiduAnalytics: {
+      seed: '619bce33d3d0afd261bb503674730cc7'
+    },
     nav: [
       {
         title: '开发指南',
@@ -36,7 +39,7 @@ module.exports = {
         items: [
           {
             path: 'pagination',
-            title: 'Pagination 分页'
+            title: 'Pagination 分页',
           },
           {
             path: 'title',
@@ -53,6 +56,10 @@ module.exports = {
           {
             path: 'progress',
             title: 'Progress 进度条',
+          },
+          {
+            path: 'button',
+            title: 'Button 按钮',
           },
           {
             path: 'tabs',
@@ -77,8 +84,37 @@ module.exports = {
           {
             path: 'upload',
             title: 'upload  上传'
-          }
+          },
+          {
+            path: 'dialog',
+            title: 'Dialog 对话框'
+          },
+          {
+            path: 'search',
+            title: 'Search 搜索框',
+          },
+          // {
+          //   path: "svg-icon",
+          //   title: "SvgIcon "
+          // },
+          // {
+          //   path: "file-icon",
+          //   title: "FileIcon 文件Icon"
+          // },
+          {
+            path: 'date-range',
+            title: 'DateRange 日期范围',
+          },
         ],
+      },
+      {
+        title: '业务组件',
+        items: [
+          {
+            path: 'avatar-card',
+            title: 'AvatarCard 头像卡片',
+          },
+        ]
       },
     ],
   },

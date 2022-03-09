@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tmDialog render dialog 1`] = `
+<div class="el-dialog__wrapper" style="display: none;" name="dialog-fade">
+  <div role="dialog" aria-modal="true" aria-label="dialog" class="el-dialog tm-dialog" style="margin-top: 15vh; width: 50%;">
+    <div class="el-dialog__header"><span class="el-dialog__title"></span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div>
+    <!---->
+    <!---->
+  </div>
+</div>
+`;
