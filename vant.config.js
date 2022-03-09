@@ -30,7 +30,11 @@ module.exports = {
           },
           {
             path: 'theme',
-            title: '定制主题',
+            title: '定制主题 less',
+          },
+          {
+            path: 'theme2',
+            title: '定制主题 css',
           },
         ],
       },
