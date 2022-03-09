@@ -66,10 +66,6 @@ module.exports = {
             title: 'tabs 标签页',
           },
           {
-            path: 'tree-select',
-            title: 'TreeSelect 选择树',
-          },
-          {
             path: 'collapse-text',
             title: 'collapseText 折叠文本'
           },
@@ -116,6 +112,15 @@ module.exports = {
           },
         ]
       },
+      {
+        title: 'API',
+        items: [
+          {
+            path: 'api',
+            title: 'API'
+          }
+        ]
+      }
     ],
   },
 };
