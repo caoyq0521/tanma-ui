@@ -5,8 +5,6 @@ const timeFormat = (time) => {
   return formatTime;
 }
 
-
-
 /**
  * 延时器
  * @param {String} time 延时时间
@@ -15,6 +13,17 @@ const timeFormat = (time) => {
 export const sleep = (time) => new Promise((resolve) => {
   setTimeout(resolve, time)
 })
+
+/**
+ * 获取根元素css样式
+ * @param {String} name css属性名
+ * @returns 属性值
+ * */ 
+ export const getRootCss = (name) => {
+  const  rootElement = document.documentElement;
+  const  styles = getComputedStyle(rootElement);
+  return styles.getPropertyValue(name).trim();
+}
 
 /**
  * 深拷贝
@@ -400,12 +409,13 @@ export const isValidURL = (url) => {
 }
 
 /**
- * 类型判断
- * 
+ * 类型判断 使用方法 dataType.isString('123') // true
  * 
  * */ 
-// ['String', 'Function', 'Array', 'Number', 'RegExp', 'Object', 'Boolean'].forEach(item => {
-//   dataType['is' + item] = obj => {
-//     return Object.prototype.toString.apply(obj) === '[object ' + item + ']';
-//   }
-// })
+export const dataType = {}
+const typeMap = ['String', 'Function', 'Array', 'Number', 'RegExp', 'Object', 'Boolean']
+typeMap.forEach(item => {
+  dataType['is' + item] = obj => {
+    return Object.prototype.toString.apply(obj) === '[object ' + item + ']';
+  }
+})
