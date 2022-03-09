@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "4281418",
+      "name": "load",
+      "font_class": "load",
+      "unicode": "e6cc",
+      "unicode_decimal": 59084
+    },
+    {
+      "icon_id": "19905562",
+      "name": "微信",
+      "font_class": "wechat",
+      "unicode": "e6c3",
+      "unicode_decimal": 59075
+    },
+    {
+      "icon_id": "19905564",
+      "name": "待添加",
+      "font_class": "wechat-unadded",
+      "unicode": "e6c5",
+      "unicode_decimal": 59077
+    },
+    {
       "icon_id": "18865740",
       "name": "关闭",
       "font_class": "guanbi",
