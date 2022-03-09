@@ -72,6 +72,8 @@ default | 显示在按钮里面的内容
 @btn-heigh | 36px  | 按钮高度
 @btn-solid | solid  | 按钮实线边框
 @btn-dashed | dashed  | 按钮虚线边框
+@btn-hover-primary-bgc | fade(@color-primary, 85%)  | 主要按钮hover颜色
+@btn-hover-danger-bgc | fade(@color-danger, 85%)  | 危险按钮hover颜色
 
 
 #### CSS 变量
@@ -89,3 +91,6 @@ default | 显示在按钮里面的内容
 --tm-btn-heigh | 36px | 按钮高度
 --tm-btn-solid | solid | 按钮实线边框
 --tm-btn-dashed | dashed | 按钮虚线边框
+--tm-btn-hover-primary-bgc | @btn-hover-primary-bgc | 主要按钮hover颜色
+--tm-btn-hover-danger-bgc | @btn-hover-danger-bgc | 危险按钮hover颜色
+
