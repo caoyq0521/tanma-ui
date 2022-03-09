@@ -4,6 +4,8 @@
 :root {
   --tm-dialog-title-font-size: @dialog-title-font-size;
   --tm-dialog-title-font-weight: @dialog-title-font-weight;
+  --tm-dialog-footer-button-width: @dialog-footer-button-width;
+  --tm-dialog-footer-button-height: @dialog-footer-button-height;
 }
 
 .tm-dialog {
@@ -41,14 +43,24 @@
     padding: 28px; 
     text-align: right;
     .el-button {
-      width: 115px;
-      height: 35px;
+      width: var(--tm-dialog-footer-button-width);
+      height: var(--tm-dialog-footer-button-height);
       padding: 0;
-      font-weight: bold;
     }
     .cancel-button{
       border: none!important;
     }
+  }
+
+  // 函数式调用时内容默认样式
+  &__body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 140px;
+    padding: 0 20px;
+    font-size: 14px;
+    line-height: 1.5;
   }
 }
   

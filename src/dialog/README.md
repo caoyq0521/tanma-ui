@@ -6,6 +6,8 @@
 
 `Dialog`提供了两种用法，普通组件使用和封装好的简洁实例调用。
 
+
+
 ### 引入
 
 ```js
@@ -19,9 +21,27 @@
 
 ### 基础用法
 
-Dialog 弹出一个对话框，适合需要定制性更大的场景。
+组件基于`element-ui`重新封装，除`居中布局`不支持外其他的所有属性都已支持；示例请大家移步[element-ui dialog](https://element.eleme.cn/#/zh-CN/component/dialog)进行查看。
+
+### 实例化使用方法
+
+除了上述通过标准组件的使用方法，tanma-ui还封装了实例方法，用来创建一次性的轻量级对话框。
+
+实例以隐式创建 Vue 组件的方式在全局创建一个对话框，并在消失时移除，所以同时只能操作一个对话框。
 
 <demo-code>./demo/index.vue</demo-code>
+
+#### 自定义内容
+
+使用 `render` 字段可以基于 jsx 语法来自定义内容。
+
+使用 render 后，将不再限制类型，content 也将无效。
+
+[学习 vue jsx语法内容](https://cn.vuejs.org/v2/guide/render-function.html#JSX)
+
+> 注意：使用render后内容样式需自已定义。
+
+<demo-code>./demo/render.vue</demo-code>
 
 ### Props
 
@@ -65,6 +85,39 @@ ok | Dialog 点击确定的回调 | -
 default | Dialog 的内容
 footer | Dialog 按钮操作区的内容
 
+### 实例化调用
+
+通过直接调用以下方法来使用：
+
+```js
+this.$tmDialog(config);
+
+// 另外提供了全局关闭对话框的方法：
+this.$tmDialog.remove();
+```
+
+以上方法隐式地创建及维护Vue组件。参数 config 为对象，具体说明如下：
+
+参数 | 说明 | 类型 | 可选值 | 默认值 
+-- | -- | -- | -- | --
+cancel-text | 取消按钮文字 | _string_ | - | 取消
+close-on-click-modal | 是否可以通过点击 modal 关闭 Dialog | _boolean_ | - | true
+close-on-press-escape | 是否可以通过按下 ESC 关闭 Dialog | _boolean_ | - | true
+content | Dialog 内容 | _string_ | - | -
+footer-hide | 是否显示底部按钮 | _boolean_ | - | false
+loading | 点击确定按钮时，确定按钮是否显示 loading 状态，开启则需手动调用tmDialog.remove()来关闭对话框 | _boolean_ | - | false
+lock-scroll | 是否在 Dialog 出现时将 body 滚动锁定 | _boolean_ | - | true
+modal | 是否需要遮罩层 | _boolean_ | - | true
+ok-text | 确定按钮文字 | _string_ | - | 确定
+ok-type | 确定按钮类型 | _string_ | `primary` `danger` | primary
+render | 自定义内容，使用后不再限制类型， content 也无效。[学习 vue jsx语法内容](https://cn.vuejs.org/v2/guide/render-function.html#JSX) | _function_ | - | -
+show-close | 是否显示关闭按钮 | _boolean_ | - | true
+title | Dialog 的标题 | _string_ | - | -
+top | Dialog CSS 中的 margin-top 值 | _string_ | - | 15vh
+width | Dialog 的宽度 | _string_ | - | 50%
+onOk | 点击确定的回调 | _function_ | -
+onCancel | 点击取消的回调 | _function_ | -
+
 ### 样式变量
 
 #### Less 变量
@@ -75,6 +128,8 @@ footer | Dialog 按钮操作区的内容
 -- | -- | --
 @dialog-title-font-size | var(--font-size-title) `16px` | Dialog 标题字体大小
 @dialog-title-font-weight | var(--font-bold) `550` | Dialog 标题字重
+@dialog-footer-button-width | `115px` | Dialog 底部按钮宽度
+@dialog-footer-button-height | `35px` | Dialog 底部按钮高度
 
 #### Css 变量
 
@@ -84,3 +139,5 @@ footer | Dialog 按钮操作区的内容
 -- | -- | --
 --tm-dialog-title-font-size | var(--font-size-title) `16px` | Dialog 标题字体大小
 --tm-dialog-title-font-weight | var(--font-bold) `550` | Dialog 标题字重
+--tm-dialog-footer-button-width | `115px` | Dialog 底部按钮宽度
+--tm-dialog-footer-button-height | `35px` | Dialog 底部按钮高度

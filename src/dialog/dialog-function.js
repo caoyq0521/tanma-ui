@@ -12,12 +12,13 @@ const BaseProps = {
   closeOnClickModal: true,
   footerHide: false,
   cancelHide: false,
+  modal: true,
   cancelText: '取消',
   okText: '确定',
   okType: 'primary',
   render: undefined,
-  closing: false,
   loading: false,
+  closing: false,
   buttonLoading: false
 };
 tmDialogComponents.newInstance = (properties = {}) => {
@@ -57,7 +58,7 @@ tmDialogComponents.newInstance = (properties = {}) => {
       },
       onOk () {},
       onCancel () {},
-      onRemove () {},
+      onRemove() {},
       getBodyVNodes () {
         let bodyContent = '';
         if (this.render) {
@@ -99,7 +100,7 @@ tmDialogComponents.newInstance = (properties = {}) => {
           lockScroll={this.lockScroll}
           closeOnClickModal={this.closeOnClickModal}
           footerHide={this.footerHide}
-          onClosed={() => this.onCancel()}
+          fullscreen={this.fullscreen}
         >
           <template slot='default'>
             {this.getBodyVNodes()}
@@ -123,6 +124,8 @@ tmDialogComponents.newInstance = (properties = {}) => {
       if ('onOk' in props) {
         dialog.$parent.onOk = props.onOk;
       }
+
+      dialog.$parent.onRemove = props.onRemove;
       dialog.visible = true;
     },
     remove () {
@@ -133,8 +136,32 @@ tmDialogComponents.newInstance = (properties = {}) => {
     component: dialog
   }
 }
-function TmDialog (options) {
-  tmDialogComponents.newInstance().show(options);
+
+let dialogInstance;
+
+function getDialogInstance () {
+  dialogInstance = dialogInstance || tmDialogComponents.newInstance({});
+
+  return dialogInstance;
 }
+
+function TmDialog (options) {
+  const instance = getDialogInstance();
+
+  options.onRemove = function () {
+    dialogInstance = null;
+  };
+
+  instance.show(options);
+}
+
+TmDialog.remove = function () {
+  if (!dialogInstance) {
+    return false;
+  }
+
+  const instance = getDialogInstance();
+  instance.remove();
+};
 
 export default TmDialog;

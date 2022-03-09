@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tmTabs render tabs 1`] = `
+<div class="tm-flex__center--col tm-tabs tm-tabs--underline">
+  <div class="tm-tabs-group is-left"></div>
+</div>
+`;
