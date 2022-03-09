@@ -1,10 +1,62 @@
-// import { mount } from '@vue/test-utils';
-// import TmTableItem from '../tableItem.vue';
+import { mount } from '@vue/test-utils';
+import TmButton from '../button.vue';
 
-// describe('tmTableItem', () => {
-//   it('render tableItem', () => {
-//     const wrapper = mount('TmTableItem');
-//     expect(wrapper).toMatchSnapshot();
-//   });
-// })
-  
+describe('tmButton', () => {
+  it('render tmButton', () => {
+    const wrapper = mount(TmButton);
+    expect(wrapper).toMatchSnapshot();
+ 
+  });
+
+  it('create button', () => {
+    const wrapper = mount(TmButton);
+
+    expect(wrapper.find('.tm-button').exists()).toBe(true);
+  });
+
+  it('whether type of button', async () => {
+    const wrapper = mount(TmButton);
+
+    await wrapper.setProps({ type: 'default' });
+    expect(wrapper.find('.tm-button--default').exists()).toBe(true);
+
+    await wrapper.setProps({ type: 'primary' });
+    expect(wrapper.find('.tm-button--primary').exists()).toBe(true);
+
+    await wrapper.setProps({ type: 'danger' });
+    expect(wrapper.find('.tm-button--danger').exists()).toBe(true);
+
+    await wrapper.setProps({ type: 'addition' });
+    expect(wrapper.find('.tm-button--addition').exists()).toBe(true);
+
+    await wrapper.setProps({ type: 'forbidden' });
+    expect(wrapper.find('.tm-button--forbidden').exists()).toBe(true);
+
+    await wrapper.setProps({ type: 'wicked' });
+    expect(wrapper.find('.tm-button--wicked').exists()).toBe(true);
+
+    await wrapper.setProps({ type: 'text' });
+    expect(wrapper.find('.tm-button--text').exists()).toBe(true);
+  });
+
+  it('whether disabled of button', () => {
+    const wrapper = mount(TmButton, {
+      propsData: {
+        disabled: true
+      }
+    });
+
+    expect(wrapper.find('.disabled').exists()).toBe(true);
+  });
+
+  it('whether loading of button', () => {
+    const wrapper = mount(TmButton, {
+      propsData: {
+        loading: true
+      }
+    });
+
+    expect(wrapper.find('.icon-load').exists()).toBe(true);
+  });
+})
+

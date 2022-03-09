@@ -1,14 +1,16 @@
 @import '../style/var';
 
 @btn-font-size-sm: @font-size-sm;
-@btn-padding: 8px 20px;
-@btn-font-weight: 400;
-@btn-line-height: 18px;
+@btn-height:36px;
+@btn-padding: 0 20px;
 @btn-primary: @color-primary;
 @btn-danger: @color-danger;
 @btn-gray-1: @gray-1;
 @btn-gray-3: @gray-3;
+@btn-gray-7: @gray-7;
 @btn-gray-8: @gray-8;
+@btn-gray-9: @gray-9;
+@btn-gray-10: #B2B4C7;
 @btn-gray: @color-text-secondary;
 @btn-white: @white;
 @btn-black: @black;
@@ -17,35 +19,43 @@
 @btn-solid: solid;
 @btn-dashed: dashed;
 @btn-border-radius: 5px;
-@btn-disabled-opacity: .5;
 
-.button-size(@padding, @font-size, @border-radius, @line-height) {
+.button-size(@padding, @font-size, @border-radius) {
   padding: @padding;
   text-align: center;
   font-size: @font-size;
   border-radius: @border-radius;
-  line-height: @line-height;
+}
+
+.button-style-disabled(
+  @background,
+  @border-style,
+  @border-color,
+  @color:@white,
+) {
+  color: @color;
+  background: @background;
+  border-color: @border-color;
+  border-style:@border-style;
 }
 
 .button-style(
 @background,
 @border-style,
 @border-color,
-@dis-background,
+@dis-bgc,
+@dis-color,
 @dis-border-color,
 @color:@white,
-@dis-color:@white,
 ) {
+  .button-style-disabled(@background, @border-style, @border-color, @color);
   // width: 100%;
-  color: @color;
-  background: @background;
-  border-color: @border-color;
-  border-style:@border-style;
   border-width: 1px;
-  &:disabled,
+  &[disabled],
   &.disabled {
-    color: @color;
-    background: @background;
+    cursor: not-allowed;
+    color: @dis-color;
+    background-color: @dis-bgc;
     border-color: @dis-border-color;
   }
 }

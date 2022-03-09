@@ -1,3 +1,0 @@
-<template>
-  <tm-button />
-</template>
