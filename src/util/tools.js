@@ -6,28 +6,19 @@ const timeFormat = (time) => {
 }
 
 /**
- * 延时器
- * @param {String} time 延时时间
- * @returns {Promise}
- * */ 
-export const sleep = (time) => new Promise((resolve) => {
-  setTimeout(resolve, time)
-})
-
-/**
  * 获取根元素css样式
- * @param {String} name css属性名
+ * @param {String} attributeName css属性名
  * @returns 属性值
  * */ 
- export const getRootCss = (name) => {
+export const getRootCss = (attributeName) => {
   const  rootElement = document.documentElement;
   const  styles = getComputedStyle(rootElement);
-  return styles.getPropertyValue(name).trim();
+  return styles.getPropertyValue(attributeName).trim();
 }
 
 /**
  * 深拷贝
- * @param {Array, Object} target 源数据
+ * @param {Object} target 源数据
  * @returns {Array, Object} 深拷贝后的数据
  * */ 
 export const deepClone = (target) => {
@@ -52,13 +43,13 @@ export const deepClone = (target) => {
 
 /**
  * 初始化rangeDate组件数据
- * @param {String} num 天数
+ * @param {Number} range 天数
  * @param {Number} type 类型  1: yyyy-MM-dd, 2: yyyy-MM-dd hh:mm
  * @returns {Array} 时间范围数组
  * */ 
-export const rangeDate = (num, type) => {
+export const rangeDate = (range, type) => {
   const end = new Date();
-  const start = new Date(Math.round(new Date().getTime() - 1000 * 60 * 60 * 24 * (num - 1)))
+  const start = new Date(Math.round(new Date().getTime() - 1000 * 60 * 60 * 24 * (range - 1)))
   if (type === 1) {
     return [timeFormat(start), timeFormat(end)];
   } else {
@@ -133,13 +124,13 @@ export const downLoadBlob = (blob, fileName = '') => {
 
 /**
  * 文件导出 该导出功能使用前端文件名+后端扩展名的形式生成文件
- * @param data 接口响应内容
+ * @param responded 接口响应内容
  * @param {string} fileName 文件名
  * @param decode 是否对 encodeURI 编码过的 URI 进行解码
  * @returns void
  * */ 
-export const downLoadMethods = (data, fileName = '', decode = false) => {
-  if (!data) {
+export const exportFile = (responded, fileName = '', decode = false) => {
+  if (!responded) {
     return;
   }
   const typeMap = {
@@ -147,7 +138,7 @@ export const downLoadMethods = (data, fileName = '', decode = false) => {
     '.xlsx': { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8' }
   }
   let serverName = ''
-  const { headers = {} } = data
+  const { headers = {} } = responded
   const disposition = headers['content-disposition'] || '';
   const reg = /(filename=)(.+)/
   const serverNameMatched = disposition.match(reg) || []
@@ -166,26 +157,15 @@ export const downLoadMethods = (data, fileName = '', decode = false) => {
   if (servExt) {
     fileName = fileName.replace(extReg, servExt)
   }
-  const blob = new Blob([data.data], typeMap[servExt]);
-  if ('download' in document.createElement('a')) { // 非IE下载
-    const elink = document.createElement('a');
-    elink.download = fileName;
-    elink.style.display = 'none';
-    elink.href = URL.createObjectURL(blob);
-    document.body.appendChild(elink);
-    elink.click();
-    URL.revokeObjectURL(elink.href); // 释放URL 对象
-    document.body.removeChild(elink);
-  } else { // IE10+下载
-    navigator.msSaveBlob(blob, fileName);
-  }
+  const blob = new Blob([responded.responded], typeMap[servExt]);
+  downLoadBlob(blob, fileName)
 }
 
 /**
  * 防抖
  * @param {Function} func 处理函数
  * @param {Number} wait 等待时间 
- * @returns {Function}
+ * @returns {Function} 闭包拿func参数
  * */ 
 export const debounce = (func, wait = 500) => {
   let timer
@@ -246,7 +226,7 @@ export const blobToDataURI = (blob) => {
 /**
  * 图片url转base64
  * @param {String} url 图片路径
- * @param {String} outputFormat
+ * @param {String} outputFormat 输出的图片类型，默认 image/png
  * @returns {Promise}
  * */
 export const convertImgToBase64 = (url, outputFormat) => {
@@ -277,7 +257,7 @@ export const convertImgToBase64 = (url, outputFormat) => {
  * @param {Object} e 事件对象
  * @returns void
  */
-export const stopBubble = (e) => {
+export const stopPropagation = (e) => {
   //如果提供了事件对象，则这是一个非IE浏览器
   if (e && e.stopPropagation) {
     //因此它支持W3C的stopPropagation()方法
@@ -305,30 +285,29 @@ export const stopDefault = (e) => {
 }
 
 /**
- * 字节转实际大小
- * @param {Number} a 字节数
- * @param {Number} b 保留小数位数 默认 2位
- * @returns {String} String
+ * 字节单位换算
+ * @param {Number, String} size 字节数
+ * @param {Number, String} point 保留小数位数 默认 2位
+ * @returns {String} 换算后的大小
  * */ 
-export const formatBytes = (a, b) => {
-  if (a === 0) return "0 Bytes"
+export const formatBytes = (size, point = 2) => {
+  if (size === 0) return "0 Bytes"
   const c = 1024
-  const d = b || 2
   const e = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"]
-  const f = Math.floor(Math.log(a) / Math.log(c))
+  const f = Math.floor(Math.log(size) / Math.log(c))
 
-  return parseFloat((a / Math.pow(c, f)).toFixed(d)) + "" + e[f]
+  return parseFloat((size / Math.pow(c, f)).toFixed(point)) + "" + e[f]
 }
 
 /**
  * 字节换算
- * @param {String} str 字符串的可视单位 '222.22 KB'
- * @returns byte为单位的数量
+ * @param {String} size 字符串的可视单位 '222.22 KB'
+ * @returns byte为单位的大小
  */ 
-export const fileSizeFormatToByte = (str) => {
+export const fileSizeFormatToByte = (size) => {
   const e = ['Byte', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-  const num = parseFloat(str);
-  const i = e.findIndex((item) => str.includes(item));
+  const num = parseFloat(size);
+  const i = e.findIndex((item) => size.includes(item));
   const c = 1024;
   return parseFloat((num * Math.pow(c, i)));
 }
@@ -395,17 +374,6 @@ export const isSafari = () => {
 export const isCard = (str) => {
   var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
   return reg.test(str);
-}
-
-/**
- * 校验合法url
- * @param {String} url 地址
- * @returns {Boolean}
- * */ 
-export const isValidURL = (url) => {
-  const reg = new RegExp(/^https?:\/\/(([a-zA-Z0-9_-])+(\.)?)*(:\d+)?(\/(\#\/)?((\.)?(\?)?=?&?[a-zA-Z0-9_-](\?)?)*)*$/i);
-  const flag = reg.test(url.trim());
-  return flag;
 }
 
 /**

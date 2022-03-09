@@ -76,6 +76,15 @@ module.exports = {
           }
         ],
       },
+      {
+        title: 'API',
+        items: [
+          {
+            path: 'api',
+            title: 'API'
+          }
+        ]
+      }
     ],
   },
 };
