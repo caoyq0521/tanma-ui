@@ -3,7 +3,7 @@ import TmTabs from '../tabs.vue';
 
 describe('tmTabs', () => {
   it('render tabs', () => {
-    const wrapper = mount('TmTabs');
+    const wrapper = mount(TmTabs);
     expect(wrapper).toMatchSnapshot();
   });
 })

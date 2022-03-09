@@ -13,6 +13,9 @@ module.exports = {
     title: 'tanma-ui',
     logo: './logo.png',
     hideSimulator: true,
+    baiduAnalytics: {
+      seed: '619bce33d3d0afd261bb503674730cc7'
+    },
     nav: [
       {
         title: '开发指南',
@@ -55,6 +58,10 @@ module.exports = {
             title: 'Progress 进度条',
           },
           {
+            path: 'button',
+            title: 'Button 按钮',
+          },
+          {
             path: 'tabs',
             title: 'tabs 标签页',
           },
@@ -73,6 +80,10 @@ module.exports = {
           {
             path: 'tag-pro',
             title: 'Tag pro 标签'
+          },
+          {
+            path: 'dialog',
+            title: 'Dialog 对话框'
           },
           {
             path: 'search',
