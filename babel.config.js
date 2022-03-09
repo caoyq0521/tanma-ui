@@ -6,8 +6,9 @@ module.exports = {
       {
         'injectH': false
       }
-    ]
+    ],
   ],
+  presets: [ [ "@vue/app", { useBuiltIns: "entry" } ] ],
   plugins: [
     [
       'component',
