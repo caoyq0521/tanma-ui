@@ -47,6 +47,18 @@
     white-space: nowrap;
   }
 
+  &.tm-tabs--text {
+    .tm-tabs__pane {
+      line-height: 54px;
+    }
+    .tm-tabs__pane.is-active {
+      position: relative;
+      font-size: var(--tm-tabs-active-font-size);
+      color: var(--tm-tabs-active-color);
+      font-weight: @font-weight-bold;
+    }
+  }
+
   &.tm-tabs--underline {
     .tm-tabs__pane {
       line-height: 54px;
@@ -78,7 +90,6 @@
       padding: 0 @padding-sm;
       font-weight: @font-weight-bold;
       color: var(--tm-tabs-button-active-color);
-      box-shadow: 0px 4px 10px 0px var(--tm-tabs-shadow-color);
       border-radius: var(--tm-tabs-button-border-radius);
       background: var(--tm-tabs-active-color);
     }
@@ -91,6 +102,9 @@
   &.tm-tabs--small {
     .tm-tabs__pane {
       line-height: 26px;
+    }
+    .tm-tabs__pane.is-active {
+      font-size: var(--tm-tabs-font-size);
     }
   }
 }
