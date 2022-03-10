@@ -23,4 +23,12 @@
 
 <demo-code>./demo/cutterSingle.vue</demo-code>
 
+### 多张上传
+
+<demo-code>./demo/multipleImg.vue</demo-code>
+
+### 文件上传
+
+<demo-code>./demo/fileUpload.vue</demo-code>
+
 ### Props

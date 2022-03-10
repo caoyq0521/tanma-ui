@@ -1,55 +1,38 @@
 <template>
   <div class="tm-upload">
-    <el-upload
-      v-if="!isCut"
-      ref="elUpload"
-      class="upload-cover-image"
-      :headers="headers"
-      :action="action"
-      :accept="accept"
-      :show-file-list="false"
-      :data="data"
-      :before-upload="handleBeforeUpload"
-      :on-progress="handleProgress"
-      :on-success="handleSuccess"
-      :on-error="handleError"
-    >
-      <template v-if="1 < 0">
-        <slot name="test" />
-      </template>
-      <div v-else>
-        <!-- 图片单张上传 图片不剪切 -->
-        <div class="image-single" v-if="model === 'image' && single">
-          <div
-            class="image-single-uplaod"
-            :class="{'image-single-empty': !imageUrl, 'image-single-solid': imageUrl}"
-            >
-            <img
-              v-if="imageUrl"
-              :src="imageUrl"
-              alt
-            />
-            <div v-else>
-              <i class="iconfont icon-zhaopian"></i>
-              <p>上传图片</p>
-            </div>
-          </div>
+    <!-- 图片上传 -->
+    <div v-if="model === 'image'">
+      <template v-if="imageUrlList.length">
+        <div
+          v-for="(item, index) in imageUrlList"
+          :key="index"
+          class="send-image__item"
+        >
+          <img
+            :src="item"
+            alt=""
+            class="send-image__item-img"
+          >
         </div>
-      </div>
-    </el-upload>
-    <ImgCutter
-        v-else
-        label="裁剪本地图片"
-        isModal
-        :rate="rate"
-        :boxWidth="500"
-        :boxHeight="500"
-        originalGraph
-        tool
-        @cutDown="handleCutDown"
-        @type-error="handleTypeError"
+      </template>
+      <el-upload
+        v-if="!isCut"
+        ref="tmUpload"
+        :headers="headers"
+        :action="action"
+        :accept="accept"
+        :show-file-list="false"
+        :data="data"
+        :before-upload="handleBeforeUpload"
+        :on-progress="handleProgress"
+        :on-success="handleSuccess"
+        :on-error="handleError"
       >
-        <template #open>
+        <template v-if="1 < 0">
+          <slot name="test" />
+        </template>
+        <div v-else>
+          <!-- 图片单张上传 图片不剪切 -->
           <div class="image-single">
             <div
               class="image-single-uplaod"
@@ -66,9 +49,72 @@
               </div>
             </div>
           </div>
-        </template>
-    </ImgCutter>
-    <div v-if="isPreview" class="preview-button" @click="handlePreview(imageUrl)">预览</div>
+        </div>
+      </el-upload>
+      <ImgCutter
+          v-else
+          label="裁剪本地图片"
+          isModal
+          :rate="rate"
+          :boxWidth="500"
+          :boxHeight="500"
+          originalGraph
+          tool
+          @cutDown="handleCutDown"
+          @type-error="handleTypeError"
+        >
+          <template #open>
+            <div class="image-single">
+              <div
+                class="image-single-uplaod"
+                :class="{'image-single-empty': !imageUrl, 'image-single-solid': imageUrl}"
+                >
+                <img
+                  v-if="imageUrl"
+                  :src="imageUrl"
+                  alt
+                />
+                <div v-else>
+                  <i class="iconfont icon-zhaopian"></i>
+                  <p>上传图片</p>
+                </div>
+              </div>
+            </div>
+          </template>
+      </ImgCutter>
+      <div v-if="isPreview && limit === 1" class="preview-button" @click="handlePreview(imageUrl)">预览</div>
+    </div>
+    <!-- 文件上传 -->
+    <div v-else class="local-upload-drag-component">
+      <div
+        ref="tm-upload-dragger"
+        :class="['drag-content', { 'drag-actived': dragEnter }]"
+        :style="{ width: 350 + 'px', height: 219 + 'px' }"
+      >
+        <div class="file-list" v-if="fileList.length">
+          <div class="file-item" v-for="(file, index) in fileList" :key="index">
+            <!-- <hj-patter-file fileType="csv"></hj-patter-file> -->
+            <span class="file-name">
+              {{ file.name }}
+            </span>
+          </div>
+        </div>
+        <i v-else class="icon iconfont iconwenjian3"></i>
+        <div class="drag-text">
+          将img文件拖到此处，或
+          <label :for="id" class="download-btn">点击上传</label>
+        </div>
+      </div>
+
+      <input
+        @change="onFileChange"
+        v-show="false"
+        name="file"
+        type="file"
+        :id="id"
+        :accept="accept"
+      />
+    </div>
     <!-- 上传进度 -->
     <el-dialog
       title="上传"
@@ -78,7 +124,7 @@
       @closed="handleDialogClosed"
     >
       <div class="progress-info">
-        <el-progress :percentage="imgUploadPercent"></el-progress>
+        <el-progress :percentage="uploadPercent"></el-progress>
       </div>
     </el-dialog>
     <!-- 预览 -->
@@ -92,14 +138,19 @@
 
 <script>
   import Vue from 'vue';
+  import axios from 'axios';
   import ImgCutter from 'vue-img-cutter';
   import { Upload, Progress, Dialog, Message } from 'element-ui';
+  import { compress } from 'image-conversion';
 
   Vue.use(Upload);
   Vue.use(Progress);
   Vue.use(Dialog);
   Vue.use(Message);
   Vue.prototype.$message = Message;
+  import { dataURLtoBlob, fileToDataURL, base64ToBlob } from "../util/tools";
+  import { v4 as $uuid } from 'uuid';
+  const IMAGE_WIDTH = 1080;
 
   export default {
     name: "tmUpload",
@@ -107,12 +158,12 @@
       // 上传模式: file(文件上传)、image(图片上传)
       model: {
         type: String,
-        default: "file",
+        default: "image",
       },
-      // 是否单个上传
-      single: {
-        type: Boolean,
-        default: true
+      // 上传文件的数量，默认单个文件
+      limit: {
+        type: Number,
+        default: 1
       },
       // 是否开启预览
       isPreview: {
@@ -166,29 +217,21 @@
         imageUrl: '',
         // 预览的地址
         previewUrl: '',
+        // 多个文件上传
+        imageUrlList: [],
         imgFile: {},
         showProgress: false,
-        imgUploadPercent: 0,
+        // 上传进度
+        uploadPercent: 0,
         accept: "",
         // 是否显示预览弹框
-        previewShow: false
+        previewShow: false,
+        // 文件上传列表
+        fileList: [],
+        dragEnter: false,
+        id: 'fileInput'
       }
     },
-    // computed: {
-    //   checkModeIsSingle () {
-    //     return this.mode === "single";
-    //   },
-    //   setSingleTipsStyle () {
-    //     let style = {};
-    //     if (!this.imageUrl) {
-    //       style = {
-    //         opacity: 1,
-    //         zIndex: 1
-    //       };
-    //     }
-    //     return style;
-    //   }
-    // },
     watch: {
       model: {
         handler (newValue) {
@@ -196,35 +239,37 @@
           if (newValue === 'image') {
             this.accept = 'image/png, image/jpg, image/jpeg'
           }
-          console.log('newValue', newValue)
         },
         immediate: true
       }
-      // rate: {
-      //   deep: true,
-      //   handler (newValue) {
-      //     this.imageRate = newValue;
-      //   },
-      //   immediate: true
-      // }
+    },
+    created () {
+      // fix: 多个上传
+      const uuid = $uuid()
+      this.id += uuid
+    },
+    mounted () {
+      if (!this.$refs['tm-upload-dragger']) return
+      const dragger = this.$refs['tm-upload-dragger']
+      dragger.addEventListener('dragenter', this.onFileDragEnter, false)
+      dragger.addEventListener('dragleave', this.onFileDragLeave, false)
+      dragger.addEventListener('dragover', this.onFileDragover, false)
+      dragger.addEventListener('drop', this.onFileDrag, false)
+    },
+    beforeDestroy () {
+      if (!this.$refs['tm-upload-dragger']) return
+      const dragger = this.$refs['tm-upload-dragger']
+      dragger.removeEventListener('dragenter', this.onFileDragEnter, false)
+      dragger.removeEventListener('dragleave', this.onFileDragLeave, false)
+      dragger.removeEventListener('dragover', this.onFileDragover, false)
+      dragger.removeEventListener('drop', this.onFileDrag, false)
     },
     methods: {
+      // 剪切图片的上传
       handleCutDown (file) {
         const imgGs = file.dataURL.split(";")[0].split("/")[1];
-        const newFile = this.$tool.dataURLtoBlob(file.dataURL, "裁剪图片." + imgGs);
-        const formData = new FormData();
-        formData.append("corpid", this.$store.getters.corpid);
-        formData.append("file", newFile);
-        this.$axios.post(this.$serve.commonUpload, formData).then(res => {
-          const { code, message, data } = res.data;
-          if (code) this.$message(message, 'error');
-          else {
-            this.imageUrl = data.url;
-            // if (this.checkModeIsSingle) this.$emit("input", this.imageUrl);
-            // else this.$emit("change", this.imageUrl);
-            // this.$emit('rate-change', this.rate || this.handleRate(rate));
-          }
-        });
+        const newFile = dataURLtoBlob(file.dataURL, "裁剪图片." + imgGs);
+        this.customUpload(newFile)
       },
       // 预览接口, 暴露给外部
       handlePreview (url) {
@@ -233,6 +278,7 @@
         this.previewUrl = url
         this.previewShow = true
       },
+      // 剪切格式错误触发
       handleTypeError () {
         this.$message('该文件格式不支持！', 'error');
       },
@@ -257,14 +303,20 @@
         if (!limit) {
           this.$message.error(`上传的文件大小不能超过 ${this.size}MB!`);
         }
+
+        if (this.limit > 1 && flag) {
+          this.handleMoreImg(file)
+          return false
+        }
         if (includesAccept && flag) this.showProgress = true;
         return includesAccept && flag;
       },
+      // el-upload 上传进度触发
       handleProgress (event, file, fileList) {
-        console.log('handleProgress')
         this.imgFile = file;
-        this.imgUploadPercent = parseInt(file.percentage.toFixed(0), 10);
+        this.uploadPercent = parseInt(file.percentage.toFixed(0), 10);
       },
+      // el-upload 上传成功触发
       handleSuccess (res, file, fileList) {
         this.showProgress = false;
         if (res.code !== 0) {
@@ -273,35 +325,125 @@
         }
         this.imageUrl = res.data.url;
       },
+      // 多张图片的上传，图片会被压缩
+      async handleMoreImg(file) {
+        const dataURL = await fileToDataURL(file);
+        const { type, name } = file;
+        const img = new Image();
+        img.src = dataURL;
+        // 拿到图片的宽度
+        const { width } = await this.handleImageOnLoad(img);
+        console.log('width', width)
+        // 如果 > 1080p
+        if (width > IMAGE_WIDTH) {
+          // 压缩图片
+          const info = await compress(file, {
+            quality: 0.8,
+            type,
+            width: IMAGE_WIDTH
+          })
+          // blob转file
+          file = new File([info], name, { type, lastModified: Date.now() });
+        }
+        this.customUpload(file)
+      },
       // 上传失败的钩子
       handleError () {
-        console.log('handleError')
         this.showProgress = false;
+        this.uploadPercent = 0;
       },
+      // 关闭上传进度前触发: 停止上传
       handleDialogClose () {
         console.log('handleDialogClose')
+        // to do: 中止上传
         // this.$refs.elUpload.abort(this.imgFile);
       },
+      // 关闭上传进度后触发: 重置上传进度
       handleDialogClosed () {
-        console.log('handleDialogClosed')
-        // this.imgUploadPercent = 0;
+        this.uploadPercent = 0;
       },
-      // handleRate (rate) {
-      //   console.log('handleRate')
-      //   const [cWidth, cHeight] = rate.split(':');
-      //   const divisor = this.commonDivisor(cWidth, cHeight);
-      //   return `${cWidth / divisor}:${cHeight / divisor}`;
-      // },
-      // commonDivisor (num1, num2) {
-      //   console.log('commonDivisor')
-      //   if ((num1 - num2) < 0) {
-      //     [num1, num2] = [num2, num1];
-      //   }
-      //   while (num2) {
-      //     [num1, num2] = [num2, num1 % num2];
-      //   }
-      //   return num1;
-      // }
+      // 自定义方式上传
+      customUpload (file) {
+        const fileType = {
+          name: file.name,
+          type: file.type,
+          url: ''
+        }
+        this.showProgress = true;
+        let data = new FormData()
+        data.append('file', file)
+        data.append('corpid', 'ww9c5530210a0d5116')
+        axios({
+          method: 'post',
+          url: this.action,
+          headers: this.headers,
+          data
+        }).then(res => {
+          this.showProgress = false;
+          if (res.data.code !== 0) {
+            this.$message(res.message, "error");
+            return;
+          }
+          // 多个图片上传
+          if (this.limit > 1 && this.model === 'image') {
+            this.imageUrlList.push(res.data.data.url)
+            return
+          }
+          // 文件上传
+          if (this.model === 'file') {
+            fileType.url = res.data.data.url
+            this.fileList.push(fileType)
+            return
+          }
+          this.imageUrl = res.data.data.url;
+        }).finally(() => {
+          this.showProgress = false;
+        })
+      },
+      /**
+       * 处理图片下载拿到图片的宽高
+       * @param {Element} img 图片元素信息
+       * @param {Promise} resolve图片的宽和高
+       */
+      handleImageOnLoad (img) {
+        return new Promise((resolve, reject) => {
+          img.onload = () => {
+            resolve({
+              width: img.width,
+              height: img.height
+            });
+          }
+        });
+      },
+      // 文件上传
+      onFileChange (event) {
+        const file = event.target.files[0]
+        if (!file) return false
+        event.target.value = ''
+        if (this.handleBeforeUpload(file)) {
+          this.customUpload(file)
+        }
+      },
+      onFileDragEnter (e) {
+        e.preventDefault()
+        this.dragEnter = true
+      },
+      onFileDragLeave (e) {
+        this.dragEnter = false
+      },
+      onFileDragover (e) {
+        e.preventDefault()
+      },
+      // 文件拖拽进去触发
+      onFileDrag (e) {
+        e.preventDefault()
+        const file = e.dataTransfer.files[0]
+        this.dragEnter = false
+        if (!file) return
+        if (this.handleBeforeUpload(file)) {
+          this.customUpload(file)
+        }
+      }
     }
   }
 </script>

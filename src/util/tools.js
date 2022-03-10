@@ -200,7 +200,8 @@ export const dataURLtoBlob = (dataurl, name) => {
   const arr = dataurl.split(',');
   const mime = arr[0].match(/:(.*?);/)[1];
   const bstr = atob(arr[1]);
-  const n = bstr.length;
+  let n = bstr.length;
+
   const u8arr = new Uint8Array(n)
   while (n--) {
     u8arr[n] = bstr.charCodeAt(n)
@@ -387,3 +388,14 @@ typeMap.forEach(item => {
     return Object.prototype.toString.apply(obj) === '[object ' + item + ']';
   }
 })
+
+// 将文件读取成 Data URL
+export const fileToDataURL= obj => {
+  return new Promise((resolve, reject) => {
+    const a = new FileReader();
+    a.readAsDataURL(obj);
+    a.onload = function (e) {
+      resolve(e.target.result);
+    };
+  });
+}
