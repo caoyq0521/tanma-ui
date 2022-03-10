@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   plugins:[
     new CreateDirStructure({
-      name: 'dialog',
+      name: 'tagMore',
       path: resolve(__dirname, 'src')
     })
   ]

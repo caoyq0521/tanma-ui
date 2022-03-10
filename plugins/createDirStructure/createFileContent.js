@@ -7,6 +7,10 @@ function getUpperName(name) {
   });
 }
 
+function getCancelToLine(name) {
+  return name.replace(/([A-Z])/g,"-$1").toLowerCase();
+};
+
 function getComptTemplate(upperName) {
   const str =  `///js
   import Vue from 'vue';
@@ -122,12 +126,13 @@ function createDemoContent(name) {
 </template>`
 };
 
-function createFileContent(name) {
-  const upperName = getUpperName(name);
+function createFileContent(n) {
+  const upperName = getUpperName(n);
+  const name = getCancelToLine(n);
   const comptContent = createComptContent(name, upperName);
   const mdContent = createMDContent(name, upperName);
   const styleContent = createStyleContent(name);
-  const exportJsContent = createExportJsContent(name,  upperName);
+  const exportJsContent = createExportJsContent(n,  upperName);
   const varContent = createVarContent();
   const testSpecJsContent = createTestSpecJsContent(name, upperName);
   const demoContent = createDemoContent(name);
