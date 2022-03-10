@@ -37,7 +37,7 @@ export default {
       default: ''
     },
     // 类型
-    // 'text', 'underline', 'button'
+    // text / underline / button
     type: {
       type: String,
       default: 'underline',
@@ -51,7 +51,7 @@ export default {
       default: () => ([])
     },
     // 控制大小
-    // 'medium', 'small'
+    // medium / small
     size: {
       type: String,
       default: 'medium',
@@ -65,7 +65,7 @@ export default {
       default: false
     },
     // 标签在整行中的位置
-    // 'left', 'center', 'right'
+    // left / center / right
     placement: {
       type: String,
       default: 'left',
