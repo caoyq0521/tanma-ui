@@ -418,3 +418,25 @@ tamna-ui 中现有的公共方法介绍以及使用方式
   dataType.isObject({}) // true
   dataType.isRegExp(/www/) // true
 ```
+
+### isMobile
+
+#### 概述
+
+判断当前环境是不是移动设备
+
+#### 语法
+
+```javascript
+  isMobile()
+```
+
+#### 返回值
+
+是否是移动设备
+
+#### 示例
+
+```javascript
+  isMobile() // false
+```

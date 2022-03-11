@@ -387,3 +387,13 @@ typeMap.forEach(item => {
     return Object.prototype.toString.apply(obj) === '[object ' + item + ']';
   }
 })
+
+/**
+ * 是否是移动端 
+ * @returns {Boolean}
+ */
+export const isMobile = () => {
+  return !!navigator.userAgent.match(
+    /(iPhone|iPod|Android|iOS|iPad|Backerry|WebOS|Symbian|Windows Phone|Phone)/ig
+  );
+}
