@@ -20,10 +20,10 @@ module.exports = {
       {
         title: '开发指南',
         items: [
-          {
-            path: 'home',
-            title: '介绍',
-          },
+          // {
+          //   path: 'home',
+          //   title: '介绍',
+          // },
           {
             path: 'quickstart',
             title: '快速上手',
