@@ -41,7 +41,7 @@
 
 参数 | 说明 | 类型 | 可选值 | 默认值
 -- | -- | -- | -- | --
-easy | 简单模式 | _boolean_ | - | false
+mode | 简单模式 | _string_ | `normal` `easy` | normal
 pager-count | 页码按钮的数量，当总页数超过该值时会折叠 | _number_ | 大于等于 5 且小于等于 21 的奇数 | 7
 current-page | 当前页数，支持 .sync 修饰符 | _number_ | - | 1
 page-sizes | 每页显示个数选择器的选项设置 | _number[]_ | - | [20, 30, 40, 50, 100]
@@ -49,11 +49,20 @@ page-size | 每页显示条目个数，支持 .sync 修饰符 | _number_ | 必�
 total | 总条目数 | _number_ | - | -
 pager | 是否可调整每页显示条数 | _boolean_ | - | true
 
+### Events
+
+事件名称 | 说明 | 回调参数
+-- | -- | --
+size-change | pageSize | 改变时会触发 | 每页条数
+current-change | currentPage 改变时会触发 | 当前页
+prev-click | 用户点击上一页按钮改变当前页后触发 | 当前页
+next-click | 用户点击下一页按钮改变当前页后触发 | 当前页
+
 ### 样式变量
 
 #### Less 变量
 
-组件提供了下列 Less 变量，可用于自定义样式，使用方法请参考[定制主题](#/theme)。
+组件提供了下列 Less 变量，可用于自定义样式，使用方法请参考[定制主题 less](#/theme)。
 
 名称 | 默认值 | 描述
 -- | -- | --
@@ -67,7 +76,7 @@ pager | 是否可调整每页显示条数 | _boolean_ | - | true
 
 #### CSS 变量
 
-组件提供了下列 CSS 变量，可用于自定义样式
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[定制主题 css](#/theme2)。
 
 名称 | 默认值 | 描述
 -- | -- | --

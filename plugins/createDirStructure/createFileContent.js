@@ -7,6 +7,10 @@ function getUpperName(name) {
   });
 }
 
+function getCancelToLine(name) {
+  return name.replace(/([A-Z])/g,"-$1").toLowerCase();
+};
+
 function getComptTemplate(upperName) {
   const str =  `///js
   import Vue from 'vue';
@@ -50,7 +54,28 @@ ${comptTemplate}
 
 <demo-code>./demo/index.vue</demo-code>
 
-### Props`
+### Props
+
+### Events
+
+### Slots
+
+### 样式变量
+
+#### Less 变量
+
+组件提供了下列 Less 变量，可用于自定义样式，使用方法请参考[定制主题 less](#/theme)。
+
+名称 | 默认值 | 描述
+-- | -- | --
+
+#### Css 变量
+
+组件提供了下列 Css 变量，可用于自定义样式，使用方法请参考[定制主题 css](#/theme2)。
+
+名称 | 默认值 | 描述
+-- | -- | --
+`
 }
 
 function createStyleContent(name) {
@@ -88,7 +113,7 @@ import ${upperPrefix}${upperName} from '../${name}.vue';
 
 describe('tm${upperName}', () => {
   it('render ${name}', () => {
-    const wrapper = mount('Tm${upperName}');
+    const wrapper = mount(Tm${upperName});
     expect(wrapper).toMatchSnapshot();
   });
 })
@@ -101,12 +126,13 @@ function createDemoContent(name) {
 </template>`
 };
 
-function createFileContent(name) {
-  const upperName = getUpperName(name);
+function createFileContent(n) {
+  const upperName = getUpperName(n);
+  const name = getCancelToLine(n);
   const comptContent = createComptContent(name, upperName);
   const mdContent = createMDContent(name, upperName);
   const styleContent = createStyleContent(name);
-  const exportJsContent = createExportJsContent(name,  upperName);
+  const exportJsContent = createExportJsContent(n,  upperName);
   const varContent = createVarContent();
   const testSpecJsContent = createTestSpecJsContent(name, upperName);
   const demoContent = createDemoContent(name);

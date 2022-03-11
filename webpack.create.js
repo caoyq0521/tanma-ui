@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   plugins:[
     new CreateDirStructure({
-      name: 'optional-picker',
+      name: 'tagMore',
       path: resolve(__dirname, 'src')
     })
   ]

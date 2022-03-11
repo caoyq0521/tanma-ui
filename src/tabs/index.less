@@ -1,0 +1,110 @@
+@import '../style/var';
+@import './var';
+
+:root {
+  --tm-tabs-font-size: @tabs-font-size;
+  --tm-tabs-active-font-size: @tabs-active-font-size;
+  --tm-tabs-color: @tabs-color;
+  --tm-tabs-active-color: @tabs-active-color;
+  --tm-tabs-button-active-color: @tabs-button-active-color;
+  --tm-tabs-button-border-radius: @tabs-button-border-radius;
+  --tm-tabs-shadow-color: @tabs-shadow-color;
+}
+
+.tm-tabs {
+  width: 100%;
+
+  .tm-tabs-group {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    height: 100%;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &.is-left {
+      justify-content: flex-start;
+    }
+    &.is-center {
+      justify-content: center;
+    }
+    &.is-right {
+      justify-content: flex-end;
+    }
+  }
+
+  .tm-tabs__pane {
+    padding: 0;
+    margin-right: 30px;
+    font-size: var(--tm-tabs-font-size);
+    font-weight: @font-weight-normal;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    color: var(--tm-tabs-color);
+    white-space: nowrap;
+  }
+
+  &.tm-tabs--text {
+    .tm-tabs__pane {
+      line-height: 54px;
+    }
+    .tm-tabs__pane.is-active {
+      position: relative;
+      font-size: var(--tm-tabs-active-font-size);
+      color: var(--tm-tabs-active-color);
+      font-weight: @font-weight-bold;
+    }
+  }
+
+  &.tm-tabs--underline {
+    .tm-tabs__pane {
+      line-height: 54px;
+    }
+    .tm-tabs__pane.is-active {
+      position: relative;
+      font-size: var(--tm-tabs-active-font-size);
+      color: var(--tm-tabs-active-color);
+      font-weight: @font-weight-bold;
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 30px;
+        height: 3px;
+        border-radius: 5px;
+        background-color: var(--tm-tabs-active-color);
+      }
+    }
+  }
+
+  &.tm-tabs--button {
+    .tm-tabs__pane.is-active {
+      min-width: 116px;
+      padding: 0 @padding-sm;
+      font-weight: @font-weight-bold;
+      color: var(--tm-tabs-button-active-color);
+      border-radius: var(--tm-tabs-button-border-radius);
+      background: var(--tm-tabs-active-color);
+    }
+
+    .tm-tabs__pane.is-active.is-round {
+      border-radius: 20px;
+    }
+  }
+
+  &.tm-tabs--small {
+    .tm-tabs__pane {
+      line-height: 26px;
+    }
+    .tm-tabs__pane.is-active {
+      font-size: var(--tm-tabs-font-size);
+    }
+  }
+}

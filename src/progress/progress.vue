@@ -9,7 +9,7 @@
 <script>
 import Vue from 'vue';
 import { Progress } from 'element-ui';
-import { getRootCss } from "../util/getRootCss"
+import { getRootCss } from "../util/tools"
 Vue.use(Progress);
 
 export default {
