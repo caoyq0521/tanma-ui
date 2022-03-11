@@ -1,15 +1,5 @@
 <template>
-  <tm-tabs :options="options" placement="center">
-    <template #poster="{tab, index }">
-      {{ tab.key }} | {{ index }}
-    </template>
-    <template #left>
-      <span>设置</span>
-    </template>
-    <template #right>
-      <span>设置</span>
-    </template>
-  </tm-tabs>
+  <tm-tabs v-model="currentKey" :options="options" type="text" />
 </template>
 <script>
 export default {
@@ -28,7 +18,8 @@ export default {
           key: 'form',
           title: '表单'
         }
-      ]
+      ],
+      currentKey: 'poster'
     }
   }
 }

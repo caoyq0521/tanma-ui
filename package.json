@@ -76,5 +76,7 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "unpkg": "lib/tanma-ui.min.js",
+  "jsdelivr": "lib/tanma-ui.min.js"
 }
