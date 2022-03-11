@@ -1,5 +1,8 @@
 # tabs
 
+<demo-code>./demo/pagination.vue</demo-code>
+
+
 ### 介绍
 
 页面标签组件，可切换多种样式。
