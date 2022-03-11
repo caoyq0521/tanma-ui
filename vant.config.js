@@ -51,7 +51,7 @@ module.exports = {
           },
           {
             path: 'tip',
-            title: 'tip 文字提示',
+            title: 'Tip 文字提示',
           },
           {
             path: 'avatar',
@@ -71,7 +71,7 @@ module.exports = {
           },
           {
             path: 'collapse-text',
-            title: 'collapseText 折叠文本'
+            title: 'CollapseText 折叠文本'
           },
           {
             path: 'tag',
@@ -79,11 +79,11 @@ module.exports = {
           },
           {
             path: 'tag-pro',
-            title: 'Tag pro 标签'
+            title: 'TagPro 标签'
           },
           {
             path: 'tag-more',
-            title: 'Tag more 按钮'
+            title: 'TagMore 按钮'
           },
           {
             path: 'dialog',
