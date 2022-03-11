@@ -65,10 +65,10 @@ module.exports = {
             path: 'button',
             title: 'Button 按钮',
           },
-          {
-            path: 'button-tabs',
-            title: 'ButtonTabs 标签按钮',
-          },
+          // {
+          //   path: 'button-tabs',
+          //   title: 'ButtonTabs 标签按钮',
+          // },
           {
             path: 'tabs',
             title: 'Tabs 标签页',
