@@ -19,7 +19,7 @@
       </div>
       <!-- 描述 -->
       <template v-if="!hideDescription">
-        <div class="info-description" :title="titleInfo" v-if="description || $slots.description">
+        <div class="info-description" :title="descriptionInfo" v-if="description || $slots.description">
           <slot name="description">
             <i class="iconfont wechat-icon icon-wechat" v-if="!hideWechatIcon"></i>
             <span class="tm-ellipsis">{{ description }}</span>
@@ -38,6 +38,8 @@
 <script>
 import Avatar from "../avatar";
 import Tip from "../tip";
+
+const IconTypeEnum = ['image', 'person', 'company', 'group'];
 
 export default {
   name: "tmAvatarCard",
@@ -64,7 +66,7 @@ export default {
     // 用户昵称
     title: {
       type: String,
-      default: "我是标题"
+      default: "",
     },
     // 提示信息
     tip: {
@@ -95,13 +97,21 @@ export default {
     // `image` `person` `company` `group`
     iconType: {
       type: String,
-      default: "person"
+      default: "person",
+      validator: (value) => {
+        return IconTypeEnum.includes(value);
+      }
     }
   },
   computed: {
+    isPersonType() {
+      return (this.iconType || 'person') === 'person';
+    },
     titleInfo() {
-      const isPerson = (this.iconType || 'person') === 'person';
-      return isPerson ? undefined : this.info;
+      return this.isPersonType ? undefined : this.title;
+    },
+    descriptionInfo() {
+      return this.isPersonType ? undefined : this.description;
     }
   }
 }

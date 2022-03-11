@@ -7,7 +7,7 @@ describe('tmSearch', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('test placeholder', () => {
+  it('placeholder', () => {
     const wrapper = mount(TmSearch, {
       propsData: {
         placeholder: '测试占位符内容',
@@ -16,7 +16,7 @@ describe('tmSearch', () => {
     expect(wrapper.find('.tm-search input').placeholder).toBe('测试占位符内容');
   });
 
-  it('test maxlength', () => {
+  it('maxlength', () => {
     const wrapper = mount(TmSearch, {
       propsData: {
         maxlength: 10,
@@ -27,7 +27,7 @@ describe('tmSearch', () => {
   });
 
   // 值为空显示
-  it('test showIcon noValue', () => {
+  it('showIcon noValue', () => {
     const wrapper = mount(TmSearch, {
       propsData: {
         value: '',
@@ -37,7 +37,7 @@ describe('tmSearch', () => {
   });
 
   // 有值则显示
-  it('test showIcon hasValue', () => {
+  it('showIcon hasValue', () => {
     const wrapper = mount(TmSearch, {
       propsData: {
         value: '',
@@ -47,7 +47,7 @@ describe('tmSearch', () => {
   });
 
   // 不允许输入特殊字符
-  it('test allowSpecialChar notAllow', () => {
+  it('allowSpecialChar notAllow', () => {
     const wrapper = mount(TmSearch, {
       propsData: {
         allowSpecialChar: false,
