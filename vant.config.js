@@ -105,6 +105,10 @@ module.exports = {
             path: 'date-range',
             title: 'DateRange 日期范围',
           },
+          {
+            path: 'optional-picker',
+            title: 'OptionalPicker 日周月选择器'
+          }
         ],
       },
       {
