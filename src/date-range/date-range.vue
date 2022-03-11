@@ -25,7 +25,7 @@ import {DatePicker} from "element-ui"
 Vue.use(DatePicker);
 
 import dayjs from 'dayjs';
-import {isMobile} from '../util/tools';
+import {isMobile} from '../util';
 
 // 快捷选项函数配置
 function ShortcutOptions () {
@@ -174,7 +174,8 @@ export default {
     if(!this.hideShortcuts) this.pickerOptions.shortcuts = this.shortcuts;
     this.pickerOptions.disabledDate = (time) => {
       if (this.dateRange) {
-        const flag = time.getTime() > Date.now() || time.getTime() < Date.now() - this.dateRange * 24 * 60 * 60 * 1000;
+        // const flag = time.getTime() > Date.now() || time.getTime() < Date.now() - this.dateRange * 24 * 60 * 60 * 1000;
+        const flag = time.getTime() > Date.now() - 8.64e6;
         return flag
       } else {
         return false;
