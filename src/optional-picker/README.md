@@ -36,3 +36,26 @@ mode | 可选择模式 | _string \|  array_ | `day` `week` `month` `['day','week
 事件名称 | 说明 | 回调参数
 -- | -- | -- |
 change | 时间值改变时触发 | _{ \_type: string, startDate: string, endDate: string }_ |
+
+### 样式变量
+
+#### Less 变量
+
+组件提供了下列 Less 变量，可用于自定义样式，使用方法请参考[定制主题](#/theme)。
+名称 | 默认值 | 描述
+-- | -- | --
+@type-border-color | var(--tm-gray-3) `#D7D7D7` | 时间类型选择tab的boder颜色
+@type-item-active-color | var(--tm-white) `#fff` | 选中时间类型的文字颜色
+@type-item-active-background | var(--main-color) `#3470ff` | 选中时间类型的背景颜色
+@type-item-active-shadow | rgba(var(--main-color-r), var(--main-color-g), var(--main-color-b), 0.5) | 选中时间类型的阴影颜色
+
+#### CSS 变量
+
+组件提供了下列 CSS 变量，可用于自定义样式
+
+名称 | 默认值 | 描述
+-- | -- | --
+ --tm-optional-picker-type-border-color | var(--tm-gray-3) `#D7D7D7` | 时间类型选择tab的boder颜色
+--tm-optional-picker-type-active-color | var(--tm-white) `#fff` | 选中时间类型的文字颜色
+--tm-optional-picker-type-active-background | var(--main-color) `#3470ff` | 选中时间类型的背景颜色
+--tm-optional-picker-type-active-shadow | rgba(var(--main-color-r), var(--main-color-g), var(--main-color-b), 0.5) | 选中时间类型的阴影颜色

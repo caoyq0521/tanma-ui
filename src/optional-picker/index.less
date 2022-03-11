@@ -2,95 +2,56 @@
 @import './var';
   
 :root {
-
+  --tm-optional-picker-type-border-color: @type-border-color;
+  --tm-optional-picker-type-active-color: @type-item-active-color;
+  --tm-optional-picker-type-active-background: @type-item-active-background;
+  --tm-optional-picker-type-active-shadow: @type-item-active-shadow;
 }
 
-.tm-optional-picker {
-  .query-date-item {
+
+.tm-optional-picker { 
+  display: flex;
+  flex-wrap: nowrap;
+  &-types {
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 5px 0;
     margin-right: 10px;
-    border: 1px solid #dcdfe6;
+    border: 1px solid var(--tm-optional-picker-type-border-color);
     border-radius: 4px;
     cursor: pointer;
-    .date-item{
+    .type-item{
       width: 45px;
-    }
-    > div {
       position: relative;
       flex-grow: 1;
       text-align: center;
       &:not(:last-child) {
-        border-right: 1px solid #dcdfe6;
+        border-right: 1px solid  var(--tm-optional-picker-type-border-color);
       }
-    }
-    .active-date-item {
-      color: #ffffff;
-      .active {
+      .type-item__active {
+        color: var(--tm-optional-picker-type-active-color);
         position: absolute;
         top: -10px;
         left: 0;
         width: 46px;
         line-height: 44px;
-        background: rgba(52, 112, 255, 1);
-        box-shadow: 0px 4px 10px 0px rgba(52, 112, 255, 0.5);
+        background: var(--tm-optional-picker-type-active-background);
+        box-shadow: 0px 4px 10px 0px var(--tm-optional-picker-type-active-shadow);
         border-radius: 5px;
       }
     }
   }
   
-  .query-date-range-item {
+  &-range{
     z-index: 1;
     .week-range {
       display: flex;
       align-items: center;
-  
       /deep/.el-date-editor {
         width: 170px;
         margin: 0 5px;
       }
     }
-  }
-  
-  .tag {
-    width: 100%;
-    margin-top: 20px;
-  
-    .tag-item {
-      display: flex;
-      align-items: center;
-      &:not(:last-child) {
-        margin-right: 18px;
-      }
-      span:first-child {
-        width: 15px;
-        height: 11px;
-        margin-right: 6px;
-      }
-    }
-    .cancel {
-      color: #b2b4c7;
-    }
-  }
-   .department-select {
-          /deep/.el-select-dropdown{
-            min-height: 270px;
-            .el-select-dropdown__item{
-              height: 100%;
-              padding: 0;
-            }
-          }
-        }
-}
-
-.query-block {
-  display: flex;
-  flex-wrap: nowrap;
-  > div {
-    display: flex;
-  }
-  .search > div:not(:last-child) {
-    margin-right: 10px;
   }
 }

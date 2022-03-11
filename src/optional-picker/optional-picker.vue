@@ -1,21 +1,20 @@
 <template>
-  <div class="tm-optional-picker query-block">
-    <div class="query-item query-date-item" v-if="selectDateList.length > 1">
+  <div class="tm-optional-picker">
+    <div class="tm-optional-picker-types" v-if="selectDateList.length > 1">
       <template v-for="item in selectDateList">
         <div
           :key="item.type"
-          class="date-item"
-          :class="{'active-date-item': selectDateMode === item.type}"
+          class="type-item"
           @click="selectDate(item.type)"
         >
           <span>{{ item.name }}</span>
-          <div v-if="selectDateMode === item.type" class="active">
+          <div v-if="selectDateMode === item.type" class="type-item__active">
             {{ item.name }}
           </div>
         </div>
       </template>
     </div>
-    <div class="query-item query-date-range-item">
+    <div class="tm-optional-picker-range">
       <el-date-picker
         v-if="['day', 'month'].includes(selectDateMode)"
         v-model="currentDate"
@@ -47,7 +46,6 @@
         </el-date-picker>
         ~
         <el-date-picker
-          ref="weekPicker"
           v-model="currentDate[1]"
           :clearable="false"
           type="week"
@@ -60,7 +58,6 @@
         </el-date-picker>
       </div>
     </div>
-    <slot></slot>
   </div>
 </template>
 
