@@ -62,6 +62,10 @@ module.exports = {
             title: 'Button 按钮',
           },
           {
+            path: 'button-tabs',
+            title: 'ButtonTabs 标签按钮',
+          },
+          {
             path: 'tabs',
             title: 'tabs 标签页',
           },
@@ -105,7 +109,7 @@ module.exports = {
           {
             path: 'avatar-card',
             title: 'AvatarCard 头像卡片',
-          },
+          }
         ]
       },
       {

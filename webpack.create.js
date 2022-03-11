@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   plugins:[
     new CreateDirStructure({
-      name: 'dialog',
+      name: 'button-tabs',
       path: resolve(__dirname, 'src')
     })
   ]
