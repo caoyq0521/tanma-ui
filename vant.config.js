@@ -5,7 +5,8 @@ module.exports = {
       preprocessor: 'less',
     },
     site: {
-      publicPath: './',
+      publicPath: './', // 部署到本地
+      // publicPath: '/tanma-ui/' // 部署到github
     },
     namedExport: true,
   },

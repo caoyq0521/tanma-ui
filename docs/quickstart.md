@@ -11,7 +11,7 @@
 在现有项目中使用 tanma-ui 时，可以通过 `npm` 或 `yarn` 进行安装：
 
 ```bash
-npm i tanm-ui -S
+npm i tanma-ui -S
 ```
 
 ## 使用
@@ -111,7 +111,8 @@ import {
   Dialog,
   Search,
   DateRange,
-  AvatarCard
+  AvatarCard,
+  OptionalPicker
 } from 'tanma-ui';
   
 Vue.use(Pagination);
@@ -129,5 +130,6 @@ Vue.use(Dialog);
 Vue.use(Search);
 Vue.use(DateRange);
 Vue.use(AvatarCard);
+Vue.use(OptionalPicker);
 ```
 > 注：Vue.use(Dialog)会同时绑定Vue.prototype.$tmDialog方法，具体使用方式请查看[Dialog](#/dialog#shi-li-hua-shi-yong-fang-fa)。
