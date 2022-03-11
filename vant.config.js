@@ -5,7 +5,7 @@ module.exports = {
       preprocessor: 'less',
     },
     site: {
-      publicPath: '/tanma-ui/',
+      publicPath: './',
     },
     namedExport: true,
   },
