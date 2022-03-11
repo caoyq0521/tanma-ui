@@ -2,17 +2,18 @@
   <div class="tm-date-range">
     <el-date-picker
       v-model="currentValue"
+      :align="align"
       :type="type"
       :clearable="clearable"
       :size="size"
-      @focus="handleFocus"
-      @change="handleChange"
       :value-format="valueFormat || defaultValFormat"
       :default-time="defaultTime"
       :picker-options="pickerOptions"
       :range-separator="rangeSeparator"
       :end-placeholder="endPlaceholder"
       :start-placeholder="startPlaceholder"
+      @focus="handleFocus"
+      @change="handleChange"
       >
     </el-date-picker>
   </div>
@@ -24,6 +25,7 @@ import {DatePicker} from "element-ui"
 Vue.use(DatePicker);
 
 import dayjs from 'dayjs';
+import {isMobile} from '../util/tools';
 
 // 快捷选项函数配置
 function ShortcutOptions () {
@@ -151,7 +153,8 @@ export default {
   data() {
     return {
       pickerOptions: {},
-      currentValue: []
+      currentValue: [],
+      align: isMobile() ? 'right' : 'left'
     }
   },
   computed: {
@@ -176,9 +179,11 @@ export default {
       } else {
         return false;
       }
-    }
+    };
+    
   },
   methods: {
+    // Event
     handleFocus() {
       this.$emit('focus')
     },

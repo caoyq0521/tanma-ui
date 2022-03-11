@@ -1,6 +1,10 @@
 <template>
   <div>
+    <tm-title title="button类型" class="tabs-demo__title" />
     <tm-tabs :options="options" type="button" size="small" round />
+    <br>
+    <tm-title title="text类型" class="tabs-demo__title" />
+    <tm-tabs :options="options" type="text" size="small" />
   </div>
 </template>
 <script>
@@ -25,3 +29,8 @@ export default {
   }
 }
 </script>
+<style lang="less" scoped>
+.tabs-demo__title {
+  margin-bottom: 10px;
+}
+</style>

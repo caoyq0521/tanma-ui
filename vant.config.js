@@ -30,7 +30,11 @@ module.exports = {
           },
           {
             path: 'theme',
-            title: '定制主题',
+            title: '定制主题 less',
+          },
+          {
+            path: 'theme2',
+            title: '定制主题 css',
           },
         ],
       },
@@ -67,7 +71,7 @@ module.exports = {
           },
           {
             path: 'tabs',
-            title: 'tabs 标签页',
+            title: 'Tabs 标签页',
           },
           {
             path: 'collapse-text',
@@ -80,6 +84,10 @@ module.exports = {
           {
             path: 'tag-pro',
             title: 'Tag pro 标签'
+          },
+          {
+            path: 'tag-more',
+            title: 'Tag more 按钮'
           },
           {
             path: 'dialog',
