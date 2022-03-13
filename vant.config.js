@@ -87,8 +87,8 @@ module.exports = {
             title: 'TagPro 标签'
           },
           {
-            path: 'tag-more',
-            title: 'TagMore 按钮'
+            path: 'tag-group',
+            title: 'TagGroup 标签组'
           },
           {
             path: 'dialog',

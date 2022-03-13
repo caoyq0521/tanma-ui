@@ -107,7 +107,7 @@ import {
   CollapseText,
   Tag,
   TagPro,
-  TagMore,
+  TagGroup,
   Dialog,
   Search,
   DateRange,
@@ -125,7 +125,7 @@ Vue.use(Tabs);
 Vue.use(CollapseText);
 Vue.use(Tag);
 Vue.use(TagPro);
-Vue.use(TagMore);
+Vue.use(TagGroup);
 Vue.use(Dialog);
 Vue.use(Search);
 Vue.use(DateRange);
