@@ -25,6 +25,6 @@ export default {
 </script>
 <style lang="less" scoped>
 .tm-tabs--pagination {
-  // width: 500px;
+  width: 800px;
 }
 </style>

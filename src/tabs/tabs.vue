@@ -7,12 +7,14 @@
     <span
       v-if="showPaginationBtn"
       class="iconfont icon-zuojiantou icon-prev"
+      :class="{'is-disabled': isPrevDisabled}"
       @click="handlePrev"
     ></span>
-    <div ref="tabsGroup" class="tm-tabs-group" :class="[`is-${placement}`]">
+    <div ref="tabsGroup" class="tm-tabs-group">
       <div
         ref="tabsContent"
         class="tm-tabs-group__content"
+        :class="[`is-${placement}`]"
         :style="{ transform: `translateX(${translateX}px)` }"
       >
         <div
@@ -35,6 +37,7 @@
     <span
       v-if="showPaginationBtn"
       class="iconfont icon-youjiantou icon-next"
+      :class="{'is-disabled': isNextDisabled}"
       @click="handleNext"
     ></span>
     <slot name="right"></slot>
@@ -95,6 +98,14 @@ export default {
       translateX: 0
     }
   },
+  computed: {
+    isPrevDisabled () {
+      return this.translateX === 0;
+    },
+    isNextDisabled () {
+      return this.translateX === -(this.contentWidth - this.groupWidth);
+    }
+  },
   created () {
     if (!this.currentKey) {
       const first = this.options[0];
@@ -103,20 +114,29 @@ export default {
   },
   mounted () {
     this.initEle();
+    window.addEventListener('resize', this.initEle);
+  },
+  beforeDestroy () {
+    window.removeEventListener('resize', this.initEle);
   },
   methods: {
     initEle () {
       const group = this.$refs.tabsGroup;
       const content = this.$refs.tabsContent;
-      if (content.clientWidth > group.clientWidth) {
-        this.showPaginationBtn = true;
-        this.scrollIntoView();
-      } else {
-        this.showPaginationBtn = false;
-      }
-      window.addEventListener('resize', () => {
-        this.scrollIntoView();
-      })
+      if (!group || !content) return;
+      this.timer && clearTimeout(this.timer);
+      this.timer = setTimeout(() => {
+        this.groupWidth = group.clientWidth;
+        this.contentWidth = content.clientWidth;
+        if (this.contentWidth > this.groupWidth) {
+          this.showPaginationBtn = true;
+          // 减去两边按钮的宽度
+          this.groupWidth -= 40 * 2;
+          this.scrollIntoView();
+        } else {
+          this.showPaginationBtn = false;
+        }
+      }, 30);
     },
     setCurrentKey (key) {
       this.currentKey = key;
@@ -128,37 +148,30 @@ export default {
       this.scrollIntoView();
     },
     scrollIntoView () {
-      const group = this.$refs.tabsGroup;
-      const content = this.$refs.tabsContent;
       const currentKey = this.currentKey;
       const index = this.options.findIndex((tab) => tab.key === currentKey);
       if (index < 0) return;
       this.$nextTick(() => {
         const items = this.$refs.items;
         const currentItem = items[index];
-        const move = (currentItem.offsetLeft - group.clientWidth / 2 + currentItem.offsetWidth / 2)
-        this.translateX =  move < 0 ? 0 : move > (content.clientWidth - group.clientWidth) ? (-content.clientWidth + group.clientWidth) : -move;
+        const move = (currentItem.offsetLeft - this.groupWidth / 2 + currentItem.offsetWidth / 2);
+        this.translateX =  move < 0 ? 0 : move > (this.contentWidth - this.groupWidth) ? (-this.contentWidth + this.groupWidth) : -move;
       })
     },
     handlePrev () {
-      const group = this.$refs.tabsGroup;
-      let move = this.translateX + group.clientWidth;
+      let move = this.translateX + this.groupWidth;
       if (move > 0) {
         move = 0;
       }
       this.translateX = move;
     },
     handleNext () {
-      const group = this.$refs.tabsGroup;
-      const content = this.$refs.tabsContent;
-      let move = this.translateX - group.clientWidth;
-      if (Math.abs(move) > content.clientWidth - group.clientWidth) {
-        move = -content.clientWidth + group.clientWidth;
+      let move = this.translateX - this.groupWidth;
+      const max = this.contentWidth - this.groupWidth;
+      if (move < -max) {
+        move = -max;
       }
       this.translateX = move;
-    },
-    onResize () {
-
     }
   }
 }

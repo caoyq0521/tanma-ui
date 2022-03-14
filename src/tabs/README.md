@@ -1,8 +1,5 @@
 # tabs
 
-<demo-code>./demo/pagination.vue</demo-code>
-
-
 ### 介绍
 
 页面标签组件，可切换多种样式。
@@ -46,6 +43,11 @@
 
 可使用 ``left`` 和 ``right`` 插槽插入自定义内容。也可以通过name为标签key值的插槽自定义某个标签的内容。
 <demo-code>./demo/slot.vue</demo-code>
+
+### 分页
+
+当标签过多时，会自动在两边添加翻页按钮。且当前选中的tab会自动居中显示。
+<demo-code>./demo/pagination.vue</demo-code>
 
 
 ### Props

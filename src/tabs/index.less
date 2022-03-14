@@ -48,12 +48,21 @@
     margin: 0 10px;
     padding: 0 4px;
     font-size: 12px;
-    color: #d7d7d7;
+    color: #000;
     border-radius: 3px;
     cursor: pointer;
 
     &:hover {
       background: #f9f9f9;
+    }
+
+    &.is-disabled {
+      color: #d7d7d7;
+      pointer-events: none;
+      &:hover {
+        background: none;
+        cursor: auto;
+      }
     }
   }
 
