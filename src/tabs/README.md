@@ -36,8 +36,8 @@
 
 ### 标签位置
 
-可以通过 ``placement`` 设置标签在整行中的位置。
-<demo-code>./demo/placement.vue</demo-code>
+可以通过 ``position`` 设置标签在整行中的位置。
+<demo-code>./demo/position.vue</demo-code>
 
 ### 插槽
 
@@ -59,7 +59,7 @@ type | 样式类型 | _string_ | underline / button | underline
 options | 标签选项列表，每项必须包含 key 和 title | _array_ | - | []
 size | 控制标签高度 | _string_ | medium / small | medium
 round | 选中的标签是否圆角，仅按钮类型有效 | _boolean_ | - | false
-placement | 控制标签在整行中的位置 | _string_ | left / center / right | left
+position | 控制标签在整行中的位置 | _string_ | left / center / right | left
 
 ### Slot
 

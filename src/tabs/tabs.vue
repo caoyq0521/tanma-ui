@@ -14,7 +14,7 @@
       <div
         ref="tabsContent"
         class="tm-tabs-group__content"
-        :class="[`is-${placement}`]"
+        :class="[`is-${position}`]"
         :style="{ transform: `translateX(${translateX}px)` }"
       >
         <div
@@ -83,7 +83,7 @@ export default {
     },
     // 标签在整行中的位置
     // left / center / right
-    placement: {
+    position: {
       type: String,
       default: 'left',
       validator (value) {
