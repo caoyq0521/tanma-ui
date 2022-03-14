@@ -113,6 +113,10 @@ module.exports = {
           {
             path: 'optional-picker',
             title: 'OptionalPicker 日周月选择器'
+          },
+          {
+            path: 'v-title',
+            title: 'vTitle 提示'
           }
         ],
       },

@@ -65,7 +65,7 @@ close | 关闭 Tag 时触发的事件 | _type: string, info: object_
 
 名称 | 说明
 -- | --
-deptL | 部门标签左侧内容
-deptR | 部门标签右侧内容
-employeeL | 个人标签左侧内容
-employeeR | 个人标签右侧内容
+deptL | 部门标签左侧内容，参数为 { info }
+deptR | 部门标签右侧内容，参数为 { info }
+employeeL | 个人标签左侧内容，参数为 { info }
+employeeR | 个人标签右侧内容，参数为 { info }

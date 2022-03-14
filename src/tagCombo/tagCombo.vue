@@ -6,7 +6,7 @@
         type="department"
         :name="setName(item)"
         :closable="closable"
-        v-title="setTip(item)"
+        :limit="nameLimit"
         @close="handleClose('dept', item)"
         @click="handleClick('dept', item)"
       >
@@ -19,7 +19,7 @@
         type="employee"
         :name="setName(item)"
         :closable="closable"
-        v-title="setTip(item)"
+        :limit="nameLimit"
         @close="handleClose('employee', item)"
         @click="handleClick('employee', item)"
       >
@@ -33,7 +33,7 @@
           type="department"
           :name="setName(item)"
           :closable="closable"
-          v-title="setTip(item)"
+          :limit="nameLimit"
           @close="handleClose('dept', item)"
           @click="handleClick('dept', item)"
         >
@@ -46,7 +46,7 @@
           type="employee"
           :name="setName(item)"
           :closable="closable"
-          v-title="setTip(item)"
+          :limit="nameLimit"
           @close="handleClose('employee', item)"
           @click="handleClick('employee', item)"
         >
@@ -116,23 +116,10 @@
         return this.salesList;
       },
     },
-    mounted () {
-      console.log(this);
-    },
     methods: {
       setName(info) {
-        const { props: { name }, nameLimit } = this;
-        const internalName = info[name];
-        const { length } = internalName;
-        if (length > nameLimit) return `${internalName.slice(0, nameLimit)}...`;
-        return internalName;
-      },
-      setTip(info) {
-        const { props: { name }, nameLimit } = this;
-        const internalName = info[name];
-        const { length } = internalName;
-        if(length > nameLimit) return internalName;
-        return null;
+        const { name } = this.props;
+        return info[name];
       },
       handleClick(type, info) {
         this.$emit('click', type, info);
