@@ -8,7 +8,7 @@
   >
     {{ item.label }}
   </tm-tag>
-  <tm-tag-more>
+  <tm-tag-group>
     <tm-tag
       v-for="item in items"
       :key="item.label"
@@ -17,7 +17,7 @@
     >
       {{ item.label }}
     </tm-tag>
-  </tm-tag-more>
+  </tm-tag-group>
 </div>
 </template>
 <script>

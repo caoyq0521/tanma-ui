@@ -107,12 +107,14 @@ import {
   CollapseText,
   Tag,
   TagPro,
-  TagMore,
+  TagGroup,
   Dialog,
   Search,
   DateRange,
   AvatarCard,
-  OptionalPicker
+  OptionalPicker,
+  TagCombo,
+  vTitle
 } from 'tanma-ui';
   
 Vue.use(Pagination);
@@ -125,11 +127,13 @@ Vue.use(Tabs);
 Vue.use(CollapseText);
 Vue.use(Tag);
 Vue.use(TagPro);
-Vue.use(TagMore);
+Vue.use(TagGroup);
 Vue.use(Dialog);
 Vue.use(Search);
 Vue.use(DateRange);
 Vue.use(AvatarCard);
 Vue.use(OptionalPicker);
+Vue.use(TagCombo);
+Vue.use(vTitle);
 ```
 > 注：Vue.use(Dialog)会同时绑定Vue.prototype.$tmDialog方法，具体使用方式请查看[Dialog](#/dialog#shi-li-hua-shi-yong-fang-fa)。

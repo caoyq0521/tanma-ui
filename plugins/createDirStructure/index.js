@@ -17,25 +17,27 @@ class CreateDirStructure {
     const { name, halfPath } = this;
     const { comptContent, mdContent, exportJsContent, styleContent, varContent, testSpecJsContent, demoContent } = createFileContent(name);
 
-    var stat = statSync(halfPath);
-    if(stat.isDirectory()) {
-      console.log('\x1B[31m%s\x1B[0m', '文件夹已存在');
-      return;
+    try {
+      var stat = statSync(halfPath);
+      if(stat.isDirectory()) {
+        console.log('\x1B[31m%s\x1B[0m', '文件夹已存在');
+        return;
+      }
+    } catch (error) {
+      mkdirSync(halfPath, () => {});
+      writeFileSync(`${halfPath}/${name}.vue`, comptContent);
+      writeFileSync(`${halfPath}/README.md`, mdContent);
+      writeFileSync(`${halfPath}/index.js`, exportJsContent);
+      writeFileSync(`${halfPath}/index.less`, styleContent);
+      writeFileSync(`${halfPath}/var.less`, varContent);
+  
+      mkdirSync(`${halfPath}/test`);
+      writeFileSync(`${halfPath}/test/index.spec.js`, testSpecJsContent);
+  
+      mkdirSync(`${halfPath}/demo`);
+      writeFileSync(`${halfPath}/demo/index.vue`, demoContent);
+      console.log('\x1B[34m%s\x1B[0m', '写入成功');
     }
-
-    mkdirSync(halfPath, () => {});
-    writeFileSync(`${halfPath}/${name}.vue`, comptContent);
-    writeFileSync(`${halfPath}/README.md`, mdContent);
-    writeFileSync(`${halfPath}/index.js`, exportJsContent);
-    writeFileSync(`${halfPath}/index.less`, styleContent);
-    writeFileSync(`${halfPath}/var.less`, varContent);
-
-    mkdirSync(`${halfPath}/test`);
-    writeFileSync(`${halfPath}/test/index.spec.js`, testSpecJsContent);
-
-    mkdirSync(`${halfPath}/demo`);
-    writeFileSync(`${halfPath}/demo/index.vue`, demoContent);
-    console.log('\x1B[34m%s\x1B[0m', '写入成功');
   }
 }
 
