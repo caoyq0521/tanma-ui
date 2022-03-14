@@ -1,20 +1,139 @@
-# 介绍
+# 快速上手
 
-### 关于
+### 介绍
 
-这是一段组件库的介绍
+通过本章节你可以了解到 tanma-ui 的安装方法和基本使用姿势。
 
-### 特性
+## 安装
 
-- 特性一
-- 特性二
-- 特性三
+### 通过 npm 安装
 
+在现有项目中使用 tanma-ui 时，可以通过 `npm` 或 `yarn` 进行安装：
 
-### 核心团队
+```bash
+npm i tanma-ui -S
+```
 
-以下是 tanma-ui 的核心贡献者们：
+## 使用
 
-| [![ajaxlinux1234](https://avatars.githubusercontent.com/u/23737647?s=64&v=4)](https://github.com/ajaxlinux1234/) | [![dulaibin315](https://avatars.githubusercontent.com/u/53853946?s=64&v=4)](https://github.com/dulaibin315/) | [![caoyq0521](https://avatars.githubusercontent.com/u/24285758?s=40&v=4)](https://github.com/caoyq0521/) | [![Gecko525](https://avatars.githubusercontent.com/u/25584628?s=64&v=4)](https://github.com/Gecko525/) | [![jocelyn-wei](https://avatars.githubusercontent.com/u/5961240?s=80&v=4)](https://github.com/jocelyn-wei/) | [![乔路非](https://avatars.githubusercontent.com/u/43025511?s=64&v=4)](https://github.com/qiaolufei/) | [![resume](https://avatars.githubusercontent.com/u/40817712?s=64&v=4)](https://github.com/wwg9311/) | [![yuanyongjie](https://avatars.githubusercontent.com/u/85380804?s=64&v=4)](https://github.com/yuanyongjie1995/)
-| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| [ajaxlinux1234](https://github.com/ajaxlinux1234/) | [dulaibin315](https://github.com/dulaibin315/) | [caoyq0521](https://github.com/caoyq0521/) |[Gecko525](https://github.com/Gecko525/) | [jocelyn-wei](https://github.com/jocelyn-wei/) | [乔路非](https://github.com/qiaolufei/) | [resume](https://github.com/wwg9311/) | [yuanyongjie](https://github.com/yuanyongjie1995/) 
+### 完整引入
+
+在 main.js 中写入以下内容：
+
+```js
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
+import tanmaUi from 'tanma-ui';
+import 'tanma-ui/lib/index.less';
+
+Vue.use(tanmaUi);
+Vue.use(ElementUI);
+
+```
+
+以上代码便完成了 tanmaUi 的引入。需要注意的是，样式文件需要单独引入。
+
+> 注：因为部分组件基于Element ui扩展，所以项目中必须依赖Element ui组件。
+
+### 按需引入
+
+可以通过 babel 插件来实现按需引入组件。我们需要安装 [babel-plugin-import](https://github.com/umijs/babel-plugin-import) 插件，它会在编译过程中将 import 语句自动转换为按需引入的方式。
+
+#### 1. 安装插件
+
+```js
+npm i babel-plugin-import -D
+```
+
+#### 2. 配置插件
+
+在.babelrc 或 babel.config.js 中添加配置：
+
+```js
+{
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "tanma-ui",
+        "libraryDirectory": "es",
+        "style": true
+      }
+    ]
+  ]
+}
+```
+
+#### 3. 引入组件
+
+接着你可以在代码中直接引入 tanma-ui 组件，插件会自动将代码转化为按需引入的形式。
+
+```js
+// 原始代码
+import { Button } from 'tanma-ui';
+
+// 编译后代码
+import Button from 'tanma-ui/es/button';
+import 'tanma-ui/es/button/style';
+```
+
+### 手动按需引入组件
+
+在不使用任何构建插件的情况下，可以手动引入需要使用的组件和样式。
+
+```js
+// 引入组件脚本
+import Button from 'tanma-ui/es/button/index';
+
+// 引入组件样式
+// 若组件没有样式文件，则无须引入
+import 'tanma-ui/es/button/style/index';
+```
+
+#### 完整组件列表和引入方式
+
+```js
+import Vue from 'vue';
+
+import { 
+  Pagination,
+  Title,
+  Tip,
+  Avatar,
+  Progress,
+  Button,
+  Tabs,
+  CollapseText,
+  Tag,
+  TagPro,
+  TagGroup,
+  Dialog,
+  Search,
+  DateRange,
+  AvatarCard,
+  OptionalPicker,
+  TagCombo,
+  vTitle
+} from 'tanma-ui';
+  
+Vue.use(Pagination);
+Vue.use(Title);
+Vue.use(Tip);
+Vue.use(Avatar);
+Vue.use(Progress);
+Vue.use(Button);
+Vue.use(Tabs);
+Vue.use(CollapseText);
+Vue.use(Tag);
+Vue.use(TagPro);
+Vue.use(TagGroup);
+Vue.use(Dialog);
+Vue.use(Search);
+Vue.use(DateRange);
+Vue.use(AvatarCard);
+Vue.use(OptionalPicker);
+Vue.use(TagCombo);
+Vue.use(vTitle);
+```
+> 注：Vue.use(Dialog)会同时绑定Vue.prototype.$tmDialog方法，具体使用方式请查看[Dialog](#/dialog#shi-li-hua-shi-yong-fang-fa)。

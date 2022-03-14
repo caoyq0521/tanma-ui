@@ -26,7 +26,7 @@ module.exports = {
           //   title: '介绍',
           // },
           {
-            path: 'quickstart',
+            path: 'home',
             title: '快速上手',
           },
           {
