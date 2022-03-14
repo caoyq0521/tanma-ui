@@ -1,20 +1,26 @@
 <template>
   <div class="tm-upload">
     <!-- 图片上传 -->
-    <div v-if="model === 'image'">
-      <template v-if="imageUrlList.length">
+    <div v-if="model === 'image'" class="image-container">
+      <transition-group v-if="imageUrlList.length" tag="div" name="list" class="image-container-left">
         <div
           v-for="(item, index) in imageUrlList"
-          :key="index"
-          class="send-image__item"
+          :key="item + index"
+          @mouseenter="imageHover(item, index)"
+          @mouseleave="unImageHover"
+          class="image__item"
         >
           <img
             :src="item"
             alt=""
-            class="send-image__item-img"
+            class="image__item-img"
           >
+          <div class="image__item-icon" v-show="isHover && target === index">
+            <i class="iconfont icon-jiahao2" @click="handlePreview(item)"></i>
+            <i class="iconfont icon-guanbi" @click="removeFile(index)"></i>
+          </div>
         </div>
-      </template>
+      </transition-group>
       <el-upload
         v-if="!isCut"
         ref="tmUpload"
@@ -36,14 +42,16 @@
           <div class="image-single">
             <div
               class="image-single-uplaod"
+              @mouseenter="isHover = true"
+              @mouseleave="isHover = false"
               :class="{'image-single-empty': !imageUrl, 'image-single-solid': imageUrl}"
-              >
+            >
               <img
                 v-if="imageUrl"
                 :src="imageUrl"
                 alt
               />
-              <div v-else>
+              <div style="position: absolute" v-show="isHover || !imageUrl">
                 <i class="iconfont icon-zhaopian"></i>
                 <p>上传图片</p>
               </div>
@@ -67,6 +75,8 @@
             <div class="image-single">
               <div
                 class="image-single-uplaod"
+                @mouseenter="isHover = true"
+                @mouseleave="isHover = false"
                 :class="{'image-single-empty': !imageUrl, 'image-single-solid': imageUrl}"
                 >
                 <img
@@ -74,7 +84,7 @@
                   :src="imageUrl"
                   alt
                 />
-                <div v-else>
+                <div style="position: absolute" v-show="isHover || !imageUrl">
                   <i class="iconfont icon-zhaopian"></i>
                   <p>上传图片</p>
                 </div>
@@ -200,7 +210,7 @@
         type: Object,
         default: () => (
           {
-            Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NDY4MDc4NDksInBheWxvYWQiOiJ7XCJjb3JwaWRcIjpcInd3OWM1NTMwMjEwYTBkNTExNlwiLFwiaWRcIjozODkzOTQxNjEzNTI3NjgsXCJ1c2VySWRcIjpcImFkbWluX3RtcWYwMTA5XCIsXCJpc0FkbWluXCI6MSxcImRlcGFydG1lbnRJZHNcIjpudWxsLFwibWFuYWdlRGVwdHNcIjpudWxsLFwiZGV2aWNlXCI6XCJ3ZWJcIixcIm5hbWVcIjpcImFkbWluXCIsXCJ2YWd1ZVwiOjAsXCJfbGVhZGVyXCI6dHJ1ZX0iLCJleHAiOjE2NDY5ODA2NDl9.lZGczX-PwbpfJmPmR9MHhh_mG0WbKaJHPHKcSuPCyvs'
+            Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NDcxNTYzMjksInBheWxvYWQiOiJ7XCJjb3JwaWRcIjpcInd3OWM1NTMwMjEwYTBkNTExNlwiLFwiaWRcIjozODkzOTQxNjEzNTI3NjgsXCJ1c2VySWRcIjpcImFkbWluX3RtcWYwMTA5XCIsXCJpc0FkbWluXCI6MSxcImRlcGFydG1lbnRJZHNcIjpudWxsLFwibWFuYWdlRGVwdHNcIjpudWxsLFwiZGV2aWNlXCI6XCJ3ZWJcIixcIm5hbWVcIjpcImFkbWluXCIsXCJ2YWd1ZVwiOjAsXCJfbGVhZGVyXCI6dHJ1ZX0iLCJleHAiOjE2NDczMjkxMjl9.5OAMouyRcyucFs_wCW2E9pAEyQ-Drrsf2njgte4wCFg'
           }
         )
       },
@@ -229,7 +239,10 @@
         // 文件上传列表
         fileList: [],
         dragEnter: false,
-        id: 'fileInput'
+        // 是否hover
+        isHover: false,
+        target: '',
+        id: 'fileInput',
       }
     },
     watch: {
@@ -265,6 +278,17 @@
       dragger.removeEventListener('drop', this.onFileDrag, false)
     },
     methods: {
+      imageHover(item, index) {
+        this.isHover = true
+        this.target = index
+      },
+      unImageHover() {
+        this.isHover = false
+        this.target = ''
+      },
+      removeFile (index) {
+        this.imageUrlList.splice(index, 1)
+      },
       // 剪切图片的上传
       handleCutDown (file) {
         const imgGs = file.dataURL.split(";")[0].split("/")[1];
@@ -384,12 +408,22 @@
             this.$message(res.message, "error");
             return;
           }
+
           // 多个图片上传
           if (this.limit > 1 && this.model === 'image') {
             this.imageUrlList.push(res.data.data.url)
             return
           }
-          // 文件上传
+
+          // 单个文件上传
+          if (this.model === 'file' && this.limit === 1) {
+            this.fileList = []
+            fileType.url = res.data.data.url
+            this.fileList.push(fileType)
+            return
+          }
+
+          // 多个文件上传
           if (this.model === 'file') {
             fileType.url = res.data.data.url
             this.fileList.push(fileType)
