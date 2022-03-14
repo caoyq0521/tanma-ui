@@ -122,6 +122,10 @@ module.exports = {
           {
             path: 'avatar-card',
             title: 'AvatarCard 头像卡片',
+          },
+          {
+            path: 'tag-combo',
+            title: 'TagCombo 标签组合'
           }
         ]
       },

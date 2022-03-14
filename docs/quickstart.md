@@ -112,7 +112,9 @@ import {
   Search,
   DateRange,
   AvatarCard,
-  OptionalPicker
+  OptionalPicker,
+  TagCombo,
+  vTitle
 } from 'tanma-ui';
   
 Vue.use(Pagination);
@@ -131,5 +133,7 @@ Vue.use(Search);
 Vue.use(DateRange);
 Vue.use(AvatarCard);
 Vue.use(OptionalPicker);
+Vue.use(TagCombo);
+Vue.use(vTitle);
 ```
 > 注：Vue.use(Dialog)会同时绑定Vue.prototype.$tmDialog方法，具体使用方式请查看[Dialog](#/dialog#shi-li-hua-shi-yong-fang-fa)。
