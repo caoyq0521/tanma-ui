@@ -264,7 +264,8 @@
     },
     methods: {
       handlePagerChange(e) {
-        if(this.isEasyMode) return;
+        const { target } = e;
+        if(this.isEasyMode || !target.className.includes('number')) return;
 
         const currentPage = +e.target.innerText;
         if(currentPage === this.internalCurrentPage) return;

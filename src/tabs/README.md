@@ -44,6 +44,11 @@
 可使用 ``left`` 和 ``right`` 插槽插入自定义内容。也可以通过name为标签key值的插槽自定义某个标签的内容。
 <demo-code>./demo/slot.vue</demo-code>
 
+### 分页
+
+当标签过多时，会自动在两边添加翻页按钮。且当前选中的tab会自动居中显示。
+<demo-code>./demo/pagination.vue</demo-code>
+
 
 ### Props
 
@@ -83,7 +88,10 @@ tab-click | tab 被选中时触发 | 被选中的标签 tab 实例
 @tabs-active-color | var(--main-color) `#3470ff` | 选中标签的字体颜色，按钮类型选中标签的背景色
 @tabs-button-active-color | var(--tm-white) `#ffffff` | 标签类型为按钮时选中标签的字体颜色
 @tabs-button-border-radius | @border-radius-md `4px` | 标签类型为按钮时选中标签的圆角大小
-@tabs-shadow-color | @shadow-color-primary `rgb(52, 112, 255, 0.5)` | 标签类型为按钮时选中标签的阴影颜色
+@tabs-font-weight-normal | @font-weight-normal `400` | 标准字体粗细
+@tabs-font-weight-bold | @font-weight-bold `550` | 加粗字体粗细
+@tabs-button-active-padding | @padding-sm `12px` | 按钮类型选中标签的左右内边距大小
+
 
 
 #### CSS 变量
@@ -99,3 +107,6 @@ tab-click | tab 被选中时触发 | 被选中的标签 tab 实例
 --tm-tabs-button-active-color | var(--tm-white) `#ffffff` | 标签类型为按钮时选中标签的字体颜色
 --tm-tabs-button-border-radius | @border-radius-md `4px` | 标签类型为按钮时选中标签的圆角大小
 --tm-tabs-shadow-color | @shadow-color-primary `rgb(52, 112, 255, 0.5)` | 标签类型为按钮时选中标签的阴影颜色
+--tm-tabs-font-weight-normal | @font-weight-normal `400` | 标准字体粗细
+--tm-tabs-font-weight-bold | @font-weight-bold `550` | 加粗字体粗细
+--tm-tabs-button-active-padding | @padding-sm `12px` | 按钮类型选中标签的左右内边距大小

@@ -6,8 +6,6 @@
 
 `Dialog`提供了两种用法，普通组件使用和封装好的简洁实例调用。
 
-
-
 ### 引入
 
 ```js
@@ -15,6 +13,8 @@
   import { Dialog } from 'tanma-ui';
   
   Vue.use(Dialog);
+
+  // Vue.use(Dialog)同时绑定Vue.prototype.$tmDialog方法。
 ```
 
 ## 代码演示
