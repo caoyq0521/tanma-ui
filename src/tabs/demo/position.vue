@@ -1,11 +1,11 @@
 <template>
   <div>
-    <el-radio-group v-model="placement" style="margin-bottom: 30px">
+    <el-radio-group v-model="position" style="margin-bottom: 30px">
       <el-radio-button label="left">left</el-radio-button>
       <el-radio-button label="center">center</el-radio-button>
       <el-radio-button label="right">right</el-radio-button>
     </el-radio-group>
-    <tm-tabs :options="options" :placement="placement" />
+    <tm-tabs :options="options" :position="position" />
   </div>
 </template>
 <script>
@@ -30,7 +30,7 @@ export default {
           title: '表单'
         }
       ],
-      placement: 'left'
+      position: 'left'
     }
   }
 }

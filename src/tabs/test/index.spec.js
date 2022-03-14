@@ -29,7 +29,7 @@ describe('tmTabs', () => {
     expect(panes.at(1).classes('is--active')).toBe(true);
   });
 
-  it('props:type and size and placement', async () => {
+  it('props:type and size and position', async () => {
     const wrapper = mount(TmTabs);
     expect(wrapper.contains('.tm-tabs')).toBe(true);
 
@@ -48,7 +48,7 @@ describe('tmTabs', () => {
     await wrapper.setProps({ type: 'small' });
     expect(wrapper.contains('.tm-tabs--small')).toBe(true);
 
-    await wrapper.setProps({ placement: 'center' });
+    await wrapper.setProps({ position: 'center' });
     expect(wrapper.contains('.tm-tabs-group.is--center')).toBe(true);
   });
 
