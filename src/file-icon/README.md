@@ -8,7 +8,7 @@
 
 ```js
   import Vue from 'vue';
-  import { FileIcon } from 'tanma-ui';
+  import { FileIcon } from 'tanma-design';
   
   Vue.use(FileIcon);
 ```

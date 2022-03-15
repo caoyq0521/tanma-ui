@@ -8,7 +8,7 @@
 
 ```js
   import Vue from 'vue';
-  import { Avatar } from 'tanma-ui';
+  import { Avatar } from 'tanma-design';
   
   Vue.use(Avatar);
 ```

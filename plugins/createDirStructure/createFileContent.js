@@ -14,7 +14,7 @@ function getCancelToLine(name) {
 function getComptTemplate(upperName) {
   const str =  `///js
   import Vue from 'vue';
-  import { ${upperName} } from 'tanma-ui';
+  import { ${upperName} } from 'tanma-design';
   
   Vue.use(${upperName});
 ///`

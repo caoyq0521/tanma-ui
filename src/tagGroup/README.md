@@ -8,7 +8,7 @@
 
 ```js
   import Vue from 'vue';
-  import { TagGroup } from 'tanma-ui';
+  import { TagGroup } from 'tanma-design';
   
   Vue.use(TagGroup);
 ```

@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'tanma-ui',
+  name: 'tanma-design',
   build: {
     css: {
       preprocessor: 'less',
@@ -11,7 +11,7 @@ module.exports = {
     namedExport: true,
   },
   site: {
-    title: 'tanma-ui',
+    title: 'tanma-design',
     logo: './logo.png',
     hideSimulator: true,
     baiduAnalytics: {

@@ -10,7 +10,7 @@
 
 ```js
   import Vue from 'vue';
-  import { Dialog } from 'tanma-ui';
+  import { Dialog } from 'tanma-design';
   
   Vue.use(Dialog);
 
@@ -25,7 +25,7 @@
 
 ### 实例化使用方法
 
-除了上述通过标准组件的使用方法，tanma-ui还封装了实例方法，用来创建一次性的轻量级对话框。
+除了上述通过标准组件的使用方法，tanma-design还封装了实例方法，用来创建一次性的轻量级对话框。
 
 实例以隐式创建 Vue 组件的方式在全局创建一个对话框，并在消失时移除，所以同时只能操作一个对话框。
 
