@@ -6,8 +6,6 @@
 
 `Dialog`提供了两种用法，普通组件使用和封装好的简洁实例调用。
 
-
-
 ### 引入
 
 ```js
@@ -15,6 +13,8 @@
   import { Dialog } from 'tanma-ui';
   
   Vue.use(Dialog);
+
+  // Vue.use(Dialog)同时绑定Vue.prototype.$tmDialog方法。
 ```
 
 ## 代码演示
@@ -122,7 +122,7 @@ onCancel | 点击取消的回调 | _function_ | -
 
 #### Less 变量
 
-组件提供了下列 Less 变量，可用于自定义样式，使用方法请参考[定制主题](#/theme)。
+组件提供了下列 Less 变量，可用于自定义样式，使用方法请参考[定制主题 less](#/theme)。
 
 名称 | 默认值 | 描述
 -- | -- | --
@@ -133,7 +133,7 @@ onCancel | 点击取消的回调 | _function_ | -
 
 #### Css 变量
 
-组件提供了下列 Css 变量，可用于自定义样式。
+组件提供了下列 Css 变量，可用于自定义样式，使用方法请参考[定制主题 css](#/theme2)。
 
 名称 | 默认值 | 描述
 -- | -- | --

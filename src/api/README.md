@@ -7,10 +7,10 @@ tamna-ui 中现有的公共方法介绍以及使用方式
 ### 引入
   
 ```javascript
-  import * as tools from 'tanma-ui/es/util/util';
+  import * as tools from 'tanma-ui/es/util';
   Vue.prototype.$tools = tools;
   
-  import {deepClone} from 'tanma-ui/es/util/util';
+  import {deepClone} from 'tanma-ui/es/util';
 ```
 
 ### getRootCss
@@ -417,4 +417,26 @@ tamna-ui 中现有的公共方法介绍以及使用方式
   dataType.isFunction(() => {}) // true
   dataType.isObject({}) // true
   dataType.isRegExp(/www/) // true
+```
+
+### isMobile
+
+#### 概述
+
+判断当前环境是不是移动设备
+
+#### 语法
+
+```javascript
+  isMobile()
+```
+
+#### 返回值
+
+是否是移动设备
+
+#### 示例
+
+```javascript
+  isMobile() // false
 ```
