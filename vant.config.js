@@ -97,6 +97,14 @@ module.exports = {
             path: 'date-range',
             title: 'DateRange 日期范围',
           },
+          {
+            path: 'dept-tree',
+            title: 'DeptTree 部门员工选择',
+          },
+          {
+            path: 'tree',
+            title: 'Tree 虚拟树',
+          },
         ],
       },
       {
