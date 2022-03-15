@@ -98,6 +98,12 @@ export default {
       translateX: 0
     }
   },
+  watch: {
+    options: {
+      deep: true,
+      handler: 'initEle'
+    }
+  },
   computed: {
     isPrevDisabled () {
       return this.translateX === 0;
@@ -113,7 +119,11 @@ export default {
     }
   },
   mounted () {
-    this.initEle();
+    this.$nextTick(() => {
+      window.setTimeout(() => {
+        this.initEle();
+      }, 30);
+    })
     window.addEventListener('resize', this.initEle);
   },
   beforeDestroy () {
@@ -121,22 +131,23 @@ export default {
   },
   methods: {
     initEle () {
-      const group = this.$refs.tabsGroup;
-      const content = this.$refs.tabsContent;
-      if (!group || !content) return;
-      this.timer && clearTimeout(this.timer);
-      this.timer = setTimeout(() => {
+      window.requestAnimationFrame(() => {
+        const group = this.$refs.tabsGroup;
+        const content = this.$refs.tabsContent;
+        if (!group || !content) return;
         this.groupWidth = group.clientWidth;
         this.contentWidth = content.clientWidth;
         if (this.contentWidth > this.groupWidth) {
-          this.showPaginationBtn = true;
-          // 减去两边按钮的宽度
-          this.groupWidth -= 40 * 2;
+          if (!this.showPaginationBtn) {
+            this.showPaginationBtn = true;
+            // 减去两边按钮的宽度
+            this.groupWidth -= 40 * 2;
+          }
           this.scrollIntoView();
         } else {
           this.showPaginationBtn = false;
         }
-      }, 30);
+      })
     },
     setCurrentKey (key) {
       this.currentKey = key;
