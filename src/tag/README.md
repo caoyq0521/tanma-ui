@@ -33,7 +33,7 @@ Tag 组件提供了三个不同的主题：`light` 和 `dot`；
 
 通过设置`effect`属性来改变主题，默认为 `light`；
 
-注：`dot`主题下`closable`不生效。
+> Tips：`dot`主题下`closable`不生效。
 
 <demo-code>./demo/effect.vue</demo-code>
 

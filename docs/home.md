@@ -34,7 +34,9 @@ Vue.use(ElementUI);
 
 以上代码便完成了 tanmaUi 的引入。需要注意的是，样式文件需要单独引入。
 
-> 注：因为部分组件基于Element ui扩展，所以项目中必须依赖Element ui组件。
+> Tips: 配置按需引入插件后，将不允许直接导入所有组件。
+
+> Tips：因为部分组件基于Element ui扩展，所以项目中必须依赖Element ui组件。
 
 ### 按需引入
 
@@ -136,4 +138,4 @@ Vue.use(OptionalPicker);
 Vue.use(TagCombo);
 Vue.use(vTitle);
 ```
-> 注：Vue.use(Dialog)会同时绑定Vue.prototype.$tmDialog方法，具体使用方式请查看[Dialog](#/dialog#shi-li-hua-shi-yong-fang-fa)。
+> Tips：Vue.use(Dialog)会同时绑定Vue.prototype.$tmDialog方法，具体使用方式请查看[Dialog](#/dialog#shi-li-hua-shi-yong-fang-fa)。

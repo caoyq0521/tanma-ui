@@ -1,8 +1,8 @@
 {
   "id": "3208910",
-  "name": "tanmaui",
-  "font_family": "iconfont",
-  "css_prefix_text": "icon-",
+  "name": "tanma-design",
+  "font_family": "tanma-icons",
+  "css_prefix_text": "tm-icon-",
   "description": "",
   "glyphs": [
     {

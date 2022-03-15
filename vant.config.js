@@ -43,6 +43,10 @@ module.exports = {
         title: '基础组件',
         items: [
           {
+            path: 'icon',
+            title: 'Icon 图标'
+          },
+          {
             path: 'pagination',
             title: 'Pagination 分页',
           },

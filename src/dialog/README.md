@@ -39,7 +39,7 @@
 
 [学习 vue jsx语法内容](https://cn.vuejs.org/v2/guide/render-function.html#JSX)
 
-> 注意：使用render后内容样式需自已定义。
+> Tips：使用render后内容样式需自已定义。
 
 <demo-code>./demo/render.vue</demo-code>
 
