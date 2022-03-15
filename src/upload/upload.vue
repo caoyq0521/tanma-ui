@@ -11,12 +11,12 @@
           class="image__item"
         >
           <img
-            :src="item"
+            :src="item.url"
             alt=""
             class="image__item-img"
           >
           <div class="image__item-icon" v-show="isHover && target === index">
-            <i class="iconfont icon-jiahao2" @click="handlePreview(item)"></i>
+            <i class="iconfont icon-jiahao2" @click="handlePreview(item.url)"></i>
             <i class="iconfont icon-guanbi" @click="removeFile(index)"></i>
           </div>
         </div>
@@ -53,7 +53,7 @@
               />
               <div style="position: absolute" v-show="isHover || !imageUrl">
                 <i class="iconfont icon-zhaopian"></i>
-                <p>上传图片</p>
+                <p>{{ imgTitle }}</p>
               </div>
             </div>
           </div>
@@ -86,23 +86,27 @@
                 />
                 <div style="position: absolute" v-show="isHover || !imageUrl">
                   <i class="iconfont icon-zhaopian"></i>
-                  <p>上传图片</p>
+                  <p>{{ imgTitle }}</p>
                 </div>
               </div>
             </div>
           </template>
       </ImgCutter>
-      <div v-if="isPreview && limit === 1" class="preview-button" @click="handlePreview(imageUrl)">预览</div>
+      <!-- <div v-if="isPreview && limit === 1" class="preview-button" @click="handlePreview(imageUrl)">预览</div> -->
     </div>
     <!-- 文件上传 -->
     <div v-else class="local-upload-drag-component">
       <div
         ref="tm-upload-dragger"
         :class="['drag-content', { 'drag-actived': dragEnter }]"
-        :style="{ width: 350 + 'px', height: 219 + 'px' }"
       >
         <div class="file-list" v-if="fileList.length">
-          <div class="file-item" v-for="(file, index) in fileList" :key="index">
+          <div
+            class="file-item"
+            v-for="(file, index) in fileList"
+            :key="index"
+            @click="previewFile(file)"
+          >
             <!-- <hj-patter-file fileType="csv"></hj-patter-file> -->
             <span class="file-name">
               {{ file.name }}
@@ -111,7 +115,7 @@
         </div>
         <i v-else class="icon iconfont iconwenjian3"></i>
         <div class="drag-text">
-          将img文件拖到此处，或
+          将{{ fileTitle }}文件拖到此处，或
           <label :for="id" class="download-btn">点击上传</label>
         </div>
       </div>
@@ -165,39 +169,17 @@
   export default {
     name: "tmUpload",
     props: {
-      // 上传模式: file(文件上传)、image(图片上传)
-      model: {
+      // 上传地址
+      action: {
         type: String,
-        default: "image",
-      },
-      // 上传文件的数量，默认单个文件
-      limit: {
-        type: Number,
-        default: 1
-      },
-      // 是否开启预览
-      isPreview: {
-        type: Boolean,
-        default: false
-      },
-      // 上传的文件大小: 单位MB
-      size: {
-        type: Number,
-        default: 5
+        default: '/resourceServer/file/commonUpload'
       },
       // 上传前限制条件
       beforeUpload: {
         type: Function,
         default: () => true
       },
-      isCut: {
-        type: Boolean,
-        default: false
-      },
-      rate: {
-        type: String,
-        default: '4:3'
-      },
+      // 上传时附带的额外参数
       data: {
         type: Object,
         default: () => (
@@ -206,17 +188,54 @@
           }
         )
       },
+      // 设置的请求头
       headers: {
         type: Object,
         default: () => (
           {
-            Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NDcxNTYzMjksInBheWxvYWQiOiJ7XCJjb3JwaWRcIjpcInd3OWM1NTMwMjEwYTBkNTExNlwiLFwiaWRcIjozODkzOTQxNjEzNTI3NjgsXCJ1c2VySWRcIjpcImFkbWluX3RtcWYwMTA5XCIsXCJpc0FkbWluXCI6MSxcImRlcGFydG1lbnRJZHNcIjpudWxsLFwibWFuYWdlRGVwdHNcIjpudWxsLFwiZGV2aWNlXCI6XCJ3ZWJcIixcIm5hbWVcIjpcImFkbWluXCIsXCJ2YWd1ZVwiOjAsXCJfbGVhZGVyXCI6dHJ1ZX0iLCJleHAiOjE2NDczMjkxMjl9.5OAMouyRcyucFs_wCW2E9pAEyQ-Drrsf2njgte4wCFg'
+            Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NDczNDMzNzMsInBheWxvYWQiOiJ7XCJjb3JwaWRcIjpcInd3OWM1NTMwMjEwYTBkNTExNlwiLFwiaWRcIjozODkzOTQxNjEzNTI3NjgsXCJ1c2VySWRcIjpcImFkbWluX3RtcWYwMTA5XCIsXCJpc0FkbWluXCI6MSxcImRlcGFydG1lbnRJZHNcIjpudWxsLFwibWFuYWdlRGVwdHNcIjpudWxsLFwiZGV2aWNlXCI6XCJ3ZWJcIixcIm5hbWVcIjpcImFkbWluXCIsXCJ2YWd1ZVwiOjAsXCJfbGVhZGVyXCI6dHJ1ZX0iLCJleHAiOjE2NDc1MTYxNzN9.SnE2BQIzDM668rKsOLWDr-8X9CkKk_qZbgHesFbApJk'
           }
         )
       },
-      action: {
+      // 上传文件的数量，默认单个文件
+      limit: {
+        type: Number,
+        default: 1
+      },
+      // 上传模式: file(文件上传)、image(图片上传)
+      model: {
         type: String,
-        default: '/resourceServer/file/commonUpload'
+        default: "image",
+      },
+      // 是否剪切
+      isCut: {
+        type: Boolean,
+        default: false
+      },
+      // 上传图片提示信息
+      imgTitle: {
+        type: String,
+        default: "上传图片",
+      },
+      // 是否开启预览
+      isPreview: {
+        type: Boolean,
+        default: false
+      },
+      // 上传文件的提示信息
+      fileTitle: {
+        type: String,
+        default: "",
+      },
+      // 剪切比例
+      rate: {
+        type: String,
+        default: '4:3'
+      },
+      // 上传的文件大小: 单位MB
+      size: {
+        type: Number,
+        default: 5
       }
     },
     components: {
@@ -278,6 +297,11 @@
       dragger.removeEventListener('drop', this.onFileDrag, false)
     },
     methods: {
+      // 点击文件
+      previewFile (file) {
+        console.log(file)
+        this.$emit('previewFile', file)
+      },
       imageHover(item, index) {
         this.isHover = true
         this.target = index
@@ -308,18 +332,18 @@
       },
       // 上传前的钩子函数: 做文件类型校验
       handleBeforeUpload (file) {
-        console.log('handleBeforeUpload')
-        // 没有文件类型限制
-        if (!this.accept) {
-          this.showProgress = true;
-          return true
+        // 多张图片上传
+        if (this.model === 'image' && this.imageUrlList.length >= this.limit) {
+          this.$message(`最多上传${this.limit}张图片!`, "error");
+          return false
         }
-        const includesAccept = this.accept.includes(file.type);
+        const includesAccept = this.accept ? this.accept.includes(file.type) : true
         const flag = this.beforeUpload(file);
 
         // 文件格式校验
         if (!includesAccept) {
           this.$message("上传文件格式不对!", "error");
+          return false
         }
 
         // 文件大小校验
@@ -328,6 +352,7 @@
           this.$message.error(`上传的文件大小不能超过 ${this.size}MB!`);
         }
 
+        // 多张图片上传
         if (this.limit > 1 && flag) {
           this.handleMoreImg(file)
           return false
@@ -357,7 +382,6 @@
         img.src = dataURL;
         // 拿到图片的宽度
         const { width } = await this.handleImageOnLoad(img);
-        console.log('width', width)
         // 如果 > 1080p
         if (width > IMAGE_WIDTH) {
           // 压缩图片
@@ -388,6 +412,12 @@
       },
       // 自定义方式上传
       customUpload (file) {
+        // 多个文件上传
+        if (this.fileList.length >= this.limit && this.limit !== 1) {
+          this.$message(`最多上传${this.limit}个文件!`, "error");
+          return false
+        }
+
         const fileType = {
           name: file.name,
           type: file.type,
@@ -409,23 +439,22 @@
             return;
           }
 
+          fileType.url = res.data.data.url
           // 多个图片上传
           if (this.limit > 1 && this.model === 'image') {
-            this.imageUrlList.push(res.data.data.url)
+            this.imageUrlList.push(fileType)
             return
           }
 
           // 单个文件上传
           if (this.model === 'file' && this.limit === 1) {
             this.fileList = []
-            fileType.url = res.data.data.url
             this.fileList.push(fileType)
             return
           }
 
           // 多个文件上传
           if (this.model === 'file') {
-            fileType.url = res.data.data.url
             this.fileList.push(fileType)
             return
           }
