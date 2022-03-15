@@ -49,7 +49,7 @@ describe('tmTabs', () => {
     expect(wrapper.contains('.tm-tabs--small')).toBe(true);
 
     await wrapper.setProps({ position: 'center' });
-    expect(wrapper.contains('.tm-tabs-group.is--center')).toBe(true);
+    expect(wrapper.contains('.tm-tabs__wrapper.is--center')).toBe(true);
   });
 
   it('props:options', async () => {

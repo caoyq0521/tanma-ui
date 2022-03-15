@@ -10,10 +10,10 @@
       :class="{'is-disabled': isPrevDisabled}"
       @click="handlePrev"
     ></span>
-    <div ref="tabsGroup" class="tm-tabs-group">
+    <div ref="wrapper" class="tm-tabs__wrapper">
       <div
-        ref="tabsContent"
-        class="tm-tabs-group__content"
+        ref="content"
+        class="tm-tabs__content"
         :class="[`is-${position}`]"
         :style="{ transform: `translateX(${translateX}px)` }"
       >
@@ -109,7 +109,7 @@ export default {
       return this.translateX === 0;
     },
     isNextDisabled () {
-      return this.translateX === -(this.contentWidth - this.groupWidth);
+      return this.translateX === -(this.contentWidth - this.wrapperWidth);
     }
   },
   created () {
@@ -132,16 +132,15 @@ export default {
   methods: {
     initEle () {
       window.requestAnimationFrame(() => {
-        const group = this.$refs.tabsGroup;
-        const content = this.$refs.tabsContent;
-        if (!group || !content) return;
-        this.groupWidth = group.clientWidth;
+        const { wrapper, content } = this.$refs;
+        if (!wrapper || !content) return;
+        this.wrapperWidth = wrapper.clientWidth;
         this.contentWidth = content.clientWidth;
-        if (this.contentWidth > this.groupWidth) {
+        if (this.contentWidth > this.wrapperWidth) {
           if (!this.showPaginationBtn) {
             this.showPaginationBtn = true;
             // 减去两边按钮的宽度
-            this.groupWidth -= 40 * 2;
+            this.wrapperWidth -= 40 * 2;
           }
           this.scrollIntoView();
         } else {
@@ -165,20 +164,20 @@ export default {
       this.$nextTick(() => {
         const items = this.$refs.items;
         const currentItem = items[index];
-        const move = (currentItem.offsetLeft - this.groupWidth / 2 + currentItem.offsetWidth / 2);
-        this.translateX =  move < 0 ? 0 : move > (this.contentWidth - this.groupWidth) ? (-this.contentWidth + this.groupWidth) : -move;
+        const move = (currentItem.offsetLeft - this.wrapperWidth / 2 + currentItem.offsetWidth / 2);
+        this.translateX =  move < 0 ? 0 : move > (this.contentWidth - this.wrapperWidth) ? (-this.contentWidth + this.wrapperWidth) : -move;
       })
     },
     handlePrev () {
-      let move = this.translateX + this.groupWidth;
+      let move = this.translateX + this.wrapperWidth;
       if (move > 0) {
         move = 0;
       }
       this.translateX = move;
     },
     handleNext () {
-      let move = this.translateX - this.groupWidth;
-      const max = this.contentWidth - this.groupWidth;
+      let move = this.translateX - this.wrapperWidth;
+      const max = this.contentWidth - this.wrapperWidth;
       if (move < -max) {
         move = -max;
       }
