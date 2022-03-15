@@ -68,6 +68,7 @@
         v-model="internallPageSize"
         placeholder="请选择"
         :disabled="!total"
+        popper-class="tm-pagination__select-popper"
         @change="handlePageSizeChange"
       >
         <el-option

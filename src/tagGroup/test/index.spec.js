@@ -1,9 +1,9 @@
 import { mount } from '@vue/test-utils';
-import TmTagMore from '../tagMore.vue';
+import TmTagGroup from '../tagGroup.vue';
 
-describe('tmTagMore', () => {
+describe('tmTagGroup', () => {
   it('render tag-more', () => {
-    const wrapper = mount(TmTagMore);
+    const wrapper = mount(TmTagGroup);
     expect(wrapper).toMatchSnapshot();
   });
 })

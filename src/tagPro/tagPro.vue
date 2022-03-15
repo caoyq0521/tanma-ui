@@ -4,6 +4,7 @@
     :class="setClass"
     :closable="closable"
     :style="setStyle"
+    v-title="setTipName"
     @click="handleClick"
     @close="handleClose"
   >
@@ -60,9 +61,10 @@
     name: "tmTagPro",
     props: {
       // 类型
+      // `content` `individual` `company` `department` `employee` `group`
       type: {
         type: String,
-        default: TYPE_EMPLOYEE, // `content` `individual` `company` `department` `employee` `group`
+        default: TYPE_EMPLOYEE, 
         validator(value) {
           return TYPES.includes(value);
         }
@@ -96,7 +98,12 @@
       fontColor: {
         type: String,
         default: ''
-      }
+      },
+      // 标签内容超出多少后显示...
+      limit: {
+        type: Number,
+        default: 10
+      },
     },
     computed: {
       setClass() {
@@ -121,9 +128,16 @@
         }
       },
       setName() {
-        const { type = '', name: customName } = this;
-        const { name: internalName } = TYPEINFO[type];
-        return customName || internalName;
+        const { limit } = this;
+        const name = this.getName();
+        if (name.length > limit) return `${name.slice(0, limit)}...`;
+        return name;
+      },
+      setTipName() {
+        const { limit } = this;
+        const name = this.getName();
+        if(name.length > limit) return name;
+        return null;
       }
     },
     methods: {
@@ -132,7 +146,12 @@
       },
       handleClose() {
         this.$emit('close');
-      }
+      },
+      getName() {
+        const { type = '', name: customName } = this;
+        const { name: internalName } = TYPEINFO[type];
+        return customName || internalName;
+      },
     },
   }
 </script>

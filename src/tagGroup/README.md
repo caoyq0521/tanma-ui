@@ -8,9 +8,9 @@
 
 ```js
   import Vue from 'vue';
-  import { TagMore } from 'tanma-ui';
+  import { TagGroup } from 'tanma-ui';
   
-  Vue.use(TagMore);
+  Vue.use(TagGroup);
 ```
 
 ## 代码演示
