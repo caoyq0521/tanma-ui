@@ -16,8 +16,8 @@
             class="image__item-img"
           >
           <div class="image__item-icon" v-show="isHover && target === index">
-            <i class="iconfont icon-jiahao2" @click="handlePreview(item.url)"></i>
-            <i class="iconfont icon-guanbi" @click="removeFile(index)"></i>
+            <i class="iconfont icon-fangda" @click="handlePreview(item.url)"></i>
+            <i class="iconfont icon-lajitong0" @click="removeFile(index)"></i>
           </div>
         </div>
       </transition-group>
@@ -44,14 +44,14 @@
               class="image-single-uplaod"
               @mouseenter="isHover = true"
               @mouseleave="isHover = false"
-              :class="{'image-single-empty': !imageUrl, 'image-single-solid': imageUrl}"
+              :class="{'image-single-empty': !imageUrl, 'image-single-solid': imageUrl, 'image-hover': hover && imageUrl}"
             >
               <img
                 v-if="imageUrl"
                 :src="imageUrl"
                 alt
               />
-              <div style="position: absolute" v-show="isHover || !imageUrl">
+              <div style="position: absolute" v-show="(hover || !imageUrl) && (isHover || !imageUrl)">
                 <i class="iconfont icon-zhaopian"></i>
                 <p>{{ imgTitle }}</p>
               </div>
@@ -77,14 +77,14 @@
                 class="image-single-uplaod"
                 @mouseenter="isHover = true"
                 @mouseleave="isHover = false"
-                :class="{'image-single-empty': !imageUrl, 'image-single-solid': imageUrl}"
+                :class="{'image-single-empty': !imageUrl, 'image-single-solid': imageUrl, 'image-hover': hover && imageUrl}"
                 >
                 <img
                   v-if="imageUrl"
                   :src="imageUrl"
                   alt
                 />
-                <div style="position: absolute" v-show="isHover || !imageUrl">
+                <div style="position: absolute" v-show="(hover || !imageUrl) && (isHover || !imageUrl)">
                   <i class="iconfont icon-zhaopian"></i>
                   <p>{{ imgTitle }}</p>
                 </div>
@@ -92,7 +92,6 @@
             </div>
           </template>
       </ImgCutter>
-      <!-- <div v-if="isPreview && limit === 1" class="preview-button" @click="handlePreview(imageUrl)">预览</div> -->
     </div>
     <!-- 文件上传 -->
     <div v-else class="local-upload-drag-component">
@@ -108,6 +107,7 @@
             @click="previewFile(file)"
           >
             <!-- <hj-patter-file fileType="csv"></hj-patter-file> -->
+            <file-type :type="file.type" />
             <span class="file-name">
               {{ file.name }}
             </span>
@@ -115,6 +115,10 @@
         </div>
         <i v-else class="icon iconfont iconwenjian3"></i>
         <div class="drag-text">
+          <div class="drag-icon">
+            <i class="iconfont icon-wenjian3"></i>
+          </div>
+          <img src="./img/jpg.png" alt="">
           将{{ fileTitle }}文件拖到此处，或
           <label :for="id" class="download-btn">点击上传</label>
         </div>
@@ -154,6 +158,7 @@
   import Vue from 'vue';
   import axios from 'axios';
   import ImgCutter from 'vue-img-cutter';
+  import fileType from './fileTypeIcon.vue'
   import { Upload, Progress, Dialog, Message } from 'element-ui';
   import { compress } from 'image-conversion';
 
@@ -207,6 +212,11 @@
         type: String,
         default: "image",
       },
+      // 单张图片开启hover
+      hover: {
+        type: Boolean,
+        default: false
+      },
       // 是否剪切
       isCut: {
         type: Boolean,
@@ -216,11 +226,6 @@
       imgTitle: {
         type: String,
         default: "上传图片",
-      },
-      // 是否开启预览
-      isPreview: {
-        type: Boolean,
-        default: false
       },
       // 上传文件的提示信息
       fileTitle: {
@@ -239,7 +244,8 @@
       }
     },
     components: {
-      ImgCutter 
+      ImgCutter,
+      fileType
     },
     data () {
       return {
@@ -299,8 +305,11 @@
     methods: {
       // 点击文件
       previewFile (file) {
-        console.log(file)
         this.$emit('previewFile', file)
+      },
+      // 上传后触发
+      uploadList (files) {
+        this.$emit('uploadList', files)
       },
       imageHover(item, index) {
         this.isHover = true
@@ -312,6 +321,7 @@
       },
       removeFile (index) {
         this.imageUrlList.splice(index, 1)
+        this.$emit('uploadList', [...this.imageUrlList])
       },
       // 剪切图片的上传
       handleCutDown (file) {
@@ -321,7 +331,6 @@
       },
       // 预览接口, 暴露给外部
       handlePreview (url) {
-        if (!this.isPreview) return this.$message("暂不支持预览!", "error");
         if (!url) return this.$message("请先上传图片!", "error");
         this.previewUrl = url
         this.previewShow = true
@@ -373,6 +382,12 @@
           return;
         }
         this.imageUrl = res.data.url;
+        const fileType = {
+          name: file.name,
+          type: file.raw.type,
+          url: this.imageUrl
+        }
+        this.uploadList([fileType])
       },
       // 多张图片的上传，图片会被压缩
       async handleMoreImg(file) {
@@ -443,6 +458,7 @@
           // 多个图片上传
           if (this.limit > 1 && this.model === 'image') {
             this.imageUrlList.push(fileType)
+            this.uploadList([...this.imageUrlList])
             return
           }
 
@@ -450,12 +466,14 @@
           if (this.model === 'file' && this.limit === 1) {
             this.fileList = []
             this.fileList.push(fileType)
+            this.uploadList([fileType])
             return
           }
 
           // 多个文件上传
           if (this.model === 'file') {
             this.fileList.push(fileType)
+            this.uploadList([...this.fileList])
             return
           }
           this.imageUrl = res.data.data.url;

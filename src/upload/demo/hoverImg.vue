@@ -1,5 +1,5 @@
 <template>
   <div class="upload-container">
-    <tm-upload model="image" :limit="2" />
+    <tm-upload :hover="true" />
   </div>
 </template>

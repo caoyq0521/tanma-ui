@@ -44,7 +44,7 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    width: 350px;
+    width: auto;
     &-left {
       display: flex;
       flex-wrap: wrap;
@@ -92,25 +92,16 @@
     }
   }
 
-  // 临时写的按钮样式
-  .preview-button {
-    width: 119px;
-    height: 36px;
-    line-height: 36px;
-    background: #FFFFFF;
-    border-radius: 5px;
-    border: 1px solid #D7D7D7;
-    margin-left: 15px;
-    text-align: center;
-    cursor: pointer;
-  }
-
   .image-single-empty {
     border: var(--tm-upload-border-dashed);
   }
 
   .image-single-solid {
     border: var(--tm-upload-border);
+    
+  }
+
+  .image-hover {
     position: relative;
     &:hover::before {
       content: '';
@@ -148,6 +139,14 @@
         .download-btn {
           color: #3470ff;
           cursor: pointer;
+        }
+        .drag-icon {
+          text-align: center;
+          margin-bottom: 5px;
+          i {
+            font-size: 36px;
+            color: #C9C9C9;
+          }
         }
       }
     }
