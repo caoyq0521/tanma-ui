@@ -4,7 +4,7 @@ module.exports = {
   module: {
     rules: [
       {        
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        test: /\.(woff2?|eot|ttf|otf|png|jpe?g|gif)(\?.*)?$/,
         loader: 'file-loader',
         exclude: resolve('../node_modules'),
         options: {
