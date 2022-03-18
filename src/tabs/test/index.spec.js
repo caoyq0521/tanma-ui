@@ -2,6 +2,20 @@ import { mount } from '@vue/test-utils';
 import TmTabs from '../tabs.vue';
 
 describe('tmTabs', () => {
+  const options = [
+    {
+      key: 'article',
+      title: '文章'
+    },
+    {
+      key: 'poster',
+      title: '海报'
+    },
+    {
+      key: 'form',
+      title: '表单'
+    }
+  ];
   it('render tabs', () => {
     const wrapper = mount(TmTabs);
     expect(wrapper).toMatchSnapshot();
@@ -9,24 +23,13 @@ describe('tmTabs', () => {
 
   it('props:value', async () => {
     const wrapper = mount(TmTabs, {
-      value: 'poster',
-      options: [
-        {
-          key: 'article',
-          title: '文章'
-        },
-        {
-          key: 'poster',
-          title: '海报'
-        },
-        {
-          key: 'form',
-          title: '表单'
-        }
-      ]
+      propsData: {
+        value: 'poster',
+        options
+      }
     });
-    const panes = wrapper.findAll('.tm-tabs__pane')
-    expect(panes.at(1).classes('is--active')).toBe(true);
+    const panes = wrapper.findAll('.tm-tabs__pane');
+    expect(panes.at(1).classes('is-active')).toBe(true);
   });
 
   it('props:type and size and position', async () => {
@@ -49,49 +52,19 @@ describe('tmTabs', () => {
     expect(wrapper.contains('.tm-tabs--small')).toBe(true);
 
     await wrapper.setProps({ position: 'center' });
-    expect(wrapper.contains('.tm-tabs__wrapper.is--center')).toBe(true);
+    expect(wrapper.contains('.tm-tabs__content.is-center')).toBe(true);
   });
 
   it('props:options', async () => {
     const wrapper = mount(TmTabs, {
-      propsData: {
-        options: [
-          {
-            key: 'article',
-            title: '文章'
-          },
-          {
-            key: 'poster',
-            title: '海报'
-          },
-          {
-            key: 'form',
-            title: '表单'
-          }
-        ]
-      }
+      propsData: { options }
     });
     expect(wrapper.findAll('.tm-tabs__pane')).toHaveLength(3);
   });
 
   it('switch tab', async () => {
     const wrapper = mount(TmTabs, {
-      propsData: {
-        options: [
-          {
-            key: 'article',
-            title: '文章'
-          },
-          {
-            key: 'poster',
-            title: '海报'
-          },
-          {
-            key: 'form',
-            title: '表单'
-          }
-        ]
-      }
+      propsData: { options }
     });
     await wrapper.findAll('.tm-tabs__pane').at(1).trigger('click');
     expect(wrapper.vm.currentKey).toBe('poster');
