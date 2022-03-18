@@ -10,7 +10,7 @@
       class="dot" 
       :style="{'background-color': color}"
     ></span>
-    <slot>提示</slot>
+    <slot></slot>
     <!-- dot主题下不显示删除 -->
     <span
       v-if="!isDotEffect && closable"

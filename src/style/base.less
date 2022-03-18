@@ -10,6 +10,7 @@
 @import './clearfix.less';
 @import './mixins/ellipsis.less';
 @import './fonts/iconfont.css';
+@import './element.less';
 
 .tm-ellipsis {
   .ellipsis();
@@ -41,4 +42,16 @@
 .tm-flex__center--col {
   display: flex;
   align-items: center;
+}
+
+// 调整vTip样式
+.v-tip-container {
+  border-color: transparent!important;
+  box-shadow: 0 4px 20px rgba(63, 65, 74, .12);
+  max-width: 600px;
+  z-index: 9999!important;
+  will-change: auto !important;
+  .v-tip-content {
+    word-break: break-all;
+  }
 }

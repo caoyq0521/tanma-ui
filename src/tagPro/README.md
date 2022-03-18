@@ -40,6 +40,7 @@ color | 背景色 | _string_ | - | -
 font-color | 字体颜色 | _string_ | - | -
 icon | 自定义icon | _string_ | - | -
 icon-color | icon颜色 | _string_ | - | -
+limit | 标签内容超出多少后显示... | _number_ | - | 10
 name | 标签内容 | _string_ | - | -
 type | 类型 | _string_ | `content` `individual` `company` `department` `employee` `group` | employee
 
