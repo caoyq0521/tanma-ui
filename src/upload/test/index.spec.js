@@ -7,7 +7,7 @@ describe('tmUpload', () => {
     expect(wrapper).toMatchSnapshot();
   });
   it('model', () => {
-    const wrapper = mount(TmTitle, {
+    const wrapper = mount(TmUpload, {
       propsData: {
         model: 'file'
       }
@@ -15,7 +15,7 @@ describe('tmUpload', () => {
     expect(wrapper.find('.local-upload-drag-component').exists()).toBe(true);
   });
   it('imgTitle', () => {
-    const wrapper = mount(TmTitle, {
+    const wrapper = mount(TmUpload, {
       propsData: {
         imgTitle: '测试内容'
       }
