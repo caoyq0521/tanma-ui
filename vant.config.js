@@ -12,7 +12,8 @@ module.exports = {
   },
   site: {
     title: 'tanma-design',
-    logo: './logo.png',
+    // logo: './logo.png',
+    logo: 'https://dev.tanmarket.cn/site/logo.png',
     hideSimulator: true,
     baiduAnalytics: {
       seed: '619bce33d3d0afd261bb503674730cc7'
@@ -43,44 +44,66 @@ module.exports = {
         title: '基础组件',
         items: [
           {
+            path: 'button',
+            title: 'Button 按钮',
+          },
+          {
             path: 'icon',
             title: 'Icon 图标'
+          },
+          {
+            path: 'title',
+            title: 'Title 标题',
+          },
+          // {
+          //   path: 'button-tabs',
+          //   title: 'ButtonTabs 标签按钮',
+          // },
+        ],
+      },
+      {
+        title: '表单组件',
+        items: [
+          {
+            path: 'date-range',
+            title: 'DateRange 日期范围',
+          },
+          {
+            path: 'optional-picker',
+            title: 'OptionalPicker 日周月选择器'
+          },
+          {
+            path: 'search',
+            title: 'Search 搜索框',
+          },
+          {
+            path: 'upload',
+            title: 'upload 上传'
+          },
+        ]
+      },
+      {
+        title: '展示组件',
+        items: [
+          {
+            path: 'avatar',
+            title: 'Avatar 头像',
+          },
+          {
+            path: 'collapse-text',
+            title: 'CollapseText 折叠文本'
           },
           {
             path: 'pagination',
             title: 'Pagination 分页',
           },
           {
-            path: 'title',
-            title: 'Title 标题',
-          },
-          {
-            path: 'tip',
-            title: 'Tip 文字提示',
-          },
-          {
-            path: 'avatar',
-            title: 'Avatar 头像',
-          },
-          {
             path: 'progress',
             title: 'Progress 进度条',
           },
           {
-            path: 'button',
-            title: 'Button 按钮',
-          },
-          // {
-          //   path: 'button-tabs',
-          //   title: 'ButtonTabs 标签按钮',
-          // },
-          {
             path: 'tabs',
             title: 'Tabs 标签页',
-          },
-          {
-            path: 'collapse-text',
-            title: 'CollapseText 折叠文本'
           },
           {
             path: 'tag',
@@ -95,38 +118,27 @@ module.exports = {
             title: 'TagGroup 标签组'
           },
           {
-            path: 'upload',
-            title: 'upload  上传'
+            path: 'tree',
+            title: 'Tree 树',
           },
+        ]
+      },
+      {
+        title: '反馈组件',
+        items: [
           {
             path: 'dialog',
             title: 'Dialog 对话框'
           },
           {
-            path: 'search',
-            title: 'Search 搜索框',
-          },
-          {
-            path: 'date-range',
-            title: 'DateRange 日期范围',
-          },
-          {
-            path: 'dept-tree',
-            title: 'DeptTree 部门员工选择',
-          },
-          {
-            path: 'tree',
-            title: 'Tree 虚拟树',
-          },
-          {
-            path: 'optional-picker',
-            title: 'OptionalPicker 日周月选择器'
+            path: 'tip',
+            title: 'Tip 文字提示',
           },
           {
             path: 'v-title',
             title: 'vTitle 提示'
           }
-        ],
+        ]
       },
       {
         title: '业务组件',
@@ -134,6 +146,10 @@ module.exports = {
           {
             path: 'avatar-card',
             title: 'AvatarCard 头像卡片',
+          },
+          {
+            path: 'dept-tree',
+            title: 'DeptTree 部门员工选择',
           },
           {
             path: 'tag-combo',

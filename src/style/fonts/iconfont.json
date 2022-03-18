@@ -118,6 +118,13 @@
       "unicode_decimal": 59036
     },
     {
+      "icon_id": "10729038",
+      "name": "放大",
+      "font_class": "fangda",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
       "icon_id": "4281418",
       "name": "load",
       "font_class": "load",

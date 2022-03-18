@@ -16,8 +16,8 @@
             class="image__item-img"
           >
           <div class="image__item-icon" v-show="isHover && target === index">
-            <i class="iconfont icon-fangda" @click="handlePreview(item.url)"></i>
-            <i class="iconfont icon-lajitong0" @click="removeImg(index)"></i>
+            <i class="tm-icon-fangda" @click="handlePreview(item.url)"></i>
+            <i class="tm-icon-lajitong0" @click="removeImg(index)"></i>
           </div>
         </div>
       </transition-group>
@@ -52,7 +52,7 @@
                 alt
               />
               <div class="image-single-uplaod_title" v-show="(hover || !imageUrl) && (isHover || !imageUrl)">
-                <i class="iconfont icon-zhaopian"></i>
+                <i class="tm-icon-zhaopian"></i>
                 <p>{{ imgTitle }}</p>
               </div>
             </div>
@@ -85,7 +85,7 @@
                   alt
                 />
                 <div class="image-single-uplaod_title" v-show="(hover || !imageUrl) && (isHover || !imageUrl)">
-                  <i class="iconfont icon-zhaopian"></i>
+                  <i class="tm-icon-zhaopian"></i>
                   <p>{{ imgTitle }}</p>
                 </div>
               </div>
@@ -113,13 +113,13 @@
             <span class="file-name">
               {{ file.name }}
             </span>
-            <i v-if="limit > 1 && hoverIndex === index" class="iconfont icon-guanbi close-file" @click="removeFile(index)"></i>
+            <i v-if="limit > 1 && hoverIndex === index" class="tm-icon-guanbi close-file" @click="removeFile(index)"></i>
           </div>
         </div>
-        <i v-else class="icon iconfont iconwenjian3"></i>
+        <i v-else class="icon tm-icon-wenjian3"></i>
         <div class="drag-text">
           <div class="drag-icon">
-            <i class="iconfont icon-wenjian3"></i>
+            <i class="tm-icon-wenjian3"></i>
           </div>
           <img src="./img/jpg.png" alt="">
           将{{ fileTitle }}文件拖到此处，或

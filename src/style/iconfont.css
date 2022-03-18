@@ -86,6 +86,10 @@
   content: "\e69c";
 }
 
+.tm-icon-fangda:before {
+  content: "\e629";
+}
+
 .tm-icon-load:before {
   content: "\e6cc";
 }
