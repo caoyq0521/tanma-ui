@@ -40,6 +40,7 @@ color | 背景色 | _string_ | - | -
 font-color | 字体颜色 | _string_ | - | -
 icon | 自定义icon | _string_ | - | -
 icon-color | icon颜色 | _string_ | - | -
+limit | 标签内容超出多少后显示... | _number_ | - | 10
 name | 标签内容 | _string_ | - | -
 type | 类型 | _string_ | `content` `individual` `company` `department` `employee` `group` | employee
 
@@ -60,7 +61,7 @@ default | 内容
 
 #### Less 变量
 
-组件提供了下列 Less 变量，可用于自定义样式，使用方法请参考[定制主题](#/theme)。
+组件提供了下列 Less 变量，可用于自定义样式，使用方法请参考[定制主题 less](#/theme)。
 
 名称 | 默认值 | 描述
 -- | -- | --
@@ -85,7 +86,7 @@ default | 内容
 
 #### Css 变量
 
-组件提供了下列 Css 变量，可用于自定义样式。
+组件提供了下列 Css 变量，可用于自定义样式，使用方法请参考[定制主题 css](#/theme2)。
 
 名称 | 默认值 | 描述
 -- | -- | --

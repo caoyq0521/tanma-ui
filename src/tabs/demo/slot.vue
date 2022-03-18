@@ -1,5 +1,8 @@
 <template>
-  <tm-tabs :options="options" placement="center">
+  <tm-tabs :options="options" position="center">
+    <template #poster="{tab, index }">
+      {{ tab.key }} | {{ index }}
+    </template>
     <template #left>
       <span>设置</span>
     </template>

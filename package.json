@@ -40,7 +40,9 @@
     "axios": "^0.26.1",
     "element-ui": "2.13.0",
     "image-conversion": "^2.1.1",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "vue-virtual-scroll-list": "^2.3.3",
+    "vtip": "^1.0.6"
   },
   "peerDependencies": {
     "element-ui": "2.13.0",
@@ -80,5 +82,7 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "unpkg": "lib/tanma-ui.min.js",
+  "jsdelivr": "lib/tanma-ui.min.js"
 }

@@ -1,0 +1,80 @@
+@import '../style/var';
+@import './var';
+  
+:root {
+
+}
+
+.tm-button-tabs {
+  &__step{
+    display: flex;
+    align-items: center;
+
+    &-prve,
+    &-next{
+      width: 156px;
+      height: 36px;
+      border-radius: 5px;
+      text-align: center;
+      line-height: 36px;
+      color: #ffffff;
+      background-color: #3470ff;
+      cursor: pointer;
+    }
+    &-prve{
+      margin-right: 10px;
+      background-color: #ffffff;
+      color: #333333;
+    }
+  }
+
+
+  &__certainty{
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    &-confirm {
+      width: 115px;
+      height: 36px;
+      border-radius: 5px;
+      background-color: @color-primary;
+      color: #ffffff;
+      text-align: center;
+      line-height: 36px;
+      cursor: pointer;
+    }
+
+    &-confirm.danger {
+      // background-color: @color-red !important;
+    }
+
+    &-confirm:hover {
+      opacity: 0.85;
+    }
+
+    &-confirm.is-disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    &-cancel {
+      width: 115px;
+      height: 36px;
+      margin-right: 10px;
+      border-radius: 5px;
+      text-align: center;
+      line-height: 36px;
+      cursor: pointer;
+    }
+
+    &-cancel:hover {
+      background-color: #f4f4f6;
+    }
+    
+    .base-line {
+      align-items: baseline;
+    }
+  }
+}
+  

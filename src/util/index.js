@@ -201,7 +201,6 @@ export const dataURLtoBlob = (dataurl, name) => {
   const mime = arr[0].match(/:(.*?);/)[1];
   const bstr = atob(arr[1]);
   let n = bstr.length;
-
   const u8arr = new Uint8Array(n)
   while (n--) {
     u8arr[n] = bstr.charCodeAt(n)
@@ -389,6 +388,7 @@ typeMap.forEach(item => {
   }
 })
 
+<<<<<<< HEAD:src/util/tools.js
 // 将文件读取成 Data URL
 export const fileToDataURL= obj => {
   return new Promise((resolve, reject) => {
@@ -399,3 +399,14 @@ export const fileToDataURL= obj => {
     };
   });
 }
+=======
+/**
+ * 是否是移动端 
+ * @returns {Boolean}
+ */
+export const isMobile = () => {
+  return !!navigator.userAgent.match(
+    /(iPhone|iPod|Android|iOS|iPad|Backerry|WebOS|Symbian|Windows Phone|Phone)/ig
+  );
+}
+>>>>>>> 30c0abff0321f9f60c9a4f865e7bd3b7ec39402b:src/util/index.js
