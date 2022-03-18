@@ -19,4 +19,8 @@
 
 <demo-code>./demo/index.vue</demo-code>
 
+### 基础用法
+
+<demo-code>./demo/certainty.vue</demo-code>
+
 ### Props
