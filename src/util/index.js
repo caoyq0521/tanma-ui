@@ -388,7 +388,6 @@ typeMap.forEach(item => {
   }
 })
 
-<<<<<<< HEAD:src/util/tools.js
 // 将文件读取成 Data URL
 export const fileToDataURL= obj => {
   return new Promise((resolve, reject) => {
@@ -399,7 +398,6 @@ export const fileToDataURL= obj => {
     };
   });
 }
-=======
 /**
  * 是否是移动端 
  * @returns {Boolean}
@@ -409,4 +407,3 @@ export const isMobile = () => {
     /(iPhone|iPod|Android|iOS|iPad|Backerry|WebOS|Symbian|Windows Phone|Phone)/ig
   );
 }
->>>>>>> 30c0abff0321f9f60c9a4f865e7bd3b7ec39402b:src/util/index.js
