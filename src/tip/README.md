@@ -28,6 +28,7 @@
 参数 | 说明 | 类型 | 可选值 | 默认值
 -- | -- | -- | -- | --
 content | 提示信息 | _string_ | - | -
+class-prefix | 类名前缀 | _string_ | - | -
 placement | 提示信息出现位置 | _string_ | top/top-start/top-end<br>/bottom/bottom-start<br>/bottom-end/left/left-start<br>/left-end/right<br>/right-start/right-end | `left-start`
 width | 提示框宽度 | _string_ | - | `auto`
 iconColor | icon颜色 | _string_ | - | `rgba(193, 193, 202, .5)`

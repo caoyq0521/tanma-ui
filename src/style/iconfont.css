@@ -1,10 +1,9 @@
 @font-face {
   font-family: "tanma-icons"; /* Project id 3208910 */
-  src: url('fonts/tanma-icons.woff2?t=1646815605380') format('woff2'),
-       url('fonts/tanma-icons.woff?t=1646815605380') format('woff'),
-       url('fonts/tanma-icons.ttf?t=1646815605380') format('truetype');
+  src: url('fonts/iconfont.woff2?t=1647592065906') format('woff2'),
+       url('fonts/iconfont.woff?t=1647592065906') format('woff'),
+       url('fonts/iconfont.ttf?t=1647592065906') format('truetype');
 }
-
 
 [class^="tm-icon-"], [class*=" tm-icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
@@ -23,6 +22,70 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.tm-icon-xingzhuang:before {
+  content: "\e607";
+}
+
+.tm-icon-bianji:before {
+  content: "\e69e";
+}
+
+.tm-icon-backtop:before {
+  content: "\e728";
+}
+
+.tm-icon-zhankai1:before {
+  content: "\e636";
+}
+
+.tm-icon-jingshi:before {
+  content: "\e6c2";
+}
+
+.tm-icon-calendar-alt:before {
+  content: "\e81a";
+}
+
+.tm-icon-duihao1:before {
+  content: "\e6c7";
+}
+
+.tm-icon-chaosong:before {
+  content: "\e724";
+}
+
+.tm-icon-xiayi:before {
+  content: "\e61d";
+}
+
+.tm-icon-shangyi:before {
+  content: "\e61e";
+}
+
+.tm-icon-xiangxiacharu:before {
+  content: "\e622";
+}
+
+.tm-icon-xiangshangcharu:before {
+  content: "\e625";
+}
+
+.tm-icon-zhankai1-copy:before {
+  content: "\edad";
+}
+
+.tm-icon-shijian2:before {
+  content: "\e717";
+}
+
+.tm-icon-backtop-copy:before {
+  content: "\edb6";
+}
+
+.tm-icon-wenjian3:before {
+  content: "\e69c";
+}
+
 .tm-icon-load:before {
   content: "\e6cc";
 }
@@ -37,62 +100,6 @@
 
 .tm-icon-guanbi:before {
   content: "\e6a2";
-}
-
-.tm-icon-txt:before {
-  content: "\e609";
-}
-
-.tm-icon-mp4:before {
-  content: "\e60a";
-}
-
-.tm-icon-mp3:before {
-  content: "\e60b";
-}
-
-.tm-icon-xsl:before {
-  content: "\e60c";
-}
-
-.tm-icon-pdf:before {
-  content: "\e60d";
-}
-
-.tm-icon-zip:before {
-  content: "\e60e";
-}
-
-.tm-icon-png:before {
-  content: "\e60f";
-}
-
-.tm-icon-rar:before {
-  content: "\e612";
-}
-
-.tm-icon-ppt:before {
-  content: "\e617";
-}
-
-.tm-icon-jpg:before {
-  content: "\e618";
-}
-
-.tm-icon-html:before {
-  content: "\e619";
-}
-
-.tm-icon-gif:before {
-  content: "\e61a";
-}
-
-.tm-icon-doc:before {
-  content: "\e603";
-}
-
-.tm-icon-doctype1:before {
-  content: "\e623";
 }
 
 .tm-icon-wenhao11:before {
@@ -137,10 +144,6 @@
 
 .tm-icon-duihao:before {
   content: "\e605";
-}
-
-.tm-icon-wenhao:before {
-  content: "\e68d";
 }
 
 .tm-icon-biaoqian:before {

@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import { css_prefix_text, glyphs } from '../../style/fonts/tanma-icons.json';
+import { css_prefix_text, glyphs } from '../../style/fonts/iconfont.json';
 export default {
   data() {
     return {

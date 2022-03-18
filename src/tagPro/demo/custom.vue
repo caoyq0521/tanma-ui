@@ -1,6 +1,6 @@
 <template>
   <tm-tag-pro
-    icon="icon-zu"
+    icon="tm-icon-zu"
     name="挂断电话"
     color="#f9d8d8"
     icon-color="#f79798"

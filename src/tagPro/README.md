@@ -31,11 +31,29 @@
 
 <demo-code>./demo/custom.vue</demo-code>
 
+### 自定义图标
+
+如果需要在现有 Icon 的基础上使用更多图标，可以引入第三方 iconfont 对应的字体文件和 CSS 文件。
+
+通过 class-prefix 指定类名为 `iconfont`
+
+```html
+<tm-tag-pro
+  icon="icon-xingzhuang"
+  class-prefix="iconfont"
+  name="挂断电话"
+  color="#f9d8d8"
+  icon-color="#f79798"
+  font-color="#F67172"
+/>
+```
+
 ### Props
 
 参数 | 说明 | 类型 | 可选值 | 默认值 
 -- | -- | -- | -- | --
 closable | 是否可关闭 | _boolean_ | - | false
+class-prefix | 类名前缀 | _string_ | - | -
 color | 背景色 | _string_ | - | -
 font-color | 字体颜色 | _string_ | - | -
 icon | 自定义icon | _string_ | - | -

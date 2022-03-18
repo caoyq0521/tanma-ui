@@ -9,7 +9,7 @@
       slot="reference"
       class="reference"
     >
-      <i class="iconfont icon-gengduo2"></i>
+      <i class="tm-icon-gengduo2 tm-tag-more__icon"></i>
     </div>
     <slot></slot>
   </el-popover>

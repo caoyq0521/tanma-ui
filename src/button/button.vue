@@ -6,7 +6,7 @@
     :type="type"
     @click="handleClick"
   >
-    <i class="iconfont icon-load" v-if="loading"></i>
+    <i class="tm-icon-load" v-if="loading"></i>
     <slot></slot>
   </button>
 </template>

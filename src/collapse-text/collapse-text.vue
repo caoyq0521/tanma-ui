@@ -9,7 +9,7 @@
           @click.stop="showFullFn(true)"
         >
           {{ openButtonText }}
-          <i v-if="showIcon" class="iconfont icon-xiajiantou" />
+          <i v-if="showIcon" class="tm-icon-xiajiantou" />
         </span>
         <span
           v-else
@@ -17,7 +17,7 @@
           @click.stop="showFullFn(false)"
         >
           {{ closeButtonText }}
-          <i v-if="showIcon" class="iconfont icon-shangjiantou" />
+          <i v-if="showIcon" class="tm-icon-shangjiantou" />
         </span>
       </div>
     </div>
