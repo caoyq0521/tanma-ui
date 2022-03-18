@@ -17,7 +17,7 @@
           >
           <div class="image__item-icon" v-show="isHover && target === index">
             <i class="iconfont icon-fangda" @click="handlePreview(item.url)"></i>
-            <i class="iconfont icon-lajitong0" @click="removeFile(index)"></i>
+            <i class="iconfont icon-lajitong0" @click="removeImg(index)"></i>
           </div>
         </div>
       </transition-group>
@@ -51,7 +51,7 @@
                 :src="imageUrl"
                 alt
               />
-              <div style="position: absolute" v-show="(hover || !imageUrl) && (isHover || !imageUrl)">
+              <div class="image-single-uplaod_title" v-show="(hover || !imageUrl) && (isHover || !imageUrl)">
                 <i class="iconfont icon-zhaopian"></i>
                 <p>{{ imgTitle }}</p>
               </div>
@@ -84,7 +84,7 @@
                   :src="imageUrl"
                   alt
                 />
-                <div style="position: absolute" v-show="(hover || !imageUrl) && (isHover || !imageUrl)">
+                <div class="image-single-uplaod_title" v-show="(hover || !imageUrl) && (isHover || !imageUrl)">
                   <i class="iconfont icon-zhaopian"></i>
                   <p>{{ imgTitle }}</p>
                 </div>
@@ -111,6 +111,7 @@
             <span class="file-name">
               {{ file.name }}
             </span>
+            <i v-if="limit > 1" class="iconfont icon-guanbi close-file" @click="removeFile(index)"></i>
           </div>
         </div>
         <i v-else class="icon iconfont iconwenjian3"></i>
@@ -165,11 +166,13 @@
   Vue.use(Upload);
   Vue.use(Progress);
   Vue.use(Dialog);
-  Vue.use(Message);
+  // Vue.use(Message);
   Vue.prototype.$message = Message;
   import { dataURLtoBlob, fileToDataURL, base64ToBlob } from "../util/tools";
   import { v4 as $uuid } from 'uuid';
   const IMAGE_WIDTH = 1080;
+  let cancel;
+  const CancelToken = axios.CancelToken
 
   export default {
     name: "tmUpload",
@@ -198,7 +201,7 @@
         type: Object,
         default: () => (
           {
-            Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NDczNDMzNzMsInBheWxvYWQiOiJ7XCJjb3JwaWRcIjpcInd3OWM1NTMwMjEwYTBkNTExNlwiLFwiaWRcIjozODkzOTQxNjEzNTI3NjgsXCJ1c2VySWRcIjpcImFkbWluX3RtcWYwMTA5XCIsXCJpc0FkbWluXCI6MSxcImRlcGFydG1lbnRJZHNcIjpudWxsLFwibWFuYWdlRGVwdHNcIjpudWxsLFwiZGV2aWNlXCI6XCJ3ZWJcIixcIm5hbWVcIjpcImFkbWluXCIsXCJ2YWd1ZVwiOjAsXCJfbGVhZGVyXCI6dHJ1ZX0iLCJleHAiOjE2NDc1MTYxNzN9.SnE2BQIzDM668rKsOLWDr-8X9CkKk_qZbgHesFbApJk'
+            Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NDc1NjkwNTEsInBheWxvYWQiOiJ7XCJjb3JwaWRcIjpcInd3OWM1NTMwMjEwYTBkNTExNlwiLFwiaWRcIjozODkzOTQxNjEzNTI3NjgsXCJ1c2VySWRcIjpcImFkbWluX3RtcWYwMTA5XCIsXCJpc0FkbWluXCI6MSxcImRlcGFydG1lbnRJZHNcIjpudWxsLFwibWFuYWdlRGVwdHNcIjpudWxsLFwiZGV2aWNlXCI6XCJ3ZWJcIixcIm5hbWVcIjpcImFkbWluXCIsXCJ2YWd1ZVwiOjAsXCJfbGVhZGVyXCI6dHJ1ZX0iLCJleHAiOjE2NDc3NDE4NTF9.EhhS7gN1b3NEItkqeCBhwIEkEQSGK1hJa6VTMsAj-nc'
           }
         )
       },
@@ -319,9 +322,15 @@
         this.isHover = false
         this.target = ''
       },
-      removeFile (index) {
+      // 移除多个图片
+      removeImg (index) {
         this.imageUrlList.splice(index, 1)
         this.$emit('uploadList', [...this.imageUrlList])
+      },
+      // 移除多个文件
+      removeFile(index) {
+        this.fileList.splice(index, 1)
+        this.$emit('uploadList', [...this.fileList])
       },
       // 剪切图片的上传
       handleCutDown (file) {
@@ -331,19 +340,19 @@
       },
       // 预览接口, 暴露给外部
       handlePreview (url) {
-        if (!url) return this.$message("请先上传图片!", "error");
+        if (!url) return this.$message({ message: '请先上传图片!', type: 'error' });
         this.previewUrl = url
         this.previewShow = true
       },
       // 剪切格式错误触发
       handleTypeError () {
-        this.$message('该文件格式不支持！', 'error');
+        this.$message({ message: '该文件格式不支持!', type: 'error' });
       },
       // 上传前的钩子函数: 做文件类型校验
       handleBeforeUpload (file) {
         // 多张图片上传
         if (this.model === 'image' && this.imageUrlList.length >= this.limit) {
-          this.$message(`最多上传${this.limit}张图片!`, "error");
+          this.$message({ message: `最多上传${this.limit}张图片!`, type: 'error' });
           return false
         }
         const includesAccept = this.accept ? this.accept.includes(file.type) : true
@@ -351,22 +360,23 @@
 
         // 文件格式校验
         if (!includesAccept) {
-          this.$message("上传文件格式不对!", "error");
+          this.$message({ message: "上传文件格式不对!", type: 'error' });
           return false
         }
 
         // 文件大小校验
         const limit = file.size / 1024 / 1024 < this.size;
         if (!limit) {
-          this.$message.error(`上传的文件大小不能超过 ${this.size}MB!`);
+          this.$message({ message: `上传的文件大小不能超过 ${this.size}MB!`, type: 'error' });
         }
 
         // 多张图片上传
-        if (this.limit > 1 && flag) {
+        if (this.model === 'image' && this.limit > 1 && flag) {
           this.handleMoreImg(file)
           return false
         }
-        if (includesAccept && flag) this.showProgress = true;
+
+        if (this.model === 'image' && includesAccept && flag) this.showProgress = true;
         return includesAccept && flag;
       },
       // el-upload 上传进度触发
@@ -378,7 +388,7 @@
       handleSuccess (res, file, fileList) {
         this.showProgress = false;
         if (res.code !== 0) {
-          this.$message(res.message, "error");
+          this.$message({ message: res.message, type: 'error' });
           return;
         }
         this.imageUrl = res.data.url;
@@ -417,9 +427,12 @@
       },
       // 关闭上传进度前触发: 停止上传
       handleDialogClose () {
-        console.log('handleDialogClose')
-        // to do: 中止上传
-        // this.$refs.elUpload.abort(this.imgFile);
+        if (this.$refs.tmUpload) {
+          this.$refs.tmUpload.abort()
+        }
+        if (cancel) {
+          cancel()
+        }
       },
       // 关闭上传进度后触发: 重置上传进度
       handleDialogClosed () {
@@ -429,7 +442,7 @@
       customUpload (file) {
         // 多个文件上传
         if (this.fileList.length >= this.limit && this.limit !== 1) {
-          this.$message(`最多上传${this.limit}个文件!`, "error");
+          this.$message({ message: `最多上传${this.limit}个文件!`, type: 'error' });
           return false
         }
 
@@ -446,11 +459,14 @@
           method: 'post',
           url: this.action,
           headers: this.headers,
+          cancelToken: new CancelToken(function (c) {
+            cancel = c
+          }),
           data
         }).then(res => {
           this.showProgress = false;
           if (res.data.code !== 0) {
-            this.$message(res.message, "error");
+            this.$message({ message: res.message, type: 'error' });
             return;
           }
 

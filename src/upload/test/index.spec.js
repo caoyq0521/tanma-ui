@@ -6,5 +6,21 @@ describe('tmUpload', () => {
     const wrapper = mount(TmUpload);
     expect(wrapper).toMatchSnapshot();
   });
+  it('model', () => {
+    const wrapper = mount(TmTitle, {
+      propsData: {
+        model: 'file'
+      }
+    });
+    expect(wrapper.find('.local-upload-drag-component').exists()).toBe(true);
+  });
+  it('imgTitle', () => {
+    const wrapper = mount(TmTitle, {
+      propsData: {
+        imgTitle: '测试内容'
+      }
+    });
+    expect(wrapper.find('.image-single-uplaod_title').text()).toBe('测试内容')
+  });
 })
   

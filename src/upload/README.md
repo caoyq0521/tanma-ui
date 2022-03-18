@@ -59,13 +59,36 @@ fileTitle | 上传文件的提示信息 | _string_ | - | -
 rate | 剪切比例 | _string_ | - | 4:3
 size | 上传的文件大小: 单位MB | _number_ | - | 5
 
-### Slots
-名称 | 说明
--- | --
-preview | 右侧预览区域
-
 ### Events
+
 事件名 | 说明 | 回调参数
 -- | -- | --
 previewFile | 点击上传的文件触发，携带着点击文件的信息 | -
 uploadList | 上传后触发，携带着上传文件的信息 | -
+
+### 样式变量
+
+#### Less 变量
+
+组件提供了下列 Less 变量，可用于自定义样式，使用方法请参考[定制主题](#/theme)。
+
+名称 | 默认值 | 描述
+-- | -- | --
+@width-size-img | `103px` | 上传图片的宽高
+@image-upload-border-dashed | `1px dashed #858598` | 未上传图片的边框
+@image-upload-border | `1px solid @gray-3` | 上传图片后边框的颜色
+@image-boder-radius | `5px` | 上传图片边框的圆角
+@upload-box-p | `#D7D7D7` | 边框的提示信息字体颜色
+
+#### Css 变量
+
+组件提供了下列 Css 变量，可用于自定义样式。
+
+名称 | 默认值 | 描述
+-- | -- | --
+--tm-upload-width | `103px` | 上传图片的宽高
+--tm-upload-border-dashed | `1px dashed #858598` | 未上传图片的边框
+--tm-upload-border | `1px solid @gray-3` | 上传图片后边框的颜色
+--tm-border-radius | `5px` | 上传图片边框的圆角
+--tm-upload-p | `#D7D7D7` | 边框的提示信息字体颜色
+--tm-uplaod-font | `14px` | 字体大小
