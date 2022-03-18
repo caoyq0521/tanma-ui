@@ -24,15 +24,15 @@ npm i tanma-design -S
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
-import tanmaUi from 'tanma-design';
+import tanmaDesign from 'tanma-design';
 import 'tanma-design/lib/index.less';
 
-Vue.use(tanmaUi);
+Vue.use(tanmaDesign);
 Vue.use(ElementUI);
 
 ```
 
-以上代码便完成了 tanmaUi 的引入。需要注意的是，样式文件需要单独引入。
+以上代码便完成了 tanmaDesign 的引入。需要注意的是，样式文件需要单独引入。
 
 > Tips: 配置按需引入插件后，将不允许直接导入所有组件。
 
