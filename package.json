@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "element-ui": "2.13.0",
+    "vue-virtual-scroll-list": "^2.3.3",
     "vtip": "^1.0.6"
   },
   "peerDependencies": {

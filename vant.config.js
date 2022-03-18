@@ -115,6 +115,14 @@ module.exports = {
             title: 'DateRange 日期范围',
           },
           {
+            path: 'dept-tree',
+            title: 'DeptTree 部门员工选择',
+          },
+          {
+            path: 'tree',
+            title: 'Tree 虚拟树',
+          },
+          {
             path: 'optional-picker',
             title: 'OptionalPicker 日周月选择器'
           },

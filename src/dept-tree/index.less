@@ -1,0 +1,144 @@
+@import '../style/var';
+@import './var';
+
+.tm-dept-tree {
+  .el-tree {
+    div:first-child{
+      overflow-x: hidden;
+      &::-webkit-scrollbar {
+        width: 7px;
+        height: 12px;    
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        background: #dddddd;
+      }
+    }
+  }
+  .el-dialog {
+    width: 600px !important;
+    height: 600px;
+    border-radius: 8px;
+    &__body {
+      height: 460px;
+      border-top: 1px solid #dcdfe6;
+      border-bottom: 1px solid #dcdfe6;
+      padding: 0 10px;
+    }
+    &__footer {
+      margin-top: 15px;
+    }
+  }
+  .tm-dialog__footer {
+    padding-top: 18px;
+  }
+  &__flex {
+    display: flex;
+    height: 100%;
+  }
+  &__tree-ctx {
+    padding: 10px;
+  }
+  &__title {
+    font-weight: 700;
+  }
+  &__tree-search {
+    width: 50%;
+    border-right: 1px solid #dcdfe6;
+    .el-input {
+      width: 260px;
+      height: 36px;
+      margin: 10px 0 10px 10px;
+      input {
+        height: 100%;
+      }
+    }
+  }
+
+  &__tree {
+    height: 390px;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 7px;
+      height: 12px;    
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+      background: #dddddd;
+    }
+  }
+
+  &__node-wrapper {
+    display: flex;
+  }
+
+  &__node-box {
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    margin-left: 4px;
+  }
+
+  &__icon {
+    color: #4d7aee;
+    overflow: unset;
+  }
+
+  &__select-result {
+    flex: 1;
+    padding: 15px 0 15px 15px;
+  }
+  
+  &__select-list {
+    height: 380px;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 7px;
+      height: 12px;    
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+      background: #dddddd;
+    }
+  }
+  
+
+  &__select-list-item {
+    padding: 3px 0 0 10px;
+    margin-left: 0 !important;
+    border-radius: 5px;
+    height: 30px;
+    line-height: 24px;
+    position: relative;
+    &::before {
+      display: none;
+    }
+    &:hover {
+      background-color: #f5f7fa;
+    }
+  }
+
+  &__ml8 {
+    margin-left: 8px;
+  }
+
+  &__close-icon {
+    color: #999;
+    cursor: pointer;
+    &:hover {
+      color: #4d7aee;
+    }
+    position: absolute;
+    right: 12px;
+    top: 2px;
+  }
+
+  &__select-title {
+    word-break: break-all;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+}
