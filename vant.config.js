@@ -95,6 +95,10 @@ module.exports = {
             title: 'TagGroup 标签组'
           },
           {
+            path: 'upload',
+            title: 'upload  上传'
+          },
+          {
             path: 'dialog',
             title: 'Dialog 对话框'
           },
