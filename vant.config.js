@@ -5,7 +5,8 @@ module.exports = {
       preprocessor: 'less',
     },
     site: {
-      publicPath: '/tanma-ui/',
+      publicPath: './', // 部署到本地
+      // publicPath: '/tanma-ui/' // 部署到github
     },
     namedExport: true,
   },
@@ -20,12 +21,12 @@ module.exports = {
       {
         title: '开发指南',
         items: [
+          // {
+          //   path: 'home',
+          //   title: '介绍',
+          // },
           {
             path: 'home',
-            title: '介绍',
-          },
-          {
-            path: 'quickstart',
             title: '快速上手',
           },
           {
@@ -51,7 +52,7 @@ module.exports = {
           },
           {
             path: 'tip',
-            title: 'tip 文字提示',
+            title: 'Tip 文字提示',
           },
           {
             path: 'avatar',
@@ -75,7 +76,7 @@ module.exports = {
           },
           {
             path: 'collapse-text',
-            title: 'collapseText 折叠文本'
+            title: 'CollapseText 折叠文本'
           },
           {
             path: 'tag',
@@ -83,11 +84,11 @@ module.exports = {
           },
           {
             path: 'tag-pro',
-            title: 'Tag pro 标签'
+            title: 'TagPro 标签'
           },
           {
-            path: 'tag-more',
-            title: 'Tag more 按钮'
+            path: 'tag-group',
+            title: 'TagGroup 标签组'
           },
           {
             path: 'dialog',
@@ -110,8 +111,20 @@ module.exports = {
             title: 'DateRange 日期范围',
           },
           {
+            path: 'dept-tree',
+            title: 'DeptTree 部门员工选择',
+          },
+          {
+            path: 'tree',
+            title: 'Tree 虚拟树',
+          },
+          {
             path: 'optional-picker',
             title: 'OptionalPicker 日周月选择器'
+          },
+          {
+            path: 'v-title',
+            title: 'vTitle 提示'
           }
         ],
       },
@@ -121,6 +134,10 @@ module.exports = {
           {
             path: 'avatar-card',
             title: 'AvatarCard 头像卡片',
+          },
+          {
+            path: 'tag-combo',
+            title: 'TagCombo 标签组合'
           }
         ]
       },

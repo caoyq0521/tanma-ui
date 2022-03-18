@@ -21,7 +21,7 @@
   Vue.use(Popover);
 
   export default {
-    name: "tmTagMore",
+    name: "tmTagGroup",
     props: {
       // 触发方式
       // `click` `focus` `hover` `manual`

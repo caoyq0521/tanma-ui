@@ -68,6 +68,7 @@
         v-model="internallPageSize"
         placeholder="请选择"
         :disabled="!total"
+        popper-class="tm-pagination__select-popper"
         @change="handlePageSizeChange"
       >
         <el-option
@@ -264,7 +265,8 @@
     },
     methods: {
       handlePagerChange(e) {
-        if(this.isEasyMode) return;
+        const { target } = e;
+        if(this.isEasyMode || !target.className.includes('number')) return;
 
         const currentPage = +e.target.innerText;
         if(currentPage === this.internalCurrentPage) return;
