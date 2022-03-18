@@ -104,6 +104,8 @@
             class="file-item"
             v-for="(file, index) in fileList"
             :key="index"
+            @mouseenter="hoverIndex = index"
+            @mouseleave="hoverIndex = ''"
             @click="previewFile(file)"
           >
             <!-- <hj-patter-file fileType="csv"></hj-patter-file> -->
@@ -111,7 +113,7 @@
             <span class="file-name">
               {{ file.name }}
             </span>
-            <i v-if="limit > 1" class="iconfont icon-guanbi close-file" @click="removeFile(index)"></i>
+            <i v-if="limit > 1 && hoverIndex === index" class="iconfont icon-guanbi close-file" @click="removeFile(index)"></i>
           </div>
         </div>
         <i v-else class="icon iconfont iconwenjian3"></i>
@@ -168,7 +170,7 @@
   Vue.use(Dialog);
   // Vue.use(Message);
   Vue.prototype.$message = Message;
-  import { dataURLtoBlob, fileToDataURL, base64ToBlob } from "../util/tools";
+  import { dataURLtoBlob, fileToDataURL, base64ToBlob } from "../util";
   import { v4 as $uuid } from 'uuid';
   const IMAGE_WIDTH = 1080;
   let cancel;
@@ -271,6 +273,7 @@
         isHover: false,
         target: '',
         id: 'fileInput',
+        hoverIndex: ''
       }
     },
     watch: {
