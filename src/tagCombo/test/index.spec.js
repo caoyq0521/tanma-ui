@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import TmTagCombo from '../tag-combo.vue';
+import TmTagCombo from '../tagCombo.vue';
 
 describe('tmTagCombo', () => {
   it('render tag-combo', () => {

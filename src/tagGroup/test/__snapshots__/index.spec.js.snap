@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tmTagGroup render tag-group 1`] = `<span class="tm-tag-more"><div role="tooltip" id="el-popover-8637" aria-hidden="true" class="el-popover el-popper" style="width: 292px; display: none;" name="fade-in-linear" tabindex="0"><!----></div><div class="reference el-popover__reference" aria-describedby="el-popover-8637" tabindex="0"><i class="tm-icon-gengduo2 tm-tag-more__icon"></i></div></span>`;
