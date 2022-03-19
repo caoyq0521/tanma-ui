@@ -31,3 +31,48 @@
 .el-picker-panel__shortcut:hover {
   color:  var(--main-color);
 }
+
+.el-input {
+  &__inner:focus{
+    border-color: var(--main-color);
+  }
+}
+
+// 年月选择器
+.el-year-table td.available, .el-month-table td { 
+  .cell:hover {
+    color: var(--main-color);
+  }
+
+  &.today .cell{
+    color: var(--main-color); 
+  }
+
+  &.current .cell {
+    color: var(--main-color) !important;
+  }
+}
+
+// 日选择器
+.el-date-table td.available {
+  &.current span{
+    background-color: var(--main-color);
+  }
+}
+
+.el-date-picker{
+  .el-picker-panel{
+    &__footer {
+      .el-button--text {
+        color: var(--main-color)
+      }
+    }
+  }
+  .el-time-panel {
+    &__footer {
+      .el-time-panel__btn.confirm{
+        color: var(--main-color);
+      }
+    }
+  }
+}
