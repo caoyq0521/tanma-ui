@@ -17,11 +17,11 @@ module.exports = {
         styleLibraryName: 'theme-chalk',
       },
     ],
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        "regenerator": true
-      }
-    ]
+    // [
+    //   "@babel/plugin-transform-runtime",
+    //   {
+    //     "regenerator": true
+    //   }
+    // ]
   ],
 };

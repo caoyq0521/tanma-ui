@@ -10,7 +10,7 @@
 
 ```js
   import Vue from 'vue';
-  import { CollapseText } from 'tanma-ui';
+  import { CollapseText } from 'tanma-design';
   
   Vue.use(CollapseText);
 ```

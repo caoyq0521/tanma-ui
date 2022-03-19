@@ -8,7 +8,7 @@
 
 ```js
   import Vue from 'vue';
-  import { OptionalPicker } from 'tanma-ui';
+  import { OptionalPicker } from 'tanma-design';
   
   Vue.use(OptionalPicker);
 ```
@@ -51,7 +51,7 @@ change | 时间值改变时触发 | _{ \_type: string, startDate: string, endDat
 
 #### CSS 变量
 
-组件提供了下列 CSS 变量，可用于自定义样式
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考[定制主题 css](#/theme2)。
 
 名称 | 默认值 | 描述
 -- | -- | --

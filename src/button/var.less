@@ -1,26 +1,26 @@
 @import '../style/var';
 
-@btn-font-size-sm: @font-size-sm;
+@btn-font-size-sm: var(--font-size-content);
+@btn-width-medium:115px;
+@btn-width-small:70px;
 @btn-height:36px;
 @btn-padding: 0 20px;
-@btn-primary: @color-primary;
+@btn-primary: var(--main-color);
 @btn-danger: @color-danger;
-@btn-gray-1: @gray-1;
-@btn-gray-3: @gray-3;
-@btn-gray-7: @gray-7;
-@btn-gray-8: @gray-8;
-@btn-gray-9: @gray-9;
+@btn-gray-1:var(--input-placeholder-color);
+@btn-gray-3: var(--border-color-light);
+@btn-gray-7: var(--color-background);
+@btn-gray-8: var(--tm-gray-8);
+@btn-gray-9: var(--tm-gray-9);
 @btn-gray-10: #B2B4C7;
-@btn-gray: @color-text-secondary;
-@btn-white: @white;
-@btn-black: @black;
-@btn-disabled-primary: #A3BEFF;
-@btn-disabled-danger: #FBB6B5;
+@btn-gray: var(--tooltip-font-color);
+@btn-white: var(--tm-white);
+@btn-black: var(--tm-black);
 @btn-solid: solid;
 @btn-dashed: dashed;
 @btn-border-radius: 5px;
-@btn-hover-primary-bgc: fade(@color-primary, 85%);
-@btn-hover-danger-bgc: fade(@color-danger, 85%);
+@btn-hover-primary-bgc: rgba(var(--main-color-r), var(--main-color-g), var(--main-color-b),0.85);
+@btn-hover-danger-bgc: fade(@btn-danger, 85%);
 
 .button-size(@padding, @font-size, @border-radius) {
   padding: @padding;

@@ -1,0 +1,58 @@
+@import '../style/var';
+@import './var';
+  
+:root {
+
+}
+
+.tm-button-tabs {
+
+  &__step{
+    display: flex;
+    align-items: center;
+
+    &-prve,
+    &-next{
+      width: 156px;
+    }
+    &-prve{
+      border: none;
+    }
+  }
+
+
+  &__certainty{
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    &-confirm {
+      width: 115px;
+    }
+
+    &-confirm.danger {
+      // background-color: @color-red !important;
+    }
+
+
+    &-confirm.is-disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    &-cancel {
+      width: 115px;
+      border: none;
+    }
+
+    &-cancel:hover {
+      background-color: #f4f4f6 !important;
+      color: #000 !important;
+    }
+    
+    .base-line {
+      align-items: baseline;
+    }
+  }
+}
+  

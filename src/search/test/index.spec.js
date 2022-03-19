@@ -13,7 +13,7 @@ describe('tmSearch', () => {
         placeholder: '测试占位符内容',
       },
     });
-    expect(wrapper.find('.tm-search input').placeholder).toBe('测试占位符内容');
+    expect(wrapper.find('.tm-search input').attributes('placeholder')).toBe('测试占位符内容');
   });
 
   it('maxlength', () => {
@@ -23,7 +23,7 @@ describe('tmSearch', () => {
         value: '-'.repeat(20),
       },
     });
-    expect(wrapper.find('.tm-search input').value.length).toBe(10);
+    expect(wrapper.vm.$el.querySelector('.tm-search input').maxLength).toBe(10);
   });
 
   // 值为空显示
@@ -33,38 +33,41 @@ describe('tmSearch', () => {
         value: '',
       },
     });
-    expect(wrapper.find('.tm-search el-icon-search').exists()).toBe(true);
+    expect(wrapper.find('.tm-search .el-icon-search').exists()).toBe(true);
   });
 
   // 有值则显示
   it('showIcon hasValue', () => {
     const wrapper = mount(TmSearch, {
       propsData: {
-        value: '',
+        value: '内容',
       },
     });
-    expect(wrapper.find('.tm-search el-icon-search').exists()).toBe(false);
+    expect(wrapper.find('.tm-search .el-icon-search').exists()).toBe(false);
   });
 
   // 不允许输入特殊字符
-  it('allowSpecialChar notAllow', () => {
+  it('test allowSpecialChar notAllow', async () => {
     const wrapper = mount(TmSearch, {
       propsData: {
         allowSpecialChar: false,
         value: '@',
       },
     });
-    expect(wrapper.find('.tm-search input').value).toBe('');
+    const el = wrapper.vm.$el;
+    await wrapper.vm.handleInput('@');
+
+    expect(el.querySelector('.tm-search input').value).toBe('');
   });
 
   // 允许输入特殊字符
-  it('test allowSpecialChar notAllow', () => {
+  it('test allowSpecialChar allow', () => {
     const wrapper = mount(TmSearch, {
       propsData: {
         allowSpecialChar: true,
         value: '@',
       },
     });
-    expect(wrapper.find('.tm-search input').value).toBe('@');
+    expect(wrapper.vm.$el.querySelector('.tm-search input').value).toBe('@');
   });
 })

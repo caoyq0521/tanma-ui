@@ -21,13 +21,13 @@
       <template v-if="!hideDescription">
         <div class="info-description" :title="descriptionInfo" v-if="description || $slots.description">
           <slot name="description">
-            <i class="iconfont wechat-icon icon-wechat" v-if="!hideWechatIcon"></i>
+            <i class="tm-wechat-icon icon-wechat" v-if="!hideWechatIcon"></i>
             <span class="tm-ellipsis">{{ description }}</span>
           </slot>
         </div>
         <div class="tm-ellipsis info-description" v-else>
           <template v-if="!hideWechatIcon">
-            <i class="iconfont wechat-icon icon-wechat-unadded color-gray"></i>待添加
+            <i class="tm-wechat-icon icon-wechat-unadded color-gray"></i>待添加
           </template>
         </div>
       </template>

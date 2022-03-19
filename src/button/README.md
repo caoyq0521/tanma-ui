@@ -8,7 +8,7 @@
 
 ```js
   import Vue from 'vue';
-  import { Button } from 'tanma-ui';
+  import { Button } from 'tanma-design';
   
   Vue.use(Button);
 ```
@@ -40,13 +40,19 @@
 设置loading属性为true即可。
 
 <demo-code>./demo/loadButton.vue</demo-code>
+
+### 不同尺寸按钮
+Button 组件提供两种尺寸，可以在不同场景下选择合适的按钮尺寸。
+
+<demo-code>./demo/sizeButton.vue</demo-code>
 ### Props
 
 参数 | 说明 | 类型 | 可选值 | 默认值
 -- | -- | -- | -- | --
-type | 类型 | _string_ | primary/danger/addition/text/forbidden/wicked | -
 disabled | 	是否禁用状态 | _boolean_ | - | false
 loading | 	是否加载中状态 | _boolean_ | - | false
+size | 	尺寸 | _string_ | small | -
+type | 类型 | _string_ | primary/danger/addition/text/forbidden/wicked | -
 
 ### Slots
 
@@ -62,17 +68,19 @@ default | 显示在按钮里面的内容
 
 名称 | 默认值 | 描述
 -- | -- | --
-@btn-primary | @color-primary `14px` | 主要按钮颜色
-@btn-danger | @color-danger `#3470ff` | 危险按钮颜色
-@btn-disabled-primary | `#A3BEFF` | 主要按钮禁用颜色
-@btn-disabled-danger | `#FBB6B5` | 危险按钮禁用颜色
+@btn-primary | var(--main-color) `#3470ff` | 主要按钮颜色
+@btn-danger | @color-danger `#f67172` | 危险按钮颜色
+@btn-gray-9 | var(--tm-gray-9) `#CCCCCC` | 禁用按钮颜色
+@btn-gray-7|  var(--color-background) `#f4f4f6` | 置灰按钮颜色
 @btn-padding |  0 20px | 按钮边距
-@btn-border-radius | 5px | 按钮圆角
-@btn-font-size-sm | @font-size-sm  | 按钮字体大小
-@btn-heigh | 36px  | 按钮高度
+@btn-border-radius | `5px` | 按钮圆角
+@btn-font-size-sm | var(--font-size-content) `14px`  | 按钮字体大小
+@btn-heigh | `36px`  | 按钮高度
+@btn-width-medium | `115px`  | 默认size按钮最小宽度
+@btn-width-small | `70px`  | size为small按钮最小宽度
 @btn-solid | solid  | 按钮实线边框
 @btn-dashed | dashed  | 按钮虚线边框
-@btn-hover-primary-bgc | fade(@color-primary, 85%)  | 主要按钮hover颜色
+@btn-hover-primary-bgc | rgba(var(--main-color-r), var(--main-color-g), var(--main-color-b),0.85)  | 主要按钮hover颜色
 @btn-hover-danger-bgc | fade(@color-danger, 85%)  | 危险按钮hover颜色
 
 
@@ -82,15 +90,16 @@ default | 显示在按钮里面的内容
 
 名称 | 默认值 | 描述
 -- | -- | --
---tm-btn-primary | @color-primary `14px` | 主要按钮颜色
---tm-btn-danger | @color-danger `#3470ff` | 危险按钮颜色
---tm-btn-disabled-primary | `#A3BEFF` | 主要按钮禁用颜色
---tm-btn-disabled-danger | `#FBB6B5` | 危险按钮禁用颜色
+--tm-btn-primary | var(--main-color) `#3470ff` | 主要按钮颜色
+--tm-btn-danger | @color-danger `#f67172` | 危险按钮颜色
 --tm-btn-padding |  0 20px | 按钮边距
---tm-btn-border-radius | 5px | 按钮圆角--tm-btn-font-size-sm | @font-size-sm | 按钮字体大小
---tm-btn-heigh | 36px | 按钮高度
+--tm-btn-border-radius | `5px` | 按钮圆角
+--tm-btn-font-size-sm | var(--font-size-content) `14px` | 按钮字体大小
+--tm-btn-heigh | `36px`| 按钮高度
+--tm-btn-width-medium | @btn-width-medium `115px` | 默认size按钮最小宽度
+--tm-btn-width-small | @btn-width-small `70px` | size为small按钮最小宽度
 --tm-btn-solid | solid | 按钮实线边框
 --tm-btn-dashed | dashed | 按钮虚线边框
---tm-btn-hover-primary-bgc | @btn-hover-primary-bgc | 主要按钮hover颜色
+--tm-btn-hover-primary-bgc |rgba(var(--main-color-r), var(--main-color-g), var(--main-color-b),0.85) | 主要按钮hover颜色
 --tm-btn-hover-danger-bgc | @btn-hover-danger-bgc | 危险按钮hover颜色
 

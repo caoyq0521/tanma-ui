@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   plugins:[
     new CreateDirStructure({
-      name: 'tagMore',
+      name: 'icon',
       path: resolve(__dirname, 'src')
     })
   ]

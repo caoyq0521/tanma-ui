@@ -6,7 +6,7 @@
     :type="type"
     @click="handleClick"
   >
-    <i class="iconfont icon-load" v-if="loading"></i>
+    <i class="tm-icon-load" v-if="loading"></i>
     <slot></slot>
   </button>
 </template>
@@ -30,6 +30,11 @@ const DIS_BUTTON = ['forbidden','wicked']
       loading: {
         type: Boolean,
         default: false
+      },
+      //按钮尺寸
+      size:{
+        type: String,
+        default:'medium'
       }
     },
     data(){
@@ -39,10 +44,12 @@ const DIS_BUTTON = ['forbidden','wicked']
     },
     computed:{
       className(){
-        const { type, disabled } = this
+        const { type, disabled,size } = this
         return{
+          [`tm-button--${size}`]: true,
           [`tm-button--${type}`]: true,
-          'disabled': disabled || DIS_BUTTON.includes(type),
+          'disabled': disabled || DIS_BUTTON.includes(type)
+          
         }
       }
     },

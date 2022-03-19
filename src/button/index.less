@@ -4,12 +4,12 @@
 :root {
   --tm-btn-primary: @btn-primary;
   --tm-btn-danger: @btn-danger;
-  --tm-btn-disabled-primary:#A3BEFF;
-  --tm-btn-disabled-danger:#FBB6B5;
   --tm-btn-padding: @btn-padding;
   --tm-btn-border-radius: @btn-border-radius;
   --tm-btn-font-size-sm: @btn-font-size-sm;
   --tm-btn-heigh: @btn-height;
+  --tm-btn-width-medium: @btn-width-medium;
+  --tm-btn-width-small: @btn-width-small;
   --tm-btn-solid: @btn-solid;
   --tm-btn-dashed: @btn-dashed;
   --tm-btn-hover-primary-bgc: @btn-hover-primary-bgc;
@@ -37,10 +37,19 @@
   }
 
   &--primary {
-    .button-style(var(--tm-btn-primary), var(--tm-btn-solid), var(--tm-btn-primary), var(--tm-btn-disabled-primary), @btn-white, var(--tm-btn-disabled-primary), var(--tm-btn-hover-primary-bgc), @btn-white, var(--tm-btn-hover-primary-bgc));
+    .button-style(var(--tm-btn-primary), var(--tm-btn-solid), var(--tm-btn-primary), var(--tm-btn-primary), @btn-white, var(--tm-btn-primary), var(--tm-btn-hover-primary-bgc), @btn-white, var(--tm-btn-hover-primary-bgc));
+
+    &[disabled],
+    &.disabled {
+      opacity: .5;
+    }
   }
   &--danger {
-    .button-style(var(--tm-btn-danger), var(--tm-btn-solid), var(--tm-btn-danger), var(--tm-btn-disabled-danger), @btn-white,  var(--tm-btn-disabled-danger), var(--tm-btn-hover-danger-bgc), @btn-white, var(--tm-btn-hover-danger-bgc));
+    .button-style(var(--tm-btn-danger), var(--tm-btn-solid), var(--tm-btn-danger), var(--tm-btn-danger), @btn-white,  var(--tm-btn-danger), var(--tm-btn-hover-danger-bgc), @btn-white, var(--tm-btn-hover-danger-bgc));
+    &[disabled],
+    &.disabled {
+      opacity: .5;
+    }
   }
   &--default {
     .button-style(@btn-white, var(--tm-btn-solid), @btn-gray-3, @btn-white, @btn-gray-1, @btn-gray-8,#EDF2FD, var(--tm-btn-primary), #C2D3FF, @btn-black);
@@ -57,6 +66,7 @@
     cursor: not-allowed;
   }
   &--text {
+    min-width: initial !important;
     color: var(--tm-btn-primary);
     padding: 0;
     border: none;
@@ -64,13 +74,19 @@
     &[disabled],
     &.disabled {
       cursor: not-allowed;
-      color: var(--tm-btn-disabled-primary);
+      opacity: .5;
     }
     &:not(&.disabled):not([disabled]):hover {
       color: @btn-hover-primary-bgc;
     }
   }
-  .icon-load {
+  &--medium{
+    min-width: var(--tm-btn-width-medium);
+  }
+  &--small{
+    min-width: var(--tm-btn-width-small);
+  }
+  .tm-icon-load {
     display: inline-block;
     vertical-align: middle;
     animation: rotating 2s linear infinite;

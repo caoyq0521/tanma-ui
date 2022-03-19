@@ -8,7 +8,7 @@
 
 ```js
   import Vue from 'vue';
-  import { Avatar } from 'tanma-ui';
+  import { Avatar } from 'tanma-design';
   
   Vue.use(Avatar);
 ```
@@ -38,7 +38,8 @@
 参数 | 说明 | 类型 | 可选值 | 默认值
 -- | -- | -- | -- | --
 crop | 裁切尺寸 <br> 需要`isCrop`为`true`且`imageSource`有值时该属性才生效 | _string_ | - | `m40x40`
-customIcon | 自定义icon类型 | _string_ | 项目中icon图标类名 | -
+customIcon | 自定义icon类型 | _string_ | icon图标类名 | -
+class-prefix | 类名前缀 | _string_ | - | -
 height | 高度 | _string \| number_ | - | `40`
 iconSize | icon字体大小 | _number_ | 字体大小必须 大于等于 `12` 并且 小于等于 `30` | `16`
 iconType | icon类型 | _string_ | `image` `person` `company` `group` | `image`
@@ -65,7 +66,7 @@ error | `imageSource`图片加载失败时展示的内容
 -- | -- | --
 @avatar-background-color-dark | var(--tm-gray-3) `#D7D7D7` | `theme`为`drak`时头像组件背景色
 @avatar-background-color-light | rgba(246,246,246,0.5) | `theme`为`light`时头像组件背景色
-@avatar-iconfont-color | var(--tm-white) `#FFFFFF` | 字体图标颜色
+@avatar-icon-color | var(--tm-white) `#FFFFFF` | 字体图标颜色
 @avatar-text-image-color | var(--tm-white) `#FFFFFF` | 文本颜色
 
 #### Css 变量
@@ -76,5 +77,5 @@ error | `imageSource`图片加载失败时展示的内容
 -- | -- | --
 --tm-avatar-background-color-dark | var(--tm-gray-3) `#D7D7D7` | `theme`为`drak`时头像组件背景色
 --tm-avatar-background-color-light |  rgba(246,246,246,0.5) | `theme`为`light`时头像组件背景色
---tm-avatar-iconfont-color | var(--tm-white) `#FFFFFF` | 字体图标颜色 
+--tm-avatar-icon-color | var(--tm-white) `#FFFFFF` | 字体图标颜色 
 --tm-avatar-text-image-color | var(--tm-white) `#FFFFFF` | 文本颜色

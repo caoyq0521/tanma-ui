@@ -8,21 +8,29 @@
   --tm-tabs-active-color: @tabs-active-color;
   --tm-tabs-button-active-color: @tabs-button-active-color;
   --tm-tabs-button-border-radius: @tabs-button-border-radius;
-  --tm-tabs-shadow-color: @tabs-shadow-color;
+  --tm-tabs-font-weight-normal: @tabs-font-weight-normal;
+  --tm-tabs-font-weight-bold: @tabs-font-weight-bold;
+  --tm-tabs-button-active-padding: @tabs-button-active-padding;
 }
 
 .tm-tabs {
   width: 100%;
+  overflow: hidden;
 
-  .tm-tabs-group {
+  .tm-tabs__wrapper {
+    display: flex;
+    flex: 1 1 auto;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .tm-tabs__content {
     display: flex;
     flex-direction: row;
-    flex: 1;
-    height: 100%;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    flex-wrap: nowrap;
+    flex: 1 0 auto;
+    white-space: nowrap;
+    transition: .3s cubic-bezier(.25,.8,.5,1);
 
     &.is-left {
       justify-content: flex-start;
@@ -35,16 +43,43 @@
     }
   }
 
+  .icon-prev,
+  .icon-next {
+    margin: 0 10px;
+    padding: 0 4px;
+    font-size: 12px;
+    color: #000;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:hover {
+      background: #f9f9f9;
+    }
+
+    &.is-disabled {
+      color: #d7d7d7;
+      pointer-events: none;
+      &:hover {
+        background: none;
+        cursor: auto;
+      }
+    }
+  }
+
   .tm-tabs__pane {
     padding: 0;
     margin-right: 30px;
     font-size: var(--tm-tabs-font-size);
-    font-weight: @font-weight-normal;
+    font-weight: var(--tm-tabs-font-weight-normal);
     line-height: 40px;
     text-align: center;
     cursor: pointer;
     color: var(--tm-tabs-color);
     white-space: nowrap;
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 
   &.tm-tabs--text {
@@ -55,7 +90,7 @@
       position: relative;
       font-size: var(--tm-tabs-active-font-size);
       color: var(--tm-tabs-active-color);
-      font-weight: @font-weight-bold;
+      font-weight: var(--tm-tabs-font-weight-bold);
     }
   }
 
@@ -67,7 +102,7 @@
       position: relative;
       font-size: var(--tm-tabs-active-font-size);
       color: var(--tm-tabs-active-color);
-      font-weight: @font-weight-bold;
+      font-weight: var(--tm-tabs-font-weight-bold);
 
       &:after {
         content: '';
@@ -87,8 +122,8 @@
   &.tm-tabs--button {
     .tm-tabs__pane.is-active {
       min-width: 116px;
-      padding: 0 @padding-sm;
-      font-weight: @font-weight-bold;
+      padding: 0 var(--tm-tabs-button-active-padding);
+      font-weight: var(--tm-tabs-font-weight-bold);
       color: var(--tm-tabs-button-active-color);
       border-radius: var(--tm-tabs-button-border-radius);
       background: var(--tm-tabs-active-color);

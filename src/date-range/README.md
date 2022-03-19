@@ -8,7 +8,7 @@
 
 ```js
   import Vue from 'vue';
-  import { Date-range } from 'tanma-ui';
+  import { Date-range } from 'tanma-design';
   
   Vue.use(Date-range);
 ```

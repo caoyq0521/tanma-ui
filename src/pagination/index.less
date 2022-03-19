@@ -30,12 +30,12 @@
       cursor: not-allowed;
       border-color: var(--tm-pagination-disable-color);
 
-      .iconfont {
+      [class^="tm-icon-"], [class*=" tm-icon-"] {
         color: var(--tm-pagination-arrow-disable-color);
       }
     }
 
-    .iconfont {
+    [class^="tm-icon-"], [class*=" tm-icon-"] {
       font-size: var(--tm-pagination-arrow-font-size);
       color: var(--tm-pagination-arrow-normal-color);
     }
@@ -85,6 +85,10 @@
       .el-input {
         width: 110px;
       }
+      .el-input.is-focus .el-input__inner {
+        border-color: var(--main-color);
+      }
+
       .el-input__inner {
         height: 26px;
         line-height: 26px;
@@ -98,6 +102,12 @@
 
   &--easy .number {
     cursor: auto;
+  }
+
+  &__select-popper {
+    .el-select-dropdown__item.selected {
+      color:  var(--main-color);
+    }
   }
 }
   
