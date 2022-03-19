@@ -7,7 +7,7 @@
     <span
       v-if="showPaginationBtn"
       class="iconfont icon-zuojiantou icon-prev"
-      :class="{'is-disabled': isPrevDisabled}"
+      :class="{ 'is-disabled': isPrevDisabled }"
       @click="handlePrev"
     ></span>
     <div ref="wrapper" class="tm-tabs__wrapper">
@@ -37,7 +37,7 @@
     <span
       v-if="showPaginationBtn"
       class="iconfont icon-youjiantou icon-next"
-      :class="{'is-disabled': isNextDisabled}"
+      :class="{ 'is-disabled': isNextDisabled }"
       @click="handleNext"
     ></span>
     <slot name="right"></slot>
@@ -67,13 +67,23 @@ export default {
       type: Array,
       default: () => ([])
     },
+    // 是否监听和切换标签时修改路由
+    router: {
+      type: Boolean,
+      default: false
+    },
+    // 路由查询参数名称
+    queryname: {
+      type: String,
+      default: 'tab'
+    },
     // 控制大小
-    // medium / small
+    // default / small
     size: {
       type: String,
-      default: 'medium',
+      default: 'default',
       validator (value) {
-        return ['medium', 'small'].includes(value);
+        return ['default', 'small'].includes(value);
       }
     },
     // 是否圆角，type = button 有效
@@ -113,10 +123,18 @@ export default {
     }
   },
   created () {
-    if (!this.currentKey) {
-      const first = this.options[0];
-      first && this.setCurrentKey(first.key);
+    let currentKey = this.currentKey;
+
+    // 如果开启路由监听，则优先从路由取当前标签的key
+    if (this.router) {
+      const tab = this.queryname;
+      currentKey = this.$route.query[tab];
     }
+    if (!currentKey) {
+      const first = this.options[0];
+      first && (currentKey = first.key);
+    }
+    this.setCurrentKey(currentKey);
   },
   mounted () {
     this.$nextTick(() => {
@@ -153,6 +171,16 @@ export default {
       this.$emit('input', key);
     },
     handleTabClick (tab, key, event) {
+      if (key === this.currentKey) return;
+      if (this.router) {
+        const query = this.$route.query;
+        this.$router.replace({
+          query: {
+            ...query,
+            [this.queryname]: key
+          }
+        });
+      }
       this.setCurrentKey(key);
       this.$emit('tab-click', tab, event);
       this.scrollIntoView();
@@ -165,7 +193,7 @@ export default {
         const items = this.$refs.items;
         const currentItem = items[index];
         const move = (currentItem.offsetLeft - this.wrapperWidth / 2 + currentItem.offsetWidth / 2);
-        this.translateX =  move < 0 ? 0 : move > (this.contentWidth - this.wrapperWidth) ? (-this.contentWidth + this.wrapperWidth) : -move;
+        this.translateX = move < 0 ? 0 : move > (this.contentWidth - this.wrapperWidth) ? (-this.contentWidth + this.wrapperWidth) : -move;
       })
     },
     handlePrev () {
