@@ -21,7 +21,13 @@
         </span>
       </div>
     </div>
-    <el-popover
+    <div 
+      v-else 
+      :style="expandStyle" 
+      v-title="text">
+      {{ text }}
+    </div>
+    <!-- <el-popover
       v-else
       :placement="popoverPlace"
       trigger="hover">
@@ -29,7 +35,7 @@
         {{ text }}
       </div>
       <span class="tm-collapse-text__content" :style="expandStyle" slot="reference">{{ text }}</span>
-    </el-popover>
+    </el-popover> -->
   </div>
 </template>
 
@@ -77,10 +83,10 @@
         default: false
       },
       // popover展示位置
-      popoverPlace: {
-        type: String,
-        default: 'bottom'
-      }
+      // popoverPlace: {
+      //   type: String,
+      //   default: 'bottom'
+      // }
   },
   data () {
     return {
