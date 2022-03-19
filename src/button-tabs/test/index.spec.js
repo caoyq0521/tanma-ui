@@ -1,10 +1,6 @@
-import { mount } from '@vue/test-utils';
-import TmButtonTabs from '../button-tabs.vue';
+// import { mount } from '@vue/test-utils';
 
-describe('tm-button-tabs', () => {
-  it('render button-tabs', () => {
-    const wrapper = mount(TmButtonTabs);
-    expect(wrapper).toMatchSnapshot();
-  });
-})
+// describe('tm-button-tabs', () => {
+  
+// })
   
