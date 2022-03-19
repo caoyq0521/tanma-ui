@@ -38,10 +38,6 @@
 <script>
 import Avatar from "../avatar";
 import Tip from "../tip";
-import Vtip from "vtip";
-import 'vtip/lib/index.min.css';
-import Vue from "vue";
-Vue.use(Vtip.directive, { directiveName: 'title' })
 
 const IconTypeEnum = ['image', 'person', 'company', 'group'];
 
