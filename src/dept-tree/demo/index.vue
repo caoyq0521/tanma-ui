@@ -1,8 +1,8 @@
 <template>  
   <div>
-    <el-button @click="onOpen" type="primary">
+    <tm-button @click="onOpen" type="primary">
       添加员工
-    </el-button>
+    </tm-button>
     <tm-deptTree :data="data" :modal="this.modal" class="tree-box" />
     <div v-if="select.length">已选择：{{ select }}</div>
   </div>

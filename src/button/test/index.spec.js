@@ -39,6 +39,16 @@ describe('tmButton', () => {
     expect(wrapper.find('.tm-button--text').exists()).toBe(true);
   });
 
+  it('whether size of button', async () => {
+    const wrapper = mount(TmButton);
+
+    await wrapper.setProps({ type: 'medium' });
+    expect(wrapper.find('.tm-button--medium').exists()).toBe(true);
+
+    await wrapper.setProps({ type: 'small' });
+    expect(wrapper.find('.tm-button--small').exists()).toBe(true);
+
+  });
   it('whether disabled of button', () => {
     const wrapper = mount(TmButton, {
       propsData: {

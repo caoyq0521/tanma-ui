@@ -52,6 +52,16 @@
 | tip              | 提示信息       | _string_  | -                                  | -        |
 | title            | 用户昵称       | _string_  | -（必传）                          | 我是标题 |
 
+### Slots
+
+| 名称        | 说明                   |
+| ----------- | ---------------------- |
+| title       | AvatarCard标题部分内容 |
+| description | AvatarCard描述部分内容 |
+
+
+
+
 ### 样式变量
 
 #### Less变量
@@ -71,4 +81,3 @@
 | ---------------------------------- | ---------------------------------- | ---------------- |
 | --tm-avatar-card-title-color       | var(--tm-black)`#000`              | 头像卡片标题颜色 |
 | --tm-avatar-card-description-color | var(--tooltip-font-color)`#858598` | 头像卡片描述颜色 |
-

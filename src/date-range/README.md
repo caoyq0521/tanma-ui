@@ -8,9 +8,9 @@
 
 ```js
   import Vue from 'vue';
-  import { Date-range } from 'tanma-design';
+  import { DateRange } from 'tanma-design';
   
-  Vue.use(Date-range);
+  Vue.use(DateRange);
 ```
 
 ## 代码演示

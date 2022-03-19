@@ -1,8 +1,8 @@
 <template>  
   <div>
-    <el-button @click="onOpen" type="primary">
+    <tm-button @click="onOpen" type="primary">
       获取ref
-    </el-button>
+    </tm-button>
     <tm-deptTree ref="tree" :data="data" :modal="modal" class="tree-box" />
   </div>
 </template>

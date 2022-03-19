@@ -21,7 +21,7 @@ export default {
     handleClick(e, info) {
       const { cssPrefix } = this;
       const { font_class } = info;
-      this.copyToClipboard(`${cssPrefix}${font_class}`);
+      this.copyToClipboard(`<i class="${cssPrefix}${font_class}"></i>`);
 
       e.target.children[3].classList.add('copy--success');
       const timer = setTimeout(() => {
