@@ -108,7 +108,6 @@
             @mouseleave="hoverIndex = ''"
             @click="previewFile(file)"
           >
-            <!-- <hj-patter-file fileType="csv"></hj-patter-file> -->
             <file-type :type="file.type" />
             <span class="file-name">
               {{ file.name }}
@@ -116,7 +115,6 @@
             <i v-if="limit > 1 && hoverIndex === index" class="tm-icon-guanbi close-file" @click="removeFile(index)"></i>
           </div>
         </div>
-        <i v-else class="icon tm-icon-wenjian3"></i>
         <div class="drag-text">
           <div class="drag-icon">
             <i class="tm-icon-wenjian3"></i>
@@ -168,7 +166,6 @@
   Vue.use(Upload);
   Vue.use(Progress);
   Vue.use(Dialog);
-  // Vue.use(Message);
   Vue.prototype.$message = Message;
   import { dataURLtoBlob, fileToDataURL, base64ToBlob } from "../util";
   import { v4 as $uuid } from 'uuid';
@@ -359,7 +356,6 @@
           return false
         }
         const includesAccept = this.accept ? this.accept.includes(file.type) : true
-        const flag = this.beforeUpload(file);
 
         // 文件格式校验
         if (!includesAccept) {
@@ -372,6 +368,8 @@
         if (!limit) {
           this.$message({ message: `上传的文件大小不能超过 ${this.size}MB!`, type: 'error' });
         }
+
+        const flag = this.beforeUpload(file);
 
         // 多张图片上传
         if (this.model === 'image' && this.limit > 1 && flag) {
