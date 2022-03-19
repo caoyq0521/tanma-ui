@@ -8,7 +8,7 @@ module.exports = {
       }
     ],
   ],
-  // presets: [ [ "@vue/app", { useBuiltIns: "entry" } ] ],
+  presets: [ [ "@vue/app", { useBuiltIns: "entry" } ] ],
   plugins: [
     [
       'component',
@@ -17,11 +17,11 @@ module.exports = {
         styleLibraryName: 'theme-chalk',
       },
     ],
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        "regenerator": true
-      }
-    ]
+    // [
+    //   "@babel/plugin-transform-runtime",
+    //   {
+    //     "regenerator": true
+    //   }
+    // ]
   ],
 };
