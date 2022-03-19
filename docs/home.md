@@ -2,16 +2,16 @@
 
 ### 介绍
 
-通过本章节你可以了解到 tanma-ui 的安装方法和基本使用姿势。
+通过本章节你可以了解到 tanma-design 的安装方法和基本使用姿势。
 
 ## 安装
 
 ### 通过 npm 安装
 
-在现有项目中使用 tanma-ui 时，可以通过 `npm` 或 `yarn` 进行安装：
+在现有项目中使用 tanma-design 时，可以通过 `npm` 或 `yarn` 进行安装：
 
 ```bash
-npm i tanma-ui -S
+npm i tanma-design -S
 ```
 
 ## 使用
@@ -24,17 +24,19 @@ npm i tanma-ui -S
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
-import tanmaUi from 'tanma-ui';
-import 'tanma-ui/lib/index.less';
+import tanmaDesign from 'tanma-design';
+import 'tanma-design/lib/index.less';
 
-Vue.use(tanmaUi);
+Vue.use(tanmaDesign);
 Vue.use(ElementUI);
 
 ```
 
-以上代码便完成了 tanmaUi 的引入。需要注意的是，样式文件需要单独引入。
+以上代码便完成了 tanmaDesign 的引入。需要注意的是，样式文件需要单独引入。
 
-> 注：因为部分组件基于Element ui扩展，所以项目中必须依赖Element ui组件。
+> Tips: 配置按需引入插件后，将不允许直接导入所有组件。
+
+> Tips：因为部分组件基于Element ui扩展，所以项目中必须依赖Element ui组件。
 
 ### 按需引入
 
@@ -56,7 +58,7 @@ npm i babel-plugin-import -D
     [
       "import",
       {
-        "libraryName": "tanma-ui",
+        "libraryName": "tanma-design",
         "libraryDirectory": "es",
         "style": true
       }
@@ -67,15 +69,15 @@ npm i babel-plugin-import -D
 
 #### 3. 引入组件
 
-接着你可以在代码中直接引入 tanma-ui 组件，插件会自动将代码转化为按需引入的形式。
+接着你可以在代码中直接引入 tanma-design 组件，插件会自动将代码转化为按需引入的形式。
 
 ```js
 // 原始代码
-import { Button } from 'tanma-ui';
+import { Button } from 'tanma-design';
 
 // 编译后代码
-import Button from 'tanma-ui/es/button';
-import 'tanma-ui/es/button/style';
+import Button from 'tanma-design/es/button';
+import 'tanma-design/es/button/style';
 ```
 
 ### 手动按需引入组件
@@ -84,11 +86,11 @@ import 'tanma-ui/es/button/style';
 
 ```js
 // 引入组件脚本
-import Button from 'tanma-ui/es/button/index';
+import Button from 'tanma-design/es/button/index';
 
 // 引入组件样式
 // 若组件没有样式文件，则无须引入
-import 'tanma-ui/es/button/style/index';
+import 'tanma-design/es/button/style/index';
 ```
 
 #### 完整组件列表和引入方式
@@ -115,7 +117,7 @@ import {
   OptionalPicker,
   TagCombo,
   vTitle
-} from 'tanma-ui';
+} from 'tanma-design';
   
 Vue.use(Pagination);
 Vue.use(Title);
@@ -136,4 +138,4 @@ Vue.use(OptionalPicker);
 Vue.use(TagCombo);
 Vue.use(vTitle);
 ```
-> 注：Vue.use(Dialog)会同时绑定Vue.prototype.$tmDialog方法，具体使用方式请查看[Dialog](#/dialog#shi-li-hua-shi-yong-fang-fa)。
+> Tips：Vue.use(Dialog)会同时绑定Vue.prototype.$tmDialog方法，具体使用方式请查看[Dialog](#/dialog#shi-li-hua-shi-yong-fang-fa)。

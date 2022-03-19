@@ -6,7 +6,7 @@
       :disabled="prevButtonDisabled"
       @click="handlePrev"
     >
-      <i class="iconfont icon-zuojiantou"></i>
+      <i class="tm-icon-zuojiantou"></i>
     </div>
     <div
       class="tm-pagination__pager"
@@ -30,7 +30,7 @@
         </span>
         <span
           v-if="showPreMore"
-          class="iconfont icon-gengduo2 more"
+          class="tm-icon-gengduo2 more"
         ></span>
         <span 
           class="number" 
@@ -42,7 +42,7 @@
         </span>
         <span
           v-if="showNextMore"
-          class="iconfont icon-gengduo2 more"
+          class="tm-icon-gengduo2 more"
         ></span>
         <span
           v-if="pageCount > 1"
@@ -58,7 +58,7 @@
       :disabled="nextButtonDisabled"
       @click="handleNext"
     >
-      <i class="iconfont icon-youjiantou"></i>
+      <i class="tm-icon-youjiantou"></i>
     </div>
     <div
       v-if="pager"

@@ -1,8 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tmButton render tmButton 1`] = `<div class="tm-button tm-button--default"></div>`;
-
-exports[`tmButton whether render tmButton 1`] = `
+exports[`tmButton render tmButton 1`] = `
 <button type="default" class="tm-button tm-button--default">
   <!---->
 </button>

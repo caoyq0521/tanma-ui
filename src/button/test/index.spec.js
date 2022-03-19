@@ -56,7 +56,7 @@ describe('tmButton', () => {
       }
     });
 
-    expect(wrapper.find('.icon-load').exists()).toBe(true);
+    expect(wrapper.find('.tm-icon-load').exists()).toBe(true);
   });
 })
 

@@ -2,7 +2,7 @@
 
 ### 介绍
 
-tanma-ui 组件通过丰富的 [CSS 变量](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties) 来组织样式，通过覆盖这些 CSS 变量，可以实现定制主题、动态切换主题等效果。
+tanma-design 组件通过丰富的 [CSS 变量](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties) 来组织样式，通过覆盖这些 CSS 变量，可以实现定制主题、动态切换主题等效果。
 
 #### 示例
 
@@ -42,7 +42,7 @@ tanma-ui 组件通过丰富的 [CSS 变量](https://developer.mozilla.org/zh-CN/
 
 ### 基础变量
 
-tanma-ui 中的 CSS 变量分为 `基础变量` 和 `组件变量`。组件变量会继承基础变量，因此在修改基础变量后，会影响所有相关的组件。
+tanma-design 中的 CSS 变量分为 `基础变量` 和 `组件变量`。组件变量会继承基础变量，因此在修改基础变量后，会影响所有相关的组件。
 
 #### 修改变量
 

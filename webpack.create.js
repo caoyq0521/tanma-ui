@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   plugins:[
     new CreateDirStructure({
-      name: 'vTitle',
+      name: 'icon',
       path: resolve(__dirname, 'src')
     })
   ]

@@ -14,7 +14,7 @@
       </slot>
     </div>
     <i
-      :class="['icon-tips iconfont', iconName]"
+      :class="['icon-tips', classPrefix, iconName]"
       :style="{ color:iconColor, fontSize:iconSize }"
     >
     </i>
@@ -51,7 +51,7 @@
       // icon名字
       iconName: {
         type: String,
-        default: 'icon-wenhao11'
+        default: 'tm-icon-wenhao11'
       },
       // size大小
       iconSize: {
@@ -60,6 +60,11 @@
       },
       // 定制样式：如margin
       styleCls: {
+        type: String,
+        default: ''
+      },
+      // 类名前缀
+      classPrefix: {
         type: String,
         default: ''
       }

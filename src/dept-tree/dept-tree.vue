@@ -28,8 +28,8 @@
         >
           <p class="tm-dept-tree__node-wrapper" slot-scope="{ node, data }">
             <span
-              class="tm-dept-tree__icon iconfont"
-              :class=" data.departmentId ? 'icon-touxiang': 'icon-wenjianjia'"
+              class="tm-dept-tree__icon"
+              :class=" data.departmentId ? 'tm-icon-touxiang': 'tm-icon-wenjianjia'"
             />
             <span class="tm-dept-tree__node-box">
               <span class="ml-6">{{ node.label }}</span>
@@ -47,11 +47,11 @@
       <ul class="tm-dept-tree__select-list">
         <li class="tm-dept-tree__select-list-item" :key="m" v-for="(i, m) in select">
           <span
-            class="tm-dept-tree__icon iconfont"
-            :class=" i.departmentId ? 'icon-touxiang': 'icon-wenjianjia'"
+            class="tm-dept-tree__icon"
+            :class=" i.departmentId ? 'tm-icon-touxiang': 'tm-icon-wenjianjia'"
           />
           <span class="tm-dept-tree__ml8">{{ i[dataKeys.label] }}</span>
-          <span class="icon-qingchu iconfont tm-dept-tree__close-icon" @click="handleClear(i)" />
+          <span class="tm-icon-qingchu tm-dept-tree__close-icon" @click="handleClear(i)" />
         </li>
       </ul>
     </div>
