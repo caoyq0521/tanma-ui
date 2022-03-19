@@ -9,8 +9,8 @@
     @close="handleClose"
   >
     <slot>
-      <i 
-        class="iconfont icon"
+      <i
+        class="icon"
         :class="setIconClass"
         :style="{'color': iconColor}"
       ></i>
@@ -30,27 +30,27 @@
 
   const TYPEINFO = {
     [TYPE_CONTENT]: {
-      icon: 'icon-biaoqian1',
+      icon: 'tm-icon-biaoqian1',
       name: '内容标签'
     },
     [TYPE_INDIVIDUAL]: {
-      icon: 'icon-biaoqian1',
+      icon: 'tm-icon-biaoqian1',
       name: '个人标签'
     },
     [TYPE_COMPANY]: {
-      icon: 'icon-biaoqian1',
+      icon: 'tm-icon-biaoqian1',
       name: '公司标签'
     },
     [TYPE_DEPARTMENT]: {
-      icon: 'icon-wenjianjia',
+      icon: 'tm-icon-wenjianjia',
       name: '部门标签'
     },
     [TYPE_EMPLOYEE]: {
-      icon: 'icon-touxiang',
+      icon: 'tm-icon-touxiang',
       name: '员工标签'
     },
     [TYPE_GROUP]: {
-      icon: 'icon-qun',
+      icon: 'tm-icon-qun',
       name: '运营群'
     }
   }
@@ -104,6 +104,11 @@
         type: Number,
         default: 10
       },
+      // 类名前缀
+      classPrefix: {
+        type: String,
+        default: ''
+      }
     },
     computed: {
       setClass() {
@@ -120,11 +125,12 @@
         }
       },
       setIconClass() {
-        const { type = '', icon: customIcon } = this;
+        const { type = '', icon: customIcon, classPrefix } = this;
         const { icon: internalIcon } = TYPEINFO[type];
         const className = customIcon || internalIcon;
         return {
-          [className]: true
+          [className]: true,
+          [classPrefix]: true
         }
       },
       setName() {

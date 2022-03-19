@@ -12,7 +12,7 @@
     >
       <div slot="error" class="image-slot">
         <i
-          class="iconfont icon-jiazaishibai"
+          class="icon tm-icon-jiazaishibai"
           :style="setIconStyle"
         ></i>
       </div>
@@ -22,7 +22,7 @@
       class="tm-flex__center tm-avatar__image"
     >
       <i
-        class="iconfont"
+        class="icon"
         :class="setIconClass"
         :style="setIconStyle"
       ></i>
@@ -47,7 +47,7 @@
  */
 const baseMode = ['circle', 'square', 'rectangle'];
 /**
- * @baseIconType {string} 头像类别，iconfont形式
+ * @baseIconType {string} 头像类别，icon形式
  * image 图片
  * person 个人
  * company 公司
@@ -110,7 +110,7 @@ export default {
       type: [Number, String],
       default: 40
     },
-    // iconfont字体大小
+    // icon字体大小
     iconSize: {
       type: Number,
       default: 16,
@@ -137,6 +137,11 @@ export default {
     textImage: {
       type: String,
       default: () => ''
+    },
+    // 类名前缀
+    classPrefix: {
+      type: String,
+      default: ''
     }
   },
   data () {
@@ -174,13 +179,15 @@ export default {
     },
     setIconClass () {
       let className = '';
-      if (this.iconType === 'image') className = 'icon-zhaopian';
-      if (this.iconType === 'person') className = 'icon-touxiang';
-      if (this.iconType === 'company') className = 'icon-qiye';
-      if (this.iconType === 'group') className = 'icon-qunyunying1';
-      if (this.customIcon) className = this.customIcon;
+      const { classPrefix, iconType, customIcon } = this;
+      if (iconType === 'image') className = 'tm-icon-zhaopian';
+      if (iconType === 'person') className = 'tm-icon-touxiang';
+      if (iconType === 'company') className = 'tm-icon-qiye';
+      if (iconType === 'group') className = 'tm-icon-qunyunying1';
+      if (customIcon) className = customIcon;
       return {
-        [className]: true
+        [className]: true,
+        [classPrefix]: true
       };
     },
     setIconStyle () {

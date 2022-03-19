@@ -8,7 +8,7 @@
 
 ```js
   import Vue from 'vue';
-  import { VTitle } from 'tanma-ui';
+  import { VTitle } from 'tanma-design';
   
   Vue.use(VTitle);
 ```

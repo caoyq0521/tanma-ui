@@ -17,7 +17,7 @@
       class="tm-tag__closable"
     >
       <i
-        class="iconfont icon-guanbi"
+        class="tm-icon-guanbi"
         @click.stop="handleClose"
       ></i>
     </span>

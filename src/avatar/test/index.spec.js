@@ -25,13 +25,13 @@ describe('tmAvatar', () => {
     const wrapper = mount(TmAvatar);
     // classes 类名 返回 class 名称的数组。或在提供 class 名的时候返回一个布尔值。
     // toContain 包含
-    expect(wrapper.find('.iconfont').classes()).toContain('icon-zhaopian');
+    expect(wrapper.find('.tm-icon-zhaopian').exists()).toBe(true);
     await wrapper.setProps({iconType: 'person'});
-    expect(wrapper.find('.iconfont').classes('icon-touxiang')).toBe(true);
+    expect(wrapper.find('.tm-icon-touxiang').exists()).toBe(true);
     await wrapper.setProps({iconType: 'company'});
-    expect(wrapper.find('.iconfont').classes()).toContain('icon-qiye');
+    expect(wrapper.find('.tm-icon-qiye').exists()).toBe(true);
     await wrapper.setProps({iconType: 'group'});
-    expect(wrapper.find('.iconfont').classes()).toContain('icon-qunyunying1');
+    expect(wrapper.find('.tm-icon-qunyunying1').exists()).toBe(true);
   });
 
   it('theme', () => {
@@ -62,7 +62,7 @@ describe('tmAvatar', () => {
       }
     });
     // attributes 属性
-    expect(wrapper.find('.iconfont').attributes('style')).toContain('font-size: 18px');
+    expect(wrapper.find('.icon').attributes('style')).toContain('font-size: 18px');
   });
 
   it('crop', () => {

@@ -1,8 +1,8 @@
 {
-  "name": "tanma-ui",
+  "name": "tanma-design",
   "version": "0.0.1",
   "description": "Web UI Components build on Vue",
-  "main": "lib/tanma-ui.js",
+  "main": "lib/tanma-design.js",
   "style": "lib/index.css",
   "repository": "https://github.com/caoyq0521/tanma-ui.git",
   "bugs": {
@@ -37,7 +37,10 @@
     "*.{vue,css,less,scss}": "stylelint --fix"
   },
   "dependencies": {
+    "axios": "^0.26.1",
     "element-ui": "2.13.0",
+    "image-conversion": "^2.1.1",
+    "uuid": "^8.3.2",
     "vue-virtual-scroll-list": "^2.3.3",
     "vtip": "^1.0.6"
   },
@@ -57,6 +60,7 @@
     "dayjs": "^1.10.7",
     "file-loader": "^6.2.0",
     "vue": "^2.6.11",
+    "vue-img-cutter": "^2.2.5",
     "vue-template-compiler": "^2.6.11",
     "webpack-cli": "3.3.0"
   },
@@ -79,6 +83,6 @@
     "last 2 versions",
     "not dead"
   ],
-  "unpkg": "lib/tanma-ui.min.js",
-  "jsdelivr": "lib/tanma-ui.min.js"
+  "unpkg": "lib/tanma-design.min.js",
+  "jsdelivr": "lib/tanma-design.min.js"
 }

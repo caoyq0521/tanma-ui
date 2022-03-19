@@ -8,7 +8,7 @@
 
 ```js
   import Vue from 'vue';
-  import { ButtonTabs } from 'tanma-ui';
+  import { ButtonTabs } from 'tanma-design';
   
   Vue.use(ButtonTabs);
 ```

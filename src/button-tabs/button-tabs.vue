@@ -15,8 +15,8 @@
 
     </div>
     <div class="tm-button-tabs__certainty">
-      <div class="tm-button-tabs__certainty-cancel" @click="handleCancel">取消</div>
-      <div class="tm-button-tabs__certainty-confirm" @click="handleConfirm">确定</div>
+      <div class="tm-button-tabs__certainty-cancel">取消</div>
+      <div class="tm-button-tabs__certainty-confirm">确定</div>
     </div>
     <div class="tm-button-tabs__save">
 

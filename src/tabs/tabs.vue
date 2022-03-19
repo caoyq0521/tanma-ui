@@ -6,7 +6,7 @@
     <slot name="left"></slot>
     <span
       v-if="showPaginationBtn"
-      class="iconfont icon-zuojiantou icon-prev"
+      class="tm-icon-zuojiantou icon-prev"
       :class="{ 'is-disabled': isPrevDisabled }"
       @click="handlePrev"
     ></span>
@@ -36,7 +36,7 @@
     </div>
     <span
       v-if="showPaginationBtn"
-      class="iconfont icon-youjiantou icon-next"
+      class="tm-icon-youjiantou icon-next"
       :class="{ 'is-disabled': isNextDisabled }"
       @click="handleNext"
     ></span>
