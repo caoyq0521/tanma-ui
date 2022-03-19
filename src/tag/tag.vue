@@ -16,8 +16,9 @@
       v-if="!isDotEffect && closable"
       class="tm-tag__closable"
     >
+      <i class="tm-icon-guanbi tm-tag__closable-icon"></i>
       <i
-        class="tm-icon-guanbi"
+        class="tm-icon-qingchu tm-tag__closable-icon"
         @click.stop="handleClose"
       ></i>
     </span>
