@@ -8,6 +8,7 @@
   --tm-border-radius: @image-boder-radius;
   --tm-upload-p: @upload-box-p;
   --tm-uplaod-font: @font-size-sm;
+  --tm-drag-boder-radius: @drag-border-radius;
 }
 
 .tm-upload {
@@ -128,7 +129,7 @@
       justify-content: center;
       align-items: flex-end;
       flex-wrap: wrap;
-      border-radius: @padding-xs;
+      border-radius: var(--tm-drag-boder-radius);
       background-color: #F8F9FB;
       padding: 0 14px 29px 19px;
   
@@ -144,7 +145,7 @@
         color: #000000;
   
         .download-btn {
-          color: #3470ff;
+          color: @color-primary;
           cursor: pointer;
         }
         .drag-icon {
@@ -175,7 +176,7 @@
         height: 71px;
         margin-top: 10px;
         background: #fff;
-        border-radius:  @padding-xs;
+        border-radius:  var(--tm-drag-boder-radius);
         padding-left: 20px;
         cursor: pointer;
         position: relative;
