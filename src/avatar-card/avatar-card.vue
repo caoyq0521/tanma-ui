@@ -13,8 +13,8 @@
     <!-- 介绍 -->
     <div class="tm-avatar-card__info">
       <!-- 标题 -->
-      <div class="info-title" :class="{'clickable':canClick}" :title="titleInfo">
-        <p class="tm-ellipsis info-title__name"><slot name="title">{{ title }}</slot></p>
+      <div class="info-title" :class="{'clickable':canClick}">
+        <p class="tm-ellipsis info-title__name" v-title="title"><slot name="title">{{ title }}</slot></p>
         <p class="info-title__tip" v-if="tip"><tm-tip :content="tip" placement="right"></tm-tip></p>
       </div>
       <!-- 描述 -->
@@ -38,6 +38,10 @@
 <script>
 import Avatar from "../avatar";
 import Tip from "../tip";
+import Vtip from "vtip";
+import 'vtip/lib/index.min.css';
+import Vue from "vue";
+Vue.use(Vtip.directive, { directiveName: 'title' })
 
 const IconTypeEnum = ['image', 'person', 'company', 'group'];
 
@@ -107,9 +111,9 @@ export default {
     isPersonType() {
       return (this.iconType || 'person') === 'person';
     },
-    titleInfo() {
-      return this.isPersonType ? undefined : this.title;
-    },
+    // titleInfo() {
+    //   return this.isPersonType ? undefined : this.title;
+    // },
     descriptionInfo() {
       return this.isPersonType ? undefined : this.description;
     }
