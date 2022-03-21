@@ -3,8 +3,7 @@
 
 .tm-dept-tree {
   .el-tree {
-    div:first-child{
-      overflow-x: hidden;
+    & > div:first-child{
       &::-webkit-scrollbar {
         width: 7px;
         height: 12px;    
@@ -15,49 +14,31 @@
       }
     }
   }
-  .el-dialog {
-    width: 600px !important;
-    height: 600px;
-    border-radius: 8px;
-    &__body {
-      height: 460px;
-      border-top: 1px solid #dcdfe6;
-      border-bottom: 1px solid #dcdfe6;
-      padding: 0 10px;
-    }
-    &__footer {
-      margin-top: 15px;
-    }
-  }
-  .tm-dialog__footer {
-    padding-top: 18px;
-  }
   &__flex {
     display: flex;
-    height: 100%;
-  }
-  &__tree-ctx {
-    padding: 10px;
+    border-top: 1px solid #dcdfe6;
+    border-bottom: 1px solid #dcdfe6;
   }
   &__title {
-    font-weight: 700;
+    font-weight: var(--font-bold);
   }
   &__tree-search {
     width: 50%;
     border-right: 1px solid #dcdfe6;
+
     .el-input {
-      width: 260px;
-      height: 36px;
-      margin: 10px 0 10px 10px;
+      width: 100%;
+      padding: 16px 24px 20px;
+
       input {
-        height: 100%;
+        height: 36px;
       }
     }
   }
 
   &__tree {
-    height: 390px;
-    overflow-y: auto;
+    padding-left: 10px;
+
     &::-webkit-scrollbar {
       width: 7px;
       height: 12px;    
@@ -92,7 +73,7 @@
   }
   
   &__select-list {
-    height: 380px;
+    height: 395px;
     overflow-y: auto;
     &::-webkit-scrollbar {
       width: 7px;
@@ -102,6 +83,12 @@
       border-radius: 8px;
       background: #dddddd;
     }
+  }
+
+  .el-tree-node__content {
+    height: 30px;
+    border-radius: 5px;
+    margin: 3px 0;
   }
   
 
