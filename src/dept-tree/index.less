@@ -112,6 +112,7 @@
     height: 30px;
     line-height: 24px;
     position: relative;
+    display: flex;
     &::before {
       display: none;
     }
@@ -122,6 +123,15 @@
 
   &__ml8 {
     margin-left: 8px;
+  }
+
+  &__txt-limit {
+    overflow : hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    white-space: nowrap;
+    width: 200px;
   }
 
   &__close-icon {

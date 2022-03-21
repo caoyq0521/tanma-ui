@@ -31,13 +31,13 @@
               class="tm-dept-tree__icon"
               :class=" data.departmentId ? 'tm-icon-touxiang': 'tm-icon-wenjianjia'"
             />
-            <span class="tm-dept-tree__node-box">
-              <span class="ml-6">{{ node.label }}</span>
+            <el-tooltip class="tm-dept-tree__txt-limit" :content="`${node ? node.label : ''}${data.alias ? `(${data.alias})` : ''}`" placement="top">
+              <span class="tm-dept-tree__ml8">{{ node.label }}</span>
               <span
                 v-if="data.alias"
                 class="alias"
               >({{ data.alias }})</span>
-            </span>
+            </el-tooltip>
           </p>
         </tm-tree>
       </div>
@@ -50,7 +50,9 @@
             class="tm-dept-tree__icon"
             :class=" i.departmentId ? 'tm-icon-touxiang': 'tm-icon-wenjianjia'"
           />
-          <span class="tm-dept-tree__ml8">{{ i[dataKeys.label] }}</span>
+          <el-tooltip :content="i[dataKeys.label]" placement="top">
+            <span class="tm-dept-tree__txt-limit tm-dept-tree__ml8">{{i[dataKeys.label]}}</span>
+          </el-tooltip>
           <span class="tm-icon-qingchu tm-dept-tree__close-icon" @click="handleClear(i)" />
         </li>
       </ul>
@@ -61,11 +63,11 @@
 <script>
 import Vue from 'vue'
 import { 
-  Dialog, 
   Input,
+  Tooltip
 } from 'element-ui'
-Vue.use(Dialog);
 Vue.use(Input);
+Vue.use(Tooltip);
 export default {
   name: 'tmDeptTree',
   props: {

@@ -1,10 +1,12 @@
 <template>  
   <div>
-    <tm-button @click="onOpen" type="primary">
-      添加员工
-    </tm-button>
-    <tm-deptTree :data="data" :modal="this.modal" class="tree-box" />
-    <div v-if="select.length">已选择：{{ select }}</div>
+    <tm-tree 
+      :height="390"
+      :virtual-scroll="true" 
+      show-checkbox 
+      :data="data" 
+      :props="{label: 'name', children: 'children'}" 
+    />
   </div>
 </template>
 <script>
@@ -23,21 +25,8 @@ function uuid() {
    name: 'demo',
    data(){
      return {
-       modal: {
-         visible: false,
-         onOk: this.onOk
-       },
-       data: [...deptList, ...new Array(10000).fill(0).map((i, m) => ({ id: uuid(), name: `uuid-${m}`}))],
-       select: []
+       data: [...deptList, ...new Array(10000).fill(0).map((i, m) => ({ id: uuid(), name: `uuid-${m}`}))]
      }
-   },
-   methods: {
-     onOk(sel) {
-       this.select = sel
-     },
-     onOpen() {
-       this.modal.visible = true
-     },
    }
  }
 </script>
