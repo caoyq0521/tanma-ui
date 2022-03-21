@@ -47,7 +47,6 @@ change | 时间值改变时触发 | _{ \_type: string, startDate: string, endDat
 @type-border-color | var(--tm-gray-3) `#D7D7D7` | 时间类型选择tab的boder颜色
 @type-item-active-color | var(--tm-white) `#fff` | 选中时间类型的文字颜色
 @type-item-active-background | var(--main-color) `#3470ff` | 选中时间类型的背景颜色
-@type-item-active-shadow | rgba(var(--main-color-r), var(--main-color-g), var(--main-color-b), 0.5) | 选中时间类型的阴影颜色
 
 #### CSS 变量
 
@@ -58,4 +57,3 @@ change | 时间值改变时触发 | _{ \_type: string, startDate: string, endDat
  --tm-optional-picker-type-border-color | var(--tm-gray-3) `#D7D7D7` | 时间类型选择tab的boder颜色
 --tm-optional-picker-type-active-color | var(--tm-white) `#fff` | 选中时间类型的文字颜色
 --tm-optional-picker-type-active-background | var(--main-color) `#3470ff` | 选中时间类型的背景颜色
---tm-optional-picker-type-active-shadow | rgba(var(--main-color-r), var(--main-color-g), var(--main-color-b), 0.5) | 选中时间类型的阴影颜色

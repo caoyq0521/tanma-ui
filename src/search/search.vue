@@ -6,15 +6,15 @@
     v-bind="$attrs"
     v-model="inputVal"
     :placeholder="placeholder"
-    :clearable="clearable"
     :maxlength="maxlength"
     :show-word-limit="showWordLimit"
     @change="handleChange"
     @input="handleInput"
     @blur="handleBlur"
   >
-    <template #suffix v-if="showSearchIcon">
-      <i class="el-input__icon el-icon-search"></i>
+    <template #suffix>
+      <i v-if="showSearchIcon" class="el-input__icon el-icon-search"></i>
+      <i v-else-if="clearable" class="icon tm-icon-qingchu" @click="handleInput('')"></i>
     </template>
     <template #prepend>
       <slot name="prepend"></slot>

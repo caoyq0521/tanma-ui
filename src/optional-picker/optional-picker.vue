@@ -1,14 +1,17 @@
 <template>
   <div class="tm-optional-picker">
     <div class="tm-optional-picker-types" v-if="selectDateList.length > 1">
-      <template v-for="item in selectDateList">
+      <template v-for="(item,index) in selectDateList">
         <div
           :key="item.type"
           class="type-item"
           @click="selectDate(item.type)"
         >
           <span>{{ item.name }}</span>
-          <div v-if="selectDateMode === item.type" class="type-item__active">
+          <div 
+            v-if="selectDateMode === item.type" 
+            class="type-item__active" 
+            :class="{'type-item__active-first': index === 0, 'type-item__active-last': index === selectDateList.length-1}">
             {{ item.name }}
           </div>
         </div>

@@ -24,7 +24,6 @@ export default {
 
 <style lang="scss" scoped>
   .tm-button {
-    width: 115px;
     margin-left: 15px;
   }
 </style>

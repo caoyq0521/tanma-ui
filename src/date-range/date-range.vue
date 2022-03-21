@@ -174,9 +174,8 @@ export default {
     if(!this.hideShortcuts) this.pickerOptions.shortcuts = this.shortcuts;
     this.pickerOptions.disabledDate = (time) => {
       if (this.dateRange) {
-        // const flag = time.getTime() > Date.now() || time.getTime() < Date.now() - this.dateRange * 24 * 60 * 60 * 1000;
-        const flag = time.getTime() > Date.now() - 8.64e6;
-        return flag
+        const now = new Date(new Date().toLocaleDateString()).getTime() + 8.64e7 - 1;
+        return time.getTime() > now || time.getTime() <= now - this.dateRange * 8.64e7;
       } else {
         return false;
       }

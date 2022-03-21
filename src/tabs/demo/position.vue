@@ -35,3 +35,9 @@ export default {
   }
 }
 </script>
+<style lang="less" scoped>
+::v-deep .el-radio-button__orig-radio:checked+.el-radio-button__inner {
+  background-color: var(--main-color);
+  border-color: var(--main-color);
+}
+</style>
