@@ -7,10 +7,10 @@
     :title=" modal.title || '选择部门/员工'"
     v-bind="{...modal}"
     v-model="modal.visible"
+    width="600px"
   >
     <div class="tm-dept-tree__flex">
       <div class="tm-dept-tree__tree-search">
-      <div class="tm-dept-tree__tree-ctx">
         <el-input v-model="filterText" :placeholder="placeholder" />
         <tm-tree
           ref="tree"
@@ -41,22 +41,19 @@
           </p>
         </tm-tree>
       </div>
-    </div>
-    <div class="tm-dept-tree__select-result">
-      <p class="tm-dept-tree__select-title">{{ selectTitle }}</p>
-      <ul class="tm-dept-tree__select-list">
-        <li class="tm-dept-tree__select-list-item" :key="m" v-for="(i, m) in select">
-          <span
-            class="tm-dept-tree__icon"
-            :class=" i.departmentId ? 'tm-icon-touxiang': 'tm-icon-wenjianjia'"
-          />
-          <el-tooltip :content="i[dataKeys.label]" placement="top">
-            <span class="tm-dept-tree__txt-limit tm-dept-tree__ml8">{{i[dataKeys.label]}}</span>
-          </el-tooltip>
-          <span class="tm-icon-qingchu tm-dept-tree__close-icon" @click="handleClear(i)" />
-        </li>
-      </ul>
-    </div>
+      <div class="tm-dept-tree__select-result">
+        <p class="tm-dept-tree__select-title">{{ selectTitle }}</p>
+        <ul class="tm-dept-tree__select-list">
+          <li class="tm-dept-tree__select-list-item" :key="m" v-for="(i, m) in select">
+            <span
+              class="tm-dept-tree__icon"
+              :class=" i.departmentId ? 'tm-icon-touxiang': 'tm-icon-wenjianjia'"
+            />
+            <span class="tm-ellipsis tm-dept-tree__ml8">{{ i[dataKeys.label] }}</span>
+            <span class="tm-icon-qingchu tm-dept-tree__close-icon" @click="handleClear(i)" />
+          </li>
+        </ul>
+      </div>
     </div>
   </tm-dialog>
 </template>
