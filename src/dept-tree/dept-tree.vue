@@ -49,7 +49,9 @@
               class="tm-dept-tree__icon"
               :class=" i.departmentId ? 'tm-icon-touxiang': 'tm-icon-wenjianjia'"
             />
-            <span class="tm-ellipsis tm-dept-tree__ml8">{{ i[dataKeys.label] }}</span>
+            <el-tooltip :content="i[dataKeys.label]">
+              <span class="tm-dept-tree__txt-limit tm-dept-tree__ml8">{{ i[dataKeys.label] }}</span>
+            </el-tooltip>
             <span class="tm-icon-qingchu tm-dept-tree__close-icon" @click="handleClear(i)" />
           </li>
         </ul>
