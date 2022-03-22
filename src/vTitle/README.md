@@ -8,9 +8,9 @@
 
 ```js
   import Vue from 'vue';
-  import { VTitle } from 'tanma-design';
+  import { vTitle } from 'tanma-design';
   
-  Vue.use(VTitle);
+  Vue.use(vTitle);
 ```
 
 ## 代码演示

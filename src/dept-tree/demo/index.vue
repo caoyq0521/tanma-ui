@@ -27,7 +27,7 @@ function uuid() {
          visible: false,
          onOk: this.onOk
        },
-       data: [...deptList, ...new Array(10000).fill(0).map((i, m) => ({ id: uuid(), name: `uuid-${m}`}))],
+       data: [...deptList, ...new Array(10000).fill(0).map((i, m) => ({ id: uuid(), name: `uuid-${m}`.repeat(10)}))],
        select: []
      }
    },

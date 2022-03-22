@@ -2,13 +2,15 @@
 @import './var';
   
 :root {
-  --tm-upload-width: @width-size-img;
-  --tm-upload-border-dashed: @image-upload-border-dashed;
-  --tm-upload-border: @image-upload-border;
-  --tm-border-radius: @image-boder-radius;
-  --tm-upload-p: @upload-box-p;
-  --tm-uplaod-font: @font-size-sm;
-  --tm-drag-boder-radius: @drag-border-radius;
+  --tm-upload-width: @upload-width;
+  --tm-upload-border-dashed: @upload-border-dashed;
+  --tm-upload-border: @upload-image-border;
+  --tm-upload-image-radius: @upload-image-radius;
+  --tm-upload-text-color: @upload-text-color;
+  --tm-upload-font-size: @upload-font-size;
+  --tm-upload-drag-radius: @upload-drag-radius;
+  --tm-upload-download-color: @upload-download-color;
+  --tm-upload-close-font-size: @upload-close-font-size;
 }
 
 .tm-upload {
@@ -24,7 +26,7 @@
       width: var(--tm-upload-width);
       height: var(--tm-upload-width);
       background: #FCFCFC;
-      border-radius: var(--tm-border-radius);
+      border-radius: var(--tm-upload-image-radius);
       color: var(--tm-upload-p);
       display: flex;
       align-items: center;
@@ -44,7 +46,7 @@
     }
     p {
       color: var(--tm-upload-p);
-      font-size: var(--tm-uplaod-font);
+      font-size: var(--tm-upload-font-size);
     }
   }
 
@@ -59,7 +61,7 @@
       .image__item  {
         width: var(--tm-upload-width);
         height: var(--tm-upload-width);
-        border-radius: var(--tm-border-radius);
+        border-radius: var(--tm-upload-image-radius);
         border: var(--tm-upload-border);
         display: flex;
         align-items: center;
@@ -129,7 +131,7 @@
       justify-content: center;
       align-items: flex-end;
       flex-wrap: wrap;
-      border-radius: var(--tm-drag-boder-radius);
+      border-radius: var(--tm-upload-drag-radius);
       background-color: #F8F9FB;
       padding: 0 14px 29px 19px;
   
@@ -141,11 +143,11 @@
       }
   
       .drag-text {
-        font-size: var(--tm-uplaod-font);
+        font-size: var(--tm-upload-font-size);
         color: #000000;
   
         .download-btn {
-          color: @color-primary;
+          color: var(--tm-upload-download-color);
           cursor: pointer;
         }
         .drag-icon {
@@ -176,7 +178,7 @@
         height: 71px;
         margin-top: 10px;
         background: #fff;
-        border-radius:  var(--tm-drag-boder-radius);
+        border-radius:  var(--tm-upload-drag-radius);
         padding-left: 20px;
         cursor: pointer;
         position: relative;
@@ -188,13 +190,13 @@
   
         .file-name {
           color: #000000;
-          font-size: var(--tm-uplaod-font);
-          margin-left: @font-size-xs;
+          font-size: var(--tm-upload-font-size);
+          margin-left: 12px;
         }
 
         .close-file {
           color: #ccc;
-          font-size: @font-size-xs;
+          font-size: var(--tm-upload-close-font-size);
           position: absolute;
           right: 10px;
           top: 50%;

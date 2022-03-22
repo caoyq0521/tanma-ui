@@ -78,7 +78,7 @@ module.exports = {
           },
           {
             path: 'upload',
-            title: 'upload 上传'
+            title: 'Upload 上传'
           },
         ]
       },

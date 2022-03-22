@@ -38,6 +38,7 @@
     [class^="tm-icon-"], [class*=" tm-icon-"] {
       font-size: var(--tm-pagination-arrow-font-size);
       color: var(--tm-pagination-arrow-normal-color);
+      transform: scale(.8);
     }
   }
 
@@ -83,6 +84,10 @@
     .el-select {
       .el-input {
         width: 110px;
+
+        .el-select__caret {
+          font-size: 12px;
+        }
       }
       .el-input.is-focus .el-input__inner {
         border-color: var(--main-color);

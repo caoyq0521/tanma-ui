@@ -7,10 +7,10 @@
     :title=" modal.title || '选择部门/员工'"
     v-bind="{...modal}"
     v-model="modal.visible"
+    width="600px"
   >
     <div class="tm-dept-tree__flex">
       <div class="tm-dept-tree__tree-search">
-      <div class="tm-dept-tree__tree-ctx">
         <el-input v-model="filterText" :placeholder="placeholder" />
         <tm-tree
           ref="tree"
@@ -31,41 +31,42 @@
               class="tm-dept-tree__icon"
               :class=" data.departmentId ? 'tm-icon-touxiang': 'tm-icon-wenjianjia'"
             />
-            <span class="tm-dept-tree__node-box">
-              <span class="ml-6">{{ node.label }}</span>
+            <el-tooltip class="tm-dept-tree__txt-limit" :content="`${node ? node.label : ''}${data.alias ? `(${data.alias})` : ''}`" placement="top">
+              <span class="tm-dept-tree__ml8">{{ node.label }}</span>
               <span
                 v-if="data.alias"
                 class="alias"
               >({{ data.alias }})</span>
-            </span>
+            </el-tooltip>
           </p>
         </tm-tree>
       </div>
-    </div>
-    <div class="tm-dept-tree__select-result">
-      <p class="tm-dept-tree__select-title">{{ selectTitle }}</p>
-      <ul class="tm-dept-tree__select-list">
-        <li class="tm-dept-tree__select-list-item" :key="m" v-for="(i, m) in select">
-          <span
-            class="tm-dept-tree__icon"
-            :class=" i.departmentId ? 'tm-icon-touxiang': 'tm-icon-wenjianjia'"
-          />
-          <span class="tm-dept-tree__ml8">{{ i[dataKeys.label] }}</span>
-          <span class="tm-icon-qingchu tm-dept-tree__close-icon" @click="handleClear(i)" />
-        </li>
-      </ul>
-    </div>
+      <div class="tm-dept-tree__select-result">
+        <p class="tm-dept-tree__select-title">{{ selectTitle }}</p>
+        <ul class="tm-dept-tree__select-list">
+          <li class="tm-dept-tree__select-list-item" :key="m" v-for="(i, m) in select">
+            <span
+              class="tm-dept-tree__icon"
+              :class=" i.departmentId ? 'tm-icon-touxiang': 'tm-icon-wenjianjia'"
+            />
+            <el-tooltip :content="i[dataKeys.label]">
+              <span class="tm-dept-tree__txt-limit tm-dept-tree__ml8">{{ i[dataKeys.label] }}</span>
+            </el-tooltip>
+            <span class="tm-icon-qingchu tm-dept-tree__close-icon" @click="handleClear(i)" />
+          </li>
+        </ul>
+      </div>
     </div>
   </tm-dialog>
 </template>
 <script>
 import Vue from 'vue'
 import { 
-  Dialog, 
   Input,
+  Tooltip
 } from 'element-ui'
-Vue.use(Dialog);
 Vue.use(Input);
+Vue.use(Tooltip);
 export default {
   name: 'tmDeptTree',
   props: {

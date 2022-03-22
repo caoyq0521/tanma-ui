@@ -1,5 +1,5 @@
 <template>
-  <div class="el-tree"
+  <div class="el-tree tm-tree"
     :class="{
       'el-tree--highlight-current': highlightCurrent,
       'is-dragging': !!dragState.draggingNode,
@@ -554,3 +554,39 @@
     }
   };
 </script>
+<style lang="less">
+  .tm-tree {
+    color: #000;
+    div:first-child{
+      overflow-x: hidden;
+      &::-webkit-scrollbar {
+        width: 7px;
+        height: 12px;    
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        background: #dddddd;
+      }
+    }
+
+    .el-tree-node {
+      margin-bottom: 4px;
+
+      &__content {
+        padding: 3px 0 0 6px;
+        margin-left: 0 !important;
+        border-radius: 5px;
+        height: 30px;
+        line-height: 24px;
+        position: relative;
+        display: flex;
+        &::before {
+          display: none;
+        }
+        &:hover {
+          background-color: #f5f7fa;
+        }
+      }
+    }
+  }
+</style>
