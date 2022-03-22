@@ -28,7 +28,7 @@
 
     .el-input {
       width: 100%;
-      padding: 16px 24px 20px;
+      padding: 16px 22px 6px;
 
       input {
         height: 36px;
@@ -36,8 +36,18 @@
     }
   }
 
+  &__select-list-item {
+    padding: 3px 0 0 10px;
+    margin-left: 0 !important;
+    border-radius: 5px;
+    height: 30px;
+    line-height: 24px;
+    position: relative;
+    display: flex;
+  }
+
   &__tree {
-    padding-left: 10px;
+    padding: 0 10px;
 
     &::-webkit-scrollbar {
       width: 7px;
@@ -86,26 +96,7 @@
   }
 
   .el-tree-node__content {
-    height: 30px;
-    border-radius: 5px;
     margin: 3px 0;
-  }
-  
-
-  &__select-list-item {
-    padding: 3px 0 0 10px;
-    margin-left: 0 !important;
-    border-radius: 5px;
-    height: 30px;
-    line-height: 24px;
-    position: relative;
-    display: flex;
-    &::before {
-      display: none;
-    }
-    &:hover {
-      background-color: #f5f7fa;
-    }
   }
 
   &__ml8 {
@@ -119,6 +110,7 @@
     -webkit-box-orient: vertical;
     white-space: nowrap;
     width: 200px;
+    padding-right: 14px;
   }
 
   &__close-icon {
