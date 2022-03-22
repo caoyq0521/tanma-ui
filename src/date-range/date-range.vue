@@ -2,17 +2,18 @@
   <div class="tm-date-range">
     <el-date-picker
       v-model="currentValue"
+      :align="align"
       :type="type"
       :clearable="clearable"
       :size="size"
-      @focus="handleFocus"
-      @change="handleChange"
       :value-format="valueFormat || defaultValFormat"
       :default-time="defaultTime"
       :picker-options="pickerOptions"
       :range-separator="rangeSeparator"
       :end-placeholder="endPlaceholder"
       :start-placeholder="startPlaceholder"
+      @focus="handleFocus"
+      @change="handleChange"
       >
     </el-date-picker>
   </div>
@@ -24,6 +25,7 @@ import {DatePicker} from "element-ui"
 Vue.use(DatePicker);
 
 import dayjs from 'dayjs';
+import {isMobile} from '../util';
 
 // 快捷选项函数配置
 function ShortcutOptions () {
@@ -151,7 +153,8 @@ export default {
   data() {
     return {
       pickerOptions: {},
-      currentValue: []
+      currentValue: [],
+      align: isMobile() ? 'right' : 'left'
     }
   },
   computed: {
@@ -171,14 +174,16 @@ export default {
     if(!this.hideShortcuts) this.pickerOptions.shortcuts = this.shortcuts;
     this.pickerOptions.disabledDate = (time) => {
       if (this.dateRange) {
-        const flag = time.getTime() > Date.now() || time.getTime() < Date.now() - this.dateRange * 24 * 60 * 60 * 1000;
-        return flag
+        const now = new Date(new Date().toLocaleDateString()).getTime() + 8.64e7 - 1;
+        return time.getTime() > now || time.getTime() <= now - this.dateRange * 8.64e7;
       } else {
         return false;
       }
-    }
+    };
+    
   },
   methods: {
+    // Event
     handleFocus() {
       this.$emit('focus')
     },

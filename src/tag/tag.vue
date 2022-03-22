@@ -10,14 +10,15 @@
       class="dot" 
       :style="{'background-color': color}"
     ></span>
-    <slot>提示</slot>
+    <slot></slot>
     <!-- dot主题下不显示删除 -->
     <span
       v-if="!isDotEffect && closable"
       class="tm-tag__closable"
     >
+      <i class="tm-icon-guanbi tm-tag__closable-icon"></i>
       <i
-        class="iconfont icon-guanbi"
+        class="tm-icon-qingchu tm-tag__closable-icon"
         @click.stop="handleClose"
       ></i>
     </span>

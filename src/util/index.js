@@ -387,3 +387,23 @@ typeMap.forEach(item => {
     return Object.prototype.toString.apply(obj) === '[object ' + item + ']';
   }
 })
+
+// 将文件读取成 Data URL
+export const fileToDataURL= obj => {
+  return new Promise((resolve, reject) => {
+    const a = new FileReader();
+    a.readAsDataURL(obj);
+    a.onload = function (e) {
+      resolve(e.target.result);
+    };
+  });
+}
+/**
+ * 是否是移动端 
+ * @returns {Boolean}
+ */
+export const isMobile = () => {
+  return !!navigator.userAgent.match(
+    /(iPhone|iPod|Android|iOS|iPad|Backerry|WebOS|Symbian|Windows Phone|Phone)/ig
+  );
+}

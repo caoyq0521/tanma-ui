@@ -62,17 +62,28 @@
   &__closable {
     display: inline-block;
     margin-left: 12px;
-    
-    .iconfont {
+
+    &-icon {
       display: inline-block;
       font-size: 12px;
       cursor: pointer;
-      transform: scale(0.7);
-      transition: 0.3 ease;
+    }
 
-      &:hover {
-        transform: scale(0.8);
+    &:hover {
+      .tm-icon-qingchu {
+        display: inline-block;
+      }
+      .tm-icon-guanbi {
+        display: none;
       }
     }
+    .tm-icon-qingchu {
+      display: none;
+    }
+    
+    .tm-icon-guanbi {
+      transform: scale(0.7);
+    }
+    
   }
 }
