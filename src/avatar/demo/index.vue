@@ -7,7 +7,7 @@
 export default {
   data () {
     return {
-      imageSource: window.location.origin + '/logo.png'
+      imageSource: 'https://dev.tanmarket.cn/site/logo.png'
     }
   }
 }
