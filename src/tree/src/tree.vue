@@ -46,9 +46,8 @@
   import { getNodeKey, findNearestComponent } from './model/util';
   import ElTreeNode from './tree-node.vue';
   import ElVirtualNode from './tree-virtual-node.vue';
-  import {t} from 'element-ui/src/locale';
-  import emitter from 'element-ui/src/mixins/emitter';
-  import { addClass, removeClass } from 'element-ui/src/utils/dom';
+  import emitter from './mixin/emitter';
+  import { addClass, removeClass } from '../../util/dom';
 
   export default {
     name: 'TmTree',
@@ -84,9 +83,7 @@
       },
       emptyText: {
         type: String,
-        default() {
-          return t('el.tree.emptyText');
-        }
+        default: '暂无数据'
       },
       renderAfterExpand: {
         type: Boolean,

@@ -7,9 +7,14 @@
   </div>
 </template>
 <script>
-import Vue from 'vue'
-import { Button } from 'element-ui'
-Vue.use(Button)
+
+function uuid() {
+  var temp_url = URL.createObjectURL(new Blob());
+  var uuid = temp_url.toString();
+  URL.revokeObjectURL(temp_url);
+  return uuid.substr(uuid.lastIndexOf("/") + 1);
+}
+
  export default {
    name: 'demo',
    data(){

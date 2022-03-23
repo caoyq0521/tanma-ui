@@ -43,8 +43,8 @@
       </div>
       <div class="tm-dept-tree__select-result">
         <p class="tm-dept-tree__select-title">{{ selectTitle }}</p>
-        <ul class="tm-dept-tree__select-list">
-          <li class="tm-dept-tree__select-list-item" :key="m" v-for="(i, m) in select">
+        <div class="tm-dept-tree__select-list">
+          <div class="tm-dept-tree__select-list-item" :key="m" v-for="(i, m) in select">
             <span
               class="tm-dept-tree__icon"
               :class=" i.departmentId ? 'tm-icon-touxiang': 'tm-icon-wenjianjia'"
@@ -53,8 +53,8 @@
               <span class="tm-dept-tree__txt-limit tm-dept-tree__ml8">{{ i[dataKeys.label] }}</span>
             </el-tooltip>
             <span class="tm-icon-qingchu tm-dept-tree__close-icon" @click="handleClear(i)" />
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
     </div>
   </tm-dialog>

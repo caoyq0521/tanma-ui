@@ -407,3 +407,12 @@ export const isMobile = () => {
     /(iPhone|iPod|Android|iOS|iPad|Backerry|WebOS|Symbian|Windows Phone|Phone)/ig
   );
 }
+
+export const arrayFindIndex = function(arr, pred) {
+  for (let i = 0; i !== arr.length; ++i) {
+    if (pred(arr[i])) {
+      return i;
+    }
+  }
+  return -1;
+};
