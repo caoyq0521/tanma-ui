@@ -6,7 +6,8 @@
 @btn-height:36px;
 @btn-padding: 0 20px;
 @btn-primary: var(--main-color);
-@btn-danger: @color-danger;
+@btn-default-text: @color-primary;
+@btn-danger: var(--color-danger);
 @btn-gray-1:var(--input-placeholder-color);
 @btn-gray-3: var(--border-color-light);
 @btn-gray-7: var(--color-background);
@@ -19,8 +20,6 @@
 @btn-solid: solid;
 @btn-dashed: dashed;
 @btn-border-radius: 5px;
-@btn-hover-primary-bgc: rgba(var(--main-color-r), var(--main-color-g), var(--main-color-b),0.85);
-@btn-hover-danger-bgc: fade(@btn-danger, 85%);
 
 .button-size(@padding, @font-size, @border-radius) {
   padding: @padding;

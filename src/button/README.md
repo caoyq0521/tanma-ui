@@ -80,7 +80,6 @@ default | 显示在按钮里面的内容
 @btn-width-small | `70px`  | size为small按钮最小宽度
 @btn-solid | solid  | 按钮实线边框
 @btn-dashed | dashed  | 按钮虚线边框
-@btn-hover-primary-bgc | rgba(var(--main-color-r), var(--main-color-g), var(--main-color-b),0.85)  | 主要按钮hover颜色
 @btn-hover-danger-bgc | fade(@color-danger, 85%)  | 危险按钮hover颜色
 
 
@@ -100,6 +99,5 @@ default | 显示在按钮里面的内容
 --tm-btn-width-small | @btn-width-small `70px` | size为small按钮最小宽度
 --tm-btn-solid | solid | 按钮实线边框
 --tm-btn-dashed | dashed | 按钮虚线边框
---tm-btn-hover-primary-bgc |rgba(var(--main-color-r), var(--main-color-g), var(--main-color-b),0.85) | 主要按钮hover颜色
 --tm-btn-hover-danger-bgc | @btn-hover-danger-bgc | 危险按钮hover颜色
 

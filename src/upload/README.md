@@ -79,6 +79,10 @@ uploadList | 上传后触发，携带着上传文件的信息 | -
 @upload-image-border | `1px solid @gray-3` | 上传图片后边框的颜色
 @upload-image-radius | `5px` | 上传图片边框的圆角
 @upload-text-color | `#D7D7D7` | 边框的提示信息字体颜色
+@upload-drag-radius | `8px` | 拖拽边框的圆角
+@upload-download-color | var(--main-color) `#3470ff` | 下载按钮文本颜色
+@upload-close-font-size | var(--font-size-tooltip) `12px` | 图片删除icon大小
+@tm-upload-font-size | `12px` | 字体大小
 
 #### Css 变量
 
@@ -90,5 +94,8 @@ uploadList | 上传后触发，携带着上传文件的信息 | -
 --tm-upload-border-dashed | `1px dashed #858598` | 未上传图片的边框
 --tm-upload-border | `1px solid @gray-3` | 上传图片后边框的颜色
 --tm-upload-image-radius | `5px` | 上传图片边框的圆角
---tm-upload-p | `#D7D7D7` | 边框的提示信息字体颜色
---tm-upload-font-size | `14px` | 字体大小
+--tm-upload-text-color | `#D7D7D7` | 边框的提示信息字体颜色
+--tm-upload-font-size | `12px` | 字体大小
+--tm-upload-drag-radius | `8px` | 拖拽边框的圆角
+--tm-upload-download-color | var(--main-color) `#3470ff` | 下载按钮文本颜色
+--tm-upload-close-font-size | var(--font-size-tooltip) `12px` | 图片删除icon大小

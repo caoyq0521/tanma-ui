@@ -15,7 +15,7 @@
 
 ## 代码演示
 
-### 基本用法（1w+数据）
+### 基本用法
 
 <demo-code>./demo/index.vue</demo-code>
 

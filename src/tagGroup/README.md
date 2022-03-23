@@ -43,7 +43,7 @@ default | 显示在按钮里面的内容
 @tag-more-height | `26px` | 触发按钮的高度
 @tag-more-padding | `10px` | 触发按钮的左右padding
 @tag-more-radius | `5px` | 触发按钮的圆角大小
-@tag-more-left | `6px` | 触发按钮的离左侧的距离
+@tag-more-left | `3px` | 触发按钮的离左侧的距离
 @tag-more-bgc | `#F5F5FA` | 触发按钮的背景色
 @@tag-more-icon-color | var(--tooltip-font-color) `#858598` | ...icon的颜色
 
@@ -56,6 +56,6 @@ default | 显示在按钮里面的内容
 --tm-tag-more-height | `26px` | 触发按钮的高度
 --tm-tag-more-padding | `10px` | 触发按钮的左右padding
 --tm-tag-more-radius | `5px` | 触发按钮的圆角大小
---tm-tag-more-left | `6px` | 触发按钮的离左侧的距离
+--tm-tag-more-left | `3px` | 触发按钮的离左侧的距离
 --tm-tag-more-bgc | `#F5F5FA` | 触发按钮的背景色
 --tm-@tag-more-icon-color | var(--tooltip-font-color) `#858598` | ...icon的颜色
