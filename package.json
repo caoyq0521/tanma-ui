@@ -37,12 +37,11 @@
     "*.{vue,css,less,scss}": "stylelint --fix"
   },
   "dependencies": {
-    "axios": "^0.26.1",
     "element-ui": "2.13.0",
     "image-conversion": "^2.1.1",
     "uuid": "^8.3.2",
-    "vue-virtual-scroll-list": "^2.3.3",
-    "vtip": "^1.0.6"
+    "vtip": "^1.0.6",
+    "vue-virtual-scroll-list": "^2.3.3"
   },
   "peerDependencies": {
     "element-ui": "2.13.0",
