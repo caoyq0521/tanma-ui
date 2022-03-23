@@ -12,7 +12,6 @@
   --tm-btn-width-small: @btn-width-small;
   --tm-btn-solid: @btn-solid;
   --tm-btn-dashed: @btn-dashed;
-  --tm-btn-hover-primary-bgc: @btn-hover-primary-bgc;
   --tm-btn-hover-danger-bgc: @btn-hover-danger-bgc;
 
 }
@@ -37,7 +36,11 @@
   }
 
   &--primary {
-    .button-style(var(--tm-btn-primary), var(--tm-btn-solid), var(--tm-btn-primary), var(--tm-btn-primary), @btn-white, var(--tm-btn-primary), var(--tm-btn-hover-primary-bgc), @btn-white, var(--tm-btn-hover-primary-bgc));
+    .button-style(var(--tm-btn-primary), var(--tm-btn-solid), var(--tm-btn-primary), var(--tm-btn-primary), @btn-white, var(--tm-btn-primary), var(--tm-btn-primary), @btn-white, var(--tm-btn-primary));
+
+    &:not(&.disabled):not([disabled]):hover {
+      opacity: 0.85;
+    }
 
     &[disabled],
     &.disabled {
@@ -46,6 +49,7 @@
   }
   &--danger {
     .button-style(var(--tm-btn-danger), var(--tm-btn-solid), var(--tm-btn-danger), var(--tm-btn-danger), @btn-white,  var(--tm-btn-danger), var(--tm-btn-hover-danger-bgc), @btn-white, var(--tm-btn-hover-danger-bgc));
+    
     &[disabled],
     &.disabled {
       opacity: .5;
@@ -77,7 +81,7 @@
       opacity: .5;
     }
     &:not(&.disabled):not([disabled]):hover {
-      color: @btn-hover-primary-bgc;
+      opacity: 0.85;
     }
   }
   &--medium{
