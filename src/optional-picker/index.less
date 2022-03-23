@@ -13,35 +13,35 @@
   flex-wrap: nowrap;
   &-types {
     display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 5px 0;
     margin-right: 6px;
     border: 1px solid var(--tm-optional-picker-type-border-color);
     border-radius: 4px;
     cursor: pointer;
     .type-item{
-      width: 45px;
       position: relative;
+      width: 45px;
       flex-grow: 1;
       text-align: center;
       &:not(:last-child) {
         border-right: 1px solid  var(--tm-optional-picker-type-border-color);
       }
-      .type-item__active {
-        color: var(--tm-optional-picker-type-active-color);
-        position: absolute;
-        top: -7px;
-        left: -1px;
-        width: 47px;
-        line-height: 40px;
-        background: var(--tm-optional-picker-type-active-background);
-        &-first{
-          border-radius: 4px 0 0 4px;
-        }
-        &-last{
-          border-radius: 0 4px 4px 0;
-        }
+    }
+    .type-item__active {
+      position: absolute;
+      top: -6px;
+      left: -1px;
+      width: 47px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      color: var(--tm-optional-picker-type-active-color);
+      background: var(--tm-optional-picker-type-active-background);
+      &-first{
+        border-radius: 4px 0 0 4px;
+      }
+      &-last{
+        border-radius: 0 4px 4px 0;
       }
     }
   }
