@@ -20,9 +20,6 @@
 </template>
 
 <script>
-import Vue from "vue";
-import {DatePicker} from "element-ui"
-Vue.use(DatePicker);
 
 import dayjs from 'dayjs';
 import {isMobile} from '../util';

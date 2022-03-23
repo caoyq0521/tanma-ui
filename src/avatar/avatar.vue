@@ -58,11 +58,6 @@ const baseTheme = ['dark', 'light'];
 
 const whiteList = ['.png', '.jpg', '.jpeg'];
 
-import Vue from 'vue'
-import { Image } from 'element-ui';
-
-Vue.use(Image)
-
 export default {
   name: "tmAvatar",
   props: {

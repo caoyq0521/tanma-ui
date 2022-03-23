@@ -158,16 +158,9 @@
 </template>
 
 <script>
-  import Vue from 'vue';
   import ImgCutter from 'vue-img-cutter';
   import fileType from './fileTypeIcon.vue'
-  import { Upload, Progress, Dialog, Message } from 'element-ui';
   import { compress } from 'image-conversion';
-
-  Vue.use(Upload);
-  Vue.use(Progress);
-  Vue.use(Dialog);
-  Vue.prototype.$message = Message;
   import { dataURLtoBlob, fileToDataURL, base64ToBlob } from "../util";
   import { v4 as $uuid } from 'uuid';
   const IMAGE_WIDTH = 1080;
@@ -332,33 +325,33 @@
       },
       // 预览接口, 暴露给外部
       handlePreview (url) {
-        if (!url) return this.$message({ message: '请先上传图片!', type: 'error' });
+        if (!url) return this.$message('请先上传图片!', 'error' );
         this.previewUrl = url
         this.previewShow = true
       },
       // 剪切格式错误触发
       handleTypeError () {
-        this.$message({ message: '该文件格式不支持!', type: 'error' });
+        this.$message('该文件格式不支持!', 'error');
       },
       // 上传前的钩子函数: 做文件类型校验
       handleBeforeUpload (file) {
         // 多张图片上传
         if (this.model === 'image' && this.imageUrlList.length >= this.limit) {
-          this.$message({ message: `最多上传${this.limit}张图片!`, type: 'error' });
+          this.$message(`最多上传${this.limit}张图片!`, 'error');
           return false
         }
         const includesAccept = this.accept ? this.accept.includes(file.type) : true
 
         // 文件格式校验
         if (!includesAccept) {
-          this.$message({ message: "上传文件格式不对!", type: 'error' });
+          this.$message("上传文件格式不对!", 'error');
           return false
         }
 
         // 文件大小校验
         const limit = file.size / 1024 / 1024 < this.size;
         if (!limit) {
-          this.$message({ message: `上传的文件大小不能超过 ${this.size}MB!`, type: 'error' });
+          this.$message(`上传的文件大小不能超过 ${this.size}MB!`, 'error');
         }
 
         const flag = this.beforeUpload(file);
@@ -435,7 +428,7 @@
       customUpload (file) {
         // 多个文件上传
         if (this.fileList.length >= this.limit && this.limit !== 1) {
-          this.$message({ message: `最多上传${this.limit}个文件!`, type: 'error' });
+          this.$message(`最多上传${this.limit}个文件!`, 'error' );
           return false
         }
 
@@ -470,7 +463,7 @@
         xhr.onload = res => {
           const result = JSON.parse(res.target.response);
           if (result.code !== 0) {
-            this.$message({ message: '文件上传失败!', type: 'error' });
+            this.$message('文件上传失败!', 'error');
             return;
           }
 
