@@ -90,13 +90,13 @@ default | 内容
 @tag-pro-individual-font-color | #4AB43D | 个人标签内容颜色
 @tag-pro-individual-icon-color | #C2E8B0 | 个人标签icon颜色
 @tag-pro-company-color | `#EDF2FD | 公司标签背景色
-@tag-pro-company-font-color | var(--main-color) `#3470ff` | 公司标签内容颜色
+@tag-pro-company-font-color | `#3470ff` | 公司标签内容颜色
 @tag-pro-company-icon-color | #A4bFFF | 公司标签icon颜色
 @tag-pro-department-color | #F0F9EB | 部门标签背景色
 @tag-pro-department-font-color | #4AB43D | 部门标签内容颜色
 @tag-pro-department-icon-color | #C2E8B0 | 部门标签icon颜色
 @tag-pro-employee-color | `#EDF2FD | 员工标签背景色
-@tag-pro-employee-font-color | var(--main-color) `#3470ff` | 员工标签内容颜色
+@tag-pro-employee-font-color | `#3470ff` | 员工标签内容颜色
 @tag-pro-employee-icon-color | #A4bFFF | 员工标签icon颜色
 @tag-pro-group-color | #F5B350 | 运营群背景色
 @tag-pro-group-font-colo | #FEF7EE | 运营群内容颜色
@@ -115,13 +115,13 @@ default | 内容
 --tm-tag-pro-individual-font-color | #4AB43D | 个人标签内容颜色
 --tm-tag-pro-individual-icon-color | #C2E8B0 | 个人标签icon颜色
 --tm-tag-pro-company-color | #EDF2FD `#3470ff` | 公司标签背景色
---tm-tag-pro-company-font-color | var(--main-color) | 公司标签内容颜色
+--tm-tag-pro-company-font-color | | 公司标签内容颜色
 --tm-tag-pro-company-icon-color | #A4bFFF | 公司标签icon颜色
 --tm-tag-pro-department-color | #F0F9EB | 部门标签背景色
 --tm-tag-pro-department-font-color | #4AB43D | 部门标签内容颜色
 --tm-tag-pro-department-icon-color | #C2E8B0 | 部门标签icon颜色
 --tm-tag-pro-employee-color | #EDF2FD | 员工标签背景色
---tm-tag-pro-employee-font-color | var(--main-color) `#3470ff` | 员工标签内容颜色
+--tm-tag-pro-employee-font-color | `#3470ff` | 员工标签内容颜色
 --tm-tag-pro-employee-icon-color | #A4bFFF | 员工标签icon颜色
 --tm-tag-pro-group-color | #FEF7EE | 运营群背景色
 --tm-tag-pro-group-font-colo | #F5B350 | 运营群内容颜色
