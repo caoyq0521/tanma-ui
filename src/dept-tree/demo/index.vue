@@ -10,7 +10,6 @@
 <script>
 import Vue from 'vue'
 import { Button } from 'element-ui'
-import { deptList } from './data';
 Vue.use(Button)
 function uuid() {
   var temp_url = URL.createObjectURL(new Blob());
@@ -27,7 +26,7 @@ function uuid() {
          visible: false,
          onOk: this.onOk
        },
-       data: [...deptList, ...new Array(10000).fill(0).map((i, m) => ({ id: uuid(), name: `uuid-${m}`.repeat(10)}))],
+       data: new Array(100).fill(0).map((i, m) => ({ id: uuid(), name: `uuid-${m}`.repeat(10)})),
        select: []
      }
    },

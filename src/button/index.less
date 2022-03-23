@@ -5,6 +5,7 @@
   --tm-btn-primary: @btn-primary;
   --tm-btn-danger: @btn-danger;
   --tm-btn-padding: @btn-padding;
+  --tm-btn-default-text: @btn-default-text;
   --tm-btn-border-radius: @btn-border-radius;
   --tm-btn-font-size-sm: @btn-font-size-sm;
   --tm-btn-heigh: @btn-height;
@@ -12,8 +13,6 @@
   --tm-btn-width-small: @btn-width-small;
   --tm-btn-solid: @btn-solid;
   --tm-btn-dashed: @btn-dashed;
-  --tm-btn-hover-primary-bgc: @btn-hover-primary-bgc;
-  --tm-btn-hover-danger-bgc: @btn-hover-danger-bgc;
 
 }
 
@@ -37,7 +36,11 @@
   }
 
   &--primary {
-    .button-style(var(--tm-btn-primary), var(--tm-btn-solid), var(--tm-btn-primary), var(--tm-btn-primary), @btn-white, var(--tm-btn-primary), var(--tm-btn-hover-primary-bgc), @btn-white, var(--tm-btn-hover-primary-bgc));
+    .button-style(var(--tm-btn-primary), var(--tm-btn-solid), var(--tm-btn-primary), var(--tm-btn-primary), @btn-white, var(--tm-btn-primary), var(--tm-btn-primary), @btn-white, var(--tm-btn-primary));
+
+    &:not(&.disabled):not([disabled]):hover {
+      opacity: 0.85;
+    }
 
     &[disabled],
     &.disabled {
@@ -45,17 +48,22 @@
     }
   }
   &--danger {
-    .button-style(var(--tm-btn-danger), var(--tm-btn-solid), var(--tm-btn-danger), var(--tm-btn-danger), @btn-white,  var(--tm-btn-danger), var(--tm-btn-hover-danger-bgc), @btn-white, var(--tm-btn-hover-danger-bgc));
+    .button-style(var(--tm-btn-danger), var(--tm-btn-solid), var(--tm-btn-danger), var(--tm-btn-danger), @btn-white,  var(--tm-btn-danger), var(--tm-btn-danger), @btn-white, var(--tm-btn-danger));
+    
+    &:not(&.disabled):not([disabled]):hover {
+      opacity: 0.85;
+    }
+
     &[disabled],
     &.disabled {
       opacity: .5;
     }
   }
   &--default {
-    .button-style(@btn-white, var(--tm-btn-solid), @btn-gray-3, @btn-white, @btn-gray-1, @btn-gray-8,#EDF2FD, var(--tm-btn-primary), #C2D3FF, @btn-black);
+    .button-style(@btn-white, var(--tm-btn-solid), @btn-gray-3, @btn-white, @btn-gray-1, @btn-gray-8,#EDF2FD, var(--tm-btn-default-text), #C2D3FF, @btn-black);
   }
   &--addition {
-    .button-style(@btn-white, var(--tm-btn-dashed), @btn-gray, @btn-white,@btn-gray-1, @btn-gray-3, #EDF2FD, var(--tm-btn-primary), #C2D3FF, @btn-black);
+    .button-style(@btn-white, var(--tm-btn-dashed), @btn-gray, @btn-white,@btn-gray-1, @btn-gray-3, #EDF2FD, var(--tm-btn-default-text), #C2D3FF, @btn-black);
   }
   &--forbidden {
     .button-style-disabled(@btn-gray-9, var(--tm-btn-solid), @btn-gray-9);
@@ -77,7 +85,7 @@
       opacity: .5;
     }
     &:not(&.disabled):not([disabled]):hover {
-      color: @btn-hover-primary-bgc;
+      opacity: 0.85;
     }
   }
   &--medium{

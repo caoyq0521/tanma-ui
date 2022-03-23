@@ -6,8 +6,3 @@
     <tm-button type="addition">添加按钮</tm-button>
   </div>
 </template>
-<style lang="less">
-  .tm-button_item{
-    margin-right: 10px;
-  }
-</style>

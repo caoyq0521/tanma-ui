@@ -157,7 +157,6 @@
 
 <script>
   import Vue from 'vue';
-  import axios from 'axios';
   import ImgCutter from 'vue-img-cutter';
   import fileType from './fileTypeIcon.vue'
   import { Upload, Progress, Dialog, Message } from 'element-ui';
@@ -171,7 +170,6 @@
   import { v4 as $uuid } from 'uuid';
   const IMAGE_WIDTH = 1080;
   let cancel;
-  const CancelToken = axios.CancelToken
 
   export default {
     name: "tmUpload",
@@ -179,7 +177,7 @@
       // 上传地址
       action: {
         type: String,
-        default: '/resourceServer/file/commonUpload'
+        default: '/resourceServer/file/uploadForClient'
       },
       // 上传前限制条件
       beforeUpload: {
@@ -189,20 +187,14 @@
       // 上传时附带的额外参数
       data: {
         type: Object,
-        default: () => (
-          {
-            corpid: 'ww9c5530210a0d5116'
-          }
-        )
+        default: () => ({
+          corpid: 'ww9c5530210a0d5116'
+        })
       },
       // 设置的请求头
       headers: {
         type: Object,
-        default: () => (
-          {
-            Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NDc1NjkwNTEsInBheWxvYWQiOiJ7XCJjb3JwaWRcIjpcInd3OWM1NTMwMjEwYTBkNTExNlwiLFwiaWRcIjozODkzOTQxNjEzNTI3NjgsXCJ1c2VySWRcIjpcImFkbWluX3RtcWYwMTA5XCIsXCJpc0FkbWluXCI6MSxcImRlcGFydG1lbnRJZHNcIjpudWxsLFwibWFuYWdlRGVwdHNcIjpudWxsLFwiZGV2aWNlXCI6XCJ3ZWJcIixcIm5hbWVcIjpcImFkbWluXCIsXCJ2YWd1ZVwiOjAsXCJfbGVhZGVyXCI6dHJ1ZX0iLCJleHAiOjE2NDc3NDE4NTF9.EhhS7gN1b3NEItkqeCBhwIEkEQSGK1hJa6VTMsAj-nc'
-          }
-        )
+        default: () => ({})
       },
       // 上传文件的数量，默认单个文件
       limit: {
@@ -432,7 +424,7 @@
           this.$refs.tmUpload.abort()
         }
         if (cancel) {
-          cancel()
+          cancel.abort()
         }
       },
       // 关闭上传进度后触发: 重置上传进度
@@ -455,48 +447,103 @@
         this.showProgress = true;
         let data = new FormData()
         data.append('file', file)
-        data.append('corpid', 'ww9c5530210a0d5116')
-        axios({
-          method: 'post',
-          url: this.action,
-          headers: this.headers,
-          cancelToken: new CancelToken(function (c) {
-            cancel = c
-          }),
-          data
-        }).then(res => {
-          this.showProgress = false;
-          if (res.data.code !== 0) {
-            this.$message({ message: res.message, type: 'error' });
+        for(let key in this.data) {
+          data.append(key, this.data[key])
+        }
+
+        // 上传请求
+        const xhr = new XMLHttpRequest()
+        cancel = xhr
+        xhr.open('post', this.action, true)
+        for(let key in this.headers) {
+          xhr.setRequestHeader(key, this.headers[key])
+        }
+
+        // 上传文件进度
+        xhr.upload.onprogress = e => {
+          this.uploadPercent = parseInt((e.loaded / e.total) * 100, 10)
+        }
+
+        xhr.send(data)
+
+        // 请求成功
+        xhr.onload = res => {
+          const result = JSON.parse(res.target.response);
+          if (result.code !== 0) {
+            this.$message({ message: '文件上传失败!', type: 'error' });
             return;
           }
 
-          fileType.url = res.data.data.url
+          fileType.url = res.url;
           // 多个图片上传
           if (this.limit > 1 && this.model === 'image') {
-            this.imageUrlList.push(fileType)
-            this.uploadList([...this.imageUrlList])
+            this.imageUrlList.push(fileType);
+            this.uploadList([...this.imageUrlList]);
             return
           }
 
           // 单个文件上传
           if (this.model === 'file' && this.limit === 1) {
-            this.fileList = []
-            this.fileList.push(fileType)
-            this.uploadList([fileType])
+            this.fileList = [];
+            this.fileList.push(fileType);
+            this.uploadList([fileType]);
             return
           }
 
           // 多个文件上传
           if (this.model === 'file') {
-            this.fileList.push(fileType)
-            this.uploadList([...this.fileList])
+            this.fileList.push(fileType);
+            this.uploadList([...this.fileList]);
             return
           }
-          this.imageUrl = res.data.data.url;
-        }).finally(() => {
+          this.imageUrl = result.url;
+        }
+
+        // 请求结束
+        xhr.onloadend = e => {
           this.showProgress = false;
-        })
+        }
+        // axios({
+        //   method: 'post',
+        //   url: this.action,
+        //   headers: this.headers,
+        //   cancelToken: new CancelToken(function (c) {
+        //     cancel = c
+        //   }),
+        //   data
+        // }).then(res => {
+        //   this.showProgress = false;
+        //   if (res.data.code !== 0) {
+        //     this.$message({ message: res.message, type: 'error' });
+        //     return;
+        //   }
+
+        //   fileType.url = res.data.data.url
+        //   // 多个图片上传
+        //   if (this.limit > 1 && this.model === 'image') {
+        //     this.imageUrlList.push(fileType)
+        //     this.uploadList([...this.imageUrlList])
+        //     return
+        //   }
+
+        //   // 单个文件上传
+        //   if (this.model === 'file' && this.limit === 1) {
+        //     this.fileList = []
+        //     this.fileList.push(fileType)
+        //     this.uploadList([fileType])
+        //     return
+        //   }
+
+        //   // 多个文件上传
+        //   if (this.model === 'file') {
+        //     this.fileList.push(fileType)
+        //     this.uploadList([...this.fileList])
+        //     return
+        //   }
+        //   this.imageUrl = res.data.data.url;
+        // }).finally(() => {
+        //   this.showProgress = false;
+        // })
       },
       /**
        * 处理图片下载拿到图片的宽高

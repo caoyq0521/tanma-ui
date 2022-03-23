@@ -9,13 +9,12 @@
 <script>
 import Vue from 'vue'
 import { Button } from 'element-ui'
-import { deptList } from './data';
 Vue.use(Button)
  export default {
    name: 'demo',
    data(){
      return {
-       data: deptList,
+       data: new Array(100).fill(0).map((i, m) => ({ id: uuid(), name: `uuid-${m}`.repeat(10)})),
        ref: null,
        modal: {
          visible: false,
