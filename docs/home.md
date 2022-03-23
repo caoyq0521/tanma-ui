@@ -99,14 +99,14 @@ import 'tanma-design/es/button/style/index';
 import Vue from 'vue';
 
 import { 
+  Avatar,
+  Button,
+  CollapseText,
   Pagination,
   Title,
   Tip,
-  Avatar,
   Progress,
-  Button,
   Tabs,
-  CollapseText,
   Tag,
   TagPro,
   TagGroup,
@@ -116,17 +116,21 @@ import {
   AvatarCard,
   OptionalPicker,
   TagCombo,
-  vTitle
+  vTitle,
+  Upload,
+  Tree,
+  DeptTree,
+  TagCombo
 } from 'tanma-design';
-  
+
+Vue.use(Avatar);
+Vue.use(Button);
+Vue.use(CollapseText);
 Vue.use(Pagination);
 Vue.use(Title);
 Vue.use(Tip);
-Vue.use(Avatar);
 Vue.use(Progress);
-Vue.use(Button);
 Vue.use(Tabs);
-Vue.use(CollapseText);
 Vue.use(Tag);
 Vue.use(TagPro);
 Vue.use(TagGroup);
@@ -137,5 +141,9 @@ Vue.use(AvatarCard);
 Vue.use(OptionalPicker);
 Vue.use(TagCombo);
 Vue.use(vTitle);
+Vue.use(Upload);
+Vue.use(Tree);
+Vue.use(DeptTree);
+Vue.use(TagCombo);
 ```
 > Tips：Vue.use(Dialog)会同时绑定Vue.prototype.$tmDialog方法，具体使用方式请查看[Dialog](#/dialog#shi-li-hua-shi-yong-fang-fa)。

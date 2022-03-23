@@ -570,7 +570,23 @@
     }
 
     .el-tree-node {
-      margin-bottom: 10px;
+      margin-bottom: 4px;
+
+      &__content {
+        padding: 3px 0 0 6px;
+        margin-left: 0 !important;
+        border-radius: 5px;
+        height: 30px;
+        line-height: 24px;
+        position: relative;
+        display: flex;
+        &::before {
+          display: none;
+        }
+        &:hover {
+          background-color: #f5f7fa;
+        }
+      }
     }
   }
 </style>

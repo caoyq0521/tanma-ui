@@ -8,9 +8,9 @@
 
 ```js
   import Vue from 'vue';
-  import { Dept-tree } from 'tanma-design';
+  import { DeptTree } from 'tanma-design';
   
-  Vue.use(Dept-tree);
+  Vue.use(DeptTree);
 ```
 
 ## 代码演示
