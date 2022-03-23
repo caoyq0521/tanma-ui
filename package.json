@@ -1,6 +1,6 @@
 {
   "name": "tanma-design",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Web UI Components build on Vue",
   "main": "lib/tanma-design.js",
   "style": "lib/index.css",
