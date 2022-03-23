@@ -1,6 +1,12 @@
 <template>
   <div class="upload-container">
-    <tm-upload ref="commonUpload" model="image" @uploadList="uploadList" />
+    <tm-upload
+      ref="commonUpload"
+      model="image"
+      @upload-list="uploadList"
+      :data="data"
+      action="https://dev.tanmarket.cn/resourceServer/file/uploadForClient"
+    />
     <tm-button @click="preview">预览</tm-button>
   </div>
 </template>
@@ -8,7 +14,10 @@
 export default {
   data () {
     return {
-      url: ''
+      url: '',
+      data: {
+        corpid: 'ww9c5530210a0d5116'
+      }
     }
   },
   methods: {

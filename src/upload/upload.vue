@@ -179,7 +179,7 @@
       // 上传地址
       action: {
         type: String,
-        default: '/resourceServer/file/uploadForClient'
+        default: ''
       },
       // 上传前限制条件
       beforeUpload: {
@@ -189,9 +189,7 @@
       // 上传时附带的额外参数
       data: {
         type: Object,
-        default: () => ({
-          corpid: 'ww9c5530210a0d5116'
-        })
+        default: () => ({})
       },
       // 设置的请求头
       headers: {
