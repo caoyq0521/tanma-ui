@@ -48,7 +48,7 @@
 
 <script type="text/jsx">
   import ElCheckbox from 'element-ui/packages/checkbox';
-  import emitter from 'element-ui/src/mixins/emitter';
+  import emitter from './mixin/emitter';
   import mixinNode from './mixin/node';
 
   export default {
