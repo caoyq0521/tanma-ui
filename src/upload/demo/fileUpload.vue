@@ -1,5 +1,5 @@
 <template>
   <div class="upload-container">
-    <tm-upload model="file" />
+    <tm-upload model="file" fileTitle="image" />
   </div>
 </template>

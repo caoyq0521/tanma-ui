@@ -1,6 +1,6 @@
 <template>
   <div class="upload-container">
-    <tm-upload model="image" :isCut="true" />
+    <tm-upload model="image" isCut />
   </div>
 </template>
 

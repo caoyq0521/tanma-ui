@@ -83,10 +83,13 @@
           width: 100%;
           display: flex;
           justify-content: space-around;
-          font-size: 20px;
+          font-size: 16px;
           i {
             color: #fff;
             cursor: pointer;
+          }
+          .fangda-cls {
+            font-size: 18px;
           }
         }
         &:hover::before {
@@ -134,7 +137,7 @@
       flex-wrap: wrap;
       border-radius: var(--tm-upload-drag-radius);
       background-color: #F8F9FB;
-      padding: 0 14px 29px 19px;
+      padding: 0 15px 29px 15px;
   
       > i {
         font-size: 40px;
@@ -145,7 +148,7 @@
   
       .drag-text {
         font-size: var(--tm-upload-font-size);
-        color: #000000;
+        color: #333;
   
         .download-btn {
           color: var(--tm-upload-download-color);
@@ -171,16 +174,16 @@
       flex-direction: column;
       justify-content: center;
       width: 100%;
-      margin: 25px 0 20px 0;
+      margin: 10px 0 20px 0;
   
       .file-item {
         display: flex;
         align-items: center;
-        height: 71px;
-        margin-top: 10px;
+        height: 60px;
+        margin-top: 6px;
         background: #fff;
         border-radius:  var(--tm-upload-drag-radius);
-        padding-left: 20px;
+        padding-left: 8px;
         cursor: pointer;
         position: relative;
   
@@ -190,22 +193,19 @@
         }
   
         .file-name {
-          color: #000000;
+          color: #333;
           font-size: var(--tm-upload-font-size);
           margin-left: 12px;
         }
 
         .close-file {
-          color: #ccc;
+          color: #333;
           font-size: var(--tm-upload-close-font-size);
           position: absolute;
           right: 10px;
           top: 50%;
           transform: translateY(-50%);
         }
-      }
-      .file-item+.file-item{
-        margin-top: 10px;
       }
     }
   }

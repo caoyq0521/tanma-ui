@@ -16,7 +16,7 @@
             class="image__item-img"
           >
           <div class="image__item-icon" v-show="isHover && target === index">
-            <i class="tm-icon-fangda" @click="handlePreview(item.url)"></i>
+            <i class="tm-icon-fangda fangda-cls" @click="handlePreview(item.url)"></i>
             <i class="tm-icon-lajitong0" @click="removeImg(index)"></i>
           </div>
         </div>
@@ -112,16 +112,18 @@
             <span class="file-name">
               {{ file.name }}
             </span>
-            <i v-if="limit > 1 && hoverIndex === index" class="tm-icon-guanbi close-file" @click="removeFile(index)"></i>
+            <i v-if="limit > 1 && hoverIndex === index" class="tm-icon-lajitong0 close-file" @click="removeFile(index)"></i>
           </div>
         </div>
         <div class="drag-text">
           <div class="drag-icon">
             <i class="tm-icon-wenjian3"></i>
           </div>
-          <img src="./img/jpg.png" alt="">
           将{{ fileTitle }}文件拖到此处，或
-          <label :for="id" class="download-btn">点击上传</label>
+          <!-- 单个文件上传 -->
+          <label v-if="fileList.length && limit === 1" :for="id" class="download-btn">点击重新上传</label>
+          <!-- 多个文件上传 -->
+          <label v-else :for="id" class="download-btn">点击上传</label>
         </div>
       </div>
 
@@ -474,7 +476,7 @@
             return;
           }
 
-          fileType.url = res.url;
+          fileType.url = result.data.url;
           // 多个图片上传
           if (this.limit > 1 && this.model === 'image') {
             this.imageUrlList.push(fileType);
@@ -496,7 +498,7 @@
             this.uploadList([...this.fileList]);
             return
           }
-          this.imageUrl = result.url;
+          this.imageUrl = result.data.url;
         }
 
         // 请求结束
@@ -504,7 +506,7 @@
           this.showProgress = false;
         }
         // axios({
-        //   method: 'post',
+        //   method  'post',
         //   url: this.action,
         //   headers: this.headers,
         //   cancelToken: new CancelToken(function (c) {

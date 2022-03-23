@@ -2,7 +2,7 @@
 
 ### 介绍
 
-组件介绍
+通过点击或者拖拽上传文件
 
 ### 引入
 
@@ -46,10 +46,10 @@
 
 参数 | 说明 | 类型 | 可选值 | 默认值
 -- | -- | -- | -- | --
-action | 上传地址 | _string_ | - | `/resourceServer/file/commonUpload`
-beforeUpload | 上传前限制条件, 返回值为`true`上传 | _function_ | - | -
-data | 上传时附带的额外参数 | _object_ | - | -
-headers | 设置的请求头 | _object_ | - | -
+action | 上传地址 | _string_ | - | `/resourceServer/file/uploadForClient`
+beforeUpload | 上传前限制条件, 返回值为`true`上传 | _function_ | - | `() => true`
+data | 上传时附带的额外参数 | _object_ | - | `{ corpid: 'ww9c5530210a0d5116' }`
+headers | 设置的请求头 | _object_ | - | `{}`
 limit | 上传文件的数量 | _number_ | - | 1
 model | 上传模式，file(文件上传)、image(图片上传) | _string_ | - | file/image
 hover | 单张图片是否开启hover | _boolean_ | - | false
