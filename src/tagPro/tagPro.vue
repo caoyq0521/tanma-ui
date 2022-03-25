@@ -10,7 +10,7 @@
   >
     <slot>
       <i
-        class="icon"
+        class="tm-tag-pro__icon"
         :class="setIconClass"
         :style="{'color': iconColor}"
       ></i>
