@@ -12,7 +12,7 @@
     >
       <div slot="error" class="image-slot">
         <i
-          class="icon tm-icon-jiazaishibai"
+          class="tm-avatar__icon tm-icon-jiazaishibai"
           :style="setIconStyle"
         ></i>
       </div>
@@ -22,7 +22,7 @@
       class="tm-flex__center tm-avatar__image"
     >
       <i
-        class="icon"
+        class="tm-avatar__icon"
         :class="setIconClass"
         :style="setIconStyle"
       ></i>

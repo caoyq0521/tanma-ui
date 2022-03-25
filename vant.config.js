@@ -16,7 +16,8 @@ module.exports = {
     logo: 'https://dev.tanmarket.cn/site/logo.png',
     hideSimulator: true,
     baiduAnalytics: {
-      seed: '619bce33d3d0afd261bb503674730cc7'
+      // seed: '619bce33d3d0afd261bb503674730cc7' // github
+      seed: 'f59e812c45db896c796d182c59148734' // 本地
     },
     nav: [
       {
