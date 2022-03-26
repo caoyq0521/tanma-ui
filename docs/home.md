@@ -26,12 +26,12 @@ npm i tanma-design -S
 >
 <link
   rel="stylesheet" 
-  href="https://cdn.jsdelivr.net/npm/tanma-design@1.0.2/lib/index.css"
+  href="https://cdn.jsdelivr.net/npm/tanma-design/lib/index.css"
 >
 <!-- 引入 Vue 、element-ui和tanma-design 的 JS 文件 -->
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6/dist/vue.min.js"></script>
 <script src="https://unpkg.com/element-ui@2.13.0/lib/index.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/tanma-design@1.0.2/lib/tanma-design.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tanma-design/lib/tanma-design.min.js"></script>
 
 <body>
   <div id="app">
@@ -57,7 +57,7 @@ npm i tanma-design -S
 
 + [jsdelivr](https://www.jsdelivr.com/package/npm/tanma-design)
 
-+ [unpkg](https://unpkg.com/browse/tanma-design@1.0.2/)
++ [unpkg](https://unpkg.com/browse/tanma-design/)
 
 注意：免费 CDN 一般用于制作原型或个人小型项目，不推荐在企业生产环境中使用免费 CDN。
 
