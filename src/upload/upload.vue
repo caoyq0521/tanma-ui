@@ -177,12 +177,6 @@
 <script>
   import ImgCutter from 'vue-img-cutter';
   import fileType from './fileTypeIcon.vue'
-  import { Upload, Progress, Message } from 'element-ui';
-  import { compress } from 'image-conversion';
-
-  Vue.use(Upload);
-  Vue.use(Progress);
-  Vue.prototype.$message = Message;
   import { dataURLtoBlob, fileToDataURL } from "../util";
   import { v4 as $uuid } from 'uuid';
   const IMAGE_WIDTH = 1080;
