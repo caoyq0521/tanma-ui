@@ -99,10 +99,6 @@ module.exports = {
             title: 'Pagination 分页',
           },
           {
-            path: 'progress',
-            title: 'Progress 进度条',
-          },
-          {
             path: 'tabs',
             title: 'Tabs 标签页',
           },
@@ -151,6 +147,10 @@ module.exports = {
           {
             path: 'dept-tree',
             title: 'DeptTree 部门员工选择',
+          },
+          {
+            path: 'progress',
+            title: 'Progress 进度条',
           },
           {
             path: 'tag-combo',
