@@ -408,7 +408,6 @@
       },
       // 上传前的钩子函数: 做文件类型校验
       handleBeforeUpload (file) {
-        console.log(file)
         // 多张图片上传
         if (this.model === 'image' && this.imageUrlList.length >= this.limit) {
           this.$message({ message: `最多上传${this.limit}张图片!`, type: 'error' });

@@ -69,6 +69,13 @@ size | 上传的文件大小: 单位MB | _number_ | - | 5
 upload-list | 回显的文件列表，文件对象格式为 `{ name: xxx, type: xxx, url: xxx }` | _array_ | - | -
 
 
+### Slots
+
+名称 | 说明 
+-- | -- 
+custom-upload | 自定义上传
+
+
 ### Events
 
 事件名 | 说明 | 回调参数
