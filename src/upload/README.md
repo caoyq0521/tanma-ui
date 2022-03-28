@@ -30,6 +30,10 @@
 
 <demo-code>./demo/cutterSingle.vue</demo-code>
 
+### 自定义上传
+
+<demo-code>./demo/customUpload.vue</demo-code>
+
 ### 多张上传
 
 <demo-code>./demo/multipleImg.vue</demo-code>
@@ -47,24 +51,33 @@
 参数 | 说明 | 类型 | 可选值 | 默认值
 -- | -- | -- | -- | --
 action | 上传地址 | _string_ | - | -
-before-upload | 上传前限制条件, 返回值为`true`上传 | _function_ | - | () => true
+before-upload | 上传前限制条件, 返回值为`false` 或者 `Promise 为reject`中止上传 | _function_ | - | () => true
 data | 上传时附带的额外参数 | _object_ | - | {}
 headers | 设置的请求头 | _object_ | - | {}
 limit | 上传文件的数量 | _number_ | - | 1
 model | 上传模式，file(文件上传)、image(图片上传) | _string_ | - | file/image
+multiple | 是否多选 | _boolean_ | - | false
 hover | 单张图片是否开启hover | _boolean_ | - | false
-isCut | 是否开启剪切 | _boolean_ | - | false
+is-custom-upload | 自定义上传 | _boolean_ | - | false
+is-cut | 是否开启剪切 | _boolean_ | - | false
 img-title | 上传图片提示信息 | _string_ | - | 上传图片
 file-title | 上传文件的提示信息 | _string_ | - | -
 rate | 剪切比例 | _string_ | - | 4:3
+show-list | 是否展示上传文件 | _boolean_ | - | true
+show-progress | 是否显示上传进度 | _boolean_ | - | true
 size | 上传的文件大小: 单位MB | _number_ | - | 5
+upload-list | 回显的文件列表，文件对象格式为 `{ name: xxx, type: xxx, url: xxx }` | _array_ | - | -
+
 
 ### Events
 
 事件名 | 说明 | 回调参数
 -- | -- | --
 preview-file | 点击上传的文件触发，携带着点击文件的信息 | -
-upload-list | 上传后触发，携带着上传文件的信息 | -
+success | 上传成功后触发，携带着上传文件的信息 | -
+error | 上传失败触发，携带着上传失败的信息 | -
+progress | 上传文件的进度 | 是一个对象 percentage上传的进度，size 上传文件的大小
+remove | 移除的文件 | -
 
 ### 样式变量
 

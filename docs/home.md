@@ -14,6 +14,58 @@
 npm i tanma-design -S
 ```
 
+### 通过 cdn 安装
+
+使用 tanma-design 最简单的方法是直接在 html 文件中引入 CDN 链接。
+
+```html
+<!-- 引入element-ui和tanma-design样式文件 -->
+<link 
+  rel="stylesheet" 
+  href="https://unpkg.com/element-ui@2.13.0/lib/theme-chalk/index.css"
+>
+<link
+  rel="stylesheet" 
+  href="https://cdn.jsdelivr.net/npm/tanma-design/lib/index.css"
+>
+<!-- 引入 Vue 、element-ui和tanma-design 的 JS 文件 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6/dist/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui@2.13.0/lib/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tanma-design/lib/tanma-design.min.js"></script>
+
+<body>
+  <div id="app">
+    <!-- 渲染一个搜索框 -->
+    <tm-search v-model="value" placeholder="请输入搜索内容" ref="search" />
+  </div>
+</body>
+<script>
+  new Vue({
+    el: '#app',
+    data: function() {
+      return { 
+        value: ""
+      }
+    }
+  })
+</script>
+```
+
+#### 免费 CDN
+
+你可以通过以下免费 CDN 服务来使用 tanma-design:
+
++ [jsdelivr](https://www.jsdelivr.com/package/npm/tanma-design)
+
++ [unpkg](https://unpkg.com/browse/tanma-design/)
+
+注意：免费 CDN 一般用于制作原型或个人小型项目，不推荐在企业生产环境中使用免费 CDN。
+
+对于企业开发者，建议使用以下方式：
+
+通过 npm 引入，并通过构建工具进行打包
+下载对应文件，并托管在你自己的服务器或 CDN 上
+
 ## 使用
 
 ### 完整引入
