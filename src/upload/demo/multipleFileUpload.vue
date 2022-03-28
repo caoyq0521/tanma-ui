@@ -4,7 +4,17 @@
       model="file"
       :limit="2"
       :data="{corpid: 'ww9c5530210a0d5116'}"
+      @on-remove="remove"
       action="https://dev.tanmarket.cn/resourceServer/file/uploadForClient"
     />
   </div>
 </template>
+<script>
+export default {
+  methods: {
+    remove (file) {
+      console.log(file)
+    },
+  }
+}
+</script>

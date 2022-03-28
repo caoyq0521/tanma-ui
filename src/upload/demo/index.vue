@@ -3,7 +3,8 @@
     <tm-upload
       ref="commonUpload"
       model="image"
-      @upload-list="uploadList"
+      :before-upload="beforeUpload"
+      @on-success="uploadList"
       :data="data"
       action="https://dev.tanmarket.cn/resourceServer/file/uploadForClient"
     />
@@ -26,6 +27,9 @@ export default {
     },
     uploadList (files) {
       this.url = files[0].url
+    },
+    beforeUpload () {
+      return Promise.resolve(false)
     }
   }
 }

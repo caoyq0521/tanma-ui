@@ -2,7 +2,7 @@
   <div class="tm-upload">
     <!-- 图片上传 -->
     <div v-if="model === 'image'" class="image-container">
-      <transition-group v-if="imageUrlList.length" tag="div" name="list" class="image-container-left">
+      <transition-group v-if="imageUrlList.length && showList" tag="div" name="list" class="image-container-left">
         <div
           v-for="(item, index) in imageUrlList"
           :key="item + index"
@@ -99,7 +99,7 @@
         ref="tm-upload-dragger"
         :class="['drag-content', { 'drag-actived': dragEnter }]"
       >
-        <div class="file-list" v-if="fileList.length">
+        <div class="file-list" v-if="fileList.length && showList">
           <div
             class="file-item"
             v-for="(file, index) in fileList"
@@ -138,8 +138,9 @@
     </div>
     <!-- 上传进度 -->
     <el-dialog
+      v-if="showProgress"
       title="上传"
-      :visible.sync="showProgress"
+      :visible.sync="progressDialog"
       width="30%"
       @close="handleDialogClose"
       @closed="handleDialogClosed"
@@ -183,6 +184,11 @@
       },
       // 上传前限制条件
       beforeUpload: {
+        type: Function,
+        default: () => true
+      },
+      // 删除前钩子
+      beforeRemove: {
         type: Function,
         default: () => true
       },
@@ -231,11 +237,26 @@
         type: String,
         default: '4:3'
       },
+      // 是否显示上传列表
+      showList: {
+        type: Boolean,
+        default: true
+      },
+      // 是否显示上传进度
+      showProgress: {
+        type: Boolean,
+        default: true
+      },
       // 上传的文件大小: 单位MB
       size: {
         type: Number,
         default: 5
-      }
+      },
+      // 回显的文件列表
+      uploadList: {
+        type: Array,
+        default: () => []
+      },
     },
     components: {
       ImgCutter,
@@ -246,10 +267,9 @@
         imageUrl: '',
         // 预览的地址
         previewUrl: '',
-        // 多个文件上传
+        // 多个图片上传
         imageUrlList: [],
-        imgFile: {},
-        showProgress: false,
+        progressDialog: false,
         // 上传进度
         uploadPercent: 0,
         accept: "",
@@ -274,7 +294,30 @@
           }
         },
         immediate: true
-      }
+      },
+      uploadList: {
+        handler (newValue) {
+          if (!newValue.length) return
+
+          // 单张图片
+          if (this.limit === 1 && this.model === 'image') {
+            if (!this.showList) return
+            this.imageUrl = newValue[0].url
+          }
+
+          // 多张图片
+          if (this.limit !== 1 && this.model === 'image') {
+            this.imageUrlList = [...newValue]
+          }
+
+          // 文件上传
+          if (this.model === 'file') {
+            this.fileList = [...newValue]
+          }
+        },
+        immediate: true,
+        deep: true
+      },
     },
     created () {
       // fix: 多个上传
@@ -300,11 +343,12 @@
     methods: {
       // 点击文件
       previewFile (file) {
-        this.$emit('previewFile', file)
+        console.log(112233)
+        this.$emit('preview-file', file)
       },
-      // 上传后触发
-      uploadList (files) {
-        this.$emit('uploadList', files)
+      // 上传成功后触发
+      onSuccess (files) {
+        this.$emit('on-success', files)
       },
       imageHover(item, index) {
         this.isHover = true
@@ -316,13 +360,13 @@
       },
       // 移除多个图片
       removeImg (index) {
-        this.imageUrlList.splice(index, 1)
-        this.$emit('uploadList', [...this.imageUrlList])
+        // beforeRemove
+        this.$emit('on-remove', this.imageUrlList[index])
       },
       // 移除多个文件
       removeFile(index) {
-        this.fileList.splice(index, 1)
-        this.$emit('uploadList', [...this.fileList])
+        // this.fileList.splice(index, 1)
+        this.$emit('on-remove', this.fileList[index])
       },
       // 剪切图片的上传
       handleCutDown (file) {
@@ -361,36 +405,82 @@
           this.$message({ message: `上传的文件大小不能超过 ${this.size}MB!`, type: 'error' });
         }
 
-        const flag = this.beforeUpload(file);
+        const result = this.beforeUpload(file)
+        // Promise对象
+        if (result?.then) {
+          if (includesAccept) {
+            if (this.model === 'image' && this.limit > 1) {
+              result.then(res => {
+                this.handleMoreImg(file)
+              })
 
-        // 多张图片上传
-        if (this.model === 'image' && this.limit > 1 && flag) {
-          this.handleMoreImg(file)
+              // 阻止el-upload上传
+              return false
+            }
+
+            result.then(res => {
+              this.progressDialog = true;
+            })
+
+            return result
+          }
+          return false
+        } else { // 正常布尔值
+          if (result) {
+            if (this.model === 'image' && this.limit > 1 && includesAccept) {
+              this.handleMoreImg(file)
+
+              // 阻止el-upload上传
+              return false
+            }
+
+            // if (this.model === 'image' && includesAccept) {
+            if (includesAccept) {
+              this.progressDialog = true;
+            }
+
+            return includesAccept
+          }
           return false
         }
 
-        if (this.model === 'image' && includesAccept && flag) this.showProgress = true;
-        return includesAccept && flag;
+        // // 多张图片上传
+        // if (this.model === 'image' && this.limit > 1 && flag) {
+        //   this.handleMoreImg(file)
+        //   return false
+        // }
+
+        // if (this.model === 'image' && includesAccept && flag) this.progressDialog = true;
+        // return includesAccept && flag;
       },
       // el-upload 上传进度触发
       handleProgress (event, file, fileList) {
-        this.imgFile = file;
         this.uploadPercent = parseInt(file.percentage.toFixed(0), 10);
+
+        const progress = {
+          percentage: file.percentage,
+          size: file.size
+        }
+        this.$emit('on-progress', progress)
       },
       // el-upload 上传成功触发
       handleSuccess (res, file, fileList) {
-        this.showProgress = false;
+        this.progressDialog = false;
         if (res.code !== 0) {
-          this.$message({ message: res.message, type: 'error' });
+          // this.$message({ message: res.message, type: 'error' });
+          this.$emit('on-error', res)
           return;
         }
-        this.imageUrl = res.data.url;
+
+        if (this.showList) {
+          this.imageUrl = res.data.url;
+        }
         const fileType = {
           name: file.name,
           type: file.raw.type,
           url: this.imageUrl
         }
-        this.uploadList([fileType])
+        this.onSuccess([fileType])
       },
       // 多张图片的上传，图片会被压缩
       async handleMoreImg(file) {
@@ -415,7 +505,7 @@
       },
       // 上传失败的钩子
       handleError () {
-        this.showProgress = false;
+        this.progressDialog = false;
         this.uploadPercent = 0;
       },
       // 关闭上传进度前触发: 停止上传
@@ -444,9 +534,11 @@
           type: file.type,
           url: ''
         }
-        this.showProgress = true;
+
+        this.progressDialog = true;
         let data = new FormData()
         data.append('file', file)
+
         for(let key in this.data) {
           data.append(key, this.data[key])
         }
@@ -462,6 +554,12 @@
         // 上传文件进度
         xhr.upload.onprogress = e => {
           this.uploadPercent = parseInt((e.loaded / e.total) * 100, 10)
+          
+          const progress = {
+            percentage: (e.loaded / e.total) * 100,
+            size: e.total
+          }
+          this.$emit('on-progress', progress)
         }
 
         xhr.send(data)
@@ -470,7 +568,8 @@
         xhr.onload = res => {
           const result = JSON.parse(res.target.response);
           if (result.code !== 0) {
-            this.$message({ message: '文件上传失败!', type: 'error' });
+            // this.$message({ message: '文件上传失败!', type: 'error' });
+            this.$emit('on-error', res)
             return;
           }
 
@@ -478,7 +577,7 @@
           // 多个图片上传
           if (this.limit > 1 && this.model === 'image') {
             this.imageUrlList.push(fileType);
-            this.uploadList([...this.imageUrlList]);
+            this.onSuccess([...this.imageUrlList]);
             return
           }
 
@@ -486,64 +585,25 @@
           if (this.model === 'file' && this.limit === 1) {
             this.fileList = [];
             this.fileList.push(fileType);
-            this.uploadList([fileType]);
+            this.onSuccess([fileType]);
             return
           }
 
           // 多个文件上传
           if (this.model === 'file') {
             this.fileList.push(fileType);
-            this.uploadList([...this.fileList]);
+            this.onSuccess([...this.fileList]);
             return
           }
-          this.imageUrl = result.data.url;
+          if (this.showList) {
+            this.imageUrl = res.data.url;
+          }
         }
 
         // 请求结束
         xhr.onloadend = e => {
-          this.showProgress = false;
+          this.progressDialog = false;
         }
-        // axios({
-        //   method  'post',
-        //   url: this.action,
-        //   headers: this.headers,
-        //   cancelToken: new CancelToken(function (c) {
-        //     cancel = c
-        //   }),
-        //   data
-        // }).then(res => {
-        //   this.showProgress = false;
-        //   if (res.data.code !== 0) {
-        //     this.$message({ message: res.message, type: 'error' });
-        //     return;
-        //   }
-
-        //   fileType.url = res.data.data.url
-        //   // 多个图片上传
-        //   if (this.limit > 1 && this.model === 'image') {
-        //     this.imageUrlList.push(fileType)
-        //     this.uploadList([...this.imageUrlList])
-        //     return
-        //   }
-
-        //   // 单个文件上传
-        //   if (this.model === 'file' && this.limit === 1) {
-        //     this.fileList = []
-        //     this.fileList.push(fileType)
-        //     this.uploadList([fileType])
-        //     return
-        //   }
-
-        //   // 多个文件上传
-        //   if (this.model === 'file') {
-        //     this.fileList.push(fileType)
-        //     this.uploadList([...this.fileList])
-        //     return
-        //   }
-        //   this.imageUrl = res.data.data.url;
-        // }).finally(() => {
-        //   this.showProgress = false;
-        // })
       },
       /**
        * 处理图片下载拿到图片的宽高
@@ -565,8 +625,15 @@
         const file = event.target.files[0]
         if (!file) return false
         event.target.value = ''
-        if (this.handleBeforeUpload(file)) {
-          this.customUpload(file)
+        const beforeRes = this.handleBeforeUpload(file)
+        if (beforeRes?.then) {
+          beforeRes.then(res => {
+            this.customUpload(file)
+          })
+        } else {
+          if (beforeRes) {
+            this.customUpload(file)
+          }
         }
       },
       onFileDragEnter (e) {
