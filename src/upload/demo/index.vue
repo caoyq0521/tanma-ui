@@ -7,7 +7,9 @@
       @success="uploadList"
       :data="data"
       action="https://dev.tanmarket.cn/resourceServer/file/uploadForClient"
-    />
+    >
+      <div slot="test">112222</div>
+    </tm-upload>
     <tm-button @click="preview">预览</tm-button>
   </div>
 </template>

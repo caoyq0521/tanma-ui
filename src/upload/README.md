@@ -30,6 +30,10 @@
 
 <demo-code>./demo/cutterSingle.vue</demo-code>
 
+### 自定义上传
+
+<demo-code>./demo/customUpload.vue</demo-code>
+
 ### 多张上传
 
 <demo-code>./demo/multipleImg.vue</demo-code>
@@ -52,7 +56,9 @@ data | 上传时附带的额外参数 | _object_ | - | {}
 headers | 设置的请求头 | _object_ | - | {}
 limit | 上传文件的数量 | _number_ | - | 1
 model | 上传模式，file(文件上传)、image(图片上传) | _string_ | - | file/image
+multiple | 是否多选 | _boolean_ | - | false
 hover | 单张图片是否开启hover | _boolean_ | - | false
+is-custom-upload | 自定义上传 | _boolean_ | - | false
 is-cut | 是否开启剪切 | _boolean_ | - | false
 img-title | 上传图片提示信息 | _string_ | - | 上传图片
 file-title | 上传文件的提示信息 | _string_ | - | -

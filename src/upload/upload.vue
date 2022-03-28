@@ -27,6 +27,7 @@
         :headers="headers"
         :action="action"
         :accept="accept"
+        :multiple="multiple"
         :show-file-list="false"
         :data="data"
         :before-upload="handleBeforeUpload"
@@ -34,8 +35,8 @@
         :on-success="handleSuccess"
         :on-error="handleError"
       >
-        <template v-if="1 < 0">
-          <slot name="test" />
+        <template v-if="isCustomUpload">
+          <slot name="custom-upload" />
         </template>
         <div v-else>
           <!-- 图片单张上传 图片不剪切 -->
@@ -129,6 +130,7 @@
 
       <input
         @change="onFileChange"
+        :multiple="multiple ? 'multiple' : ''"
         v-show="false"
         name="file"
         type="file"
@@ -140,7 +142,7 @@
     <tm-dialog
       v-if="showProgress"
       title="上传"
-      :value.sync="progressDialog"
+      v-model="progressDialog"
       width="30%"
       @close="handleDialogClose"
       @closed="handleDialogClosed"
@@ -195,6 +197,11 @@
         type: Function,
         default: () => true
       },
+      // 自定义上传
+      isCustomUpload: {
+        type: Boolean,
+        default: false
+      },
       // 上传时附带的额外参数
       data: {
         type: Object,
@@ -214,6 +221,11 @@
       model: {
         type: String,
         default: "image",
+      },
+      // 开启多选
+      multiple: {
+        type: Boolean,
+        default: false
       },
       // 单张图片开启hover
       hover: {
@@ -386,6 +398,7 @@
       },
       // 上传前的钩子函数: 做文件类型校验
       handleBeforeUpload (file) {
+        console.log(file)
         // 多张图片上传
         if (this.model === 'image' && this.imageUrlList.length >= this.limit) {
           this.$message({ message: `最多上传${this.limit}张图片!`, type: 'error' });
@@ -424,7 +437,7 @@
           return result
         } else { // 正常布尔值
           if (result) {
-            if (this.model === 'image' && this.limit > 1 && includesAccept) {
+            if (this.model === 'image' && this.limit > 1) {
               this.handleMoreImg(file)
               // 阻止el-upload上传
               return false
@@ -603,19 +616,35 @@
       },
       // 文件上传
       onFileChange (event) {
-        const file = event.target.files[0]
-        if (!file) return false
-        event.target.value = ''
-        const beforeRes = this.handleBeforeUpload(file)
-        if (beforeRes?.then) {
-          beforeRes.then(res => {
-            this.customUpload(file)
-          })
-        } else {
-          if (beforeRes) {
-            this.customUpload(file)
+        const fileList = event.target.files | []
+        while(fileList.length) {
+          const file = fileList.shift()
+          if (!file) return false
+          event.target.value = ''
+          const beforeRes = this.handleBeforeUpload(file)
+          if (beforeRes?.then) {
+            beforeRes.then(res => {
+              this.customUpload(file)
+            })
+          } else {
+            if (beforeRes) {
+              this.customUpload(file)
+            }
           }
         }
+        // const file = event.target.files[0]
+        // if (!file) return false
+        // event.target.value = ''
+        // const beforeRes = this.handleBeforeUpload(file)
+        // if (beforeRes?.then) {
+        //   beforeRes.then(res => {
+        //     this.customUpload(file)
+        //   })
+        // } else {
+        //   if (beforeRes) {
+        //     this.customUpload(file)
+        //   }
+        // }
       },
       onFileDragEnter (e) {
         e.preventDefault()
