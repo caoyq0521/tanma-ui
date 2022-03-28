@@ -130,7 +130,17 @@
 
       <input
         @change="onFileChange"
-        :multiple="multiple ? 'multiple' : ''"
+        v-if="multiple"
+        multiple="multiple"
+        v-show="false"
+        name="file"
+        type="file"
+        :id="id"
+        :accept="accept"
+      />
+      <input
+        v-else
+        @change="onFileChange"
         v-show="false"
         name="file"
         type="file"
@@ -616,9 +626,9 @@
       },
       // 文件上传
       onFileChange (event) {
-        const fileList = event.target.files | []
-        while(fileList.length) {
-          const file = fileList.shift()
+        const fileList = event.target.files || []
+        for (let i = 0; i < fileList.length; i++) {
+          const file = fileList[i]
           if (!file) return false
           event.target.value = ''
           const beforeRes = this.handleBeforeUpload(file)
