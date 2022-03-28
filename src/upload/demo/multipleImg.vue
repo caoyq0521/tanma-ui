@@ -4,7 +4,7 @@
       model="image"
       :limit="2"
       :upload-list="uploadList"
-      @on-remove="remove"
+      @remove="remove"
       :data="{corpid: 'ww9c5530210a0d5116'}"
       action="https://dev.tanmarket.cn/resourceServer/file/uploadForClient"
     />

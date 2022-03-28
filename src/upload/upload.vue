@@ -172,7 +172,7 @@
   Vue.use(Upload);
   Vue.use(Progress);
   Vue.prototype.$message = Message;
-  import { dataURLtoBlob, fileToDataURL, base64ToBlob } from "../util";
+  import { dataURLtoBlob, fileToDataURL } from "../util";
   import { v4 as $uuid } from 'uuid';
   const IMAGE_WIDTH = 1080;
   let cancel;
@@ -346,12 +346,11 @@
     methods: {
       // 点击文件
       previewFile (file) {
-        console.log(112233)
         this.$emit('preview-file', file)
       },
       // 上传成功后触发
       onSuccess (files) {
-        this.$emit('on-success', files)
+        this.$emit('success', files)
       },
       imageHover(item, index) {
         this.isHover = true
@@ -363,13 +362,11 @@
       },
       // 移除多个图片
       removeImg (index) {
-        // beforeRemove
-        this.$emit('on-remove', this.imageUrlList[index])
+        this.$emit('remove', this.imageUrlList[index])
       },
       // 移除多个文件
       removeFile(index) {
-        // this.fileList.splice(index, 1)
-        this.$emit('on-remove', this.fileList[index])
+        this.$emit('remove', this.fileList[index])
       },
       // 剪切图片的上传
       handleCutDown (file) {
@@ -406,55 +403,38 @@
         const limit = file.size / 1024 / 1024 < this.size;
         if (!limit) {
           this.$message({ message: `上传的文件大小不能超过 ${this.size}MB!`, type: 'error' });
+          return false
         }
 
         const result = this.beforeUpload(file)
         // Promise对象
         if (result?.then) {
-          if (includesAccept) {
-            if (this.model === 'image' && this.limit > 1) {
-              result.then(res => {
-                this.handleMoreImg(file)
-              })
-
-              // 阻止el-upload上传
-              return false
-            }
-
+          if (this.model === 'image' && this.limit > 1) {
             result.then(res => {
-              this.progressDialog = true;
+              this.handleMoreImg(file)
             })
-
-            return result
+            // 阻止el-upload上传
+            return false
           }
-          return false
+
+          result.then(res => {
+            this.progressDialog = true;
+          })
+
+          return result
         } else { // 正常布尔值
           if (result) {
             if (this.model === 'image' && this.limit > 1 && includesAccept) {
               this.handleMoreImg(file)
-
               // 阻止el-upload上传
               return false
             }
 
-            // if (this.model === 'image' && includesAccept) {
-            if (includesAccept) {
-              this.progressDialog = true;
-            }
-
-            return includesAccept
+            this.progressDialog = true;
+            return true
           }
           return false
         }
-
-        // // 多张图片上传
-        // if (this.model === 'image' && this.limit > 1 && flag) {
-        //   this.handleMoreImg(file)
-        //   return false
-        // }
-
-        // if (this.model === 'image' && includesAccept && flag) this.progressDialog = true;
-        // return includesAccept && flag;
       },
       // el-upload 上传进度触发
       handleProgress (event, file, fileList) {
@@ -464,14 +444,13 @@
           percentage: file.percentage,
           size: file.size
         }
-        this.$emit('on-progress', progress)
+        this.$emit('progress', progress)
       },
       // el-upload 上传成功触发
       handleSuccess (res, file, fileList) {
         this.progressDialog = false;
         if (res.code !== 0) {
-          // this.$message({ message: res.message, type: 'error' });
-          this.$emit('on-error', res)
+          this.$emit('error', res)
           return;
         }
 
@@ -562,7 +541,7 @@
             percentage: (e.loaded / e.total) * 100,
             size: e.total
           }
-          this.$emit('on-progress', progress)
+          this.$emit('progress', progress)
         }
 
         xhr.send(data)
@@ -571,8 +550,7 @@
         xhr.onload = res => {
           const result = JSON.parse(res.target.response);
           if (result.code !== 0) {
-            // this.$message({ message: '文件上传失败!', type: 'error' });
-            this.$emit('on-error', res)
+            this.$emit('error', res)
             return;
           }
 
