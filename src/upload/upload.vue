@@ -129,6 +129,20 @@
 
       <input
         @change="onFileChange"
+<<<<<<< Updated upstream
+=======
+        v-if="multiple"
+        multiple="multiple"
+        v-show="false"
+        name="file"
+        type="file"
+        :id="id"
+        :accept="accept"
+      />
+      <input
+        v-else
+        @change="onFileChange"
+>>>>>>> Stashed changes
         v-show="false"
         name="file"
         type="file"
@@ -603,6 +617,7 @@
       },
       // 文件上传
       onFileChange (event) {
+<<<<<<< Updated upstream
         const file = event.target.files[0]
         if (!file) return false
         event.target.value = ''
@@ -614,6 +629,23 @@
         } else {
           if (beforeRes) {
             this.customUpload(file)
+=======
+        const fileList = event.target.files || []
+        console.log('file-list', fileList.length)
+        for (let i = 0; i < fileList.length; i++) {
+          const file = fileList[i]
+          if (!file) return false
+          event.target.value = ''
+          const beforeRes = this.handleBeforeUpload(file)
+          if (beforeRes?.then) {
+            beforeRes.then(res => {
+              this.customUpload(file)
+            })
+          } else {
+            if (beforeRes) {
+              this.customUpload(file)
+            }
+>>>>>>> Stashed changes
           }
         }
       },
