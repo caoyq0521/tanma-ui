@@ -4,7 +4,7 @@
       ref="commonUpload"
       model="image"
       :before-upload="beforeUpload"
-      @on-success="uploadList"
+      @success="uploadList"
       :data="data"
       action="https://dev.tanmarket.cn/resourceServer/file/uploadForClient"
     />

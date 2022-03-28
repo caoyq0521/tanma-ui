@@ -53,7 +53,7 @@ headers | 设置的请求头 | _object_ | - | {}
 limit | 上传文件的数量 | _number_ | - | 1
 model | 上传模式，file(文件上传)、image(图片上传) | _string_ | - | file/image
 hover | 单张图片是否开启hover | _boolean_ | - | false
-isCut | 是否开启剪切 | _boolean_ | - | false
+is-cut | 是否开启剪切 | _boolean_ | - | false
 img-title | 上传图片提示信息 | _string_ | - | 上传图片
 file-title | 上传文件的提示信息 | _string_ | - | -
 rate | 剪切比例 | _string_ | - | 4:3
@@ -68,10 +68,10 @@ upload-list | 回显的文件列表，文件对象格式为 `{ name: xxx, type: 
 事件名 | 说明 | 回调参数
 -- | -- | --
 preview-file | 点击上传的文件触发，携带着点击文件的信息 | -
-on-success | 上传成功后触发，携带着上传文件的信息 | -
-on-error | 上传失败触发，携带着上传失败的信息 | -
-on-progress | 上传文件的进度 | 是一个对象 percentage上传的进度，size 上传文件的大小
-on-remove | 移除的文件 | -
+success | 上传成功后触发，携带着上传文件的信息 | -
+error | 上传失败触发，携带着上传失败的信息 | -
+progress | 上传文件的进度 | 是一个对象 percentage上传的进度，size 上传文件的大小
+remove | 移除的文件 | -
 
 ### 样式变量
 

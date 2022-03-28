@@ -5,7 +5,6 @@
       file-title="image"
       :data="{corpid: 'ww9c5530210a0d5116'}"
       :before-upload="beforeUpload"
-      :show-list="true"
       action="https://dev.tanmarket.cn/resourceServer/file/uploadForClient"
     />
   </div>
