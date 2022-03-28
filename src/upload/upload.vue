@@ -137,10 +137,10 @@
       />
     </div>
     <!-- 上传进度 -->
-    <el-dialog
+    <tm-dialog
       v-if="showProgress"
       title="上传"
-      :visible.sync="progressDialog"
+      :value.sync="progressDialog"
       width="30%"
       @close="handleDialogClose"
       @closed="handleDialogClosed"
@@ -148,13 +148,17 @@
       <div class="progress-info">
         <el-progress :percentage="uploadPercent"></el-progress>
       </div>
-    </el-dialog>
+    </tm-dialog>
     <!-- 预览 -->
-    <el-dialog :visible.sync="previewShow" :append-to-body="true" custom-class="upload-preview-dialog">
+    <tm-dialog
+      v-model="previewShow"
+      footer-hide
+      custom-class="upload-preview-dialog"
+    >
       <div class="img-container">
         <img :src="previewUrl" alt="">
       </div>
-    </el-dialog>
+    </tm-dialog>
   </div>
 </template>
 
@@ -162,12 +166,11 @@
   import Vue from 'vue';
   import ImgCutter from 'vue-img-cutter';
   import fileType from './fileTypeIcon.vue'
-  import { Upload, Progress, Dialog, Message } from 'element-ui';
+  import { Upload, Progress, Message } from 'element-ui';
   import { compress } from 'image-conversion';
 
   Vue.use(Upload);
   Vue.use(Progress);
-  Vue.use(Dialog);
   Vue.prototype.$message = Message;
   import { dataURLtoBlob, fileToDataURL, base64ToBlob } from "../util";
   import { v4 as $uuid } from 'uuid';
