@@ -100,23 +100,24 @@ this.$tmDialog.remove();
 
 参数 | 说明 | 类型 | 可选值 | 默认值 
 -- | -- | -- | -- | --
-cancel-text | 取消按钮文字 | _string_ | - | 取消
-close-on-click-modal | 是否可以通过点击 modal 关闭 Dialog | _boolean_ | - | true
-close-on-press-escape | 是否可以通过按下 ESC 关闭 Dialog | _boolean_ | - | true
-content | Dialog 内容 | _string_ | - | -
-footer-hide | 是否显示底部按钮 | _boolean_ | - | false
-loading | 点击确定按钮时，确定按钮是否显示 loading 状态，开启则需手动调用tmDialog.remove()来关闭对话框 | _boolean_ | - | false
-lock-scroll | 是否在 Dialog 出现时将 body 滚动锁定 | _boolean_ | - | true
-modal | 是否需要遮罩层 | _boolean_ | - | true
-ok-text | 确定按钮文字 | _string_ | - | 确定
-ok-type | 确定按钮类型 | _string_ | `primary` `danger` | primary
-render | 自定义内容，使用后不再限制类型， content 也无效。[学习 vue jsx语法内容](https://cn.vuejs.org/v2/guide/render-function.html#JSX) | _function_ | - | -
-show-close | 是否显示关闭按钮 | _boolean_ | - | true
 title | Dialog 的标题 | _string_ | - | -
-top | Dialog CSS 中的 margin-top 值 | _string_ | - | 15vh
+content | Dialog 内容 | _string_ | - | -
 width | Dialog 的宽度 | _string_ | - | 50%
+cancelText | 取消按钮文字 | _string_ | - | 取消
+cancelHide | 是否隐藏取消按钮 | _boolean_ | false
+render | 自定义内容，使用后不再限制类型， content 也无效。[学习 vue jsx语法内容](https://cn.vuejs.org/v2/guide/render-function.html#JSX) | _function_ | - | -
+showClose | 是否显示关闭按钮 | _boolean_ | - | true
+okText | 确定按钮文字 | _string_ | - | 确定
+okType | 确定按钮类型 | _string_ | `primary` `danger` | primary
+top | Dialog CSS 中的 margin-top 值 | _string_ | - | 15vh
+modal | 是否需要遮罩层 | _boolean_ | - | true
 onOk | 点击确定的回调 | _function_ | -
 onCancel | 点击取消的回调 | _function_ | -
+footerHide | 是否显示底部按钮 | _boolean_ | - | false
+closeOnClickModal | 是否可以通过点击 modal 关闭 Dialog | _boolean_ | - | true
+closeOnPressEscape | 是否可以通过按下 ESC 关闭 Dialog | _boolean_ | - | true
+loading | 点击确定按钮时，确定按钮是否显示 loading 状态，开启则需手动调用tmDialog.remove()来关闭对话框 | _boolean_ | - | false
+lockScroll | 是否在 Dialog 出现时将 body 滚动锁定 | _boolean_ | - | true
 
 ### 样式变量
 
