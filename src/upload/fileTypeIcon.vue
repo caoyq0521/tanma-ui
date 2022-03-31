@@ -14,14 +14,12 @@ import mp3 from './img/mp3.png'
 import mp4 from './img/mp4.png'
 import ppt from './img/ppt.png'
 import zip from './img/zip.png'
-// import mp4 from './img/pmp4.png'
   export default {
     name: "fileTypeIcon",
     props: ['type'],
     watch: {
       type: {
         handler (type) {
-          console.log(type)
           this.url = this.typeMap[type] || text
         },
         immediate: true

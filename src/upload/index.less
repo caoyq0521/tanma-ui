@@ -16,6 +16,8 @@
 .tm-upload {
   display: flex;
   align-items: center;
+  width: 100%;
+  height: 100%;
 
   .image-single {
     display: flex;
@@ -128,12 +130,16 @@
   }
 
   .local-upload-drag-component {
+    width: 100%;
+    height: 100%;
     .drag-content {
-      width: 350px;
+      min-width: 350px;
+      width: 100%;
+      height: 100%;
       min-height: 148px;
       display: flex;
       justify-content: center;
-      align-items: flex-end;
+      align-items: center;
       flex-wrap: wrap;
       border-radius: var(--tm-upload-drag-radius);
       background-color: #F8F9FB;
@@ -149,6 +155,7 @@
       .drag-text {
         font-size: var(--tm-upload-font-size);
         color: #333;
+        padding-top: 30px;
   
         .download-btn {
           color: var(--tm-upload-download-color);
@@ -174,7 +181,7 @@
       flex-direction: column;
       justify-content: center;
       width: 100%;
-      margin: 10px 0 20px 0;
+      margin-top: 10px;
   
       .file-item {
         display: flex;
