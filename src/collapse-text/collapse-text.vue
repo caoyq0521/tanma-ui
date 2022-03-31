@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="tm-collapse-text" ref="collapseText">
     <div v-if="!(showPopover && showPopoverJudge)">
       <span class="tm-collapse-text__content" :style="expandStyle">{{ (text === null || text === undefined || text === '') ? '--' : text }}</span>
@@ -37,6 +38,7 @@
       <span class="tm-collapse-text__content" :style="expandStyle" slot="reference">{{ text }}</span>
     </el-popover> -->
   </div>
+</div>
 </template>
 
 <script>
@@ -115,6 +117,7 @@
       this.$nextTick(() => {
         const { lines } = this;
         const collapseTextStyle = window.getComputedStyle(this.$refs.collapseText)
+        console.log(collapseTextStyle);
         const collapseTextHeight = parseFloat(collapseTextStyle.height) // 获取总高度
         const collapseTextLineHeight = parseFloat(collapseTextStyle.lineHeight === 'normal' ? parseFloat(collapseTextStyle.fontSize) * 1.2 : collapseTextStyle.lineHeight) // 获取行高
         // 计算行高
