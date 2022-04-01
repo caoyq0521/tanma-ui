@@ -66,10 +66,6 @@ module.exports = {
         title: '表单组件',
         items: [
           {
-            path: 'date-range',
-            title: 'DateRange 日期范围',
-          },
-          {
             path: 'optional-picker',
             title: 'OptionalPicker 日周月选择器'
           },
@@ -147,6 +143,10 @@ module.exports = {
           {
             path: 'avatar-card',
             title: 'AvatarCard 头像卡片',
+          },
+          {
+            path: 'date-range',
+            title: 'DateRange 日期范围',
           },
           {
             path: 'dept-tree',
