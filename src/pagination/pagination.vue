@@ -275,7 +275,8 @@
       },
       handlePageSizeChange(pageSize) {
         this.internallPageSize = pageSize;
-        this.$emit('update:size-change', pageSize);
+        this.$emit('update:pageSize', pageSize);
+        this.$emit('size-change', pageSize);
         this.$nextTick(() => {
           if(this.pageCount < this.internalCurrentPage) {
             this.internalCurrentPage = this.pageCount;
@@ -296,7 +297,8 @@
         this.$emit('next-click', this.internalCurrentPage);
       },
       emitCurrentChange() {
-        this.$emit('update:current-change', this.internalCurrentPage);
+        this.$emit('update:currentPage', this.internalCurrentPage);
+        this.$emit('current-change', this.internalCurrentPage);
       }
     },
   }
