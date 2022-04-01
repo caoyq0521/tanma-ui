@@ -35,6 +35,11 @@ const DIS_BUTTON = ['forbidden','wicked']
       size:{
         type: String,
         default:'medium'
+      },
+      //圆角按钮
+      round:{
+        type: Boolean,
+        default: false
       }
     },
     data(){
@@ -44,11 +49,12 @@ const DIS_BUTTON = ['forbidden','wicked']
     },
     computed:{
       className(){
-        const { type, disabled,size } = this
+        const { type, disabled, size, round} = this
         return{
           [`tm-button--${size}`]: true,
           [`tm-button--${type}`]: true,
-          'disabled': disabled || DIS_BUTTON.includes(type)
+          'disabled': disabled || DIS_BUTTON.includes(type),
+          'is-round': round
           
         }
       }

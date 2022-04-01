@@ -68,5 +68,15 @@ describe('tmButton', () => {
 
     expect(wrapper.find('.tm-icon-load').exists()).toBe(true);
   });
+
+  it('whether round of button', () => {
+    const wrapper = mount(TmButton, {
+      propsData: {
+        round: true
+      }
+    });
+
+    expect(wrapper.find('.is-round').exists()).toBe(true);
+  });
 })
 

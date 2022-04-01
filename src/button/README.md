@@ -42,7 +42,7 @@
 <demo-code>./demo/loadButton.vue</demo-code>
 
 ### 不同尺寸按钮
-Button 组件提供两种尺寸，可以在不同场景下选择合适的按钮尺寸。
+Button 组件提供两种尺寸，默认按钮最小宽度115px，小型按钮最小宽度70px，可以在不同场景下选择合适的按钮尺寸。
 
 <demo-code>./demo/sizeButton.vue</demo-code>
 ### Props
@@ -53,6 +53,7 @@ disabled | 	是否禁用状态 | _boolean_ | - | false
 loading | 	是否加载中状态 | _boolean_ | - | false
 size | 	尺寸 | _string_ | small | -
 type | 类型 | _string_ | primary/danger/addition/text/forbidden/wicked | -
+round | 是否圆角按钮 | _boolean_ | - | false
 
 ### Slots
 
