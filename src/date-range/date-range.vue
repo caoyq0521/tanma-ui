@@ -8,7 +8,7 @@
       :size="size"
       :value-format="valueFormat || defaultValFormat"
       :default-time="defaultTime"
-      :picker-options="pickerOptions"
+      :picker-options="defaultPickerOptions"
       :range-separator="rangeSeparator"
       :end-placeholder="endPlaceholder"
       :start-placeholder="startPlaceholder"
@@ -125,7 +125,7 @@ export default {
       default: () => ['00:00:00', '23:59:59']
     },
     // 范围选择时开始日期的占位内容
-    startPlaceholder:{
+    startPlaceholder: {
       type: String,
       default: "开始日期"
     },
@@ -148,11 +148,16 @@ export default {
     hideShortcuts: {
       type: Boolean,
       default: false
+    },
+    // 自定义选择器配置
+    pickerOptions: {
+      type: Object,
+      default: () => {}
     }
   },
   data() {
     return {
-      pickerOptions: {},
+      defaultPickerOptions: null,
       currentValue: [],
       align: isMobile() ? 'right' : 'left'
     }
@@ -168,21 +173,31 @@ export default {
         this.currentValue = newValue
       },
       immediate: true
-    } 
+    },
+    pickerOptions: {
+      handler(newValue) {
+        this.defaultPickerOptions = newValue ? { ...newValue } : null;
+      },
+      immediate: true,
+      deep: true
+    }
   },
   created () {
-    if(!this.hideShortcuts) this.pickerOptions.shortcuts = this.shortcuts;
-    this.pickerOptions.disabledDate = (time) => {
-      if (this.dateRange) {
-        const now = new Date(new Date().toLocaleDateString()).getTime() + 8.64e7 - 1;
-        return time.getTime() > now || time.getTime() <= now - this.dateRange * 8.64e7;
-      } else {
-        return false;
-      }
-    };
-    
+    !this.defaultPickerOptions && this.initPickerOptions();
   },
   methods: {
+    initPickerOptions() {
+      this.defaultPickerOptions = {};
+      if(!this.hideShortcuts) this.defaultPickerOptions.shortcuts = this.shortcuts;
+      this.defaultPickerOptions.disabledDate = (time) => {
+        if (this.dateRange) {
+          const now = new Date(new Date().toLocaleDateString()).getTime() + 8.64e7 - 1;
+          return time.getTime() > now || time.getTime() <= now - this.dateRange * 8.64e7;
+        } else {
+          return false;
+        }
+      };
+    },
     // Event
     handleFocus() {
       this.$emit('focus')

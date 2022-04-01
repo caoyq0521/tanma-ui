@@ -26,7 +26,7 @@ export default {
       rangeDate1: "",
       rangeDate2: "",
       rangeDate3: "",
-      rangeDate4: "",
+      rangeDate4: ""
     }
   }
 }

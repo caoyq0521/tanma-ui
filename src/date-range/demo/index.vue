@@ -14,7 +14,7 @@
     </li>
     <li>
       <h4>设置分割符</h4>
-      <tm-date-range v-model="rangeDate3" range-separator="-" />
+      <tm-date-range v-model="rangeDate4" range-separator="-" />
     </li>
   </ul>
 </template>
@@ -25,7 +25,8 @@ export default {
     return {
       rangeDate1: [],
       rangeDate2: [],
-      rangeDate3: []
+      rangeDate3: [],
+      rangeDate4: []
     }
   }
 }
