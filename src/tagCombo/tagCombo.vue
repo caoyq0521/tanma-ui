@@ -26,7 +26,10 @@
       </tm-tag-pro>
       <slot name="employeeR" :info="item"></slot>
     </template>
-    <tm-tag-group v-if="showMore">
+    <tm-tag-group 
+      v-if="showMore" 
+      :popper-class="popperClass"
+    >
       <template v-for="item in deptList">
         <slot name="deptL" :info="item"></slot>
         <tm-tag-pro
@@ -95,6 +98,11 @@
       closable: {
         type: Boolean,
         default: false
+      },
+      // 为 Tooltip 的 popper 添加类名
+      popperClass: {
+        type: String,
+        default: ''
       }
     },
     computed: {

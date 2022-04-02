@@ -45,6 +45,7 @@ limit | 标签超出多少个后显示 更多按钮 | _number_ | - | 3
 props | 配置选项，具体看下表 | _object_ | - | -
 name-limit | 名字超出多少字后显示... | _number_ | - | 10
 sales-list | 销售标签 | _array_ | - | []
+popperClass | 为 Tooltip 的 popper 添加类名 | _string_ | - | -
 
 #### props
 

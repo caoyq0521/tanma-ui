@@ -4,6 +4,7 @@
     effect="dark"
     :style="styleCls"
     :placement="placement"
+    :popper-class="popperClass"
   >
     <div slot="content">
       <slot>
@@ -65,6 +66,11 @@
       },
       // 类名前缀
       classPrefix: {
+        type: String,
+        default: ''
+      },
+      // 为 Tooltip 的 popper 添加类名
+      popperClass: {
         type: String,
         default: ''
       }

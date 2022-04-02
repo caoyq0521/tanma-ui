@@ -35,6 +35,7 @@ iconColor | icon颜色 | _string_ | - | `rgba(193, 193, 202, .5)`
 iconName | icon | _string_ | - | `icon-wenhao11`
 iconSize | icon大小 | _string_ | - | `16px`
 styleCls | icon样式 | _string_ | - | -
+popperClass | 为 Tooltip 的 popper 添加类名 | _string_ | - | -
 
 ### 样式变量
 

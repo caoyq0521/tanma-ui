@@ -1,4 +1,4 @@
-# tag-more
+# tag-group
 
 ### 介绍
 
@@ -25,6 +25,7 @@
 -- | -- | -- | -- | --
 trigger | 触发方式 | _string_ | `click` `focus` `hover` `manual` | click
 width | 宽度 | _string \|  number_ | - | 292
+popperClass | 为 Tooltip 的 popper 添加类名 | _string_ | - | -
 
 ### Slots
 

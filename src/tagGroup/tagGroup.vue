@@ -4,7 +4,7 @@
     :width="width"
     :trigger="trigger"
     class="tm-tag-more"
-    popper-class="tm-tag-more__popper"
+    :popper-class="['tm-tag-more__popper', popperClass]"
   >
     <div
       slot="reference"
@@ -34,6 +34,11 @@
       width: {
         type: [String, Number],
         default: 292
+      },
+      // 为 Tooltip 的 popper 添加类名
+      popperClass: {
+        type: String,
+        default: ''
       }
     },
   }
