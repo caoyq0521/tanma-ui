@@ -115,6 +115,10 @@ module.exports = {
             title: 'TagGroup 标签组'
           },
           {
+            path: 'timeline',
+            title: 'Timeline 时间线'
+          },
+          {
             path: 'tree',
             title: 'Tree 树',
           },
