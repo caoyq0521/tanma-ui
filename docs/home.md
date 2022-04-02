@@ -172,7 +172,9 @@ import {
   Upload,
   Tree,
   DeptTree,
-  TagCombo
+  TagCombo,
+  Timeline,
+  TimelineItem,
 } from 'tanma-design';
 
 Vue.use(Avatar);
@@ -197,5 +199,7 @@ Vue.use(Upload);
 Vue.use(Tree);
 Vue.use(DeptTree);
 Vue.use(TagCombo);
+Vue.use(Timeline);
+Vue.use(TimelineItem);
 ```
 > Tips：Vue.use(Dialog)会同时绑定Vue.prototype.$tmDialog方法，具体使用方式请查看[Dialog](#/dialog#shi-li-hua-shi-yong-fang-fa)。
