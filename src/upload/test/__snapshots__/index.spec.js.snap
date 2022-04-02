@@ -10,7 +10,7 @@ exports[`tmUpload render upload 1`] = `
           <div class="image-single">
             <div class="image-single-uplaod image-single-empty">
               <!---->
-              <div class="image-single-uplaod_title"><i class="iconfont icon-zhaopian"></i>
+              <div class="image-single-uplaod_title"><i class="tm-icon-zhaopian"></i>
                 <p>上传图片</p>
               </div>
             </div>

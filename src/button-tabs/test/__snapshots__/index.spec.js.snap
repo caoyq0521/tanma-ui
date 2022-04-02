@@ -1,21 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tm-button-tabs render button-tabs 1`] = `
+exports[`tm-button-tabs render buttonTabs 1`] = `
 <div class="tm-button-tabs">
-  <div class="tm-button-tabs__step">
-    <div class="tm-button-tabs__step-prve">
-      上一步
-    </div>
-    <div class="tm-button-tabs__step-next">
-      下一步
-    </div>
-  </div>
-  <div class="tm-button-tabs__module"></div>
-  <div class="tm-button-tabs__date"></div>
-  <div class="tm-button-tabs__certainty">
-    <div class="tm-button-tabs__certainty-cancel">取消</div>
-    <div class="tm-button-tabs__certainty-confirm">确定</div>
-  </div>
-  <div class="tm-button-tabs__save"></div>
+  <div class="tm-button-tabs__step"><button type="default" class="tm-button tm-button--medium tm-button--default tm-button-tabs__step-prve">
+      <!----> 上一步
+    </button> <button type="primary" class="tm-button tm-button--medium tm-button--primary tm-button-tabs__step-next">
+      <!----> 下一步
+    </button></div>
 </div>
 `;
