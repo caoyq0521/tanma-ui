@@ -23,14 +23,14 @@ describe('tmAvatarCard', () => {
   it('hideDescription', () => {
     const wrapper = mount(TmAvatarCard);
     wrapper.setProps({ hideDescription: false });
-    expect(wrapper.find('.tm-avatar-card__info .tm-ellipsis.info-description').exists()).toBe(false);
+    expect(wrapper.find('.tm-avatar-card__info .tm-ellipsis.info-description').exists()).toBe(true);
   });
     
   it('description', () => {
     const wrapper = mount(TmAvatarCard);
     const description = '描述信息';
     wrapper.setProps({ description });
-    expect(wrapper.find(wrapper.find('.tm-avatar-card__info .info-description span.tm-ellipsis').text()).toBe(description));
+    expect(wrapper.find('.tm-avatar-card__info .info-description span.tm-ellipsis').text()).toBe(description);
   });
   
   it('hideWechatIcon', () => {

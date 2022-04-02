@@ -62,7 +62,7 @@ describe('tmAvatar', () => {
       }
     });
     // attributes 属性
-    expect(wrapper.find('.icon').attributes('style')).toContain('font-size: 18px');
+    expect(wrapper.find('.tm-avatar__icon').attributes('style')).toContain('font-size: 18px');
   });
 
   it('crop', () => {

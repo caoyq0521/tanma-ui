@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   plugins:[
     new CreateDirStructure({
-      name: 'icon',
+      name: 'timeline',
       path: resolve(__dirname, 'src')
     })
   ]

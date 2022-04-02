@@ -101,7 +101,7 @@ describe('tmTagPro', () => {
       }
     });
 
-    expect(wrapper.find('.icon').attributes('style')).toContain('color: rgb(247, 151, 152)');
+    expect(wrapper.find('.tm-tag-pro__icon').attributes('style')).toContain('color: rgb(247, 151, 152)');
   });
 })
   
