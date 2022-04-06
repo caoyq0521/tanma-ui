@@ -90,21 +90,6 @@
   Vue.use(Select);
   Vue.use(Option);
 
-  class BaseValidator {
-    constructor() {
-      this.pageSizes = [];
-      this.pageSize = 0;
-    }
-
-    checkPageSizes() {
-      return this.pageSizes.every(item => item && typeof item === 'number');
-    }
-
-    checkPageSizeInPageSizes() {
-      return this.pageSizes.includes(this.pageSize);
-    }
-  }
-  const Validator = new BaseValidator();
   // 正常模式
   const MODE_NORMAL = 'normal';
   // 简单模式
@@ -140,22 +125,13 @@
         type: Array,
         default: () => [20, 30, 40, 50, 100],
         validator(value) {
-          Validator.pageSizes = value;
-          return Validator.checkPageSizes();
+          return value.every(item => item && typeof item === 'number')
         }
       },
       // 每页显示条目个数，支持 .sync 修饰符
       pageSize: {
         type: Number,
-        default: 20,
-        validator(value) {
-          Validator.pageSize = value;
-          const flag =  Validator.checkPageSizeInPageSizes();
-          if(!flag) {
-            throw Error(`pageSize：${Validator.pageSize}不在pageSizes：【${Validator.pageSizes}】中`);
-          }
-          return flag;
-        }
+        default: 20
       },
       // 总条目数
       total: {
