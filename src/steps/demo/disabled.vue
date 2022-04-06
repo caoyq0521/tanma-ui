@@ -3,6 +3,7 @@
     <tm-step 
       v-for="(item, index) in steps" 
       :title="item.label"
+      :disabled="item.disabled"
       :key="item.key"
     >
     </tm-step>
@@ -16,7 +17,7 @@ export default {
       steps: [
         { key: 'base', label: '基础信息' },
         { key: 'award', label: '奖励设置' },
-        { key: 'template', label: '模版设置' }
+        { key: 'template', label: '模版设置', disabled: true }
       ]
     }
   },

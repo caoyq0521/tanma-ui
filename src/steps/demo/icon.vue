@@ -4,6 +4,7 @@
       v-for="(item, index) in steps" 
       :title="item.label"
       :key="item.key"
+      :icon="item.icon"
     >
     </tm-step>
   </tm-steps>
@@ -14,9 +15,9 @@ export default {
     return {
       currentStep: 0,
       steps: [
-        { key: 'base', label: '基础信息' },
-        { key: 'award', label: '奖励设置' },
-        { key: 'template', label: '模版设置' }
+        { key: 'base', label: '基础信息', icon: 'tm-icon-touxiang' },
+        { key: 'award', label: '奖励设置', icon: 'tm-icon-biaoqian1' },
+        { key: 'template', label: '模版设置', icon: 'tm-icon-qun' }
       ]
     }
   },

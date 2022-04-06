@@ -1,5 +1,10 @@
 <template>
-  <tm-steps :active="currentStep"  @change="handleStepChange">
+  <tm-steps 
+    :active="currentStep"
+    direction="horizontal"
+    @change="handleStepChange"
+
+  >
     <tm-step 
       v-for="(item, index) in steps" 
       :title="item.label"
