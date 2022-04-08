@@ -289,12 +289,14 @@
 
         this.internalCurrentPage--;
         this.$emit('prev-click', this.internalCurrentPage);
+        this.emitCurrentChange();
       },
       handleNext() {
         if(this.nextButtonDisabled) return;
         
         this.internalCurrentPage++;
         this.$emit('next-click', this.internalCurrentPage);
+        this.emitCurrentChange();
       },
       emitCurrentChange() {
         this.$emit('update:currentPage', this.internalCurrentPage);

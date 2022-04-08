@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   plugins:[
     new CreateDirStructure({
-      name: 'timeline',
+      name: 'steps',
       path: resolve(__dirname, 'src')
     })
   ]

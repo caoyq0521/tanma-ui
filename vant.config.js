@@ -121,6 +121,15 @@ module.exports = {
         ]
       },
       {
+        title: '导航组件',
+        items: [
+          {
+            path: 'steps',
+            title: 'Steps 步骤条'
+          },
+        ]
+      },
+      {
         title: '反馈组件',
         items: [
           {
