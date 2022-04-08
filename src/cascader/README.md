@@ -24,9 +24,19 @@
 
 <demo-code>./demo/radio.vue</demo-code>
 
+### 使用插槽配置icon
+
+<demo-code>./demo/slot.vue</demo-code>
+
 ### 级联面板
 
 <demo-code>./demo/panel.vue</demo-code>
+
+### Slots
+
+名称 | 说明
+-- | --
+prefix | 选择框头部内容
 
 ### Attributes Events Props Methods Slots
 同 [Element Cascader](https://element.eleme.cn/#/zh-CN/component/cascader)

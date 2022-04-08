@@ -26,6 +26,9 @@
       @blur="handleBlur"
       @input="handleInput"
     >
+      <template slot="prefix">
+        <slot name="prefix"></slot>
+      </template>
       <template slot="suffix">
         <i
           v-if="clearBtnVisible"
@@ -46,7 +49,7 @@
       </template>
     </el-input>
 
-    <div v-if="multiple" class="el-cascader__tags">
+    <div v-if="multiple" class="el-cascader__tags" :class="{'has-prefix': hasPrefix}">
       <el-tag
         v-for="tag in presentTags"
         :key="tag.key"
@@ -308,6 +311,9 @@ export default {
     },
     panel () {
       return this.$refs.panel;
+    },
+    hasPrefix () {
+      return !!this.$slots.prefix;
     }
   },
 
