@@ -117,7 +117,6 @@
       this.$nextTick(() => {
         const { lines } = this;
         const collapseTextStyle = window.getComputedStyle(this.$refs.collapseText)
-        console.log(collapseTextStyle);
         const collapseTextHeight = parseFloat(collapseTextStyle.height) // 获取总高度
         const collapseTextLineHeight = parseFloat(collapseTextStyle.lineHeight === 'normal' ? parseFloat(collapseTextStyle.fontSize) * 1.2 : collapseTextStyle.lineHeight) // 获取行高
         // 计算行高
