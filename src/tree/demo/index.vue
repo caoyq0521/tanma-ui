@@ -1,12 +1,10 @@
 <template>  
   <div>
-    <tm-tree
-      ref="tree"
+    <tm-tree 
       :height="390"
       :virtual-scroll="true" 
       show-checkbox 
-      :data="data"
-      node-key="id"
+      :data="data" 
       :props="{label: 'name', children: 'children'}" 
     />
   </div>
@@ -24,7 +22,7 @@ function uuid() {
    name: 'demo',
    data(){
      return {
-       data: new Array(100).fill(0).map((i, m) => ({ id: uuid(), name: `uuid-${m}`.repeat(10), children: []}))
+       data: new Array(100).fill(0).map((i, m) => ({ id: uuid(), name: `uuid-${m}`.repeat(10)}))
      }
    }
  }

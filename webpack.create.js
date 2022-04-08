@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   plugins:[
     new CreateDirStructure({
-      name: 'cascader-panel',
+      name: 'icon',
       path: resolve(__dirname, 'src')
     })
   ]

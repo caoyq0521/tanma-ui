@@ -77,10 +77,6 @@ module.exports = {
             path: 'upload',
             title: 'Upload 上传'
           },
-          {
-            path: 'cascader',
-            title: 'Cascader 级联选择器'
-          }
         ]
       },
       {
