@@ -5,17 +5,18 @@
   width: 200px;
   background-color: @white;
 
-  .el-input__suffix .tm-icon-qingchu{
-    display: none;
-  }
-
-  &:hover > .el-input__suffix .tm-icon-qingchu{
-    display: block;
-  }
-
-  > input {
-    &.el-input__inner:focus + .el-input__suffix .tm-icon-qingchu{
-      display: block;
+  .el-input__suffix {
+    .el-input__icon.el-icon-circle-close {
+      color: #dcdfe6 !important;
+      
+      &:hover {
+        color: #c0c4cc !important;
+      }
+      
+      &::before{
+        font-family: "tanma-icons";
+        content: "\e75f";
+      }
     }
   }
 
@@ -26,5 +27,9 @@
 
   .tm-icon-qingchu {
     cursor: pointer;
+  }
+
+  .el-input__inner[maxlength] {
+    padding-right: 50px;
   }
 }

@@ -8,13 +8,14 @@
     :placeholder="placeholder"
     :maxlength="maxlength"
     :show-word-limit="showWordLimit"
+    :clearable="clearable"
     @change="handleChange"
     @input="handleInput"
     @blur="handleBlur"
   >
     <template #suffix>
       <i v-if="showSearchIcon" class="tm-search-icon tm-icon-sousuo"></i>
-      <i v-else-if="clearable" class="tm-search-icon tm-icon-qingchu" @click="handleClear"></i>
+      <!-- <i v-else-if="clearable" class="tm-search-icon tm-icon-qingchu" @click="handleClear"></i> -->
     </template>
     <template #prepend>
       <slot name="prepend"></slot>
@@ -43,7 +44,7 @@ export default {
     // 最大输入长度
     maxlength: {
       type: [String, Number],
-      default: ""
+      default: null
     },
     // 是否显示输入字数统计
     showWordLimit: {
