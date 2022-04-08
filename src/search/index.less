@@ -5,9 +5,26 @@
   width: 200px;
   background-color: @white;
 
-  .tm-icon-qingchu {
+  .el-input__suffix .tm-icon-qingchu{
+    display: none;
+  }
+
+  &:hover > .el-input__suffix .tm-icon-qingchu{
+    display: block;
+  }
+
+  > input {
+    &.el-input__inner:focus + .el-input__suffix .tm-icon-qingchu{
+      display: block;
+    }
+  }
+
+  &-icon {
     width: 25px;
     line-height: 36px;
+  }
+
+  .tm-icon-qingchu {
     cursor: pointer;
   }
 }

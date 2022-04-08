@@ -13,8 +13,8 @@
     @blur="handleBlur"
   >
     <template #suffix>
-      <i v-if="showSearchIcon" class="el-input__icon el-icon-search"></i>
-      <i v-else-if="clearable" class="icon tm-icon-qingchu" @click="handleInput('')"></i>
+      <i v-if="showSearchIcon" class="tm-search-icon tm-icon-sousuo"></i>
+      <i v-else-if="clearable" class="tm-search-icon tm-icon-qingchu" @click="handleClear"></i>
     </template>
     <template #prepend>
       <slot name="prepend"></slot>
@@ -94,18 +94,24 @@ export default {
     },
 
     // Events
-    handleInput (val) {
+    handleInput (val = "") {
       if (!this.allowSpecialChar) {
         this.inputVal = val.replace(/[@|<|>|*|%|&|?|#|(|)!|;|"|']/g, "");
       }
       this.inputVal = this.inputVal.trim();
       this.$emit("input", this.inputVal);
     },
-    handleChange (val) {
+    handleChange (val = "") {
       this.$emit("change", val); // 失去焦点或者回车触发
     },
     handleBlur () {
       this.$emit('blur');
+    },
+
+    // SelfEvents
+    handleClear () {
+      this.$emit("input", "");
+      this.handleChange();
     }
   }
 }
