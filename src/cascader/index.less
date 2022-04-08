@@ -1,0 +1,35 @@
+@import '../style/var';
+@import './var';
+
+:root {
+  --tm-cascader-primay-color: @tm-cascader-primary-color;
+  --tm-cascader-in-active-color: @tm-cascader-in-active-color;
+}
+
+.tm-cascader {
+  width: 240px;
+}
+
+.tm-cascader-panel {
+  .el-cascader-node.is-selectable.in-active-path {
+    color: var(--tm-cascader-in-active-color);
+  }
+
+  .el-cascader-node.in-active-path,
+  .el-cascader-node.is-active,
+  .el-cascader-node.is-selectable.in-checked-path {
+    color: var(--tm-cascader-primay-color);
+  }
+
+  .tm-cascader-menu-virtual__wrap {
+    &::-webkit-scrollbar {
+      width: 7px;
+      height: 12px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+      background: #dddddd;
+    }
+  }
+}
