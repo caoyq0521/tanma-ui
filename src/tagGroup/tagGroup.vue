@@ -4,7 +4,7 @@
     :width="width"
     :trigger="trigger"
     class="tm-tag-more"
-    :popper-class="['tm-tag-more__popper', popperClass]"
+    :popper-class="popoverPopperClass"
   >
     <div
       slot="reference"
@@ -39,6 +39,11 @@
       popperClass: {
         type: String,
         default: ''
+      }
+    },
+    computed: {
+      popoverPopperClass() {
+        return `tm-tag-more__popper ${this.popperClass}` 
       }
     },
   }
