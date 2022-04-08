@@ -79,7 +79,7 @@
         steps.splice(index, 1);
       }
     },
-    mounted() {
+    created() {
       const unwatch = this.$watch('index', () => {
         this.$watch('$parent.active', this.updateStatus, { immediate: true });
         unwatch();
@@ -97,7 +97,3 @@
     },
   }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tmSteps render steps 1`] = `<div class="tm-steps tm-steps--vertical"></div>`;
