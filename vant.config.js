@@ -91,6 +91,10 @@ module.exports = {
             title: 'CollapseText 折叠文本'
           },
           {
+            path: 'empty',
+            title: 'Empty 空状态'
+          },
+          {
             path: 'pagination',
             title: 'Pagination 分页',
           },

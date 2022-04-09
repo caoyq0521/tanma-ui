@@ -1,0 +1,3 @@
+<template>
+  <tm-empty />
+</template>

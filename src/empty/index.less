@@ -1,0 +1,30 @@
+@import '../style/var';
+@import './var';
+  
+:root {
+  --tm-empty-description-font-size: @empty-description-font-size;
+  --tm-empty-description-font-color: @empty-description-font-color;
+}
+
+.tm-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+
+  &__image {
+    line-height: 0;
+
+    img {
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  &__description {
+    margin-top: 20px;
+    font-size: var(--tm-empty-description-font-size);
+    color: var(--tm-empty-description-font-color);
+  }
+}
+  
