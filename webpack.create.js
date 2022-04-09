@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   plugins:[
     new CreateDirStructure({
-      name: 'steps',
+      name: 'empty',
       path: resolve(__dirname, 'src')
     })
   ]

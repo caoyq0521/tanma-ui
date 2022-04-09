@@ -154,6 +154,7 @@ import {
   Avatar,
   Button,
   CollapseText,
+  Empty,
   Pagination,
   Title,
   Tip,
@@ -182,6 +183,7 @@ import {
 Vue.use(Avatar);
 Vue.use(Button);
 Vue.use(CollapseText);
+Vue.use(Empty);
 Vue.use(Pagination);
 Vue.use(Title);
 Vue.use(Tip);

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tmEmpty render empty 1`] = `
+<div class="tm-empty tm-empty--empty">
+  <div class="tm-empty__image" style="width: 260px;"><img src="test-file-stub" alt=""></div>
+  <div class="tm-empty__description">
+    暂无数据~
+  </div>
+</div>
+`;
