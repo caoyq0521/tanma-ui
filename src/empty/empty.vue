@@ -43,7 +43,10 @@
       // `empty` `error` `build`
       type: {
         type: String,
-        default: 'empty'
+        default: 'empty',
+        validator(value) {
+          return ['empty', 'error', 'build'].includes(value);
+        }
       },
       // 图片地址
       image: {
