@@ -15,7 +15,6 @@
   >
     <template #suffix>
       <i v-if="showSearchIcon" class="tm-search-icon tm-icon-sousuo"></i>
-      <!-- <i v-else-if="clearable" class="tm-search-icon tm-icon-qingchu" @click="handleClear"></i> -->
     </template>
     <template #prepend>
       <slot name="prepend"></slot>
