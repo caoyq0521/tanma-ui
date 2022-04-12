@@ -50,6 +50,7 @@
 
 参数 | 说明 | 类型 | 可选值 | 默认值
 -- | -- | -- | -- | --
+accept | 接受上传的文件类型 | _string_ | - | -
 action | 上传地址 | _string_ | - | -
 before-upload | 上传前限制条件, 返回值为`false` 或者 `Promise 为reject`中止上传 | _function_ | - | () => true
 data | 上传时附带的额外参数 | _object_ | - | {}
