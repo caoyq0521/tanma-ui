@@ -4,11 +4,19 @@ module.exports = {
   module: {
     rules: [
       {        
-        test: /\.(woff2?|eot|ttf|otf|png|jpe?g|gif)(\?.*)?$/,
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'file-loader',
         exclude: resolve('../node_modules'),
         options: {
           limit: 10000
+        }
+      },
+      {        
+        test: /\.(png|jpe?g|gif)(\?.*)?$/,
+        loader: 'url-loader',
+        exclude: resolve('../node_modules'),
+        options: {
+          limit: 100000
         }
       }
     ],
