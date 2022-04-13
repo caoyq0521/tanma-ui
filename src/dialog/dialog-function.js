@@ -101,6 +101,7 @@ tmDialogComponents.newInstance = (properties = {}) => {
           closeOnClickModal={this.closeOnClickModal}
           footerHide={this.footerHide}
           fullscreen={this.fullscreen}
+          onClose={() => this.cancelDialog()}
         >
           <template slot='default'>
             {this.getBodyVNodes()}
