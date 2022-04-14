@@ -19,6 +19,8 @@
 
 <demo-code>./demo/index.vue</demo-code>
 
+> 注意：开启虚拟列表时，`height`属性值须大于0，可动态修改，建议初始值大于0
+
 ### Props
 
 参数 | 说明 | 类型 | 可选值 | 默认值 

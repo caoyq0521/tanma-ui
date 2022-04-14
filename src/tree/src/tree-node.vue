@@ -48,14 +48,14 @@
         v-show="expanded"
         role="group"
         :aria-expanded="expanded">
-        <el-tree-node :render-content="renderContent"
+        <tm-tree-node :render-content="renderContent"
           v-for="child in node.childNodes"
           :render-after-expand="renderAfterExpand"
           :show-checkbox="showCheckbox"
           :key="getNodeKey(child)"
           :node="child"
           @node-expand="handleChildNodeExpand">
-        </el-tree-node>
+        </tm-tree-node>
       </div>
     </el-collapse-transition>
   </div>

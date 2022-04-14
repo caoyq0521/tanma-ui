@@ -26,7 +26,7 @@
         ref="tmUpload"
         :headers="headers"
         :action="action"
-        :accept="accept"
+        :accept="uploadAccept"
         :multiple="multiple"
         :show-file-list="false"
         :data="data"
@@ -136,7 +136,7 @@
         name="file"
         type="file"
         :id="id"
-        :accept="accept"
+        :accept="uploadAccept"
       />
       <input
         v-else
@@ -145,7 +145,7 @@
         name="file"
         type="file"
         :id="id"
-        :accept="accept"
+        :accept="uploadAccept"
       />
     </div>
     <!-- 上传进度 -->
@@ -192,6 +192,11 @@
   export default {
     name: "tmUpload",
     props: {
+      // 上传的文件类型
+      accept: {
+        type: String,
+        default: ""
+      },
       // 上传地址
       action: {
         type: String,
@@ -281,7 +286,7 @@
       uploadList: {
         type: Array,
         default: () => []
-      },
+      }
     },
     components: {
       ImgCutter,
@@ -297,7 +302,7 @@
         progressDialog: false,
         // 上传进度
         uploadPercent: 0,
-        accept: "",
+        uploadAccept: "",
         // 是否显示预览弹框
         previewShow: false,
         // 文件上传列表
@@ -313,9 +318,10 @@
     watch: {
       model: {
         handler (newValue) {
+          this.uploadAccept = this.accept
           // 上传图片
           if (newValue === 'image') {
-            this.accept = 'image/png, image/jpg, image/jpeg'
+            this.uploadAccept = 'image/png, image/jpg, image/jpeg'
           }
         },
         immediate: true
@@ -413,7 +419,7 @@
           this.$message({ message: `最多上传${this.limit}张图片!`, type: 'error' });
           return false
         }
-        const includesAccept = this.accept ? this.accept.includes(file.type) : true
+        const includesAccept = this.uploadAccept ? this.uploadAccept.includes(file.type) : true
 
         // 文件格式校验
         if (!includesAccept) {

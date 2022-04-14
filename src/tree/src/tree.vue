@@ -19,7 +19,7 @@
         renderContent,
         onNodeExpand: handleNodeExpand
       }" />
-    <el-tree-node v-else
+    <tm-tree-node v-else
       v-for="child in root.childNodes"
       :node="child"
       :props="props"
@@ -28,7 +28,7 @@
       :key="getNodeKey(child)"
       :render-content="renderContent"
       @node-expand="handleNodeExpand">
-    </el-tree-node>
+    </tm-tree-node>
     <div class="el-tree__empty-block"
       v-if="isEmpty">
       <span class="el-tree__empty-text">{{ emptyText }}</span>
@@ -44,7 +44,7 @@
   import TreeStore from './model/tree-store';
   import VirtualList from 'vue-virtual-scroll-list';
   import { getNodeKey, findNearestComponent } from './model/util';
-  import ElTreeNode from './tree-node.vue';
+  import TmTreeNode from './tree-node.vue';
   import ElVirtualNode from './tree-virtual-node.vue';
   import emitter from './mixin/emitter';
   import { addClass, removeClass } from '../../util/dom';
@@ -56,7 +56,7 @@
 
     components: {
       VirtualList,
-      ElTreeNode
+      TmTreeNode
     },
 
     data() {
@@ -326,7 +326,7 @@
       },
 
       handleNodeExpand(nodeData, node, instance) {
-        this.broadcast('ElTreeNode', 'tree-node-expand', node);
+        this.broadcast('TmTreeNode', 'tree-node-expand', node);
         this.$emit('node-expand', nodeData, node, instance);
       },
 
@@ -415,7 +415,7 @@
       });
 
       this.$on('tree-node-drag-over', (event, treeNode) => {
-        const dropNode = findNearestComponent(event.target, 'ElTreeNode');
+        const dropNode = findNearestComponent(event.target, 'TmTreeNode');
   
         const oldDropNode = dragState.dropNode;
         if (oldDropNode && oldDropNode !== dropNode) {
