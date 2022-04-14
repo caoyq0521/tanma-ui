@@ -1,8 +1,8 @@
 <template>
   <div class="tm-button-tabs">
     <div :class="[buttonTabsClass.className]">
-      <tm-button :class="[buttonTabsClass.left.children]"  @click="handleLeft" v-show="isLeftButtonShow">{{buttonTabsClass.left.content}}</tm-button>
-      <tm-button :type="buttonType" :class="[buttonTabsClass.right.children]" v-show="isRightButtonShow" @click="handleRight">{{buttonTabsClass.right.content}}</tm-button>
+      <tm-button :class="[buttonTabsClass.left.children]"  @click="handleLeft" v-if="isLeftButtonShow">{{buttonTabsClass.left.content}}</tm-button>
+      <tm-button :type="buttonType" :class="[buttonTabsClass.right.children]" v-if="isRightButtonShow" @click="handleRight">{{buttonTabsClass.right.content}}</tm-button>
     </div>
   </div>
 </template>
@@ -43,16 +43,17 @@
         const prefix = 'tm-button-tabs'
         const form = type === 'step' ? ['prve','next'] : ['cancel','confirm']
         const className = type === 'step' ? `${prefix}__step` : `${prefix}__certainty`
-        const leftLabel = leftContent ||  type === 'step' ? '上一步' : '取消'
-        const rightLabel = rightContent ||  type === 'step' ? '下一步' : '确定'
+        const leftLabel = type === 'step' ? '上一步' : '取消'
+        const rightLabel = type === 'step' ? '下一步' : '确定'
+
         return{
           className,
           left:{
-            content: leftLabel,
+            content: leftContent||leftLabel,
             children: `${className}-${form[0]}`
           },
           right:{
-            content: rightLabel,
+            content: rightContent||rightLabel,
             children: `${className}-${form[1]}`
           },
           form

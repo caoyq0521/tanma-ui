@@ -15,11 +15,11 @@
 
 ## 代码演示
 
-### 基础用法
+### 上一步/下一步用法
 
 <demo-code>./demo/index.vue</demo-code>
 
-### 基础用法
+### 取消/确定用法
 
 <demo-code>./demo/certainty.vue</demo-code>
 
