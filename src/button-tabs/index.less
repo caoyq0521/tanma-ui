@@ -2,7 +2,8 @@
 @import './var';
   
 :root {
-
+  --tm-btn-tabs-cancel-hover-color: @btn-tabs-cancel-hover-color;
+  --tm-btn-tabs-next-width: @btn-tabs-next-width;
 }
 
 .tm-button-tabs {
@@ -16,7 +17,7 @@
 
     &-prve,
     &-next{
-      width: 156px;
+      width: var(--tm-btn-tabs-next-width);
     }
     &-prve{
       border: none;
@@ -29,28 +30,13 @@
     align-items: center;
     width: 100%;
 
-    &-confirm {
-      width: 115px;
-    }
-
-    &-confirm.danger {
-      // background-color: @color-red !important;
-    }
-
-
-    &-confirm.is-disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
 
     &-cancel {
-      width: 115px;
       border: none;
     }
 
-    &-cancel:hover {
-      background-color: #f4f4f6 !important;
-      color: #000 !important;
+    &-cancel:not(&.disabled):not([disabled]):hover{
+      background-color: var(--tm-btn-tabs-cancel-hover-color) !important;
     }
     
     .base-line {

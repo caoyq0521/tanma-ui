@@ -4,6 +4,7 @@
       <h5>默认状态</h5>
       <tm-button-tabs  type="certainty"  />
       <tm-button-tabs  type="certainty" button-type="danger"  />
+      <tm-button-tabs  type="certainty" button-type="danger" disabled="all" />
     </div>
     <div class="button-tabs-item">
       <h5>自定义按钮内容</h5>
