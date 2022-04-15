@@ -2,19 +2,18 @@
   <div class="button-tabs">
     <div class="button-tabs-item">
       <h5>默认状态</h5>
-      <tm-button-tabs  />
+      <tm-button-tabs />
+      <tm-button-tabs button-type="danger" />
+      <tm-button-tabs button-type="danger" disabled="right" />
+    </div>
+    <div class="button-tabs-item">
+      <h5>自定义按钮内容</h5>
+      <tm-button-tabs left-content="后退" right-content="前进" />
     </div>
     <div class="button-tabs-item">
       <h5>隐藏按钮</h5>
-      <span>隐藏左边按钮</span>
-      <tm-button-tabs hide="left"  />
-      <span>隐藏右边按钮</span>
-      <tm-button-tabs hide="right"  />
-    </div>
-    <div class="button-tabs-item">
-      <span>自定义按钮内容</span>
-      <tm-button-tabs leftContent="后退" />
-      <tm-button-tabs rightContent="前进" />
+      <tm-button-tabs hide="left" />
+      <tm-button-tabs hide="right" />
     </div>
   </div>
 </template>
@@ -23,9 +22,6 @@
   .button-tabs{
     &-item{
       margin-bottom: 20px;
-      h5{
-        color: var(--main-color);
-      }
       span{
         display: inline-block;
         margin-bottom: 10px;

@@ -55,11 +55,7 @@ module.exports = {
           {
             path: 'title',
             title: 'Title 标题',
-          },
-          // {
-          //   path: 'button-tabs',
-          //   title: 'ButtonTabs 标签按钮',
-          // },
+          }
         ],
       },
       {
@@ -122,6 +118,10 @@ module.exports = {
             path: 'tree',
             title: 'Tree 树',
           },
+          {
+            path: 'button-tabs',
+            title: 'ButtonTabs 标签按钮',
+          }
         ]
       },
       {
