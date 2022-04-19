@@ -37,3 +37,7 @@ export function removeClass(el, cls) {
     el.setAttribute('class', trim(curClass));
   }
 };
+
+export function hasOwn(obj, key) {
+  return hasOwnProperty.call(obj, key);
+};

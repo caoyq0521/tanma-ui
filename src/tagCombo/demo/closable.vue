@@ -42,8 +42,7 @@ export default {
   },
   methods: {
     handleClose(type, info) {
-      console.log(type);
-      console.log(info);
+      this.$tmMessage.warning(`删除：${type} ${info.name}`);
     }
   },
 }

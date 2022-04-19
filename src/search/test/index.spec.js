@@ -33,7 +33,7 @@ describe('tmSearch', () => {
         value: '',
       },
     });
-    expect(wrapper.find('.tm-search .el-icon-search').exists()).toBe(true);
+    expect(wrapper.find('.tm-search .tm-search-icon').exists()).toBe(true);
   });
 
   // 有值则显示
@@ -43,7 +43,7 @@ describe('tmSearch', () => {
         value: '内容',
       },
     });
-    expect(wrapper.find('.tm-search .el-icon-search').exists()).toBe(false);
+    expect(wrapper.find('.tm-search .tm-search-icon').exists()).toBe(false);
   });
 
   // 不允许输入特殊字符

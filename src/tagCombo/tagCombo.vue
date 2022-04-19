@@ -29,6 +29,7 @@
     <tm-tag-group 
       v-if="showMore" 
       :popper-class="popperClass"
+      :trigger="trigger"
     >
       <template v-for="item in deptList">
         <slot name="deptL" :info="item"></slot>
@@ -64,6 +65,12 @@
   export default {
     name: "tmTagCombo",
     props: {
+      // 触发方式
+      // `click` `focus` `hover` `manual`
+      trigger: {
+        type: String,
+        default: 'click'
+      },
       // 标签超出多少个后显示 更多按钮
       limit: {
         type: Number,
