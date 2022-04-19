@@ -37,6 +37,8 @@ tanma design 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规�
 
 - tagCombo: 新增 trigger 参数，允许控制查看全部标签触发方式。
 
+- vTitle: 优化提示内容插入位置，默认到document.body下
+
 #### Bug Fixes
 
 - upload: 处理上传文件类型icon显示不正确问题。

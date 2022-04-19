@@ -1,9 +1,14 @@
-import Vtip from 'vtip';
-import 'vtip/lib/index.min.css';
+import tip from './tip.js'
+import directive from './directive.js'
 
-Vtip.install = function (Vue) {
-  Vue.use(Vtip.directive, { directiveName: 'title' });
+const vTitle = {
+  tip,
+  directive
+}
+
+vTitle.install = function (Vue) {
+  Vue.use(directive);
 };
 
-export default Vtip;
-export { Vtip };
+export default vTitle;
+export { vTitle };
