@@ -109,7 +109,7 @@
             @mouseleave="hoverIndex = ''"
             @click="previewFile(file)"
           >
-            <file-type :type="file.type" />
+            <file-type :type="file.name" />
             <span class="file-name">
               {{ file.name }}
             </span>
@@ -280,7 +280,7 @@
       // 上传的文件大小: 单位MB
       size: {
         type: Number,
-        default: 5
+        default: 50
       },
       // 回显的文件列表
       uploadList: {
@@ -431,6 +431,12 @@
         const limit = file.size / 1024 / 1024 < this.size;
         if (!limit) {
           this.$message({ message: `上传的文件大小不能超过 ${this.size}MB!`, type: 'error' });
+          return false
+        }
+
+        // 多个文件上传
+        if (this.fileList.length >= this.limit && this.limit !== 1) {
+          this.$message({ message: `最多上传${this.limit}个文件!`, type: 'error' });
           return false
         }
 

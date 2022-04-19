@@ -14,13 +14,20 @@ import mp3 from './img/mp3.png'
 import mp4 from './img/mp4.png'
 import ppt from './img/ppt.png'
 import zip from './img/zip.png'
+import xslx from './img/xlsx.png'
   export default {
     name: "fileTypeIcon",
     props: ['type'],
     watch: {
       type: {
         handler (type) {
-          this.url = this.typeMap[type] || text
+          const fileTypeList = type.split('.')
+          const fileType = fileTypeList[fileTypeList.length - 1]
+          if (this.typeMap[fileType]) {
+            this.url = this.typeMap[fileType]
+          } else {
+            this.url = text
+          }
         },
         immediate: true
       }
@@ -29,20 +36,36 @@ import zip from './img/zip.png'
       return {
         url: '',
         typeMap: {
-          'image/jpeg': jpg,
-          'image/png': png,
-          'text/plain': text,
-          'image/gif': gif,
-          'text/html': html,
-          'application/pdf': pdf,
-          'application/msword': word,
-          'audio/mp3': mp3,
-          'audio/mp4': mp4,
-          'application/x-ppt': ppt,
-          'application/zip': zip
+          'jpg': jpg,
+          'png': png,
+          'text': text,
+          'gif': gif,
+          'html': html,
+          'pdf': pdf,
+          'doc': word,
+          'docx': word,
+          'xlsx': xslx,
+          'xls': xslx,
+          'csv': xslx,
+          'mp3': mp3,
+          'wav': mp3,
+          'ogg': mp3,
+          'mp4': mp4,
+          'avi': mp4,
+          'mkv': mp4,
+          'webm': mp4,
+          '3gp': mp4,
+          'wmv': mp4,
+          'mov': mp4,
+          'swf': mp4,
+          'mpg': mp4,
+          'vob': mp4,
+          'ppt': ppt,
+          'pptx': ppt,
+          'zip': zip
         }
       }
-    }
+    },
   }
 </script>
 
