@@ -27,60 +27,60 @@ Vue.use(DatePicker);
 import dayjs from 'dayjs';
 import {isMobile} from '../util';
 
-// 快捷选项函数配置
-function ShortcutOptions () {
-  const today = dayjs();
-  return [
-    {
-      text: '今天',
-      onClick (picker) {
-        const end = today.endOf('date').toDate();
-        const start = today.startOf('date').toDate();
-        picker.$emit('pick', [start, end]);
-      }
-    },
-    {
-      text: '昨天',
-      onClick (picker) {
-        const start = today.startOf('date').subtract(1, 'day').toDate();
-        const end = today.endOf('date').subtract(1, 'day').toDate();
-        picker.$emit('pick', [start, end]);
-      }
-    },
-    {
-      text: '最近7天',
-      onClick (picker) {
-        const end = today.endOf('date').toDate();
-        const start = today.startOf('date').subtract(6, 'day').toDate();
-        picker.$emit('pick', [start, end]);
-      }
-    },
-    {
-      text: '最近一个月',
-      onClick (picker) {
-        const end = today.endOf('date').toDate();
-        const start = today.startOf('date').subtract(30, 'day').toDate();
-        picker.$emit('pick', [start, end]);
-      }
-    },
-    {
-      text: '最近三个月',
-      onClick (picker) {
-        const end = today.endOf('date').toDate();
-        const start = today.startOf('date').subtract(90, 'day').toDate();
-        picker.$emit('pick', [start, end]);
-      }
-    },
-    {
-      text: '最近一年',
-      onClick (picker) {
-        const end = today.endOf('date').toDate();
-        const start = today.startOf('date').subtract(365, 'day').toDate();
-        picker.$emit('pick', [start, end]);
-      }
+const today = dayjs();
+
+const ShortcutOptionsEnum = {
+  '0': {
+    text: '今天',
+    onClick (picker) {
+      const end = today.endOf('date').toDate();
+      const start = today.startOf('date').toDate();
+      picker.$emit('pick', [start, end]);
     }
-  ]
+  },
+  '1': {
+    text: '昨天',
+    onClick (picker) {
+      const start = today.startOf('date').subtract(1, 'day').toDate();
+      const end = today.endOf('date').subtract(1, 'day').toDate();
+      picker.$emit('pick', [start, end]);
+    }
+  },
+  '7': {
+    text: '最近7天',
+    onClick (picker) {
+      const end = today.endOf('date').toDate();
+      const start = today.startOf('date').subtract(6, 'day').toDate();
+      picker.$emit('pick', [start, end]);
+    }
+  },
+  '30': {
+    text: '最近一个月',
+    onClick (picker) {
+      const end = today.endOf('date').toDate();
+      const start = today.startOf('date').subtract(30, 'day').toDate();
+      picker.$emit('pick', [start, end]);
+    }
+  },
+  '90': {
+    text: '最近三个月',
+    onClick (picker) {
+      const end = today.endOf('date').toDate();
+      const start = today.startOf('date').subtract(90, 'day').toDate();
+      picker.$emit('pick', [start, end]);
+    }
+  },
+  '365': {
+    text: '最近一年',
+    onClick (picker) {
+      const end = today.endOf('date').toDate();
+      const start = today.startOf('date').subtract(365, 'day').toDate();
+      picker.$emit('pick', [start, end]);
+    }
+  }
 }
+
+const defaultShortcuts =  [...Object.values(ShortcutOptionsEnum)];
 
 export default {
   name: 'tmDateRange',
@@ -104,10 +104,18 @@ export default {
       type: Boolean,
       default: false
     },
-    // 快捷方式数组
+    // 自定义快捷方式数组
     shortcuts: {
       type: Array,
-      default: ShortcutOptions
+      default: () => []
+    },
+    // 枚举快捷方式数组
+    shortcutsEnum: {
+      type: String,
+      default: () => [],
+      validator: function (value) {
+        return Array.isArray(value)
+      }
     },
     // 选择日期范围
     dateRange: {
@@ -158,6 +166,7 @@ export default {
   data() {
     return {
       defaultPickerOptions: null,
+      defaultShortcuts: [...defaultShortcuts],
       currentValue: [],
       align: isMobile() ? 'right' : 'left'
     }
@@ -178,19 +187,38 @@ export default {
       handler(newValue) {
         this.defaultPickerOptions = newValue ? { ...newValue } : null;
       },
-      immediate: true,
-      deep: true
+      immediate: true
+    },
+    shortcuts: {
+      handler(newValue) {
+        this.defaultShortcuts = newValue.length ? newValue : [...defaultShortcuts];
+      },
+      immediate: true
     }
   },
   created () {
+    // 初始化快捷配置
+    this.initShortcuts();
+    // 如果未配置pickerOptions，走默认配置
     !this.defaultPickerOptions && this.initPickerOptions();
   },
   methods: {
+    initShortcuts() {
+      let { shortcutsEnum } = this;
+      // 如果设置了枚举值
+      if(shortcutsEnum.length) {
+        this.defaultShortcuts = [];
+        shortcutsEnum.sort((a,b) => a-b).forEach(key => {
+          const option = ShortcutOptionsEnum[key];
+          option && this.defaultShortcuts.push(option);
+        })
+      }
+    },
     initPickerOptions() {
       this.defaultPickerOptions = {};
-      if(!this.hideShortcuts) this.defaultPickerOptions.shortcuts = this.shortcuts;
+      if(!this.hideShortcuts) this.defaultPickerOptions.shortcuts = this.defaultShortcuts;
       this.defaultPickerOptions.disabledDate = (time) => {
-        if (this.dateRange) {
+        if (+this.dateRange) {
           const now = new Date(new Date().toLocaleDateString()).getTime() + 8.64e7 - 1;
           return time.getTime() > now || time.getTime() <= now - this.dateRange * 8.64e7;
         } else {

@@ -41,6 +41,15 @@
 
 <demo-code>./demo/custome.vue</demo-code>
 
+### 枚举快捷项配置
+
+```javascript
+0:"今天",1: "昨天",7:"最近7天",30:"最近一个月",90:"最近三个月",365:"最近一年"
+```
+
+<demo-code>./demo/shortcutsEnum.vue</demo-code>
+
+
 ## API
 
 ### Props
@@ -54,7 +63,8 @@
 | end-placeholder   | 范围选择时结束日期的占位内容             | _string_           | -      | 结束日期             |
 | picker-options    | 自定义选择器配置               | _object_           | -      | null             |
 | range-separator   | 选择范围时的分隔符                       | _string_           | -      | ~                    |
-| shortcuts         | 快捷方式数组                             | _array_            | -      | ShortcutOptions      |
+| shortcuts         | 自定义快捷方式数组                    | _array_            | -      | ~ |
+| shortcuts-enum    | 枚举快捷方式数组                           | _array_            | 参考上述介绍 | []      |
 | size              | 输入框尺寸                               | _string_           | -      | small                |
 | start-placeholder | 范围选择时开始日期的占位内容             | _string_           | -      | 开始日期             |
 | type              | 显示类型                                 | _string_           | year/month/date/dates/ week/datetime/datetimerange/ daterange/monthrange | daterange            |

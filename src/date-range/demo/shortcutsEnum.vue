@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <tm-date-range v-model="rangeDate" :date-range="20" />
-  </div>
+  <ul>
+    <li>
+      <tm-date-range v-model="rangeDate" :shortcuts-enum="[0,1,90]" />
+    </li>
+  </ul>
 </template>
 
 <script>
