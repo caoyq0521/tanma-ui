@@ -39,6 +39,7 @@
 
 参数 | 说明 | 类型 | 可选值 | 默认值 
 -- | -- | -- | -- | --
+trigger | 全部触发方式 | _string_ | `click` `focus` `hover` `manual` | click
 closable | 是否可关闭 | _boolean_ | - | false
 dept-list | 部门标签 | _array_ | - | []
 limit | 标签超出多少个后显示 更多按钮 | _number_ | - | 3
