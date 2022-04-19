@@ -2,7 +2,7 @@
 
 ### 介绍
 
-组件介绍
+基于button按钮定制的按钮组。
 
 ### 引入
 
@@ -29,16 +29,16 @@
 -- | -- | -- | -- | --
 type | 类型 | _string_ | step/certainty | step
 hide | 	隐藏按钮 | _string_ | left/right | -
-rightContent | 自定义右侧按内容	 | _string_ | - | -
-leftContent | 自定义左侧按内容 | _string_ | - | -
-buttonType | 主要按钮类型 | _string_ | primary/danger/addition/forbidden/wicked | primary
+rightContent | 自定义右侧按钮内容	 | _string_ | - | -
+leftContent | 自定义左侧按钮内容 | _string_ | - | -
+buttonType | 主要按钮类型 | _string_ | primary/danger | primary
 disabled | 禁用按钮 | _string_ | left/right/all | -
-loading | 	主要按钮是否加载中状态 | _boolean_ | - | false
+loading | 	主要按钮(右侧)是否加载中状态 | _boolean_ | - | false
 
 ### Events
 事件名称 | 说明 | 回调参数
 -- | -- | --
-click | 用户点击左右按钮触发 | cancel/confirm
+click | 用户点击按钮时触发 | cancel/confirm
 
 
 #### Less 变量
