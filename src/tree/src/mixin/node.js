@@ -94,7 +94,7 @@ export default {
         node.expand();
         if (this.tree && this.tree.virtualScroll) {
           this.source && this.source.expand();
-          this.broadcast('ElTreeNode', 'tree-node-expand', node);
+          this.broadcast('TmTreeNode', 'tree-node-expand', node);
           this.tree.$emit('node-expand', node.data, node, this);
         }
         this.$emit('node-expand', node.data, node, this);
@@ -117,7 +117,7 @@ export default {
     },
 
     handleChildNodeExpand(nodeData, node, instance) {
-      this.broadcast('ElTreeNode', 'tree-node-expand', node);
+      this.broadcast('TmTreeNode', 'tree-node-expand', node);
       this.tree.$emit('node-expand', nodeData, node, instance);
     }
   }
