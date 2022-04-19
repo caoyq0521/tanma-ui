@@ -153,6 +153,7 @@ import Vue from 'vue';
 import { 
   Avatar,
   Button,
+  ButtonTabs,
   CollapseText,
   Empty,
   Pagination,
@@ -177,11 +178,13 @@ import {
   Timeline,
   TimelineItem,
   Steps,
-  Step
+  Step,
+  Message
 } from 'tanma-design';
 
 Vue.use(Avatar);
 Vue.use(Button);
+Vue.use(ButtonTabs);
 Vue.use(CollapseText);
 Vue.use(Empty);
 Vue.use(Pagination);
@@ -207,5 +210,9 @@ Vue.use(Timeline);
 Vue.use(TimelineItem);
 Vue.use(Steps);
 Vue.use(Step);
+Vue.use(Message);
+
+
+Vue.prototype.$message = Message;
 ```
 > Tips：Vue.use(Dialog)会同时绑定Vue.prototype.$tmDialog方法，具体使用方式请查看[Dialog](#/dialog#shi-li-hua-shi-yong-fang-fa)。

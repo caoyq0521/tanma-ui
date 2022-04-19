@@ -20,10 +20,10 @@
             );
           },
           onOk: () => {
-            console.log('oK');
+            this.$tmMessage.success('删除成功');
           },
           onCancel: () => {
-            console.log('cancel');
+            this.$tmMessage('取消删除');
           }
         })
       }

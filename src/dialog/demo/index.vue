@@ -14,10 +14,10 @@ export default {
         content: '确定要删除该内容？',
         okType: 'danger',
         onOk: () => {
-          console.log('ok');
+          this.$tmMessage.success('删除成功');
         },
         onCancel: () => {
-          console.log('cancel');
+          this.$tmMessage('取消删除');
         }
       });
     },
@@ -29,10 +29,10 @@ export default {
         okText: '删除',
         cancelText: '不删',
         onOk: () => {
-          console.log('ok');
+          this.$tmMessage.success('删除成功');
         },
         onCancel: () => {
-          console.log('cancel');
+          this.$tmMessage('取消删除');
         }
       });
     },
@@ -45,11 +45,11 @@ export default {
         onOk: () => {
           setTimeout(() => {
             this.$tmDialog.remove();
-            console.log('ok');
+            this.$tmMessage.success('删除成功');
           }, 2000);
         },
         onCancel: () => {
-          console.log('cancel');
+          this.$tmMessage('取消删除');
         }
       });
     }

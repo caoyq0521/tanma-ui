@@ -72,7 +72,7 @@ default | 内容
 @tag-success-color | var(--color-success) `#3daf30` | success tag背景色
 @tag-info-color | var(--tm-gray-9) `#CCCCCC` | info tag背景色
 @tag-warning-color | var(--tm-auxiliary-7) `#FFAB00` | warning tag背景色
-@tag-danger-color | var(---color-danger) `#f67172` | success tag背景色
+@tag-danger-color | var(--color-danger) `#f67172` | success tag背景色
 @tag-dot-font-color | var(--title-font-color) `#333333` | success tag背景色
 
 #### Css 变量
@@ -86,5 +86,5 @@ default | 内容
 --tm-tag-success-color | var(--color-success) `#3daf30` | success tag背景色
 --tm-tag-info-color | var(--tm-gray-9) `#CCCCCC` | info tag背景色
 --tm-tag-warning-color | var(--tm-auxiliary-7) `#FFAB00` | warning tag背景色
---tm-tag-danger-color | var(---color-danger) `#f67172` | success tag背景色
+--tm-tag-danger-color | var(--color-danger) `#f67172` | success tag背景色
 --tm-tag-dot-font-color | var(--title-font-color) `#333333` | success tag背景色

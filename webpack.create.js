@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   plugins:[
     new CreateDirStructure({
-      name: 'empty',
+      name: 'message',
       path: resolve(__dirname, 'src')
     })
   ]

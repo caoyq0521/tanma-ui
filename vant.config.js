@@ -141,6 +141,10 @@ module.exports = {
             title: 'Dialog 对话框'
           },
           {
+            path: 'message',
+            title: 'Message 消息提示'
+          },
+          {
             path: 'tip',
             title: 'Tip 文字提示',
           },
