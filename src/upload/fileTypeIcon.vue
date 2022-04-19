@@ -26,7 +26,7 @@ import xslx from './img/xlsx.png'
           if (this.typeMap[fileType]) {
             this.url = this.typeMap[fileType]
           } else {
-            this.url = txt
+            this.url = text
           }
         },
         immediate: true
@@ -36,7 +36,7 @@ import xslx from './img/xlsx.png'
       return {
         url: '',
         typeMap: {
-          'jpeg': jpg,
+          'jpg': jpg,
           'png': png,
           'text': text,
           'gif': gif,
