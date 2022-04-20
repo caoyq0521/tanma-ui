@@ -111,7 +111,7 @@ export default {
     },
     // 枚举快捷方式数组
     shortcutsEnum: {
-      type: String,
+      type: Array,
       default: () => [],
       validator: function (value) {
         return Array.isArray(value)
