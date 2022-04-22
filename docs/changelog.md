@@ -15,6 +15,20 @@ tanma design 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规�
 
 ## 更新内容
 
+### v1.1.1
+
+`2022-04-22`
+
+#### Feature
+
+- tagPro: 增加icon插槽。
+
+#### Bug Fixes
+
+- message: 修改message层级低的问题。
+
+- dataRange: 修改shortcutsEnum传参类型。
+
 ### v1.1.0
 
 `2022-04-19`

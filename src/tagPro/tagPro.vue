@@ -8,12 +8,15 @@
     @click="handleClick"
     @close="handleClose"
   >
-    <slot>
+  <span class="tm-tag-pro__icon">
+    <slot name="icon">
       <i
-        class="tm-tag-pro__icon"
         :class="setIconClass"
         :style="{'color': iconColor}"
       ></i>
+    </slot>
+  </span>
+    <slot>
       {{ setName }}
     </slot>
   </tm-tag>

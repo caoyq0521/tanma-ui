@@ -112,10 +112,7 @@ export default {
     // 枚举快捷方式数组
     shortcutsEnum: {
       type: Array,
-      default: () => [],
-      validator: function (value) {
-        return Array.isArray(value)
-      }
+      default: () => []
     },
     // 选择日期范围
     dateRange: {

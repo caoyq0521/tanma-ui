@@ -74,6 +74,7 @@ close | 关闭 Tag 时触发的事件 | -
 名称 | 说明
 -- | --
 default | 内容
+icon | 自定义icon
 
 ### 样式变量
 

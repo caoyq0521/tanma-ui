@@ -40,7 +40,7 @@ const Message = function(options) {
   });
   instance.offset = verticalOffset;
   instance.visible = true;
-  instance.$el.style.zIndex = PopupManager.nextZIndex();
+  instance.$el.style.zIndex = PopupManager.nextZIndex() + 2000; // 容错
   instances.push(instance);
   return instance;
 };
