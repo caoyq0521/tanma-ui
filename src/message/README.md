@@ -61,13 +61,13 @@ onClose | 关闭时的回调函数, 参数为被关闭的 message 实例 | _func
 
 名称 | 默认值 | 描述
 -- | -- | --
-@message-success-color | var(--color-success) `#3DAF30` | success 字体颜色
+@message-success-color | #3DAF30 | success 字体颜色
 @message-success-bgc | #F0F9EB | success 背景色
-@message-warning-color | var(--tm-auxiliary-7) `#FFAB00` | warning 字体颜色
+@message-warning-color | #FFAB00 | warning 字体颜色
 @message-warning-bgc | #FFF6E3 | warning 背景色
-@message-error-color | var(--color-danger) `#f67172` | error 字体颜色
+@message-error-color | #f67172 | error 字体颜色
 @message-error-bgc | #FEF1F0 | error 背景色
-@message-info-color | var(--tm-white) `#fff` | info 字体颜色
+@message-info-color | #3470ff | info 字体颜色
 @message-info-bgc | #C2D4FF | error 背景色
 
 #### Css 变量
@@ -76,11 +76,11 @@ onClose | 关闭时的回调函数, 参数为被关闭的 message 实例 | _func
 
 名称 | 默认值 | 描述
 -- | -- | --
---tm-message-success-color | var(--color-success) `#3DAF30` | success 字体颜色
+--tm-message-success-color | #3DAF30 | success 字体颜色
 --tm-message-success-bgc | #F0F9EB | success 背景色
---tm-message-warning-color | var(--tm-auxiliary-7) `#FFAB00` | warning 字体颜色
+--tm-message-warning-color | #FFAB00 | warning 字体颜色
 --tm-message-warning-bgc | #FFF6E3 | warning 背景色
---tm-message-error-color | var(--color-danger) `#f67172` | error 字体颜色
+--tm-message-error-color | #f67172 | error 字体颜色
 --tm-message-error-bgc | #FEF1F0 | error 背景色
---tm-message-info-color | var(--tm-white) `#fff` | info 字体颜色
+--tm-message-info-color | #3470ff | info 字体颜色
 --tm-message-info-bgc | #C2D4FF | error 背景色
