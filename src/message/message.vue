@@ -9,7 +9,8 @@
       :style="setMessageStyle"
     >
       <i :class="setMessageIconClass"></i>
-      <span class="tm-message__content">{{ message }}</span>
+      <p v-if="!dangerouslyUseHTMLString" class="tm-message__content">{{ message }}</p>
+      <p v-else v-html="message" class="tm-message__content"></p>
     </div>
   </transition>
 </template>
@@ -34,7 +35,8 @@
         customClass: '', // 自定义类名
         duration: 3000, // 显示时间, 毫秒。设为 0 则不会自动关闭 
         offset: 20, // Message 距离窗口顶部的偏移量
-        onClose: null // 关闭时的回调函数, 参数为被关闭的 message 实例
+        onClose: null, // 关闭时的回调函数, 参数为被关闭的 message 实例
+        dangerouslyUseHTMLString: false // 是否将 message 属性作为 HTML 片段处理
       }
     },
     computed: {

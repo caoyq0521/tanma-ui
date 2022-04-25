@@ -19,6 +19,12 @@
 
 <demo-code>./demo/index.vue</demo-code>
 
+### 使用 HTML 片段
+
+将`dangerouslyUseHTMLString`属性设置为 true，`message` 就会被当作 HTML 片段处理。
+
+<demo-code>./demo/html.vue</demo-code>
+
 ### 全局方法
 
 tanma-design 为 Vue.prototype 添加了全局方法 `$tmMessage`。因此在 vue instance 中可以采用本页面中的方式调用 Message。
@@ -39,12 +45,13 @@ import { Message } from 'tanma-design';
 -- | -- | -- | -- | --
 message | 消息文字 | _string_ | - | 成功提示
 type | 主题 | _string_ | `success` `warning` `error` `info` | error
-icon-class | 自定义图标的类名，会覆盖`type` | _string_ | - | -
-class-prefix | 类名前缀 | _string_ | - | -
-custom-class | 自定义类名 | _string_ | - | -
+iconClass | 自定义图标的类名，会覆盖`type` | _string_ | - | -
+dangerouslyUseHTMLString | 是否将 message 属性作为 HTML 片段处理 | _string_ | - | -
+classPrefix | 类名前缀 | _string_ | - | -
+customClass | 自定义类名 | _string_ | - | -
 duration | 显示时间, 毫秒。设为 0 则不会自动关闭 | _number_ | - | 3000
 offset | Message 距离窗口顶部的偏移量 | _number_ | - | 20
-on-close | 关闭时的回调函数, 参数为被关闭的 message 实例 | _function_ | - | null
+onClose | 关闭时的回调函数, 参数为被关闭的 message 实例 | _function_ | - | null
 
 ### 样式变量
 

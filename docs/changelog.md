@@ -15,6 +15,14 @@ tanma design 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规�
 
 ## 更新内容
 
+### v1.1.2
+
+`2022-04-25`
+
+#### Feature
+
+- message: 增加dangerouslyUseHTMLString参数。
+
 ### v1.1.1
 
 `2022-04-22`
