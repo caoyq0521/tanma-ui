@@ -10,14 +10,14 @@
     <div slot="content">
       <slot>
         <div
-          class="content"
+          class="tm-tooltip__content"
           :style="{ width: width }"
           v-html="content"
         ></div>
       </slot>
     </div>
     <i
-      :class="['icon-tips', classPrefix, iconName]"
+      :class="['tm-tooltip__icon', classPrefix, iconName]"
       :style="{ color:iconColor, fontSize:iconSize }"
     >
     </i>
