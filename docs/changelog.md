@@ -12,8 +12,17 @@ tanma design 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规�
 
 - 主版本号：无固定发布时间，包含不兼容更新。
 
-
 ## 更新内容
+
+### v1.1.5
+
+`2022-04-28`
+
+#### Bug Fixes
+
+- tip: 处理文字行高问题。
+
+- avatarCard: 处理默认微信图标未显示问题。
 
 ### v1.1.4
 
