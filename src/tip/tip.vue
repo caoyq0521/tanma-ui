@@ -3,12 +3,14 @@
     v-if="content"
     effect="dark"
     :style="styleCls"
+    class="tm-tooltip"
     :placement="placement"
     :popper-class="popperClass"
   >
     <div slot="content">
       <slot>
         <div
+          class="content"
           :style="{ width: width }"
           v-html="content"
         ></div>
