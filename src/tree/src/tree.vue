@@ -146,10 +146,10 @@
         type: Boolean,
         default: false
       },
-      // 虚拟列表盒子高度，必传
+      // 虚拟列表盒子高度，开启虚拟列表时需设置
       height: {
         type: Number,
-        default: 0
+        default: 300
       },
       // 虚拟列表每一项高度，可选
       itemHeight: {
@@ -216,7 +216,9 @@
     methods: {
       flattenTree(datas) {
         return datas.reduce((conn, data) => {
-          conn.push(data);
+          if (data.visible) {
+            conn.push(data);
+          }
           if (data.expanded && data.childNodes.length) {
             conn.push(...this.flattenTree(data.childNodes));
           }

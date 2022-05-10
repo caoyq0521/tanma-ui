@@ -19,14 +19,13 @@
 
 <demo-code>./demo/index.vue</demo-code>
 
-> 注意：开启虚拟列表时，`height`属性值须大于0，可动态修改，建议初始值大于0
 
 ### Props
 
 参数 | 说明 | 类型 | 可选值 | 默认值 
 -- | -- | -- | -- | --
 virtualScroll | 是否开启虚拟列表，必传 | _boolean_ | - | false
-height | 虚拟列表的高度，必传 | _number_ | - | 0
+height | 虚拟列表的高度，开启虚拟列表时需设置 | _number_ | - | 300
 itemHeight | 虚拟列表每一项的高度，可选 | _number_ | - | 0
 
 其他参数跟element tree 参数一样
