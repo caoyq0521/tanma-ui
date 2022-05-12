@@ -7,14 +7,14 @@
     <span
       v-if="showPaginationBtn"
       class="tm-icon-zuojiantou icon-prev"
-      :class="{ 'is-disabled': isPrevDisabled }"
+      :class="{ 'tm-is-disabled': isPrevDisabled }"
       @click="handlePrev"
     ></span>
     <div ref="wrapper" class="tm-tabs__wrapper">
       <div
         ref="content"
         class="tm-tabs__content"
-        :class="[`is-${position}`]"
+        :class="[`tm-is-${position}`]"
         :style="{ transform: `translateX(${translateX}px)` }"
       >
         <div
@@ -23,8 +23,8 @@
           class="tm-tabs__pane"
           ref="items"
           :class="{
-            'is-active': currentKey === item.key,
-            'is-round': round,
+            'tm-is-active': currentKey === item.key,
+            'tm-is-round': round,
           }"
           @click="handleTabClick(item, item.key, $event)"
         >
@@ -37,7 +37,7 @@
     <span
       v-if="showPaginationBtn"
       class="tm-icon-youjiantou icon-next"
-      :class="{ 'is-disabled': isNextDisabled }"
+      :class="{ 'tm-is-disabled': isNextDisabled }"
       @click="handleNext"
     ></span>
     <slot name="right"></slot>
@@ -158,11 +158,12 @@ export default {
           if (!this.showPaginationBtn) {
             this.showPaginationBtn = true;
             // 减去两边按钮的宽度
-            this.wrapperWidth -= 40 * 2;
+            this.wrapperWidth -= 21 * 2;
           }
           this.scrollIntoView();
         } else {
           this.showPaginationBtn = false;
+          this.translateX = 0;
         }
       })
     },
@@ -197,6 +198,7 @@ export default {
       })
     },
     handlePrev () {
+      if (this.isPrevDisabled) return;
       let move = this.translateX + this.wrapperWidth;
       if (move > 0) {
         move = 0;
@@ -204,6 +206,7 @@ export default {
       this.translateX = move;
     },
     handleNext () {
+      if (this.isNextDisabled) return;
       let move = this.translateX - this.wrapperWidth;
       const max = this.contentWidth - this.wrapperWidth;
       if (move < -max) {

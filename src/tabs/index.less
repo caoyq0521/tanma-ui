@@ -32,38 +32,36 @@
     white-space: nowrap;
     transition: .3s cubic-bezier(.25,.8,.5,1);
 
-    &.is-left {
+    &.tm-is-left {
       justify-content: flex-start;
     }
-    &.is-center {
+    &.tm-is-center {
       justify-content: center;
     }
-    &.is-right {
+    &.tm-is-right {
       justify-content: flex-end;
     }
   }
 
   .icon-prev,
   .icon-next {
-    margin: 0 10px;
-    padding: 0 4px;
+    line-height: 26px;
     font-size: 12px;
     color: #000;
     border-radius: 3px;
     cursor: pointer;
 
-    &:hover {
-      background: #f9f9f9;
-    }
-
-    &.is-disabled {
+    &.tm-is-disabled {
       color: #d7d7d7;
-      pointer-events: none;
-      &:hover {
-        background: none;
-        cursor: auto;
-      }
+      cursor: not-allowed;
     }
+  }
+
+  .icon-prev {
+    padding-right: 8px;
+  }
+  .icon-next {
+    padding-left: 8px;
   }
 
   .tm-tabs__pane {
@@ -86,7 +84,7 @@
     .tm-tabs__pane {
       line-height: 54px;
     }
-    .tm-tabs__pane.is-active {
+    .tm-tabs__pane.tm-is-active {
       position: relative;
       font-size: var(--tm-tabs-active-font-size);
       color: var(--tm-tabs-active-color);
@@ -98,7 +96,7 @@
     .tm-tabs__pane {
       line-height: 54px;
     }
-    .tm-tabs__pane.is-active {
+    .tm-tabs__pane.tm-is-active {
       position: relative;
       font-size: var(--tm-tabs-active-font-size);
       color: var(--tm-tabs-active-color);
@@ -120,7 +118,7 @@
   }
 
   &.tm-tabs--button {
-    .tm-tabs__pane.is-active {
+    .tm-tabs__pane.tm-is-active {
       min-width: 116px;
       padding: 0 var(--tm-tabs-button-active-padding);
       font-weight: var(--tm-tabs-font-weight-bold);
@@ -129,7 +127,7 @@
       background: var(--tm-tabs-active-color);
     }
 
-    .tm-tabs__pane.is-active.is-round {
+    .tm-tabs__pane.tm-is-active.tm-is-round {
       border-radius: 20px;
     }
   }
@@ -138,7 +136,7 @@
     .tm-tabs__pane {
       line-height: 26px;
     }
-    .tm-tabs__pane.is-active {
+    .tm-tabs__pane.tm-is-active {
       font-size: var(--tm-tabs-font-size);
     }
   }
