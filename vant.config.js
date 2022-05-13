@@ -166,6 +166,10 @@ module.exports = {
             title: 'AvatarCard 头像卡片',
           },
           {
+            path: 'block',
+            title: 'Block 内容块'
+          },
+          {
             path: 'date-range',
             title: 'DateRange 日期范围',
           },

@@ -179,7 +179,8 @@ import {
   TimelineItem,
   Steps,
   Step,
-  Message
+  Message,
+  Block
 } from 'tanma-design';
 
 Vue.use(Avatar);
@@ -211,6 +212,7 @@ Vue.use(TimelineItem);
 Vue.use(Steps);
 Vue.use(Step);
 Vue.use(Message);
+Vue.use(Block);
 
 
 Vue.prototype.$message = Message;
