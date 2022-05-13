@@ -19,6 +19,12 @@
 
 <demo-code>./demo/index.vue</demo-code>
 
+### 多title
+
+如出现一个块中需要显示多块内容，可手动更改部分样式实现。
+
+<demo-code>./demo/title.vue</demo-code>
+
 ### Props
 参数 | 说明 | 类型 | 可选值 | 默认值 
 -- | -- | -- | -- | --
