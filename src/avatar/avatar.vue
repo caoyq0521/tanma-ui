@@ -52,8 +52,9 @@ const baseMode = ['circle', 'square', 'rectangle'];
  * person 个人
  * company 公司
  * group 群组
+ * goods 商品
  * */ 
-const baseIconType = ['image', 'person', 'company', 'group'];
+const baseIconType = ['image', 'person', 'company', 'group', 'goods'];
 const baseTheme = ['dark', 'light'];
 
 const whiteList = ['.png', '.jpg', '.jpeg'];
@@ -178,17 +179,17 @@ export default {
       };
     },
     setIconClass () {
-      let className = '';
       const { classPrefix, iconType, customIcon } = this;
-      if (iconType === 'image') className = 'tm-icon-zhaopian';
-      if (iconType === 'person') className = 'tm-icon-touxiang';
-      if (iconType === 'company') className = 'tm-icon-qiye';
-      if (iconType === 'group') className = 'tm-icon-qunyunying1';
-      if (customIcon) className = customIcon;
-      return {
-        [className]: true,
-        [classPrefix]: true
-      };
+      const iconTypeEnum = {
+        image: 'tm-icon-zhaopian',
+        person: 'tm-icon-touxiang',
+        company: 'tm-icon-qiye',
+        group: 'tm-icon-qunyunying1',
+        goods: 'tm-icon-goods'
+      }
+      let className = customIcon || iconTypeEnum[iconType] || '';
+
+      return [ className, classPrefix ]
     },
     setIconStyle () {
       return {

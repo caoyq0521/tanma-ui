@@ -39,7 +39,7 @@
 import Avatar from "../avatar";
 import Tip from "../tip";
 
-const IconTypeEnum = ['image', 'person', 'company', 'group'];
+const IconTypeEnum = ['image', 'person', 'company', 'group', 'goods'];
 
 export default {
   name: "tmAvatarCard",

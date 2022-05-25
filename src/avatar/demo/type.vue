@@ -20,6 +20,11 @@
         icon-type="group"
         class="tm-avatar__item"
       />
+
+      <tm-avatar
+        icon-type="goods"
+        class="tm-avatar__item"
+      />
     </div>
     <br />
     <div class="tm-flex">
