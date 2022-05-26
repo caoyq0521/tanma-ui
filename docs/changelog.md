@@ -16,6 +16,20 @@ tanma design 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规�
 
 ### v1.1.9
 
+`2022-05-26`
+
+#### Feature
+
+- avatar: 新增goods类型头像。
+
+#### Bug Fixes
+
+- pagination: 处理ling-height被覆盖的问题。
+
+- 样式: 调整font-family。
+
+### v1.1.9
+
 `2022-05-13`
 
 #### 新组件
