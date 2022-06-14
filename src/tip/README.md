@@ -37,6 +37,12 @@ iconSize | icon大小 | _string_ | - | `16px`
 styleCls | icon样式 | _string_ | - | -
 popperClass | 为 Tooltip 的 popper 添加类名 | _string_ | - | -
 
+### Slot
+
+名称 | 说明 
+-- | -- 
+default | 自定义内容 
+
 ### 样式变量
 
 #### Less 变量
