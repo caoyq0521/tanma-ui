@@ -288,6 +288,10 @@ export default {
       this.removeParentNode()
       this.$destroy()
     }
+  },
+
+  beforeDestroy () {
+      this.targetParentNode = null
   }
 }
 </script>
