@@ -67,6 +67,7 @@ export default {
         const instance = el._tipInstance
         if (instance && instance.destroy) {
           instance.destroy()
+          el._tipInstance = null
         }
         clearEvent(el)
       }
