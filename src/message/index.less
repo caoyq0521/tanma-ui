@@ -19,7 +19,7 @@
   min-width: 400px;
   display: flex;
   align-items: center;
-  height: 45px;
+  min-height: 45px;
   padding: 0 15px;
   border-radius: 5px;
   transition: opacity 0.3s, transform .4s, top 0.4s;
@@ -53,10 +53,11 @@
   &__content {
     width: 0;
     flex: 1;
-    padding-left: 12px;
     font-weight: 550;
     font-size: 14px;
     line-height: 16px;
+    word-wrap: break-word;
+    padding: 10px 0 10px 12px;
   }
 }
 
