@@ -284,6 +284,7 @@ export default {
     },
 
     destroy () {
+      this.targetParentNode = null
       this.clearScrollEvent()
       this.removeParentNode()
       this.$destroy()
