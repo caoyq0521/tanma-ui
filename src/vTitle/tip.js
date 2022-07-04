@@ -32,6 +32,9 @@ export default function tip (options) {
   vtipInstance = new VtipConstructor({
     propsData: options
   }).$mount()
+  vtipInstance.$once('hook:destroyed', () => {
+    vtipInstance = null
+  })
   vtipInstance.updateTip()
   return vtipInstance
 }
