@@ -53,6 +53,7 @@ top | Dialog CSS 中的 margin-top 值 | _string_ | - | 15vh
 width | Dialog 的宽度 | _string_ | - | 50%
 append-to-body | Dialog 自身是否插入至 body 元素上。嵌套的 Dialog 必须指定该属性并赋值为 true | _boolean_ | - | false
 before-close | 关闭前的回调，会暂停 Dialog 的关闭 | _function_ | - | null
+before-ok | 确定前的回调，会暂停 Dialog 的关闭，如果是Promise函数则默认显示 loading 状态 | _function_ | - | null
 cancel-text | 取消按钮文字 | _string_ | - | 取消
 footer-hide | 是否显示底部按钮 | _boolean_ | - | false
 custom-class | Dialog 的自定义类名 | _string_ | - | -

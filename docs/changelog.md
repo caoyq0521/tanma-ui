@@ -14,6 +14,14 @@ tanma design 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规�
 
 ## 更新内容
 
+### v1.1.15
+
+`2022-08-26`
+
+#### Feature
+
+- dialog: 新增`beforeOk`参数。
+
 ### v1.1.14
 
 `2022-07-04`

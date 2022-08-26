@@ -126,6 +126,13 @@
         type: Function,
         default: null
       },
+      //  确定前的回调，会暂停 Dialog 的关闭
+      beforeOk: {
+        type: Function,
+        default: () => {
+          return true;
+        }
+      },
       // 关闭时销毁 Dialog 中的元素
       destroyOnClose: {
         type: Boolean,
@@ -201,8 +208,23 @@
           this.$emit("ok");
           return;
         }
-        this.visible = false;
-        this.$emit("ok");
+        const beforeOk = this.beforeOk();
+        if (beforeOk && beforeOk.then) {
+          this.buttonLoading = true;
+          beforeOk.then(res => {
+            if (res) {
+              this.visible = false;
+              this.buttonLoading = false;
+              this.$emit("ok");
+            }
+          });
+        } else {
+          if (beforeOk) {
+            this.visible = false;
+            this.$emit("ok");
+          }
+        }
+        
       },
       handleDialogOpen () {
         this.$emit('open');
