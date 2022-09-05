@@ -54,7 +54,7 @@ loading | 	是否加载中状态 | _boolean_ | - | false
 size | 	尺寸 | _string_ | small | -
 type | 类型 | _string_ | primary/danger/addition/text/forbidden/wicked | -
 round | 是否圆角按钮 | _boolean_ | - | false
-
+native-type | 原生类型 | _string_ | button / submit / reset | button
 ### Slots
 
 名称 | 说明

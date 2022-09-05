@@ -21,7 +21,7 @@ const DIS_BUTTON = ['forbidden','wicked']
         type: String,
         default: 'default'
       },
-      //原始类型
+      //原生类型
       nativeType: {
         type: String,
         default: 'button'
