@@ -3,7 +3,7 @@
     class="tm-button" 
     :class="className"
     :disabled="disabled || loading || DIS_BUTTON.includes(type)"
-    :type="type"
+    :type="nativeType"
     @click="handleClick"
   >
     <i class="tm-icon-load" v-if="loading"></i>
@@ -20,6 +20,11 @@ const DIS_BUTTON = ['forbidden','wicked']
       type: {
         type: String,
         default: 'default'
+      },
+      //原始类型
+      nativeType: {
+        type: String,
+        default: 'button'
       },
       //是否禁用状态
       disabled: {
