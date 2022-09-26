@@ -54,6 +54,7 @@
           :show-checkbox="showCheckbox"
           :key="getNodeKey(child)"
           :node="child"
+          :freeze="freeze"
           @node-expand="handleChildNodeExpand">
         </tm-tree-node>
       </div>
@@ -87,6 +88,10 @@
         default: true
       },
       showCheckbox: {
+        type: Boolean,
+        default: false
+      },
+      freeze: {
         type: Boolean,
         default: false
       }

@@ -73,6 +73,7 @@ export default class Node {
     this.parent = null;
     this.visible = true;
     this.isCurrent = false;
+    this.freeze = options.freeze === true
 
     for (let name in options) {
       if (options.hasOwnProperty(name)) {
@@ -231,7 +232,8 @@ export default class Node {
       }
       objectAssign(child, {
         parent: this,
-        store: this.store
+        store: this.store,
+        freeze: this.freeze
       });
       child = new Node(child);
     }
