@@ -8,6 +8,9 @@ export const markNodeData = function(node, data) {
     configurable: false,
     writable: false
   });
+  if (node.freeze === true) {
+    Object.freeze(data)
+  }
 };
 
 export const getNodeKey = function(key, data) {

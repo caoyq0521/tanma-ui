@@ -27,6 +27,7 @@
       :show-checkbox="showCheckbox"
       :key="getNodeKey(child)"
       :render-content="renderContent"
+      :freeze="freeze"
       @node-expand="handleNodeExpand">
     </tm-tree-node>
     <div class="el-tree__empty-block"
@@ -159,6 +160,10 @@
       extraLine: {
         type: Number,
         default: 8
+      },
+      freeze: {
+        type: Boolean,
+        default: false
       }
     },
 
@@ -392,7 +397,8 @@
         defaultExpandedKeys: this.defaultExpandedKeys,
         autoExpandParent: this.autoExpandParent,
         defaultExpandAll: this.defaultExpandAll,
-        filterNodeMethod: this.filterNodeMethod
+        filterNodeMethod: this.filterNodeMethod,
+        freeze: this.freeze
       });
 
       this.root = this.store.root;

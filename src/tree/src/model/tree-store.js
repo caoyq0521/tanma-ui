@@ -16,7 +16,8 @@ export default class TreeStore {
 
     this.root = new Node({
       data: this.data,
-      store: this
+      store: this,
+      freeze: options.freeze === true
     });
 
     if (this.lazy && this.load) {
