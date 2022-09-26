@@ -14,6 +14,15 @@ tanma design 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规�
 
 ## 更新内容
 
+### v1.1.17-beta0
+
+`2022-09-26`
+
+#### Bug Fixes
+
+- 修改babel配置。
+- tabs: 调整underline模式line-height为40px。
+
 ### v1.1.17
 
 `2022-09-05`
@@ -21,6 +30,7 @@ tanma design 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规�
 #### Feature
 
 - button: 补充原生类型文档。
+
 ### v1.1.16
 
 `2022-09-05`
