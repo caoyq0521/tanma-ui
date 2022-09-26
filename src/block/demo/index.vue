@@ -11,8 +11,8 @@
 
 <style lang="less" scoped>
 .block-demo {
-  padding: 20px;
-  border-radius: 8px;
+  padding: 15px;
+  border-radius: 5px;
   background-color: #f4f4f6;
 }
 </style>
