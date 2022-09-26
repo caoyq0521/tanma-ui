@@ -16,8 +16,8 @@
 
 <style lang="less" scoped>
 .block-demo {
-  padding: 20px;
-  border-radius: 8px;
+  padding: 15px;
+  border-radius: 5px;
   background-color: #f4f4f6;
 
   /deep/ .tm-block__content {
@@ -25,11 +25,11 @@
   }
 
   .block-demo-two {
-    margin-top: 22px;
+    margin-top: 15px;
   }
 
   .block-demo__content {
-    padding: 24px 22px 0;
+    padding: 18px 15px 0;
   }
 }
 </style>
