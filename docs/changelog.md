@@ -14,6 +14,15 @@ tanma design 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规�
 
 ## 更新内容
 
+### v1.1.17-beta3
+
+`2022-9-29`
+
+#### Bug Fixes
+
+- tabs: 调整marginRight为24
+- block: 调整块间距为8px
+
 ### v1.1.17-beta2
 
 `2022-9-26`
