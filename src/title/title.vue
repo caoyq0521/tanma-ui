@@ -63,7 +63,7 @@ export default {
     },
     titleSize: {
       type: [Number, String],
-      default: 16,
+      default: 14,
       validator (value) {
         const size = parseInt(value);
         Validator.titleSize = size;
