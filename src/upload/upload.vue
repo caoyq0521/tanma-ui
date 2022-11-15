@@ -328,7 +328,12 @@
       },
       uploadList: {
         handler (newValue) {
-          if (!newValue.length) return
+          if (!newValue.length) {
+            this.imageUrl = "";
+            this.imageUrlList = [];
+            this.fileList = [];
+            return;
+          }
 
           // 单张图片
           if (this.limit === 1 && this.model === 'image') {
