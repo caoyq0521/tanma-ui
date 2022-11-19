@@ -49,6 +49,7 @@
     "vue-template-compiler": "^2.6.11"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.18.9",
     "@babel/plugin-transform-runtime": "^7.17.0",
     "@vant/cli": "^2.0.0",
     "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",

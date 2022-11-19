@@ -152,8 +152,9 @@
     <tm-dialog
       v-if="showProgress"
       title="上传"
-      v-model="progressDialog"
       width="30%"
+      append-to-body
+      v-model="progressDialog"
       @close="handleDialogClose"
       @closed="handleDialogClosed"
     >
@@ -163,8 +164,9 @@
     </tm-dialog>
     <!-- 预览 -->
     <tm-dialog
-      v-model="previewShow"
       footer-hide
+      append-to-body
+      v-model="previewShow"
       custom-class="upload-preview-dialog"
     >
       <div class="img-container">
