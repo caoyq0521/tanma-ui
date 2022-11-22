@@ -112,7 +112,8 @@ npm i babel-plugin-import -D
       {
         "libraryName": "tanma-design",
         "libraryDirectory": "es",
-        "style": true
+        "style": true,
+        "camel2DashComponentName": false
       }
     ]
   ]
