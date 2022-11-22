@@ -14,6 +14,14 @@ tanma design 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规�
 
 ## 更新内容
 
+### v1.1.22
+
+`2011-11-22`
+
+#### Bug Fixes
+
+- tagCombo、tagPro、tagGroup、vTitle转为tag-combo、tag-pro、tag-group、v-title。
+
 ### v1.1.21
 
 `2011-11-21`
