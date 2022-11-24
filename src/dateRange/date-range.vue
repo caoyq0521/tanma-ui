@@ -27,12 +27,11 @@ Vue.use(DatePicker);
 import dayjs from 'dayjs';
 import {isMobile} from '../util';
 
-const today = dayjs();
-
 const ShortcutOptionsEnum = {
   '0': {
     text: '今天',
     onClick (picker) {
+      const today = dayjs();
       const end = today.endOf('date').toDate();
       const start = today.startOf('date').toDate();
       picker.$emit('pick', [start, end]);
@@ -41,6 +40,7 @@ const ShortcutOptionsEnum = {
   '1': {
     text: '昨天',
     onClick (picker) {
+      const today = dayjs();
       const start = today.startOf('date').subtract(1, 'day').toDate();
       const end = today.endOf('date').subtract(1, 'day').toDate();
       picker.$emit('pick', [start, end]);
@@ -49,6 +49,7 @@ const ShortcutOptionsEnum = {
   '7': {
     text: '最近7天',
     onClick (picker) {
+      const today = dayjs();
       const end = today.endOf('date').toDate();
       const start = today.startOf('date').subtract(6, 'day').toDate();
       picker.$emit('pick', [start, end]);
@@ -57,6 +58,7 @@ const ShortcutOptionsEnum = {
   '30': {
     text: '最近一个月',
     onClick (picker) {
+      const today = dayjs();
       const end = today.endOf('date').toDate();
       const start = today.startOf('date').subtract(30, 'day').toDate();
       picker.$emit('pick', [start, end]);
@@ -65,6 +67,7 @@ const ShortcutOptionsEnum = {
   '90': {
     text: '最近三个月',
     onClick (picker) {
+      const today = dayjs();
       const end = today.endOf('date').toDate();
       const start = today.startOf('date').subtract(90, 'day').toDate();
       picker.$emit('pick', [start, end]);
@@ -73,6 +76,7 @@ const ShortcutOptionsEnum = {
   '365': {
     text: '最近一年',
     onClick (picker) {
+      const today = dayjs();
       const end = today.endOf('date').toDate();
       const start = today.startOf('date').subtract(365, 'day').toDate();
       picker.$emit('pick', [start, end]);
