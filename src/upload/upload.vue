@@ -2,27 +2,31 @@
   <div class="tm-upload">
     <!-- 图片上传 -->
     <div v-if="model === 'image'" class="image-container">
-      <transition-group v-if="imageUrlList.length && showList" tag="div" name="list" class="image-container-left">
-        <div
-          v-for="(item, index) in imageUrlList"
-          :key="item + index"
-          @mouseenter="imageHover(item, index)"
-          @mouseleave="unImageHover"
-          class="image__item"
-        >
-          <img
-            :src="item.url"
-            alt=""
-            class="image__item-img"
+      <!-- <transition-group v-if="imageUrlList.length && showList" tag="div" name="list" class="image-container-left">
+      </transition-group> -->
+      <template v-if="showList">
+        <div class="image-container-left">
+          <div
+            v-for="(item, index) in imageUrlList"
+            :key="item.name+index"
+            @mouseenter="imageHover(item, index)"
+            @mouseleave="unImageHover"
+            class="image__item"
           >
-          <div class="image__item-icon" v-show="isHover && target === index">
-            <i class="tm-icon-fangda fangda-cls" @click="handlePreview(item.url)"></i>
-            <i class="tm-icon-lajitong0" @click="removeImg(index)"></i>
+            <img
+              :src="item.url"
+              alt=""
+              class="image__item-img"
+            >
+            <div class="image__item-icon" v-show="isHover && target === index">
+              <i class="tm-icon-fangda fangda-cls" @click="handlePreview(item.url)"></i>
+              <i class="tm-icon-lajitong0" @click="removeImg(index)"></i>
+            </div>
           </div>
         </div>
-      </transition-group>
+      </template>
       <el-upload
-        v-if="!isCut"
+        v-if="!isCut&&showUpload"
         ref="tmUpload"
         :headers="headers"
         :action="action"
@@ -61,7 +65,7 @@
         </div>
       </el-upload>
       <ImgCutter
-          v-else
+          v-if="isCut"
           label="裁剪本地图片"
           isModal
           :rate="rate"
@@ -314,7 +318,9 @@
         isHover: false,
         target: '',
         id: 'fileInput',
-        hoverIndex: ''
+        hoverIndex: '',
+        // 显示上传
+        showUpload: false
       }
     },
     watch: {
@@ -345,6 +351,9 @@
           if (this.model === 'file') {
             this.fileList = [...newValue]
           }
+
+          // 超过数量限制隐藏上传
+          this.showUpload = this.limit !== newValue.length
         },
         immediate: true,
         deep: true
