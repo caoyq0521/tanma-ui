@@ -353,7 +353,7 @@
           }
 
           // 超过数量限制隐藏上传
-          this.showUpload = this.limit !== newValue.length
+          this.showUpload = this.limit > 1 ? newValue.length >= this.limit : true;
         },
         immediate: true,
         deep: true

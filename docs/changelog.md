@@ -14,9 +14,17 @@ tanma design 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规�
 
 ## 更新内容
 
+### v1.1.25
+
+`2022-12-06`
+
+#### Bug Fixes
+
+- upload: 修改多文件上传达到限制数量后隐藏上传按钮，同时删除了文件交互动画
+
 ### v1.1.24
 
-`2011-11-24`
+`2022-11-24`
 
 #### Bug Fixes
 
@@ -24,7 +32,7 @@ tanma design 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规�
 
 ### v1.1.23
 
-`2011-11-22`
+`20222-11-22`
 
 #### Bug Fixes
 
@@ -32,7 +40,7 @@ tanma design 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规�
 
 ### v1.1.22
 
-`2011-11-22`
+`2022-11-22`
 
 #### Bug Fixes
 
@@ -40,7 +48,7 @@ tanma design 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规�
 
 ### v1.1.21
 
-`2011-11-21`
+`2022-11-21`
 
 #### Feature
 
@@ -49,7 +57,7 @@ tanma design 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规�
 
 ### v1.1.20
 
-`2011-11-16`
+`2022-11-16`
 
 #### Bug Fixes
 
