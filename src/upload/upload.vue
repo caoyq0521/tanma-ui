@@ -320,7 +320,7 @@
         id: 'fileInput',
         hoverIndex: '',
         // 显示上传
-        showUpload: false
+        showUpload: true
       }
     },
     watch: {
@@ -353,7 +353,7 @@
           }
 
           // 超过数量限制隐藏上传
-          this.showUpload = this.limit > 1 ? newValue.length >= this.limit : true;
+          this.showUpload = this.limit > 1 ? newValue.length < this.limit : true;
         },
         immediate: true,
         deep: true
