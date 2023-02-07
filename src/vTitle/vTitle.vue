@@ -239,8 +239,8 @@ export default {
       if (!$el || !target || !containerNode) return
       const placementInfo = computePlacementInfo(target, containerNode, $el, placements, arrowsSize)
       const coordinate = placementInfo.mod === 'mid'
-        ? computeCoordinateBaseMid(placementInfo, arrowsSize)
-        : computeCoordinateBaseEdge(placementInfo, arrowsSize)
+        ? computeCoordinateBaseMid(placementInfo, arrowsSize, containerNode)
+        : computeCoordinateBaseEdge(placementInfo, arrowsSize, containerNode)
       this.setArrowsPos(coordinate)
       this.placement = coordinate.placement
       const x = coordinate.x + containerNode.scrollLeft

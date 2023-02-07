@@ -104,17 +104,19 @@ export function getScrollContainer (el) {
 }
 
 // 基于参考元素的某一侧的中点来计算目标元素的坐标
-export function computeCoordinateBaseMid (placementInfo, offset) {
+export function computeCoordinateBaseMid (placementInfo, offset, parent) {
   const { placement, mid, tw, th } = placementInfo
+  const clientWidth = parent.clientWidth - 20;
+
   switch (placement) {
     case 'top': return {
       placement: 'top-mid',
-      x: mid.x - tw / 2,
+      x: Math.min(mid.x, clientWidth) - tw / 2,
       y: mid.y - th - offset
     }
     case 'bottom': return {
       placement: 'bottom-mid',
-      x: mid.x - tw / 2,
+      x: Math.min(mid.x, clientWidth) - tw / 2,
       y: mid.y + offset
     }
     case 'left': return {
@@ -131,20 +133,21 @@ export function computeCoordinateBaseMid (placementInfo, offset) {
 }
 
 // 基于参考元素某一侧的边界来计算目标元素位置
-export function computeCoordinateBaseEdge (placementInfo, offset) {
+export function computeCoordinateBaseEdge (placementInfo, offset, parent) {
   const { placement, start, end, dHor, dVer, tw, th, ew, eh } = placementInfo
+  const clientWidth = parent.clientWidth - 20;
   const nearRight = dHor > 0
   const nearBottom = dVer > 0
   switch (placement) {
     case 'top': return {
       placement: nearRight ? 'top-end' : 'top-start',
-      x: nearRight ? end.x - tw : start.x,
+      x: nearRight ? Math.min(end.x, clientWidth) - tw : start.x,
       y: start.y - th - offset,
       arrowsOffset: ew / 2
     }
     case 'bottom': return {
       placement: nearRight ? 'bottom-end' : 'bottom-start',
-      x: nearRight ? end.x - tw : start.x,
+      x: nearRight ? Math.min(end.x, clientWidth) - tw : start.x,
       y: end.y + offset,
       arrowsOffset: ew / 2
     }
