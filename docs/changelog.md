@@ -14,13 +14,21 @@ tanma design 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规�
 
 ## 更新内容
 
-### v1.1.27
+### v1.1.28
 
 `2023-02-07`
 
 #### Bug Fixes
 
 - vTitle: 处理超出边界问题
+
+### v1.1.27
+
+`2023-01-13`
+
+#### Bug Fixes
+
+- button: 添加样式 line-height: 1
 
 ### v1.1.26
 
