@@ -14,6 +14,16 @@ tanma design 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规�
 
 ## 更新内容
 
+### v1.1.30
+
+`2023-02-13`
+
+#### Bug Fixes
+
+- collapseText: 处理text文字改变，初始化问题
+
+- button：: 更安全的line-height
+
 ### v1.1.29
 
 `2023-02-07`
