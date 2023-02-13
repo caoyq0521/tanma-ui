@@ -88,13 +88,18 @@
   },
   watch: {
     text () {
-      this.judgeExpand()
+      this.resetStatus()
     }
   },
   mounted () { // 判断是否需要折叠
     this.judgeExpand()
   },
   methods: {
+    resetStatus(){
+      Object.assign(this.$data, this.$options.data())
+      this.$refs.collapseTextContent.style.height = ''
+      this.judgeExpand()
+    },
     showFullFn (value) {
       this.expandStyle = value ? '' : `display: -webkit-box;word-break: break-all;-webkit-line-clamp: ${this.lines};-webkit-box-orient: vertical;text-overflow: ellipsis;overflow: hidden;`
       this.showFull = value
