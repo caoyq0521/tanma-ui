@@ -48,13 +48,14 @@
 <script>
   import Vue from 'vue';
   import { Dialog, Button } from 'element-ui';
+
   Vue.use(Dialog);
   Vue.use(Button);
 
   const TYPES = ["primary", "danger"];
 
   export default {
-    name: "tmDialog",
+    name: "tm-dialog",
     props: {
       // 对话框是否显示，可使用 v-model 双向绑定数据。
       value: {
@@ -218,15 +219,14 @@
               this.$emit("ok");
             }
           });
-        } else {
-          if (beforeOk) {
+        } else if (beforeOk) {
             this.visible = false;
             this.$emit("ok");
           }
-        }
         
       },
       handleDialogOpen () {
+        this.buttonLoading = false;
         this.$emit('open');
       },
       handleDialogOpened () {
