@@ -14,6 +14,14 @@ tanma design 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规�
 
 ## 更新内容
 
+### v1.1.29
+
+`2023-04-11`
+
+#### Bug Fixes
+
+- dialog: dialog打开时重置loading状态
+
 ### v1.1.28
 
 `2023-02-07`
