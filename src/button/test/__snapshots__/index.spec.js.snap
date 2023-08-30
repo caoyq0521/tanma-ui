@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tmButton render tmButton 1`] = `
+<button type="default" class="tm-button tm-button--medium tm-button--default">
+  <!---->
+</button>
+`;

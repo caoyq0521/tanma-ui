@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tmAvatarCard render AvatarCard 1`] = `
+<div class="tm-avatar-card">
+  <div class="tm-avatar tm-avatar__square" style="height: 45px; width: 45px;">
+    <div class="tm-flex__center tm-avatar__image"><i class="tm-avatar__icon tm-icon-touxiang " style="font-size: 21px;"></i>
+      <!---->
+    </div>
+  </div>
+  <div class="tm-avatar-card__info">
+    <div class="info-title">
+      <p class="tm-ellipsis info-title__name"></p>
+      <!---->
+    </div>
+    <div class="tm-ellipsis info-description"><i class="tm-icon-wechat icon-wechat-unadded color-gray"></i>待添加
+    </div>
+  </div>
+</div>
+`;

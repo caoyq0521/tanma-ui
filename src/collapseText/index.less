@@ -1,0 +1,46 @@
+@import '../style/var';
+@import './var';
+  
+:root {
+  --tm-collapse-text-button-color: @button-color-primary;
+}
+
+.tm-collapse-text {
+  &__content{
+    overflow: hidden;
+    word-break: break-all;
+    white-space: pre-wrap;
+    text-align: left;
+    transition: height 0.3s ease-in-out;
+  }
+  &__action {
+    text-align: left;
+    margin-top: 6px;
+    .action {
+      display: inline-block;
+      font-size: 14px;
+      color: var(--tm-collapse-text-button-color);
+      cursor: pointer;
+      i {
+        margin-left: -4px;
+        display: inline;
+        font-size: 12px;
+      }
+      &-close {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.v-tip-container .v-tip-content{
+  text-align: justify;
+}
+// .tm-collapse-text__popover{
+//   max-width: 40vw;
+//   max-height: 30vh;
+//   overflow: hidden;
+//   word-break: break-all;
+//   overflow-y: auto;
+// }
+  

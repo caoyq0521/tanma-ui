@@ -1,0 +1,71 @@
+@import '../style/var';
+@import './var';
+  
+:root {
+  --tm-dialog-title-font-size: @dialog-title-font-size;
+  --tm-dialog-title-font-weight: @dialog-title-font-weight;
+  --tm-dialog-footer-button-width: @dialog-footer-button-width;
+  --tm-dialog-footer-button-height: @dialog-footer-button-height;
+}
+
+.tm-dialog {
+  box-shadow: 0px 19px 53px 0px rgba(0, 0, 0, 0.09);
+  border-radius: 8px;
+
+  // 调整 el-dialog部分样式
+  .el-dialog {
+    &__header {
+      padding: 22px;
+      box-sizing: border-box;
+    }
+
+    &__headerbtn {
+      top: 23px;
+      right: 20px;
+    }
+
+    &__close {
+      color: #000;
+    }
+
+    &__title {
+      font-size: var(--tm-dialog-title-font-size);
+      font-weight: var(--tm-dialog-title-font-weight);
+    }
+
+    &__body {
+      padding: 0!important;
+    }
+  }
+
+  &__footer {
+    padding: 22px; 
+    text-align: right;
+    .tm-button {
+      // width: var(--tm-dialog-footer-button-width);
+      // height: var(--tm-dialog-footer-button-height);
+      min-width: 70px !important;
+      // padding: 0;
+    }
+    .cancel-button{
+      border: none!important;
+
+      &:hover {
+        color: var(--title-font-color)!important;
+        background-color: #f4f4f6!important;
+      }
+    }
+  }
+
+  // 函数式调用时内容默认样式
+  &__body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 140px;
+    padding: 0 20px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+  

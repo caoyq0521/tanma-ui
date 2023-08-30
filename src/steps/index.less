@@ -1,0 +1,133 @@
+@import '../style/var';
+@import './var';
+  
+:root {
+  --tm-step-active-color: @step-active-color;
+  --tm-step-head-bgc: @step-head-bgc;
+  --tm-step-vertical-line-color: @step-vertical-line-color;
+  --tm-step-horizontal-arrow-color: @step-horizontal-arrow-color;
+  --tm-step-disabled-title-color: @step-disabled-title-color;
+  --tm-step-disabled-head-color: @step-disabled-head-color;
+}
+
+.tm-steps {
+  &--horizontal {
+    display: flex;
+  }
+}
+
+.tm-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &:last-of-type &__tail {
+    display: none;
+  }
+
+  &__head {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 6px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 600;
+    line-height: 24px;
+    border-radius: 50%;
+    background-color: var(--tm-step-head-bgc);
+  }
+
+  &__title {
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 550;
+  }
+
+  &__tail-line {
+    width: 0;
+    height: 40px;
+    margin: 12px 0 16px;
+    border-left: 1px dashed var(--tm-step-vertical-line-color);
+  }
+}
+
+.tm-step--horizontal {
+  display: flex;
+  flex-direction: row;
+
+  .tm-step {
+    &__main {
+      flex-direction: row;
+    }
+
+    &__head {
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      margin-bottom: 0;
+      margin-right: 14px;
+    }
+
+    &__title {
+      font-weight: 550;
+      font-size: 16px;
+    }
+
+    &__tail-arrow {
+      margin: 0 24px;
+      font-size: 12px;
+      color: var(--tm-step-horizontal-arrow-color);
+    }
+  }
+}
+
+.tm-step--current {
+  .tm-step {
+    &__head {
+      color: #fff;
+      background-color: var(--tm-step-active-color);
+    }
+
+    &__title {
+      color: var(--tm-step-active-color);
+    }
+
+    &__tail-line {
+      border-color: var(--tm-step-active-color);
+    }
+  }
+}
+
+.tm-step--horizontal.tm-step--current {
+  .tm-step {
+
+    &__tail-arrow {
+      font-size: var(--font-size-tooltip);
+      color: var(--tm-step-active-color);
+    }
+  }
+}
+
+.tm-step[disabled] {
+  .tm-step {
+    &__main {
+      cursor: not-allowed;
+    }
+
+    &__head {
+      color: var(--tm-step-disabled-head-color);
+    }
+
+    &__title {
+      color: var(--tm-step-disabled-title-color);
+    }
+  }
+}
+  

@@ -1,0 +1,60 @@
+@import '../style/var';
+@import './var';
+  
+:root {
+  --tm-timeline-timestamp-color: @timeline-timestamp-color;
+  --tm-timeline-content-color: @timeline-content-color;
+}
+
+.tm-timeline {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.tm-timeline-item {
+  padding-left: 15px;
+
+  &__header {
+    position: relative;
+    height: 20px;
+    color: var(--tm-timeline-timestamp-color);
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__dot {
+    position: absolute;
+    left: -15px;
+    top: 7px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+  }
+
+
+
+  &__date{
+    flex: none;
+    padding-right: 15px;
+  }
+
+  &__content {
+    position: relative;
+    padding: 10px 0 20px;
+    color: var(--tm-timeline-content-color);
+  }
+
+  &__tail {
+    position: absolute;
+    left: -13px;
+    top: 0px;
+    height: 100%;
+    border-left-width: 1px;
+    border-style: solid;
+    opacity: .3;
+  }
+}

@@ -1,0 +1,72 @@
+@import '../style/var';
+
+@btn-font-size-sm: var(--font-size-content);
+@btn-width-medium:115px;
+@btn-width-small:70px;
+@btn-height:36px;
+@btn-padding: 0 20px;
+@btn-primary: var(--main-color);
+@btn-default-text: @color-primary;
+@btn-danger: var(--color-danger);
+@btn-gray-1:var(--input-placeholder-color);
+@btn-gray-3: var(--border-color-light);
+@btn-gray-7: var(--color-background);
+@btn-gray-8: var(--tm-gray-8);
+@btn-gray-9: var(--tm-gray-9);
+@btn-gray-10: #B2B4C7;
+@btn-gray: var(--tooltip-font-color);
+@btn-white: var(--tm-white);
+@btn-black: @black;
+@btn-solid: solid;
+@btn-dashed: dashed;
+@btn-border-radius: 5px;
+
+.button-size(@padding, @font-size, @border-radius) {
+  padding: @padding;
+  text-align: center;
+  font-size: @font-size;
+  border-radius: @border-radius;
+}
+
+.button-style-disabled(
+  @background,
+  @border-style,
+  @border-color,
+  @color:@white,
+) {
+  color: @color;
+  background: @background;
+  border-color: @border-color;
+  border-style:@border-style;
+}
+
+.button-style(
+@background,
+@border-style,
+@border-color,
+@dis-bgc,
+@dis-color,
+@dis-border-color,
+@hover-bgc,
+@hover-color,
+@hover-border-color,
+@color:@white,
+) {
+  .button-style-disabled(@background, @border-style, @border-color, @color);
+  border-width: 1px;
+  line-height: calc(var(--tm-btn-heigh) - 2px);
+
+  &:not(&.disabled):not([disabled]):hover {
+    background-color: @hover-bgc;
+    color: @hover-color;
+    border-color: @hover-border-color;
+  }
+  
+  &[disabled],
+  &.disabled {
+    cursor: not-allowed;
+    color: @dis-color;
+    background-color: @dis-bgc;
+    border-color: @dis-border-color;
+  }
+}

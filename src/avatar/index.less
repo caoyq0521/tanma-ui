@@ -1,0 +1,70 @@
+@import '../style/var';
+@import './var';
+  
+:root {
+  --tm-avatar-background-color-dark: @avatar-background-color-dark;
+  --tm-avatar-background-color-light: @avatar-background-color-light;
+  --tm-avatar-icon-color: @avatar-icon-color;
+  --tm-avatar-text-image-color: @avatar-text-image-color;
+}
+
+.tm-avatar {
+  flex-shrink: 0;
+  
+  &__image {
+    flex-direction: column;
+    background-color: var(--tm-avatar-background-color-dark);
+    color: var(--tm-avatar-background-color-dark);
+    border: var(--tm-border-width-base) solid var(--tm-gray-6);
+
+    .tm-avatar__icon{
+      color: var(--tm-avatar-icon-color);
+    }
+
+    span {
+      margin-top: 5px;
+    }
+  }
+
+  &__text-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--tm-avatar-background-color-dark);
+    color: var(--tm-avatar-text-image-color);
+  }
+  
+  .el-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+  }
+
+  >div, img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.tm-avatar__circle {
+  >div, img {
+    border-radius: 50%;
+  }
+}
+
+.tm-avatar__square {
+  > div, img {
+    border-radius: 5px;
+  }
+}
+
+.tm-avatar__light {
+  .tm-avatar__image {
+    background: var(--tm-avatar-background-color-light);
+
+    .tm-avatar__icon {
+      color: var(--tm-avatar-background-color);
+    }
+  }
+}

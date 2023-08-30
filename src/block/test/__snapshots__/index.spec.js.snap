@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tmBlock render block 1`] = `
+<div class="tm-block">
+  <div class="tm-block__title"></div>
+  <div class="tm-block__content"></div>
+</div>
+`;

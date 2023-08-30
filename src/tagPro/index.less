@@ -1,0 +1,93 @@
+@import '../style/var';
+@import './var';
+  
+:root {
+  --tm-tag-pro-content-color: @tag-pro-content-color;
+  --tm-tag-pro-content-font-color: @tag-pro-content-font-color;
+  --tm-tag-pro-content-icon-color: @tag-pro-content-icon-color;
+
+  --tm-tag-pro-individual-color: @tag-pro-individual-color;
+  --tm-tag-pro-individual-font-color: @tag-pro-individual-font-color;
+  --tm-tag-pro-individual-icon-color: @tag-pro-individual-icon-color;
+
+  --tm-tag-pro-company-color: @tag-pro-company-color;
+  --tm-tag-pro-company-font-color: @tag-pro-company-font-color;
+  --tm-tag-pro-company-icon-color: @tag-pro-company-icon-color;
+
+  --tm-tag-pro-department-color: @tag-pro-department-color;
+  --tm-tag-pro-department-font-color: @tag-pro-department-font-color;
+  --tm-tag-pro-department-icon-color: @tag-pro-department-icon-color;
+
+  --tm-tag-pro-employee-color: @tag-pro-employee-color;
+  --tm-tag-pro-employee-font-color: @tag-pro-employee-font-color;
+  --tm-tag-pro-employee-icon-color: @tag-pro-employee-icon-color;
+
+  --tm-tag-pro-group-color: @tag-pro-group-color;
+  --tm-tag-pro-group-font-color: @tag-pro-group-font-color;
+  --tm-tag-pro-group-icon-color: @tag-pro-group-icon-color;
+}
+
+.tm-tag-pro {
+
+  .tm-tag-pro__icon {
+    display: inline-block;
+    margin-right: 6px;
+    font-size: 14px;
+  }
+
+  &--content {
+    color: var(--tm-tag-pro-content-font-color);
+    background-color: var(--tm-tag-pro-content-color);
+
+    .tm-tag-pro__icon {
+      color: var(--tm-tag-pro-content-icon-color);
+    }
+  }
+
+  &--individual {
+    color: var( --tm-tag-pro-individual-font-color);
+    background-color: var(--tm-tag-pro-individual-color);
+
+    .tm-tag-pro__icon {
+      color: var(--tm-tag-pro-individual-icon-color);
+    }
+  }
+
+  &--company {
+    color: var(--tm-tag-pro-company-font-color);
+    background-color: var(--tm-tag-pro-company-color);
+
+    .tm-tag-pro__icon {
+      color: var(--tm-tag-pro-company-icon-color);
+    }
+  }
+
+  &--department {
+    color: var(--tm-tag-pro-department-font-color);
+    background-color: var(--tm-tag-pro-department-color);
+
+    .tm-tag-pro__icon {
+      color: var(--tm-tag-pro-department-icon-color);
+      font-size: 16px;
+    }
+  }
+
+  &--employee {
+    color: var(--tm-tag-pro-employee-font-color);
+    background-color: var(--tm-tag-pro-employee-color);
+
+    .tm-tag-pro__icon {
+      color: var(--tm-tag-pro-employee-icon-color);
+    }
+  }
+
+  &--group {
+    color: var(--tm-tag-pro-group-font-color);
+    background-color: var(--tm-tag-pro-group-color);
+
+    .tm-tag-pro__icon {
+      color: var(--tm-tag-pro-group-icon-color);
+    }
+  }
+}
+  

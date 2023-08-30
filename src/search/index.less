@@ -1,0 +1,31 @@
+@import '../style/var';
+@import './var';
+
+.tm-search {
+  width: 200px;
+  background-color: @white;
+
+  .el-input__suffix {
+    .el-input__icon.el-icon-circle-close {
+      color: #dcdfe6;
+      
+      &:hover {
+        color: #c0c4cc;
+      }
+      
+      &::before{
+        font-family: "tanma-icons";
+        content: "\e75f";
+      }
+    }
+  }
+
+  &-icon {
+    width: 25px;
+    line-height: 36px;
+  }
+
+  .el-input__inner[maxlength] {
+    padding-right: 50px;
+  }
+}

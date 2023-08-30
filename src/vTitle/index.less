@@ -1,0 +1,120 @@
+@import '../style/var';
+@import './var';
+
+.tm-tip-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  box-sizing: border-box;
+  width: 200px;
+  max-width: 600px;
+  padding: 5px 12px;
+  margin: 0;
+  color: @tip-light-ftc;
+  font-size: 12px;
+  background: @tip-light-bgc;
+  box-shadow: 0 4px 20px rgba(63, 65, 74, .12);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transform: translate3d(0, 0, 0);
+  transition: opacity .3s;
+  will-change: auto;
+
+  .tm-tip-title,
+  .tm-tip-content {
+    padding: 0;
+    margin: 0;
+  }
+
+  .tm-tip-title {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .tm-tip-content {
+    max-height: 200px;
+    line-height: 2;
+    text-align: left;
+    word-wrap: break-word;
+    word-break: break-all;
+    background-color: inherit;
+    overflow-y: auto;
+  }
+
+  .tm-tip-arrows {
+    position: absolute;
+    z-index: -1;
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    border-color: transparent;
+    border-style: inherit;
+    border-width: 10px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: inherit;
+      border-width: inherit;
+      transform: translate(-50%, -50%);
+    }
+
+    &[class^='top-'],
+    &[class*=' top-'] {
+      border-top-color: inherit;
+      transform: translate(-50%, 0);
+
+      &::after {
+        top: -2px;
+        border-top-color: @tip-light-bgc;
+      }
+    }
+
+    &[class^='bottom-'],
+    &[class*=' bottom-'] {
+      border-bottom-color: inherit;
+      transform: translate(-50%, -100%);
+
+      &::after {
+        top: 2px;
+        border-bottom-color: @tip-light-bgc;
+      }
+    }
+
+    &[class^='left-'],
+    &[class*=' left-'] {
+      border-left-color: inherit;
+      transform: translate(0, -50%);
+
+      &::after {
+        left: -2px;
+        border-left-color: @tip-light-bgc;
+      }
+    }
+
+    &[class^='right-'],
+    &[class*=' right-'] {
+      border-right-color: inherit;
+      transform: translate(-100%, -50%);
+
+      &::after {
+        left: 2px;
+        border-right-color: @tip-light-bgc;
+      }
+    }
+  }
+
+  &.transition-transfrom {
+    transition: opacity .3s, transform .5s cubic-bezier(.4, 0, .2, 1);
+  }
+
+  &.tm-tip-fade-enter,
+  &.tm-tip-fade-leave-active {
+    opacity: 0;
+  }
+}

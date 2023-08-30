@@ -1,0 +1,87 @@
+@import './css-variables.less';
+
+.el-range-editor.is-active, .el-range-editor.is-active:hover {
+  border-color: var(--main-color);
+}
+.el-date-table td.today span {
+  color: var(--main-color);
+}
+.el-date-table td.available:hover {
+  color: var(--main-color);
+}
+.el-date-picker__header-label.active, .el-date-picker__header-label:hover {
+  color: var(--main-color);
+}
+.el-picker-panel__icon-btn.active,.el-picker-panel__icon-btn:hover {
+  color: var(--main-color);
+}
+.el-date-table td.end-date span, .el-date-table td.start-date span {
+  background:  var(--main-color);
+}
+.el-month-table td .cell:hover {
+  color: var(--main-color);
+}
+.el-month-table td.end-date .cell, .el-month-table td.start-date .cell {
+  color: var(--tm-white);
+  background-color:  var(--main-color);
+}
+.el-picker-panel__icon-btn.active,.el-picker-panel__icon-btn:hover {
+  color: var(--main-color);
+}
+.el-picker-panel__shortcut:hover {
+  color:  var(--main-color);
+}
+
+.el-input {
+  &__inner:focus{
+    border-color: var(--main-color);
+  }
+}
+
+// 年月选择器
+.el-year-table td.available, .el-month-table td:not(.in-range) { 
+  .cell:hover {
+    color: var(--main-color);
+  }
+
+  &.today .cell{
+    color: var(--main-color); 
+  }
+
+  &.current .cell {
+    color: var(--main-color) !important;
+  }
+}
+
+// 日选择器
+.el-date-table td.available {
+  &.current span{
+    background-color: var(--main-color);
+  }
+}
+
+.el-date-picker{
+  .el-picker-panel{
+    &__footer {
+      .el-button--text {
+        color: var(--main-color)
+      }
+    }
+  }
+  .el-time-panel {
+    &__footer {
+      .el-time-panel__btn.confirm{
+        color: var(--main-color);
+      }
+    }
+  }
+}
+
+.el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+  border-color: var(--main-color);
+  background-color: var(--main-color);
+}
+
+.el-checkbox__inner:hover {
+  border-color: var(--main-color);
+}

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tmTabs render tabs 1`] = `
+<div class="tm-flex__center--col tm-tabs tm-tabs--underline tm-tabs--default">
+  <!---->
+  <div class="tm-tabs__wrapper">
+    <div class="tm-tabs__content tm-is-left" style="transform: translateX(0px);"></div>
+  </div>
+  <!---->
+</div>
+`;

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tmDateRange render date-range 1`] = `
+<div class="tm-date-range">
+  <div class="el-date-editor el-range-editor el-input__inner el-date-editor--daterange el-range-editor--small"><i class="el-input__icon el-range__icon el-icon-date"></i><input autocomplete="off" placeholder="开始日期" name="" class="el-range-input"><span class="el-range-separator">~</span><input autocomplete="off" placeholder="结束日期" name="" class="el-range-input"><i class="el-input__icon el-range__close-icon"></i></div>
+</div>
+`;

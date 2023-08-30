@@ -12,6 +12,10 @@ package-lock.json
 es
 lib
 site
+dist
 
 # test
 test/coverage
+
+
+src/index.js

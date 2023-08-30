@@ -1,9 +1,13 @@
 {
-  "name": "tanma-ui",
+  "name": "tanma-design",
   "version": "1.0.0",
-  "description": "",
-  "main": "lib/tanma-ui.js",
+  "description": "Web UI Components build on Vue",
+  "main": "lib/tanma-design.js",
   "style": "lib/index.css",
+  "repository": "https://github.com/caoyq0521/tanma-ui.git",
+  "bugs": {
+    "url": "https://github.com/caoyq0521/tanma-ui/issues"
+  },
   "files": [
     "lib",
     "es"
@@ -15,29 +19,52 @@
     "build": "vant-cli build",
     "release": "vant-cli release",
     "test:coverage": "open test/coverage/index.html",
-    "build-site": "vant-cli build-site && gh-pages -d site-dist"
+    "build-site": "vant-cli build-site && gh-pages -d site",
+    "build-local-site": "vant-cli build-site",
+    "create": "webpack --config webpack.create.js"
   },
-  "author": "",
+  "author": "tanma fe",
   "license": "MIT",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "vant-cli commit-lint"
-    }
-  },
+  "keywords": [
+    "ui",
+    "vue",
+    "frontend",
+    "web ui",
+    "component",
+    "components"
+  ],
   "lint-staged": {
     "*.{ts,tsx,js,jsx,vue}": "eslint --fix",
     "*.{vue,css,less,scss}": "stylelint --fix"
   },
+  "dependencies": {
+    "element-ui": "2.13.0",
+    "image-conversion": "^2.1.1",
+    "uuid": "^8.3.2",
+    "vue-virtual-scroll-list": "^2.3.3"
+  },
   "peerDependencies": {
+    "element-ui": "2.13.0",
     "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.18.9",
+    "@babel/plugin-transform-runtime": "^7.17.0",
     "@vant/cli": "^2.0.0",
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
+    "@vue/babel-preset-jsx": "^1.2.4",
+    "@vue/cli-plugin-babel": "^5.0.1",
+    "babel-plugin-component": "^1.1.1",
     "babel-plugin-import": "^1.13.0",
+    "chai": "^4.3.6",
+    "dayjs": "^1.10.7",
+    "file-loader": "^6.2.0",
+    "url-loader": "^4.1.1",
     "vue": "^2.6.11",
-    "vue-template-compiler": "^2.6.11"
+    "vue-img-cutter": "^2.2.5",
+    "vue-template-compiler": "^2.6.11",
+    "webpack-cli": "3.3.0"
   },
   "eslintConfig": {
     "root": true,
@@ -54,7 +81,10 @@
     "singleQuote": true
   },
   "browserslist": [
-    "Android >= 4.0",
-    "iOS >= 8"
-  ]
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "unpkg": "lib/tanma-design.min.js",
+  "jsdelivr": "lib/tanma-design.min.js"
 }

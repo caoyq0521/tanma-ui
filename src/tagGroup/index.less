@@ -1,0 +1,39 @@
+@import '../style/var';
+@import './var';
+  
+:root {
+  --tm-tag-more-height: @tag-more-height;
+  --tm-tag-more-padding: @tag-more-padding;
+  --tm-tag-more-radius: @tag-more-radius;
+  --tm-tag-more-left: @tag-more-left;
+  --tm-tag-more-bgc: @tag-more-bgc;
+  --tm-tag-more-icon-color: @tag-more-icon-color;
+}
+
+.tm-tag-more {
+  .reference{
+    display: inline-block;
+    min-width: 44px;
+    height: var(--tm-tag-more-height);
+    line-height: 26px;
+    border-radius: var(--tm-tag-more-radius);
+    padding: 0 var(--tm-tag-more-padding);
+    margin-left: var(--tm-tag-more-left);
+    cursor: pointer;
+    text-align: center;
+    background-color: var(--tm-tag-more-bgc);
+  }
+
+  &__icon {
+    font-size: 14px;
+    color: var(--tm-tag-more-icon-color);
+  }
+
+  &__popper {
+    max-height: 300px;
+    overflow-x: hidden;
+    text-align: left!important;
+    font-size: 0!important;
+  }
+}
+  

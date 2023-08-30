@@ -1,0 +1,31 @@
+@import '../style/var';
+@import './var';
+  
+:root {
+
+}
+
+.tm-date-range {
+  .el-range-editor--small.el-input__inner {
+    height: 36px;
+    width: 240px !important;
+  }
+
+  /deep/.el-range-editor--small .el-range-input {
+    font-size: 14px;
+  }
+
+  /deep/.el-range-separator {
+    width: 16px;
+  }
+}
+
+.el-picker-panel.el-date-range-picker.has-sidebar {
+  .el-picker-panel__sidebar {
+    padding-top: 16px;
+
+    .el-picker-panel__shortcut {
+      padding-left: 18px;
+    }
+  }
+}

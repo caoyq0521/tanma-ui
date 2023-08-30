@@ -1,0 +1,90 @@
+@import '../style/var';
+@import './var';
+  
+:root {
+  --tm-tag-font-size: @tag-font-size;
+  --tm-tag-primary-color: @tag-primary-color;
+  --tm-tag-success-color: @tag-success-color;
+  --tm-tag-info-color: @tag-info-color;
+  --tm-tag-warning-color: @tag-warning-color;
+  --tm-tag-danger-color: @tag-danger-color;
+  --tm-tag-dot-font-color: @tag-dot-font-color;
+}
+
+.tm-tag {
+  display: inline-block;
+  padding: 0 10px;
+  margin: 3px;
+  line-height: 26px;
+  font-size: var(--tm-tag-font-size);
+  color: #fff;
+  background-color: var(--tm-tag-primary-color);
+  border-radius: 3px;
+
+  &--dot {
+    color: var(--tm-tag-dot-font-color);
+    background-color: rgba(0, 0, 0, 0)!important;
+
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin-right: 10px;
+      border-radius: 50%;
+      background-color: var(--tm-tag-primary-color);
+    }
+  }
+
+  &--success {
+    &, & > .dot {
+      background-color: var(--tm-tag-success-color);
+    }
+  }
+
+  &--info {
+    &, & > .dot {
+      background-color: var(--tm-tag-info-color);
+    }
+  }
+
+  &--warning {
+    &, & > .dot {
+      background-color: var(--tm-tag-warning-color);
+    }
+  }
+
+  &--danger {
+    &, & > .dot {
+      background-color: var(--tm-tag-danger-color);
+    }
+  }
+
+  &__closable {
+    display: inline-block;
+    margin-left: 12px;
+
+    &-icon {
+      display: inline-block;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    &:hover {
+      .tm-icon-qingchu {
+        display: inline-block;
+      }
+      .tm-icon-guanbi {
+        display: none;
+      }
+    }
+    .tm-icon-qingchu {
+      display: none;
+      opacity: .6;
+    }
+    
+    .tm-icon-guanbi {
+      transform: scale(0.7);
+    }
+    
+  }
+}

@@ -1,0 +1,47 @@
+@import '../style/var';
+@import './var';
+  
+:root {
+  --tm-btn-tabs-cancel-hover-color: @btn-tabs-cancel-hover-color;
+  --tm-btn-tabs-next-width: @btn-tabs-next-width;
+}
+
+.tm-button-tabs {
+  & + &{
+    margin-top: 10px;
+  }
+
+  &__step{
+    display: flex;
+    align-items: center;
+
+    &-prve,
+    &-next{
+      width: var(--tm-btn-tabs-next-width);
+    }
+    &-prve{
+      border: none;
+    }
+  }
+
+
+  &__certainty{
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+
+    &-cancel {
+      border: none;
+    }
+
+    &-cancel:not(&.disabled):not([disabled]):hover{
+      background-color: var(--tm-btn-tabs-cancel-hover-color) !important;
+    }
+    
+    .base-line {
+      align-items: baseline;
+    }
+  }
+}
+  

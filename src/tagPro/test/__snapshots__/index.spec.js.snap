@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tmTagPro render tagPro 1`] = `
+<span class="tm-tag tm-tag-pro tm-tag-pro--employee"><!----> <span class="tm-tag-pro__icon"><i class="tm-icon-touxiang "></i></span>
+员工标签
+<!----></span>
+`;

@@ -1,0 +1,45 @@
+/**
+ * Entry of basic styles
+ */
+
+// @import 'element-ui/lib/theme-chalk/index.css';
+
+@import './var.less';
+@import './css-variables.less';
+@import './reset.less';
+@import './clearfix.less';
+@import './mixins/ellipsis.less';
+@import './iconfont.less';
+@import './element.less';
+
+.tm-ellipsis {
+  .ellipsis();
+}
+
+.tm-multi-ellipsis--l2 {
+  .multi-ellipsis(2);
+}
+
+.tm-multi-ellipsis--l3 {
+  .multi-ellipsis(3);
+}
+
+.tm-flex {
+  display: flex;
+}
+
+.tm-flex__center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tm-flex__center--row {
+  display: flex;
+  justify-content: center;
+}
+
+.tm-flex__center--col {
+  display: flex;
+  align-items: center;
+}

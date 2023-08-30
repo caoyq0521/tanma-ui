@@ -1,0 +1,70 @@
+@import '../style/var';
+@import './var';
+  
+:root {
+  --tm-avatar-card-title-color: @avatar-card-title-color;
+  --tm-avatar-card-description-color: @avatar-card-description-color;
+}
+
+.tm-avatar-card {
+  display: flex;
+  justify-content: center;
+
+  .tm-avatar {
+    margin-right: 14px;
+  }
+
+  &__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .info{
+    &-title {
+      color: var(--tm-avatar-card-title-color);
+      display: flex;
+
+      &__name, &__tip {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+      }
+
+      &__name {
+        padding-right: 4px;
+      }
+
+      &.clickable{
+        color: var(--main-color);
+        cursor: pointer;
+      }
+    }
+
+    &-description {
+      display: flex;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--tm-avatar-card-description-color);
+      line-height: 20px;
+      padding-top: 2px;
+      
+      .icon-wechat,
+      .icon-wechat-unadded {
+        padding-left: 2px;
+        margin-right: 6px;
+      }
+      
+      .icon-wechat {
+        color: #09c060;
+      }
+    }
+  }
+  
+  .color-gray {
+    color: var(--tm-avatar-card-description-color) !important;
+  }
+}
+  

@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tmUpload render upload 1`] = `
+<div class="tm-upload">
+  <div class="image-container">
+    <!---->
+    <div>
+      <div tabindex="0" class="el-upload el-upload--text">
+        <div>
+          <div class="image-single">
+            <div class="image-single-uplaod image-single-empty">
+              <!---->
+              <div class="image-single-uplaod_title"><i class="tm-icon-zhaopian"></i>
+                <p>上传图片</p>
+              </div>
+            </div>
+          </div>
+        </div><input type="file" name="file" accept="image/png, image/jpg, image/jpeg" class="el-upload__input">
+      </div>
+    </div>
+  </div>
+  <div class="el-dialog__wrapper" style="display: none;" name="dialog-fade">
+    <div role="dialog" aria-modal="true" aria-label="上传" class="el-dialog tm-dialog" style="margin-top: 15vh; width: 30%;">
+      <div class="el-dialog__header"><span class="el-dialog__title">上传</span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+  <div class="el-dialog__wrapper" style="display: none;" name="dialog-fade">
+    <div role="dialog" aria-modal="true" aria-label="dialog" class="el-dialog tm-dialog upload-preview-dialog" style="margin-top: 15vh; width: 50%;">
+      <div class="el-dialog__header"><span class="el-dialog__title"></span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+</div>
+`;

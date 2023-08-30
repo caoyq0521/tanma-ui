@@ -1,0 +1,118 @@
+@import '../style/var';
+@import './var';
+  
+:root {
+  --tm-pagination-font-size: @pagination-font-size;
+  --tm-pagination-arrow-font-size: @pagination-arrow-font-size;
+  --tm-pagination-active-color: @pagination-active-color;
+  --tm-pagination-disable-color: @pagination-disable-color;
+  --tm-pagination-border-color: @pagination-border-color;
+  --tm-pagination-arrow-disable-color: @pagination-arrow-disable-color;
+  --tm-pagination-arrow-normal-color: @pagination-arrow-normal-color;
+}
+
+.tm-pagination {
+  display: flex;
+  font-size: var(--tm-pagination-font-size);
+
+  &__total, .button-prev, .button-next, .number {
+    padding: 0 7px;
+    height: 26px;
+    line-height: 26px;
+    border: 1px solid var(--tm-pagination-border-color);
+    border-radius: 3px;
+    background-color: #fff;
+  }
+
+  .button-prev, .button-next {
+    cursor: pointer;
+
+    &[disabled] {
+      cursor: not-allowed;
+      border-color: var(--tm-pagination-disable-color);
+
+      [class^="tm-icon-"], [class*=" tm-icon-"] {
+        color: var(--tm-pagination-arrow-disable-color);
+      }
+    }
+
+    [class^="tm-icon-"], [class*=" tm-icon-"] {
+      font-size: var(--tm-pagination-arrow-font-size);
+      color: var(--tm-pagination-arrow-normal-color);
+      transform: scale(.8);
+    }
+  }
+
+  .button-prev {
+    margin: 0 2px 0 4px;
+  }
+
+  .button-next {
+    margin: 0 4px 0 2px;
+  }
+
+  &__pager {
+    display: flex;
+    align-items: center;
+    user-select: none;
+
+    .number {
+      margin: 0 2px;
+      min-width: 24px;
+      cursor: pointer;
+    }
+
+    .more {
+      margin: 0 2px;
+    }
+
+    .active {
+      color: #fff;
+      border-color: transparent;
+      background-color: var(--tm-pagination-active-color);
+    }
+
+    .interval {
+      margin: 0 5px;
+      font-size: 18px;
+      line-height: 26px;
+    }
+  }
+
+  &__sizes {
+    display: inline-block;
+
+    .el-select {
+      .el-input {
+        width: 110px;
+
+        .el-select__caret {
+          font-size: 12px;
+        }
+      }
+      .el-input.is-focus .el-input__inner {
+        border-color: var(--main-color);
+      }
+
+      .el-input__inner {
+        height: 26px !important;
+        line-height: 26px;
+        border-color: var(--tm-pagination-border-color);
+      }
+      .el-input__icon {
+        line-height: 26px;
+      }
+    }
+  }
+
+  &--easy .number {
+    cursor: auto;
+  }
+
+  &__select-popper {
+    .el-select-dropdown__item.selected {
+      color:  var(--main-color);
+    }
+  }
+}
+  

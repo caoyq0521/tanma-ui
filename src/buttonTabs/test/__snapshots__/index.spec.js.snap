@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tm-button-tabs render buttonTabs 1`] = `
+<div class="tm-button-tabs tm-button-tabs__step"><button type="default" class="tm-button tm-button--medium tm-button--default tm-button-tabs__step-prve">
+    <!----> 上一步
+  </button> <button type="primary" class="tm-button tm-button--medium tm-button--primary tm-button-tabs__step-next">
+    <!----> 下一步
+  </button></div>
+`;

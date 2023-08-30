@@ -1,0 +1,66 @@
+@import '../style/var';
+@import './var';
+  
+:root {
+  --tm-optional-picker-type-border-color: @type-border-color;
+  --tm-optional-picker-type-active-color: @type-item-active-color;
+  --tm-optional-picker-type-active-background: @type-item-active-background;
+}
+
+
+.tm-optional-picker { 
+  display: flex;
+  flex-wrap: nowrap;
+  &-types {
+    display: flex;
+    padding: 10px 0;
+    margin-right: 6px;
+    border: 1px solid var(--tm-optional-picker-type-border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    .type-item{
+      position: relative;
+      width: 45px;
+      line-height: 16px;
+      flex-grow: 1;
+      text-align: center;
+      &:not(:last-child) {
+        border-right: 1px solid  var(--tm-optional-picker-type-border-color);
+      }
+    }
+    .type-item__active {
+      position: absolute;
+      top: -11px;
+      left: -1px;
+      width: 47px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      color: var(--tm-optional-picker-type-active-color);
+      background: var(--tm-optional-picker-type-active-background);
+      &-first{
+        border-radius: 4px 0 0 4px;
+      }
+      &-last{
+        border-radius: 0 4px 4px 0;
+      }
+    }
+  }
+  
+  &-range{
+    z-index: 1;
+    .week-range {
+      display: flex;
+      align-items: center;
+      .el-date-editor {
+        width: 170px;
+      }
+      .el-date-editor:first-child {
+        margin-right: 5px
+      }
+      .el-date-editor:last-child{
+        margin-left: 5px;
+      }
+    }
+  }
+}
